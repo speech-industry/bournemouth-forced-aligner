@@ -64,10 +64,11 @@ def load_rows(results_dir):
         if not path.is_file():
             sys.exit(f"{path} not found; run compute_metrics.py first")
         with open(path, newline="") as f:
-            rows = [r for r in csv.DictReader(f) if r.get("cfg_subset", "-1") in ("-1", "")]
+            rows = [r for r in csv.DictReader(f) if r.get("cfg_subset", "-1") in ("-1", "")
+                    and r.get("cfg_split", "") in ("all", "")]
         # BFA: only the released decoder; other full-corpus sweeps (β 0/15/45) share the model
         # name and would otherwise overwrite it, last row winning
-        rows = [r for r in rows if r.get("method") == "MFA"
+        rows = [r for r in rows if r.get("method") in ("MFA", "MAPS")
                 or r["experiment"].endswith(default_suffix(r))]
         out[ds] = {r["cfg_model"]: r for r in rows}
     return out

@@ -9,6 +9,7 @@ sweep ends up scoring an empty set and reporting every run as "never aligned".
     tmp/alignments/<experiment>/_manifest.json    the configuration that produced them
     tmp/alignments/<experiment>/_log.txt          that run's log
     tmp/mfa/                                      MFA's scratch corpus, removed after a run
+    tmp/maps/                                     MAPS's scratch corpus, removed after a run
     tmp/plots/<experiment>.json / .png            the scorer's detail and error histogram
     evaluation/results/results_<dataset>.csv      the scores, one row per experiment (the
                                                   path is `paths.results_csv` in the yaml)
@@ -35,6 +36,7 @@ LOG_NAME = "_log.txt"
 
 # Where the segment audio and TextGrids of an MFA run sit while MFA works on them.
 MFA_WORK_DIR = os.path.join(REPO_ROOT, "tmp", "mfa")
+MAPS_WORK_DIR = os.path.join(REPO_ROOT, "tmp", "maps")
 
 # Per-experiment scoring detail and error histograms.
 PLOTS_DIR = os.path.join(REPO_ROOT, "tmp", "plots")
@@ -43,6 +45,9 @@ PLOTS_DIR = os.path.join(REPO_ROOT, "tmp", "plots")
 DATASET_SRT_ROOTS = {
     "timit": os.path.join(REPO_ROOT, "tmp", "data", "timit_data"),
     "buckeye": os.path.join(REPO_ROOT, "tmp", "data", "buckeye_data"),
+    # non-native English: read sentences, and spontaneous narratives (l2arctic_parser.py)
+    "l2arctic": os.path.join(REPO_ROOT, "tmp", "data", "l2arctic_data"),
+    "l2arctic_suitcase": os.path.join(REPO_ROOT, "tmp", "data", "l2arctic_suitcase_data"),
 }
 
 # The paths lists, as written by `evaluation/dataset/*_parser.py`. Scoring only reads `text`
@@ -50,7 +55,7 @@ DATASET_SRT_ROOTS = {
 # serves ph66 and std runs alike.
 PATHS_LISTS = {
     dataset: os.path.join(REPO_ROOT, "tmp", "paths", f"{dataset}_paths_all.json")
-    for dataset in ("timit", "buckeye")
+    for dataset in DATASET_SRT_ROOTS
 }
 
 
@@ -106,6 +111,7 @@ def clip_stem(dataset, srt_path):
 
         timit    all/MABC0/SX61/SX61.srt.json  ->  all_MABC0_SX61
         buckeye  s01/s0103a.srt.json           ->  s01_s0103a
+        l2arctic ABA/arctic_a0003.srt.json     ->  ABA_arctic_a0003
 
     A leaf that merely repeats its parent directory is dropped, which is what keeps TIMIT's
     `.../SX61/SX61` from reading `all_MABC0_SX61_SX61`. `assert_unique_stems` checks the whole

@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- Results now record the audio they came from: an `audio_file` key (base name only) in the
+  output header, set by `process_srt_file`, by the CLI, and by `process_sentence(...,
+  audio_file=...)`. Results from `process_segments` and `process_sentences_batch` do not have it.
+- **`balign --web`**: a local web interface to align, transcribe (Whisper, through
+  transformers) and hand-correct phoneme timestamps in the browser. Needs
+  `pip install "bournemouth-forced-aligner[web]"`. See [web_interface/README.md](web_interface/README.md).
+- `BFA.frame_posteriors(audio_wav, start_sec, end_sec)`: the model's per-frame phoneme (and
+  tone) probabilities over a span, without aligning. The peak over a phone's frames is its
+  `confidence`.
+
 ## [2.0.1] - 2026-10-29
 
 ### Added

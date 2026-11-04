@@ -125,6 +125,18 @@ def _resolve_model_lang(preset, model, lang, phoneme_set=None):
               help='Print detailed progress information.')
 @click.option('--list-presets', is_flag=True, default=False,
               help='Print all supported language presets and exit.')
+# ---- web interface ----
+@click.option('--web', is_flag=True, default=False,
+              help='Start the local web interface instead of aligning a file: align, '
+                   'transcribe (Whisper) and hand-correct timestamps in the browser. '
+                   'Needs `pip install "bournemouth-forced-aligner[web]"`.')
+@click.option('--host', default='127.0.0.1', show_default=True,
+              help='--web: address to listen on. Keep the default unless you mean to share '
+                   'the server on your network.')
+@click.option('--port', default=7860, show_default=True, type=int,
+              help='--web: port to listen on.')
+@click.option('--no-browser', is_flag=True, default=False,
+              help='--web: do not open a browser tab.')
 @click.version_option(__version__, '--version', '-v', message='%(version)s')
 def main(audio_path, text_or_srt, output_path,
          preset, phoneme_set, model, ckpt_path, lang, g2p_device, punctuation_sil,
@@ -132,7 +144,7 @@ def main(audio_path, text_or_srt, output_path,
          device, duration_max, boundary_bonus_weight, boundary_contrast_frames,
          sub_frame_onsets, min_phone_frames,
          segment_max_seconds, chunk_audio, chunk_seconds, chunk_max_phonemes, chunk_pps,
-         chunk_vad, debug, list_presets):
+         chunk_vad, debug, list_presets, web, host, port, no_browser):
     """Bournemouth Forced Aligner — extract phoneme timestamps from audio.
 
     \b
@@ -145,12 +157,22 @@ def main(audio_path, text_or_srt, output_path,
         balign audio.wav transcript.srt.json output.json --preset=en-us
 
     \b
+    WEB interface (local server, opens in the browser):
+        balign --web
+
+    \b
     When OUTPUT_PATH is omitted the result is saved next to the audio file,
     e.g. butterfly.wav → butterfly.vs.json
     """
 
     if list_presets:
         click.echo(_preset_help())
+        return
+
+    if web:
+        from .web_interface.server import run as run_web
+        run_web(host=host, port=port, open_browser=not no_browser,
+                device=device if device else "auto")
         return
 
     # ------------------------------------------------------------------
@@ -275,7 +297,8 @@ def main(audio_path, text_or_srt, output_path,
                 text=input_text,
                 audio_wav=audio_wav,
                 extract_embeddings=bool(embeddings),
-                debug=debug
+                debug=debug,
+                audio_file=audio_path,
             )
 
             if embeddings:

@@ -88,12 +88,17 @@ audio = [
 ph66 = [
     "phonemizer>=3.3.0",
 ]
+# The local web interface (`balign --web`). Whisper runs through transformers, already a
+# dependency; its models download on first use.
+web = [
+    "flask>=2.0",
+]
 # Word segmenters for the std phoneme set's unspaced scripts. Mandarin needs none.
 th = ["pythainlp"]
 ja = ["fugashi", "unidic-lite"]
 yue = ["pycantonese"]
 all = [
-    "bournemouth-forced-aligner[dev,test,docs,audio,ph66,th,ja,yue]"
+    "bournemouth-forced-aligner[dev,test,docs,audio,ph66,th,ja,yue,web]"
 ]
 
 [project.urls]
@@ -107,15 +112,16 @@ Changelog = "https://github.com/tabahi/bournemouth-forced-aligner/blob/main/CHAN
 [project.scripts]
 balign = "bournemouth_aligner.cli:main"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["bournemouth_aligner*"]
-exclude = ["tests*", "docs*", "examples*"]
+# The package list is in setup.py: the web interface lives in ./web_interface (top level, so it
+# is easy to find on GitHub) but installs as `bournemouth_aligner.web_interface`, and that
+# directory mapping cannot be combined with `packages.find` here.
 
 [tool.setuptools.package-data]
 "bournemouth_aligner" = ["py.typed", "*.txt", "*.md"]
 # The vendored G2P tables: the language-group token lists, and the Mandarin dictionary keys.
 "bournemouth_aligner.standard_g2p" = ["LICENSE", "VENDORED.md", "mappings/*.json", "dicts/*.tsv"]
+# The web interface's page, scripts, styles and demo clip.
+"bournemouth_aligner.web_interface" = ["README.md", "static/*", "static/**/*"]
 
 # Development tools configuration
 [tool.black]

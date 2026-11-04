@@ -35,14 +35,22 @@ SECTIONS = {
     "run": ("existing", "vocab_analysis", "warn_level", "torch_threads"),
     "bfa": BFA_SETTINGS + HP_OVERRIDES,
     "mfa": ("conda_env", "num_jobs", "extra_args", "keep_workdir"),
+    # optional: only a yaml with a `method: maps` model needs it
+    "maps": ("conda_env", "repo_dir", "num_jobs", "keep_workdir"),
     "scoring": ("tolerance_ms", "align_max_dist", "offset_start", "offset_end",
                 "use_end_boundaries", "measure_group_errors", "merge_two_token_phones",
                 "limit_clips", "plots"),
 }
-EXPERIMENT_KEYS = ("name", "enabled", "dataset", "subset", "model") + BFA_SETTINGS + HP_OVERRIDES
+EXPERIMENT_KEYS = ("name", "enabled", "dataset", "subset", "split", "model") + BFA_SETTINGS \
+    + HP_OVERRIDES
+# `split:` of an experiment. `test` is the clips MAPS's English model was not trained on.
+SPLITS = ("all", "test")
+OPTIONAL_SECTIONS = ("maps",)
 MODEL_KEYS = {
     "bfa": ("model_name", "ckpt_path"),                    # exactly one of the two
     "mfa": ("method", "acoustic_model", "dictionary", "speaker_folders"),   # all four
+    "maps": ("method", "acoustic_model", "dictionary", "g2p_model", "interpolate",
+             "trained_on"),                                                  # all six
 }
 
 
@@ -62,8 +70,12 @@ def load_config(path=None):
     with open(path, encoding="utf-8") as f:
         cfg = yaml.safe_load(f) or {}
 
-    _check_keys("the top level", cfg, tuple(SECTIONS) + ("models", "experiments"))
+    _check_keys("the top level", cfg, tuple(SECTIONS) + ("models", "experiments"),
+                required=[s for s in SECTIONS if s not in OPTIONAL_SECTIONS]
+                + ["models", "experiments"])
     for section, keys in SECTIONS.items():
+        if section not in cfg:
+            continue
         required = BFA_SETTINGS if section == "bfa" else None
         _check_keys(f"`{section}:`", cfg[section] or {}, keys, required=required)
 
@@ -87,6 +99,15 @@ def load_config(path=None):
                              f"name, so no '/', no '__', and no leading '.' or '_'")
         if entry.get("method") == "mfa":
             _check_keys(f"models.{name}", entry, MODEL_KEYS["mfa"])
+        elif entry.get("method") == "maps":
+            _check_keys(f"models.{name}", entry, MODEL_KEYS["maps"])
+            if "maps" not in cfg:
+                raise KeyError(f"evaluate.yaml: models.{name} is a MAPS model, so the yaml "
+                               f"needs a `maps:` section")
+            entry["trained_on"] = list(entry["trained_on"] or [])
+        elif "method" in entry:
+            raise ValueError(f"evaluate.yaml: models.{name}: method {entry['method']!r} is "
+                             f"not one of mfa | maps (a BFA model has no `method`)")
         else:
             _check_keys(f"models.{name}", entry, MODEL_KEYS["bfa"], required=())
             if len(entry) != 1:
@@ -100,6 +121,11 @@ def load_config(path=None):
         raise ValueError("evaluate.yaml: `experiments:` is empty")
     for n, entry in enumerate(cfg["experiments"]):
         _check_keys(f"experiments[{n}]", entry, EXPERIMENT_KEYS, required=("dataset", "model"))
+        for split in (entry["split"] if isinstance(entry.get("split"), list)
+                      else [entry.get("split", "all")]):
+            if split not in SPLITS:
+                raise ValueError(f"evaluate.yaml: experiments[{n}] split {split!r}; "
+                                 f"it is one of {SPLITS}")
 
     cfg["config_path"] = os.path.abspath(path)
     return cfg

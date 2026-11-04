@@ -27,7 +27,13 @@ again. Adding a model or a setting to the yaml only costs the new runs.
    ```bash
    python evaluation/dataset/timit_parser.py
    python evaluation/dataset/buckeye_parser.py
+   python evaluation/dataset/l2arctic_parser.py --base /path/to/l2arctic_release_v5.0   # optional
    ```
+
+   L2-ARCTIC (non-native English) gives two datasets, `l2arctic` (3,599 read sentences) and
+   `l2arctic_suitcase` (22 spontaneous narratives). Only its hand-annotated clips are used, and
+   most of their boundaries are still the MFA 1.0 alignment the annotators started from: the
+   parser's docstring has the details.
 
    Run them again only when a parser changes. Alignments made before that no longer match
    the new segments and have to be redone (`run.existing: redo`).
@@ -229,7 +235,7 @@ labels become reference boundaries is in [LABEL_MAPPING.md](LABEL_MAPPING.md).
 | `plot_summary.py` | step 3: the comparison figures in docs/evaluation.md |
 | `config.py` | reads and checks the yaml |
 | `layout.py` | where files go |
-| `dataset/` | the corpus parsers (`timit_parser.py`, `buckeye_parser.py`), the label tables (`std_labels.py`), and the training probe cache (`probe_cache.py`) |
+| `dataset/` | the corpus parsers (`timit_parser.py`, `buckeye_parser.py`, `l2arctic_parser.py`), the label tables (`std_labels.py`), and the training probe cache (`probe_cache.py`) |
 | `LABEL_MAPPING.md` | how each corpus's labels become reference boundaries |
 | `results/results_<dataset>.csv` | the scores |
 | `plots/` | the histograms and figures that docs/evaluation.md shows |

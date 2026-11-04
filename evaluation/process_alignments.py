@@ -101,6 +101,15 @@ def is_mfa(model_key):
     return CFG["models"][model_key].get("method") == "mfa"
 
 
+def is_maps(model_key):
+    return CFG["models"][model_key].get("method") == "maps"
+
+
+# The aligners that are not BFA. Each aligns the extracted segment audio with its own tool and
+# writes segment-relative times; none of them takes any of the `bfa:` settings.
+EXTERNAL_METHODS = ("MFA", "MAPS")
+
+
 def resolve_model(model_key):
     """
     Turn a `models:` key into the exact `BFA` kwargs, and a label.
@@ -276,7 +285,13 @@ def _validate_experiment(exp):
                        f"{sorted(CFG['paths']['audio_roots'])}")
     if exp["model"] not in CFG["models"]:
         raise KeyError(f"unknown model {exp['model']!r}; `models:` has {sorted(CFG['models'])}")
-    if exp["method"] == "MFA":
+    if exp["method"] == "MAPS":
+        trained_on = CFG["models"][exp["model"]]["trained_on"]
+        if exp["dataset"] in trained_on and exp.get("split", "all") != "test":
+            raise ValueError(
+                f"model {exp['model']!r} was trained on {exp['dataset']} (trained_on: "
+                f"{trained_on}): score it with `split: test`, the clips it never saw")
+    if exp["method"] in EXTERNAL_METHODS:
         return exp
     resolve_model(exp["model"])          # raises on a missing checkpoint
 
@@ -357,6 +372,8 @@ def experiment_id(exp):
         parts += [f"{tag}{_tag_value(exp[key])}" for key, tag, usual in ID_EXTRAS
                   if exp[key] != usual]
         parts += [f"{HP_TAGS[key]}{_tag_value(value)}" for key, value in hp_overrides(exp).items()]
+    if exp.get("split", "all") != "all":
+        parts.append(exp["split"])
     if int(exp["subset"]) > 0:
         parts.append(f"n{int(exp['subset'])}")
     name = "__".join([exp["dataset"], exp["model"]] + (["_".join(parts)] if parts else []))
@@ -384,11 +401,18 @@ def build_experiments():
         group = entry.get("name", f"experiments[{n}]")
         settings = {key: _as_list(entry.get(key, CFG["bfa"].get(key)))
                     for key in BFA_SETTINGS + HP_OVERRIDES}
-        for dataset, subset, model in product(_as_list(entry["dataset"]),
-                                              _as_list(entry.get("subset", -1)),
-                                              _as_list(entry["model"])):
-            base = {"dataset": dataset, "subset": int(subset), "model": model}
-            if model in CFG["models"] and is_mfa(model):
+        for dataset, subset, split, model in product(_as_list(entry["dataset"]),
+                                                     _as_list(entry.get("subset", -1)),
+                                                     _as_list(entry.get("split", "all")),
+                                                     _as_list(entry["model"])):
+            base = {"dataset": dataset, "subset": int(subset), "split": split, "model": model}
+            if model in CFG["models"] and is_maps(model):
+                # Like MFA: none of the BFA settings reach it.
+                entry_cfg = CFG["models"][model]
+                grid = [{"method": "MAPS",
+                         **{key: entry_cfg[key] for key in
+                            ("acoustic_model", "dictionary", "g2p_model", "interpolate")}}]
+            elif model in CFG["models"] and is_mfa(model):
                 # None of the BFA settings reach MFA, so the whole grid is one run of it.
                 grid = [{"method": "MFA",
                          "acoustic_model": CFG["models"][model]["acoustic_model"],
@@ -419,7 +443,7 @@ def experiment_label(exp):
     The short name that lands in the CSV's `notes` column. Unlike the experiment's id it
     marks with `*` the decoder values that were left to the checkpoint.
     """
-    if exp["method"] == "MFA":
+    if exp["method"] in EXTERNAL_METHODS:
         label = f"{exp['model']}"
     else:
         eff = effective_decoder_config(exp)
@@ -431,6 +455,8 @@ def experiment_label(exp):
             label += "-gridonset"
         for key, value in hp_overrides(exp).items():
             label += f"-{HP_TAGS[key]}{_tag_value(value)}"
+    if exp.get("split", "all") != "all":
+        label += f"-{exp['split']}"
     if exp["subset"] > 0:
         label += f"-n{exp['subset']}"
     return label
@@ -466,6 +492,10 @@ def write_manifest(exp, status, extra=None):
             # Family, phoneme set and language group, from the checkpoint itself.
             **checkpoint_identity(exp["model"]),
         })
+    elif exp["method"] == "MAPS":
+        manifest["model"] = {key: exp[key] for key in
+                             ("acoustic_model", "dictionary", "g2p_model", "interpolate")}
+        manifest["model"]["trained_on"] = CFG["models"][exp["model"]]["trained_on"]
     else:
         manifest["model"] = {"acoustic_model": exp["acoustic_model"],
                              "dictionary": exp["dictionary"],
@@ -527,6 +557,29 @@ def get_paths_list(dataset):
     assert_unique_stems(dataset, paths_list)
     return paths_list
 
+
+
+# `split: test`: the clips no aligner in the sweep was trained on. TIMIT's own test set, and
+# the Buckeye speakers MAPS's authors held out for testing (Kelley et al. 2024, model card).
+# Nothing here was trained on L2-ARCTIC, so its test split is the whole corpus.
+BUCKEYE_TEST_SPEAKERS = ("s27", "s38", "s39", "s40")
+
+
+def in_test_split(dataset, entry):
+    if dataset == "timit":
+        return "/TEST/" in entry["audio"].replace("\\", "/").upper()
+    if dataset == "buckeye":
+        return os.path.basename(entry["audio"])[:3] in BUCKEYE_TEST_SPEAKERS
+    if dataset in ("l2arctic", "l2arctic_suitcase"):
+        return True
+    raise ValueError(f"no test split defined for dataset {dataset!r}")
+
+
+def split_clips(dataset, full_paths_list, split):
+    """The clips of one split, in paths-list order: `all`, or `test` (see `in_test_split`)."""
+    if split == "all":
+        return full_paths_list
+    return [entry for entry in full_paths_list if in_test_split(dataset, entry)]
 
 
 def select_clips(full_paths_list, subset):
@@ -946,10 +999,14 @@ def run_experiment(exp, e, n_total, paths_list_cache):
     if exp["dataset"] not in paths_list_cache:
         paths_list_cache[exp["dataset"]] = get_paths_list(exp["dataset"])
     full_paths_list = paths_list_cache[exp["dataset"]]
-    paths_list = select_clips(full_paths_list, exp["subset"])
-    if len(paths_list) < len(full_paths_list):
+    split_list = split_clips(exp["dataset"], full_paths_list, exp["split"])
+    if len(split_list) < len(full_paths_list):
+        log_message(f"Split {exp['split']!r}: {len(split_list)} of {len(full_paths_list)} files.",
+                    output_log_file)
+    paths_list = select_clips(split_list, exp["subset"])
+    if len(paths_list) < len(split_list):
         log_message(f"Using a deterministic random subset of {len(paths_list)} of "
-                    f"{len(full_paths_list)} files.", output_log_file)
+                    f"{len(split_list)} files.", output_log_file)
 
     if exp["method"] == "MFA":
         from evaluation.align_with_mfa import run_mfa
@@ -958,6 +1015,13 @@ def run_experiment(exp, e, n_total, paths_list_cache):
                 for entry in paths_list]
         stats = run_mfa(exp, jobs, CFG["mfa"],
                         log=lambda message: log_message(message, output_log_file))
+    elif exp["method"] == "MAPS":
+        from evaluation.align_with_maps import run_maps
+        jobs = [(resolve_audio_path(exp["dataset"], entry["audio"]), resolve_srt(entry["srt"]),
+                 alignment_path(exp["id"], exp["dataset"], entry["srt"]))
+                for entry in paths_list]
+        stats = run_maps(exp, jobs, CFG["maps"], CFG["mfa"],
+                         log=lambda message: log_message(message, output_log_file))
     else:
         if CFG["run"]["vocab_analysis"]:
             analyze_phoneme_vocab_mappings(paths_list, log_file=output_log_file)

@@ -113,20 +113,21 @@ def build_corpus(jobs, corpus_dir):
     return utterances
 
 
-def parse_textgrid(textgrid_path):
+def parse_textgrid(textgrid_path, tier_names=("phones",)):
     """
-    The intervals of a TextGrid's `phones` tier, as `{start_ms, end_ms, phone}`. Empty
-    intervals (MFA's silences) are left out.
+    The intervals of a TextGrid's phone tier (the first of `tier_names` it has), as
+    `{start_ms, end_ms, phone}`. Empty intervals (MFA's silences) are left out.
     """
     phonemes = []
     with open(textgrid_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
+    headers = [f'name = "{name}"' for name in tier_names]
     in_phones_tier = False
     current = {}
     for line in lines:
         line = line.strip()
-        if 'name = "phones"' in line:
+        if line in headers:
             in_phones_tier = True
             continue
         if in_phones_tier and line.startswith('name = '):
@@ -148,12 +149,16 @@ def parse_textgrid(textgrid_path):
 
 
 def speaker_of(dataset, audio_path):
-    """The speaker of a clip: TIMIT's speaker folder (`.../DR1/FAKS0/SA1.WAV` -> FAKS0), or the
-    Buckeye interview's speaker (`s0101a.wav` -> s01)."""
+    """The speaker of a clip: TIMIT's speaker folder (`.../DR1/FAKS0/SA1.WAV` -> FAKS0), the
+    Buckeye interview's speaker (`s0101a.wav` -> s01), or the L2-ARCTIC speaker code."""
     if dataset == "timit":
         return os.path.basename(os.path.dirname(audio_path))
     if dataset == "buckeye":
         return os.path.basename(audio_path)[:3]
+    if dataset == "l2arctic":                          # .../ABA/wav/arctic_a0003.wav -> ABA
+        return os.path.basename(os.path.dirname(os.path.dirname(audio_path)))
+    if dataset == "l2arctic_suitcase":                 # .../suitcase_corpus/wav/aba.wav -> ABA
+        return os.path.splitext(os.path.basename(audio_path))[0].upper()
     raise ValueError(f"no speaker rule for dataset {dataset!r}")
 
 

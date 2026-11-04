@@ -120,6 +120,20 @@ BUCKEYE_TO_STD = {
     "i": "ɪ", "e": "ɛ", "a": "ɑ", "an": "ɑ", "x": "ə", "id": "ɪ", "no": "n", "j": "d ʒ",
 }
 
+# L2-ARCTIC's annotation TextGrids, after `clean_l2arctic_label`: CMU ARPAbet without stress
+# digits, which is TIMIT's set plus nothing but `ax`. Every interval carries what the speaker
+# SHOULD have said and what they DID say; both are written with this table.
+L2ARCTIC_TO_STD = {
+    **_PHONEMES,
+    "ax": "ə",
+    # `sil` here also stands for MFA's short pause `sp` and the unlabelled interval
+    "sil": SIL,
+    # MFA's spoken noise
+    "spn": NOISE,
+    # a phone the annotator heard but could not name (`AH,err,s`): speech, but no label
+    "err": UNK,
+}
+
 # The diphthongs and affricates above, as (first token, second token): one hand-labelled phone
 # that the aligner places as two. The scorer can count such a pair as one onset
 # (`merge_two_token_phones` in compute_metrics.py). In the G2P's English `a`, `e` and `o`
@@ -148,6 +162,42 @@ def clean_buckeye_label(raw):
     if "exclude" in label.lower():
         return ["EXCLUDE"]
     return [part.replace("+1", "") for part in label.split()]
+
+
+_L2ARCTIC_SILENCE = {"", "sil", "sp"}
+L2ARCTIC_KINDS = {"s": "substitution", "a": "addition", "d": "deletion"}
+
+
+def _l2arctic_symbol(raw):
+    """`AO1`, `AA*`, ` TH`, `Z_`, `ERR`, `sp` -> `ao`, `aa`, `th`, `z`, `err`, `sil`."""
+    symbol = "".join(ch for ch in raw if ch.isalpha()).lower()
+    return "sil" if symbol in _L2ARCTIC_SILENCE else symbol
+
+
+def clean_l2arctic_label(raw):
+    """
+    One L2-ARCTIC `phones` interval as `(canonical, perceived, kind)`.
+
+    The README's conventions: a plain label (`AO1`) was pronounced as expected; an error is
+    `CPL,PPL,tag` - the phone that should have been said, the one that was heard, and `s`
+    (substitution), `a` (addition: CPL is `sil`) or `d` (deletion: PPL is `sil`). A `*` after a
+    PPL marks an accented variant of that phone, which is still that phone. The annotators
+    typed by hand, so the tags carry stray spaces, case and punctuation (`AH)`, `V``, `S` for
+    `s`); they are stripped here.
+
+    Returns: `kind` is `ok`, `substitution`, `addition` or `deletion`; the two labels are keys
+    of `L2ARCTIC_TO_STD`.
+    """
+    parts = raw.split(",")
+    if len(parts) == 1:
+        symbol = _l2arctic_symbol(raw)
+        return symbol, symbol, "ok"
+    if len(parts) != 3:
+        raise ValueError(f"L2-ARCTIC label {raw!r} is neither a phone nor CPL,PPL,tag")
+    tag = parts[2].strip().lower()
+    if tag not in L2ARCTIC_KINDS:
+        raise ValueError(f"L2-ARCTIC label {raw!r}: unknown error tag {tag!r}")
+    return _l2arctic_symbol(parts[0]), _l2arctic_symbol(parts[1]), L2ARCTIC_KINDS[tag]
 
 
 class StdLabels:

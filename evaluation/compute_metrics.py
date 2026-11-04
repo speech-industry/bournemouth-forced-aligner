@@ -51,7 +51,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 # under. See evaluation/layout.py.
 from evaluation.config import load_config, results_csv_path
 from evaluation.layout import (OUTPUT_DIR, PATHS_LISTS, PLOTS_DIR, alignment_path,
-                               list_experiments, manifest_path, resolve_srt)
+                               experiment_dir, list_experiments, manifest_path, resolve_srt)
 from evaluation.dataset.std_labels import TWO_TOKEN_PHONES
 
 from bournemouth_aligner.standard_g2p.phoneme_features import (
@@ -647,8 +647,17 @@ def check_method_alignment(
     frame_mismatch_files   = 0
     debug_printed          = False
 
+    # The alignment files on disk, listed once: a subset or split run has a file for only a few
+    # clips, and checking each of the others one by one is slow on a network or WSL drive.
+    run_dir = experiment_dir(experiment)
+    aligned = {os.path.join(run_dir, name) for name in os.listdir(run_dir)
+               if name.endswith(".json")}
+
     for i in tqdm(range(len(paths_list)), desc="Processing alignment files"):
         srt_path = resolve_srt(paths_list[i]['srt'])
+        if alignment_path(experiment, dataset, srt_path) not in aligned:
+            missing_VS_files += 1
+            continue
         # Derived from the SRT path, not from a 'vs' key: the paths lists do not carry one
         # (the parsers write audio/srt/WRD/PHN and nothing else), so the old
         # `paths_list[i]['vs']` raised KeyError on the first file. `alignment_path` comes from
@@ -1045,7 +1054,7 @@ def write_result_to_csv(csv_path, manifest, alignment_data):
     # supporting diagnostics. Group errors stay last because they are a detailed breakdown,
     # not the primary comparison columns.
     id_cols    = [CSV_KEY, "method", "dataset", "cfg_model", "cfg_ckpt", "phoneme_set", "notes"]
-    cfg_cols   = ["cfg_subset", "cfg_bonus_weight",
+    cfg_cols   = ["cfg_subset", "cfg_split", "cfg_bonus_weight",
                   "cfg_min_phone_frames", "cfg_soft_phone_frames", "cfg_sub_frame_onsets",
                   "cfg_duration_max", "cfg_batch_size", "cfg_run_at"]
     # `files` sits with the scores, not with the config: two rows are comparable only at the
@@ -1093,6 +1102,8 @@ def write_result_to_csv(csv_path, manifest, alignment_data):
         "cfg_ckpt":         (os.path.basename(ckpt) if ckpt else
                              model_cfg.get("model_name") or model_cfg.get("acoustic_model", "")),
         "cfg_subset":       cfg.get("subset", ""),
+        # `test`: only the clips MAPS was not trained on (blank in rows older than the key)
+        "cfg_split":        cfg.get("split", "all"),
         "cfg_bonus_weight":      eff.get("boundary_bonus_weight", ""),
         "cfg_min_phone_frames":  eff.get("min_phone_frames", ""),
         "cfg_soft_phone_frames": eff.get("soft_phone_frames", ""),
@@ -1416,9 +1427,9 @@ def score_one(manifest, scoring, csv_path):
             # has no file for the clips it did not align.
             PATHS_LISTS[dataset], output_json_path, dataset, experiment,
             limit_clips=scoring["limit_clips"],
-            # MFA aligns the extracted segment audio, so its times are segment-relative;
-            # BFA's are clip-absolute.
-            relative_boundaries=(manifest["method"] == "MFA"),
+            # MFA and MAPS align the extracted segment audio, so their times are
+            # segment-relative; BFA's are clip-absolute.
+            relative_boundaries=(manifest["method"] in ("MFA", "MAPS")),
             tolerance_ms_list=tolerance_ms_list,
             offset_start=scoring["offset_start"],
             offset_end=scoring["offset_end"],

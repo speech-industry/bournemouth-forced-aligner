@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BFA Aligner</title>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%233b6fd8'/><path d='M3 12V6M6 12V3M9 12V7M12 12V5' stroke='white' stroke-width='1.6'/></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">BFA <span class="muted">aligner</span></div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-mode="single" role="tab">Single</button>
+    <button class="tab" data-mode="batch" role="tab">Batch</button>
+  </nav>
+  <div class="config">
+    <label title="Language of the speech; picks the aligner model and the G2P">Language
+      <select id="cfg-lang"></select></label>
+    <label title="Whisper model for Transcribe. Downloaded on first use.">Whisper
+      <select id="cfg-whisper"></select></label>
+    <label title="Extra audio played before and after a phoneme or word">Padding
+      <input id="cfg-pad" type="number" min="0" max="500" step="10" value="0"> ms</label>
+    <label class="switch" title="Keep uploaded audio in this browser, so a reload loses nothing">
+      <input id="cfg-keep-audio" type="checkbox" checked> Keep audio
+      <input id="cfg-expiry" type="number" min="1" max="365" value="7" title="Days to keep it"> days</label>
+    <span id="storage-info" class="muted small" title="Browser storage used by this page"></span>
+  </div>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main>
+  <!-- Batch file list (batch mode only) -->
+  <aside id="batch-panel" class="batch-panel" hidden>
+    <div class="dropzone" id="dropzone">
+      <p><b>Drop audio files and their .vs.json files here</b></p>
+      <p class="muted small">Pairs are matched by the audio file name stored in each .vs.json.</p>
+      <label class="btn">Choose files<input id="batch-files" type="file" multiple
+        accept="audio/*,.wav,.flac,.ogg,.mp3,.json" hidden></label>
+    </div>
+    <div class="batch-actions">
+      <span id="batch-count" class="muted small"></span>
+      <button id="batch-download" class="btn small" title="Download every .vs.json as one zip">Download all (.zip)</button>
+      <button id="batch-clear" class="btn small danger">Clear list</button>
+    </div>
+    <ul id="batch-list" class="batch-list"></ul>
+  </aside>
+
+  <section class="workspace">
+    <!-- Input: audio + text / segments -->
+    <section class="card input-card">
+      <div class="row">
+        <label class="btn" id="audio-pick-label">Audio…<input id="audio-file" type="file"
+          accept="audio/*,.wav,.flac,.ogg,.mp3" hidden></label>
+        <span id="audio-name" class="audio-name muted">No audio</span>
+        <span class="spacer"></span>
+        <div class="seg-mode" role="radiogroup">
+          <label><input type="radio" name="segmode" value="text" checked> Single text</label>
+          <label><input type="radio" name="segmode" value="table"> Timed segments</label>
+        </div>
+      </div>
+      <textarea id="text-input" rows="2" placeholder="Type what is said in the recording"></textarea>
+      <div id="seg-table-wrap" hidden>
+        <table class="seg-table">
+          <thead><tr><th>#</th><th>Start (s)</th><th>End (s)</th><th>Text</th><th></th></tr></thead>
+          <tbody id="seg-table"></tbody>
+        </table>
+        <button id="seg-add" class="btn small">+ Add segment</button>
+      </div>
+      <div class="row">
+        <button id="btn-transcribe" class="btn" title="Fill the segments with Whisper">Transcribe (Whisper)</button>
+        <button id="btn-align" class="btn primary">Align</button>
+        <span id="job-status" class="muted small"></span>
+        <span class="spacer"></span>
+        <label class="small" id="done-wrap" hidden><input type="checkbox" id="clip-done"> Done</label>
+        <button id="btn-download" class="btn" disabled>Download .vs.json</button>
+        <button id="btn-textgrid" class="btn" disabled>TextGrid</button>
+      </div>
+    </section>
+
+    <!-- Editor -->
+    <section class="card editor-card">
+      <div class="row toolbar">
+        <div class="seg-mode">
+          <label><input type="radio" name="viewmode" value="mel" checked> Spectrogram</label>
+          <label><input type="radio" name="viewmode" value="wave"> Waveform</label>
+        </div>
+        <button class="btn small" id="btn-play" title="Play selection, or the visible part (Space)">▶ Play</button>
+        <button class="btn small" id="btn-play-all" title="Play the whole clip">▶ All</button>
+        <button class="btn small" id="btn-stop" title="Stop (Esc)">■</button>
+        <label class="small"><input type="checkbox" id="cfg-loop"> Loop</label>
+        <span class="spacer"></span>
+        <button class="btn small" id="btn-undo" title="Undo (Ctrl+Z)">↶ Undo</button>
+        <button class="btn small" id="btn-redo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+        <button class="btn small" id="btn-zoom-out" title="Zoom out (Ctrl+wheel)">−</button>
+        <button class="btn small" id="btn-zoom-fit" title="Show the whole clip">Fit</button>
+        <button class="btn small" id="btn-zoom-in" title="Zoom in (Ctrl+wheel)">+</button>
+      </div>
+      <div id="view-wrap" class="view-wrap">
+        <canvas id="view"></canvas>
+        <div id="view-empty" class="view-empty muted">Choose audio, enter its text, and press Align.</div>
+      </div>
+      <canvas id="overview" class="overview" title="Drag to scroll"></canvas>
+      <p class="hint muted small">Click a phoneme or word to select it · drag a boundary to move it ·
+        drag on the spectrogram to select a span · Space play · Esc stop · Del delete phoneme ·
+        Ctrl+wheel zoom · wheel scroll</p>
+    </section>
+
+    <!-- Inspector -->
+    <section class="card inspector" id="inspector">
+      <div id="insp-empty" class="muted">Nothing selected.</div>
+      <div id="insp-body" hidden>
+        <div class="row">
+          <b id="insp-title"></b>
+          <span id="insp-times" class="muted small"></span>
+          <span class="spacer"></span>
+          <button class="btn small" id="insp-play">▶ Play</button>
+          <button class="btn small" id="insp-play-word">▶ Word</button>
+        </div>
+        <div id="insp-phoneme" class="insp-grid">
+          <label>Start (ms) <input type="number" id="insp-start" step="1"></label>
+          <label>End (ms) <input type="number" id="insp-end" step="1"></label>
+          <label>Confidence <output id="insp-conf"></output></label>
+          <label>Word <select id="insp-word"></select></label>
+          <label>Tone <select id="insp-tone"></select></label>
+          <label>Stress <output id="insp-stress"></output></label>
+          <label>Length <output id="insp-length"></output></label>
+          <div class="insp-buttons">
+            <button class="btn small" id="insp-split" title="Split this phoneme in two at its middle">Split</button>
+            <button class="btn small danger" id="insp-delete" title="Delete this phoneme (Del); its time becomes a gap">Delete</button>
+          </div>
+        </div>
+        <div id="insp-gap" class="row" hidden>
+          <button class="btn small" id="insp-fill" title="Insert a phoneme filling this gap">Insert phoneme here</button>
+        </div>
+        <div id="insp-tokens-wrap">
+          <div class="row">
+            <input id="insp-filter" type="search" placeholder="Replace with… (type to filter, Enter picks the first)">
+            <span class="muted small" id="insp-token-note">sorted by model probability in this span</span>
+          </div>
+          <div id="insp-tokens" class="token-list"></div>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

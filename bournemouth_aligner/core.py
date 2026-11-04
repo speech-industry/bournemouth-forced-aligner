@@ -601,6 +601,44 @@ class BFA:
             return custom_resampler(wav)
         return self.default_resampler(wav)
 
+    @torch.no_grad()
+    def frame_posteriors(self, audio_wav, start_sec=0.0, end_sec=None):
+        """
+        The model's per-frame posteriors over one span of audio, without aligning anything.
+
+        The span is prepared as an aligned segment is (mono, RMS-normalised over the span), so
+        a phone's peak posterior here reproduces the `confidence` the aligner reports for it
+        (`utils._calculate_confidences`): the max over frames `[floor(start), ceil(end))` of
+        the phone's own id, with frame `t` at `start_sec + t * ms_per_frame`.
+
+        Args:
+            audio_wav: waveform tensor `(channels, samples)` or `(samples,)` at 16 kHz, as
+                returned by `load_audio`.
+            start_sec, end_sec: the span, in seconds. `end_sec=None` runs to the end.
+
+        Returns:
+            dict: `phoneme` - float tensor [T, n_classes], probabilities;
+                  `tone` - [T, n_tones] for a model with a tone head, else None;
+                  `start_sec` - the span's actual start (snapped to a sample);
+                  `ms_per_frame` - the frame stride.
+        """
+        assert self.extractor is not None, "No model loaded. Use load_model() first."
+        sr = self.resampler_sample_rate
+        wav = audio_wav.float()
+        if wav.dim() == 2:
+            wav = wav.mean(dim=0)
+        a = max(0, int(round(start_sec * sr)))
+        b = wav.shape[0] if end_sec is None else min(wav.shape[0], int(round(end_sec * sr)))
+        span = self._rms_normalize(wav[a:b])
+        out = self.extractor.encode_clip(span.unsqueeze(0))
+        n = int(self.extractor.spectral_lengths([span.shape[0]])[0])
+        n = min(n, out['ph'].shape[1])
+        phoneme = F.softmax(out['ph'][0, :n].float(), dim=-1).cpu()
+        tone = (F.softmax(out['tone'][0, :n].float(), dim=-1).cpu()
+                if out.get('tone') is not None else None)
+        return {"phoneme": phoneme, "tone": tone, "start_sec": a / sr,
+                "ms_per_frame": float(self.extractor.ms_per_frame)}
+
     # ======================================================================================
     # Model + decoder
     # ======================================================================================
@@ -1492,6 +1530,21 @@ class BFA:
         """
         return {"phoneme_set": self.inventory.name, "lang": self.lang, "segments": []}
 
+    @staticmethod
+    def _set_audio_file(result, audio_file):
+        """
+        Record which audio file a result belongs to, as its base name only (no directories),
+        so a saved `.vs.json` can be paired with its audio again, e.g. by the web interface.
+        The key goes before `segments` so it reads as part of the header.
+        """
+        if not audio_file or not isinstance(result, dict):
+            return result
+        name = os.path.basename(str(audio_file))
+        segments = result.pop("segments", [])
+        result["audio_file"] = name
+        result["segments"] = segments
+        return result
+
     def process_segments(self, srt_data, audio_wavs, extract_embeddings=False, do_groups=False,
                          batch_size=16, debug=False):
         """
@@ -1934,6 +1987,7 @@ class BFA:
             vs_out_data = batch_results[0]
         else:
             vs_out_data = result[0]
+        self._set_audio_file(vs_out_data, audio_path)
 
         if ts_out_path is not None:
             if os.path.dirname(ts_out_path):
@@ -1948,7 +2002,7 @@ class BFA:
         return vs_out_data
 
     def process_sentence(self, text, audio_wav, extract_embeddings=False, do_groups=False,
-                         debug=False):
+                         debug=False, audio_file=None):
         """
         Align one sentence against one waveform.
 
@@ -1958,6 +2012,8 @@ class BFA:
             extract_embeddings: also pool per-phoneme embeddings.
             do_groups: also emit group timestamps.
             debug: print detailed progress.
+            audio_file: name of the audio file, stored in the output as `audio_file` (base
+                name only). Optional.
 
         Returns:
             The output dict, or `(output_dict, phoneme_embeddings, group_embeddings)` when
@@ -1970,8 +2026,9 @@ class BFA:
                                        do_groups=do_groups, debug=debug)
         if extract_embeddings:
             timestamps_output_dict, batch_p_embds, batch_g_embds = result
+            self._set_audio_file(timestamps_output_dict[0], audio_file)
             return timestamps_output_dict[0], batch_p_embds[0], batch_g_embds[0]
-        return result[0]
+        return self._set_audio_file(result[0], audio_file)
 
     def process_sentences_batch(self, texts, audio_wavs, extract_embeddings=False,
                                 do_groups=False, debug=False):
