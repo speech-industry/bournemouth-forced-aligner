@@ -27,7 +27,13 @@ pip install bournemouth-forced-aligner
 balign recording.wav "the words spoken in the recording" --preset=en-us --textgrid=recording.TextGrid
 ```
 
-![The word "butterfly" aligned: each phoneme's span marked on the spectrogram](../examples/samples/images/butterfly_mel.png)
+Check and correct the result in the browser with `balign --web`: every phoneme over the
+spectrogram, its boundaries draggable, and the model's alternatives ranked by probability.
+
+![The web interface: an aligned sentence over the spectrogram, one phoneme selected, with the replacement tokens ranked by the model's probability](assets/screenshots/web-editor-light.webp#only-light)
+![The web interface: an aligned sentence over the spectrogram, one phoneme selected, with the replacement tokens ranked by the model's probability](assets/screenshots/web-editor-dark.webp#only-dark)
+
+[More about the web interface](web-interface.md){ .md-button }
 
 ## Documentation
 

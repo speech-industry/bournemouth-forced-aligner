@@ -10,6 +10,9 @@ only does the computing and keeps nothing.
 > Under construction. The workflow below is complete, but details may still change.
 > See [Future development](#future-development).
 
+![The editor: a sentence from LJSpeech aligned, the phoneme /ε/ of "sense" selected, its replacement tokens ranked by the model's probability](assets/screenshots/web-editor-light.webp#only-light)
+![The editor: a sentence from LJSpeech aligned, the phoneme /ε/ of "sense" selected, its replacement tokens ranked by the model's probability](assets/screenshots/web-editor-dark.webp#only-dark)
+
 ## Start it
 
 ```bash
@@ -36,6 +39,8 @@ segmenter. Install the matching extra once: `pip install "bournemouth-forced-ali
 [language support](language-support.md).
 
 ## The screen
+
+![The whole page after aligning a sentence: top bar, input card with the audio and text, and the editor with the phoneme and word tiers under the spectrogram](assets/screenshots/web-overview.webp)
 
 **Top bar.** Every control has a tooltip: hover it.
 
@@ -212,6 +217,8 @@ Mandarin, Cantonese, Vietnamese and Thai.
 The same text appears when you hover a phoneme in the editor or a token in the replacement list.
 The full guides, with suggested boundary conventions per group, are the
 [phoneme guides](phoneme-guides/index.md): one per language group, and the [tone guide](phoneme-guides/tones.md).
+
+![The guide for mbfa-latin: each phoneme with its name, what it sounds like, example words and the languages that use it most](assets/screenshots/web-guide.webp)
 
 ## Keyboard shortcuts
 

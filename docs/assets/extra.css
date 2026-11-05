@@ -9,3 +9,6 @@
 
 /* Two-column key/value tables written with an empty header row (| | |): hide that row. */
 .md-typeset table:not([class]) thead:not(:has(th:not(:empty))) { display: none; }
+
+/* Screenshots: a thin frame so the light ones do not melt into the page. */
+.md-typeset img[src*="screenshots/"] { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 6px; }
