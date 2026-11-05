@@ -101,11 +101,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/tabahi/bournemouth-forced-aligner"
-Documentation = "https://tabahi.github.io/bournemouth-forced-aligner/"
-Repository = "https://github.com/tabahi/bournemouth-forced-aligner"
-"Bug Tracker" = "https://github.com/tabahi/bournemouth-forced-aligner/issues"
-Changelog = "https://github.com/tabahi/bournemouth-forced-aligner/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/speech-industry/bournemouth-forced-aligner"
+Documentation = "https://speech-industry.github.io/bournemouth-forced-aligner/"
+Repository = "https://github.com/speech-industry/bournemouth-forced-aligner"
+"Bug Tracker" = "https://github.com/speech-industry/bournemouth-forced-aligner/issues"
+Changelog = "https://github.com/speech-industry/bournemouth-forced-aligner/blob/main/CHANGELOG.md"
 "Models" = "https://huggingface.co/Tabahi"
 
 [project.scripts]

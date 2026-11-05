@@ -1,12 +1,12 @@
-# Documentation site, published to https://tabahi.github.io/bournemouth-forced-aligner/ by
+# Documentation site, published to https://speech-industry.github.io/bournemouth-forced-aligner/ by
 # .github/workflows/docs.yml. The pages are the Markdown files in docs/.
 # Preview locally:  pip install "mkdocs-material==9.8.*"  then  mkdocs serve
 site_name: Bournemouth Forced Aligner
-site_url: https://tabahi.github.io/bournemouth-forced-aligner/
+site_url: https://speech-industry.github.io/bournemouth-forced-aligner/
 site_description: >-
   Phoneme and word timestamps for speech in 82 languages, with no pronunciation dictionary.
-repo_url: https://github.com/tabahi/bournemouth-forced-aligner
-repo_name: tabahi/bournemouth-forced-aligner
+repo_url: https://github.com/speech-industry/bournemouth-forced-aligner
+repo_name: speech-industry/bournemouth-forced-aligner
 copyright: BFA is free software under the GPLv3.
 
 theme:
@@ -98,4 +98,4 @@ nav:
       - Evaluation: evaluation.md
       - Evaluation methods: evaluation-methods.md
   - Developer guide: developer-guide.md
-  - Changelog: https://github.com/tabahi/bournemouth-forced-aligner/blob/main/CHANGELOG.md
+  - Changelog: https://github.com/speech-industry/bournemouth-forced-aligner/blob/main/CHANGELOG.md

@@ -154,7 +154,7 @@ pip install "bournemouth-forced-aligner[ph66]"   # the espeak-ng phoneme set; al
 pip install "bournemouth-forced-aligner[audio]"  # other audio formats (m4a, aac, mp4); also needs FFmpeg
 ```
 
-The latest code from GitHub: `pip install git+https://github.com/tabahi/bournemouth-forced-aligner.git`.
+The latest code from GitHub: `pip install git+https://github.com/speech-industry/bournemouth-forced-aligner.git`.
 
 ## Phoneme sets
 

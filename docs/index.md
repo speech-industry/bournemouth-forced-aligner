@@ -18,7 +18,7 @@ data are needed.
 
 [Get started](getting-started.md){ .md-button .md-button--primary }
 [Language support](language-support.md){ .md-button }
-[GitHub](https://github.com/tabahi/bournemouth-forced-aligner){ .md-button }
+[GitHub](https://github.com/speech-industry/bournemouth-forced-aligner){ .md-button }
 
 </div>
 

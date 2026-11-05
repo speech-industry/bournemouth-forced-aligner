@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Changed
-- **Documentation site** at <https://tabahi.github.io/bournemouth-forced-aligner/>, built from
+- **Documentation site** at <https://speech-industry.github.io/bournemouth-forced-aligner/>, built from
   `docs/` with MkDocs Material. The developer guide is now `docs/developer-guide.md`, and the web
   interface guide, the evaluation methods and the phoneme guides moved into `docs/` too.
 - **`punctuation_sil` is on by default** (`BFA`, `StdPhonemizer`, `balign --punctuation-sil`): a SIL
@@ -124,7 +124,7 @@ Development of the segmental decoder on the v1 models. That work became the basi
 ## [1.1.5] - 2026-06-05
 - Default `boundary_softness=3` is changed from 7 to 3 because at 3 it performs the best on TIMIT and buckeye dataset. 
 - Added warnings and parameter `self.warn_level` for verbose level. Use `BFA.warn_level=3` for high verbosity.
-- Fixed small segments alignment. Previously one-word or half-words ("umm or oh") raised error of not enough phonemes for the given duration. That is patched up here: https://github.com/tabahi/bournemouth-forced-aligner/commit/e58757b5ff9c3cb71303067a8050b06d01f80097#diff-c530cc1a536c371d38e233b3192f5f7935f97342d6460e039edc8107fbdf0348
+- Fixed small segments alignment. Previously one-word or half-words ("umm or oh") raised error of not enough phonemes for the given duration. That is patched up here: https://github.com/speech-industry/bournemouth-forced-aligner/commit/e58757b5ff9c3cb71303067a8050b06d01f80097#diff-c530cc1a536c371d38e233b3192f5f7935f97342d6460e039edc8107fbdf0348
 
 
 
@@ -228,16 +228,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - phonemizer>=3.3.0
 
 
-[2.0.1]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v2.0.1
-[2.0.0]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v2.0.0
-[1.1.5]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v1.1.5
-[1.1.3]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v1.1.3
-[1.1.2]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v1.1.2
-[1.1.0]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v1.1.0
-[0.1.7]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.7
-[0.1.6]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.6
-[0.1.5]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.5
-[0.1.4]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.3
-[0.1.2]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.2
-[0.1.1]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.1
-[0.1.0]: https://github.com/tabahi/bournemouth-forced-aligner/releases/tag/v0.1.0
+[2.0.1]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v2.0.1
+[2.0.0]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v2.0.0
+[1.1.5]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v1.1.5
+[1.1.3]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v1.1.3
+[1.1.2]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v1.1.2
+[1.1.0]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v1.1.0
+[0.1.7]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.7
+[0.1.6]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.6
+[0.1.5]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.5
+[0.1.4]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.3
+[0.1.2]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.2
+[0.1.1]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.1
+[0.1.0]: https://github.com/speech-industry/bournemouth-forced-aligner/releases/tag/v0.1.0

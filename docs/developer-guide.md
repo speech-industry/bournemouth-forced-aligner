@@ -39,7 +39,7 @@ evaluation/            the TIMIT/Buckeye benchmark harness (see docs/evaluation-
 tests/                 pytest suite + tests/test_buckeye.py (a quick experiment script)
 tools/sync_standard_g2p.py   the only writer of bournemouth_aligner/standard_g2p/
 examples/              runnable scripts, one per entry point
-docs/                  this documentation: the site at tabahi.github.io/bournemouth-forced-aligner (mkdocs.yml)
+docs/                  this documentation: the site at speech-industry.github.io/bournemouth-forced-aligner (mkdocs.yml)
 ```
 
 ## How an alignment runs

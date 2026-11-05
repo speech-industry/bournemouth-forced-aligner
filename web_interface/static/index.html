@@ -10,7 +10,7 @@
 <body>
 
 <header class="topbar">
-  <a class="brand" href="https://github.com/tabahi/bournemouth-forced-aligner" target="_blank" rel="noopener" title="Bournemouth Forced Aligner on GitHub&#10;Source code, models, documentation and issues. Opens in a new tab.">BFA <span class="muted">aligner</span></a>
+  <a class="brand" href="https://github.com/speech-industry/bournemouth-forced-aligner" target="_blank" rel="noopener" title="Bournemouth Forced Aligner on GitHub&#10;Source code, models, documentation and issues. Opens in a new tab.">BFA <span class="muted">aligner</span></a>
   <nav class="tabs" role="tablist">
     <button class="tab active" data-mode="single" role="tab"
       title="Single mode&#10;One recording at a time. The page starts with a demo clip (&quot;butterfly&quot;). Your work on it is kept in this browser until you load another file.">Single</button>
@@ -18,7 +18,7 @@
       title="Batch mode&#10;Many recordings: drop audio files, and any .vs.json files you saved earlier, into the list on the left. Work through them, tick Done on each, then download them all as one zip.">Batch</button>
   </nav>
   <div class="config">
-    <label title="Language of the speech&#10;Picks the aligner model (one per language group) and the G2P that turns the text into phonemes. Set it before pressing Align: a clip keeps the language it was aligned with.&#10;Click the word &quot;Language&quot; for the list of supported languages and their groups."><a href="https://tabahi.github.io/bournemouth-forced-aligner/language-support/" target="_blank" rel="noopener" class="cfg-link">Language</a>
+    <label title="Language of the speech&#10;Picks the aligner model (one per language group) and the G2P that turns the text into phonemes. Set it before pressing Align: a clip keeps the language it was aligned with.&#10;Click the word &quot;Language&quot; for the list of supported languages and their groups."><a href="https://speech-industry.github.io/bournemouth-forced-aligner/language-support/" target="_blank" rel="noopener" class="cfg-link">Language</a>
       <select id="cfg-lang"></select></label>
     <label title="Whisper model for Transcribe&#10;Larger models are more accurate but slower, and bigger to download (each is downloaded once, on first use). Align does not use Whisper.">Whisper
       <select id="cfg-whisper"></select></label>
@@ -36,7 +36,7 @@
       title="Browser storage used by this page&#10;Audio, spectrograms and alignments, all inside this browser. Nothing leaves this computer: the local BFA server only sees audio while it works on a job."></span>
     <button id="btn-guide" class="btn small"
       title="Phoneme and tone guide&#10;What every phoneme symbol of the current language's model means, with example words from real sentences, and what the tone numbers mean.">Guide</button>
-    <a id="btn-help" class="btn small" href="https://tabahi.github.io/bournemouth-forced-aligner/web-interface/" target="_blank" rel="noopener"
+    <a id="btn-help" class="btn small" href="https://speech-industry.github.io/bournemouth-forced-aligner/web-interface/" target="_blank" rel="noopener"
       title="Help&#10;How to use this page: the web interface guide on the documentation site. Opens in a new tab.">?</a>
   </div>
 </header>

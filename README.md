@@ -6,11 +6,11 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyPI version](https://badge.fury.io/py/bournemouth-forced-aligner.svg)](https://badge.fury.io/py/bournemouth-forced-aligner)
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-yellow.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![GitHub stars](https://img.shields.io/github/stars/tabahi/bournemouth-forced-aligner.svg)](https://github.com/tabahi/bournemouth-forced-aligner/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/speech-industry/bournemouth-forced-aligner.svg)](https://github.com/speech-industry/bournemouth-forced-aligner/stargazers)
 
 **Find where every phoneme and word starts and ends in a recording, in 82 languages.**
 
-[Getting started](#getting-started) • [Documentation](https://tabahi.github.io/bournemouth-forced-aligner/) • [Language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
+[Getting started](#getting-started) • [Documentation](https://speech-industry.github.io/bournemouth-forced-aligner/) • [Language support](https://speech-industry.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://speech-industry.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://speech-industry.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://speech-industry.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
 
 </div>
 
@@ -70,7 +70,7 @@ balign butterfly.wav "butterfly" --preset=en-us --textgrid=butterfly.TextGrid
 
 Phonemes are written in IPA. The confidence says how sure the model is of each phoneme. Compare
 it between phonemes of one recording, not as an absolute score: a correctly placed phoneme often
-reads below 0.5 ([why](https://tabahi.github.io/bournemouth-forced-aligner/about-models/#confidence)).
+reads below 0.5 ([why](https://speech-industry.github.io/bournemouth-forced-aligner/about-models/#confidence)).
 
 ### 3. Other languages
 
@@ -90,7 +90,7 @@ balign aufnahme.wav "guten Morgen" --preset=de --textgrid=aufnahme.TextGrid
 | `hi` Hindi | `ur` Urdu | `el` Greek | `sw` Swahili |
 
 That is a sample. All 82 languages, and what to know about each (tone, word segmentation), are
-on the [language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) page, or run `balign --list-presets`.
+on the [language support](https://speech-industry.github.io/bournemouth-forced-aligner/language-support/) page, or run `balign --list-presets`.
 Japanese, Cantonese and Thai need one extra install step, listed [below](#optional-extras).
 
 ### 4. A long recording
@@ -130,7 +130,7 @@ aligner.convert_to_textgrid(result, output_file="butterfly.TextGrid")
 ```
 
 For a transcript file: `aligner.process_srt_file("interview.json", "interview.wav", ts_out_path="interview.vs.json")`.
-More in [examples/](examples/) and the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/), which also explains
+More in [examples/](examples/) and the [developer guide](https://speech-industry.github.io/bournemouth-forced-aligner/developer-guide/), which also explains
 every field of the JSON output.
 
 #### Many files at once
@@ -177,7 +177,7 @@ pip install "bournemouth-forced-aligner[ph66]"   # the espeak-ng phoneme set; al
 pip install "bournemouth-forced-aligner[audio]"  # other audio formats (m4a, aac, mp4); also needs FFmpeg
 ```
 
-The latest code from GitHub: `pip install git+https://github.com/tabahi/bournemouth-forced-aligner.git`.
+The latest code from GitHub: `pip install git+https://github.com/speech-industry/bournemouth-forced-aligner.git`.
 
 ## What's inside
 
@@ -209,7 +209,7 @@ Each language group has its own model, downloaded from [Hugging Face](https://hu
 the first time it's needed: nine for the default phoneme set, three for `ph66`, and two
 alternative Latin-script models. Each is a small neural network (about 15 M parameters) that
 looks at 120 ms of audio at a time and estimates which phoneme is being spoken every 5 ms. How
-they are trained and how a boundary is read off them: [about the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/).
+they are trained and how a boundary is read off them: [about the models](https://speech-industry.github.io/bournemouth-forced-aligner/about-models/).
 
 ### Accuracy
 
@@ -230,7 +230,7 @@ Phoneme-boundary F1 on two hand-labelled English corpora (TIMIT, 6,300 read sent
   ARPAbet dictionary, the same approach MFA uses, and MFA scores higher on this noisy
   conversational corpus than on clean TIMIT.
 
-The full analysis is on the [evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) page.
+The full analysis is on the [evaluation](https://speech-industry.github.io/bournemouth-forced-aligner/evaluation/) page.
 
 ### Speed
 
@@ -251,7 +251,7 @@ with `n_jobs=4`, at its default settings:
 - On a CPU, BFA is faster than MFA on short jobs and slower on long conversational recordings
   at the default padding.
 
-Full timings: [evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/#cost).
+Full timings: [evaluation](https://speech-industry.github.io/bournemouth-forced-aligner/evaluation/#cost).
 
 ### Settings worth knowing
 
@@ -264,7 +264,7 @@ Full timings: [evaluation](https://tabahi.github.io/bournemouth-forced-aligner/e
 | `punctuation_sil=False` | Stop writing a pause at commas and full stops (on by default; default phoneme set only). Without it, a pause is swallowed by the phone next to it. |
 | `warn_level=0` | Print nothing, downloads included. |
 
-All options: `balign --help`, and the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/).
+All options: `balign --help`, and the [developer guide](https://speech-industry.github.io/bournemouth-forced-aligner/developer-guide/).
 
 ## Upgrading from 1.x
 
@@ -281,15 +281,15 @@ models do not load, and the output and constructor arguments have changed: see t
 - **ONNX / C++.** [`bournemouth_aligner/cpp_onnx/`](bournemouth_aligner/cpp_onnx/) still
   targets the v1 model.
 
-Open an [issue](https://github.com/tabahi/bournemouth-forced-aligner/issues) to discuss.
-Start with the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/).
+Open an [issue](https://github.com/speech-industry/bournemouth-forced-aligner/issues) to discuss.
+Start with the [developer guide](https://speech-industry.github.io/bournemouth-forced-aligner/developer-guide/).
 
 
 
-[Getting started](#getting-started) • [Documentation](https://tabahi.github.io/bournemouth-forced-aligner/) • [Language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
+[Getting started](#getting-started) • [Documentation](https://speech-industry.github.io/bournemouth-forced-aligner/) • [Language support](https://speech-industry.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://speech-industry.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://speech-industry.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://speech-industry.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
 
 <div align="center">
 
-[⭐ Star on GitHub](https://github.com/tabahi/bournemouth-forced-aligner) • [🐛 Report issues](https://github.com/tabahi/bournemouth-forced-aligner/issues) ![](https://alive.botup.top/rx/dHU3cP/styles.png)
+[⭐ Star on GitHub](https://github.com/speech-industry/bournemouth-forced-aligner) • [🐛 Report issues](https://github.com/speech-industry/bournemouth-forced-aligner/issues) ![](https://alive.botup.top/rx/dHU3cP/styles.png)
 
 </div>

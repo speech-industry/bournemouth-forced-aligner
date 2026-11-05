@@ -79,7 +79,7 @@ DEFAULT_SEGMENT_MAX_SECONDS = 120.0
 class BFA:
     """
     Align phoneme-level timestamps from audio and text.
-    URL: https://github.com/tabahi/bournemouth-forced-aligner
+    URL: https://github.com/speech-industry/bournemouth-forced-aligner
     """
 
     def __init__(self, preset="en-us", model_name=None, lang='en-us',

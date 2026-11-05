@@ -4,7 +4,7 @@ Bournemouth Forced Aligner - phoneme-level timestamps from audio and text.
 Two phoneme sets: "std" (standard_g2p phonemes, p4mbfa models, the default) and "ph66"
 (espeak-ng + ph66, p3cupe models). See `core.py`.
 
-URL: https://github.com/tabahi/bournemouth-forced-aligner
+URL: https://github.com/speech-industry/bournemouth-forced-aligner
 """
 
 __version__ = "2.0.1"
