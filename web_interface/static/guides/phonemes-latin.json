@@ -1,0 +1,6983 @@
+{
+"group": "latin",
+"model": "mbfa-latin",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Accent marks on vowels (á, à, â, ǎ …) are pitch accents from the dictionaries of Slovenian and Lithuanian. They are separate tokens, but their boundaries are placed like those of the plain vowel.",
+"lang_names": {
+"af": "Afrikaans",
+"az": "Azerbaijani",
+"bs": "Bosnian",
+"ca": "Catalan",
+"cs": "Czech",
+"cy": "Welsh",
+"da": "Danish",
+"de": "German",
+"en": "English",
+"es-419": "Spanish",
+"et": "Estonian",
+"fi": "Finnish",
+"fr": "French",
+"ga": "Irish",
+"gl": "Galician",
+"hu": "Hungarian",
+"id": "Indonesian",
+"is": "Icelandic",
+"it": "Italian",
+"lb": "Luxembourgish",
+"lt": "Lithuanian",
+"mi": "Māori",
+"ms": "Malay",
+"mt": "Maltese",
+"nb": "Norwegian",
+"nl": "Dutch",
+"pl": "Polish",
+"pt-BR": "Portuguese",
+"ro": "Romanian",
+"sk": "Slovak",
+"sl": "Slovenian",
+"sv": "Swedish",
+"sw": "Swahili",
+"tl": "Tagalog",
+"tr": "Turkish",
+"uz": "Uzbek"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"en",
+"by",
+"b a ɪ"
+],
+[
+"sw",
+"ya",
+"j a"
+],
+[
+"ms",
+"yang",
+"j a ŋ"
+]
+],
+"langs": [
+[
+"sw",
+22.66
+],
+[
+"ms",
+20.44
+],
+[
+"mi",
+20.4
+],
+[
+"id",
+19.69
+],
+[
+"es-419",
+12.37
+],
+[
+"tr",
+12.12
+],
+[
+"mt",
+11.96
+],
+[
+"is",
+11.54
+]
+],
+"also": [],
+"count": 111213
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s. Also used for sˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"is",
+"ɪ s"
+],
+[
+"es-419",
+"los",
+"l o s"
+],
+[
+"ca",
+"els",
+"e l s"
+]
+],
+"langs": [
+[
+"es-419",
+10.41
+],
+[
+"ca",
+9.7
+],
+[
+"pt-BR",
+9.62
+],
+[
+"et",
+8.99
+],
+[
+"gl",
+8.38
+],
+[
+"fi",
+7.55
+],
+[
+"af",
+6.76
+],
+[
+"da",
+6.51
+]
+],
+"also": [
+"sˠ"
+],
+"count": 67189
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"en",
+"be",
+"b i"
+],
+[
+"sw",
+"katika",
+"k a t i k a"
+],
+[
+"fi",
+"ei",
+"e i"
+]
+],
+"langs": [
+[
+"sw",
+13.19
+],
+[
+"fi",
+11.37
+],
+[
+"mi",
+10.19
+],
+[
+"sk",
+10.05
+],
+[
+"az",
+9.76
+],
+[
+"et",
+9.29
+],
+[
+"it",
+9.15
+],
+[
+"pt-BR",
+8.72
+]
+],
+"also": [],
+"count": 77441
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”. Also used for eˀ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"a",
+"e ɪ"
+],
+[
+"ro",
+"de",
+"d e"
+],
+[
+"mi",
+"te",
+"t e"
+]
+],
+"langs": [
+[
+"ro",
+11.7
+],
+[
+"mi",
+10.72
+],
+[
+"mt",
+10.59
+],
+[
+"sk",
+10.19
+],
+[
+"et",
+9.53
+],
+[
+"it",
+8.59
+],
+[
+"fi",
+8.36
+],
+[
+"gl",
+8.28
+]
+],
+"also": [
+"eˀ"
+],
+"count": 59414
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n. Also used for n̪ˠ, nˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"in",
+"ɪ n"
+],
+[
+"nl",
+"van",
+"v ɑ n"
+],
+[
+"de",
+"und",
+"ʔ ʊ n t"
+]
+],
+"langs": [
+[
+"nl",
+10.12
+],
+[
+"de",
+9.69
+],
+[
+"lb",
+8.14
+],
+[
+"fi",
+8.11
+],
+[
+"cy",
+8.01
+],
+[
+"af",
+7.63
+],
+[
+"az",
+7.48
+],
+[
+"es-419",
+7.47
+]
+],
+"also": [
+"n̪ˠ",
+"nˠ"
+],
+"count": 79812
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”. Also used for t̪ˠ, tˢ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"to",
+"t u"
+],
+[
+"mi",
+"te",
+"t e"
+],
+[
+"fi",
+"että",
+"e t t æ"
+]
+],
+"langs": [
+[
+"mi",
+10.07
+],
+[
+"fi",
+9.74
+],
+[
+"ro",
+8.9
+],
+[
+"de",
+7.97
+],
+[
+"mt",
+7.85
+],
+[
+"nl",
+7.65
+],
+[
+"it",
+7.51
+],
+[
+"hu",
+7.34
+]
+],
+"also": [
+"t̪ˠ",
+"tˢ"
+],
+"count": 74661
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"mt",
+"li",
+"l ɪ"
+],
+[
+"fr",
+"la",
+"l a"
+],
+[
+"it",
+"il",
+"i l"
+]
+],
+"langs": [
+[
+"mt",
+7.42
+],
+[
+"fr",
+7.42
+],
+[
+"it",
+6.38
+],
+[
+"ca",
+6.14
+],
+[
+"fi",
+6.13
+],
+[
+"hu",
+5.97
+],
+[
+"et",
+5.75
+],
+[
+"es-419",
+5.59
+]
+],
+"also": [],
+"count": 53341
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"en",
+"can",
+"k æ n"
+],
+[
+"mi",
+"ki",
+"k i"
+],
+[
+"sw",
+"katika",
+"k a t i k a"
+]
+],
+"langs": [
+[
+"mi",
+7.16
+],
+[
+"sw",
+6.99
+],
+[
+"hu",
+5.91
+],
+[
+"fi",
+5.09
+],
+[
+"et",
+4.83
+],
+[
+"tr",
+4.73
+],
+[
+"id",
+4.68
+],
+[
+"sv",
+4.54
+]
+],
+"also": [],
+"count": 45833
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"en",
+"most",
+"m o ʊ s t"
+],
+[
+"sk",
+"ako",
+"a k o"
+],
+[
+"bs",
+"od",
+"o d"
+]
+],
+"langs": [
+[
+"sk",
+9.43
+],
+[
+"bs",
+9.12
+],
+[
+"es-419",
+9.03
+],
+[
+"cs",
+8.08
+],
+[
+"it",
+7.21
+],
+[
+"lt",
+5.73
+],
+[
+"hu",
+5.3
+],
+[
+"fi",
+5.01
+]
+],
+"also": [],
+"count": 46986
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"is",
+"fyrir",
+"f ɪ r ɪ r"
+],
+[
+"sv",
+"är",
+"ɛ r"
+],
+[
+"cy",
+"ar",
+"a r"
+]
+],
+"langs": [
+[
+"is",
+8.25
+],
+[
+"sv",
+6.77
+],
+[
+"cy",
+6.75
+],
+[
+"nl",
+6.72
+],
+[
+"ro",
+6.6
+],
+[
+"af",
+6.45
+],
+[
+"it",
+6.37
+],
+[
+"mi",
+5.53
+]
+],
+"also": [],
+"count": 39960
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m. Also used for mˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"from",
+"f ɹ ɑ m"
+],
+[
+"ms",
+"dalam",
+"d a l a m"
+],
+[
+"id",
+"dalam",
+"d a l a m"
+]
+],
+"langs": [
+[
+"ms",
+4.67
+],
+[
+"id",
+4.45
+],
+[
+"tl",
+4.21
+],
+[
+"is",
+3.94
+],
+[
+"sw",
+3.91
+],
+[
+"mt",
+3.87
+],
+[
+"et",
+3.79
+],
+[
+"nb",
+3.6
+]
+],
+"also": [
+"mˠ"
+],
+"count": 41659
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”. Also used for d̥, d̪ˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"and",
+"æ n d"
+],
+[
+"da",
+"det",
+"d e d"
+],
+[
+"cy",
+"bod",
+"b o d"
+]
+],
+"langs": [
+[
+"da",
+7.64
+],
+[
+"cy",
+5.74
+],
+[
+"az",
+5.13
+],
+[
+"ms",
+5.01
+],
+[
+"nl",
+4.95
+],
+[
+"fr",
+4.88
+],
+[
+"et",
+4.7
+],
+[
+"es-419",
+4.58
+]
+],
+"also": [
+"d̥",
+"d̪ˠ"
+],
+"count": 44907
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”. Also used for i͡u, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"to",
+"t u"
+],
+[
+"mt",
+"u",
+"u"
+],
+[
+"sw",
+"kuwa",
+"k u w a"
+]
+],
+"langs": [
+[
+"mt",
+6.81
+],
+[
+"sw",
+6.71
+],
+[
+"pt-BR",
+5.86
+],
+[
+"mi",
+5.56
+],
+[
+"ro",
+5.21
+],
+[
+"ms",
+5.09
+],
+[
+"id",
+4.93
+],
+[
+"fi",
+4.85
+]
+],
+"also": [
+"i͡u"
+],
+"count": 37925
+},
+"ɪ": {
+"name": "near-close front unrounded vowel",
+"class": "vowel",
+"plain": "i as in “sit”. Also used for ɜ͡ɪ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"in",
+"ɪ n"
+],
+[
+"mt",
+"li",
+"l ɪ"
+],
+[
+"lt",
+"ir",
+"ɪ r"
+]
+],
+"langs": [
+[
+"en",
+10.36
+],
+[
+"mt",
+10.23
+],
+[
+"lt",
+7.88
+],
+[
+"is",
+7.06
+],
+[
+"bs",
+6.99
+],
+[
+"cs",
+6.74
+],
+[
+"tr",
+5.57
+],
+[
+"nb",
+4.86
+]
+],
+"also": [
+"ɜ͡ɪ"
+],
+"count": 28758
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”. Also used for ɾˠ, which this model has no token of its own for",
+"examples": [
+[
+"nb",
+"er",
+"æ ɾ"
+],
+[
+"gl",
+"para",
+"p a ɾ a̝"
+],
+[
+"uz",
+"bir",
+"b y ɾ"
+]
+],
+"langs": [
+[
+"nb",
+7.35
+],
+[
+"gl",
+6.08
+],
+[
+"uz",
+6.03
+],
+[
+"ga",
+5.48
+],
+[
+"ca",
+5.04
+],
+[
+"de",
+4.05
+],
+[
+"pt-BR",
+3.98
+],
+[
+"tr",
+3.12
+]
+],
+"also": [
+"ɾˠ"
+],
+"count": 19528
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f. Also used for fˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"of",
+"ə f"
+],
+[
+"af",
+"van",
+"f ɐ n"
+],
+[
+"lb",
+"vun",
+"f u n"
+]
+],
+"langs": [
+[
+"af",
+3.1
+],
+[
+"lb",
+2.96
+],
+[
+"nb",
+2.39
+],
+[
+"da",
+2.33
+],
+[
+"en",
+2.29
+],
+[
+"de",
+2.21
+],
+[
+"mt",
+2.16
+],
+[
+"sv",
+2.0
+]
+],
+"also": [
+"fˠ"
+],
+"count": 14599
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"en",
+"you",
+"j u"
+],
+[
+"lt",
+"kai",
+"k ɐ j"
+],
+[
+"sl",
+"je",
+"j é"
+]
+],
+"langs": [
+[
+"lt",
+4.96
+],
+[
+"sl",
+4.41
+],
+[
+"bs",
+3.8
+],
+[
+"tr",
+3.58
+],
+[
+"uz",
+3.09
+],
+[
+"az",
+2.98
+],
+[
+"pl",
+2.8
+],
+[
+"ro",
+2.74
+]
+],
+"also": [],
+"count": 22817
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"en",
+"of",
+"ə f"
+],
+[
+"af",
+"is",
+"ə s"
+],
+[
+"ga",
+"agus",
+"ə ɡ ə s"
+]
+],
+"langs": [
+[
+"af",
+16.43
+],
+[
+"ga",
+14.34
+],
+[
+"ca",
+12.14
+],
+[
+"nl",
+11.63
+],
+[
+"nb",
+10.11
+],
+[
+"lb",
+9.69
+],
+[
+"ms",
+9.04
+],
+[
+"en",
+7.23
+]
+],
+"also": [],
+"count": 40355
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”. Also used for b̥, ɓ, bˠ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"by",
+"b a ɪ"
+],
+[
+"id",
+"bahwa",
+"b a h w a"
+],
+[
+"ms",
+"boleh",
+"b o l ə h"
+]
+],
+"langs": [
+[
+"id",
+3.2
+],
+[
+"ms",
+3.16
+],
+[
+"uz",
+2.89
+],
+[
+"da",
+2.5
+],
+[
+"es-419",
+2.37
+],
+[
+"tr",
+2.26
+],
+[
+"az",
+2.17
+],
+[
+"hu",
+2.01
+]
+],
+"also": [
+"b̥",
+"ɓ",
+"bˠ"
+],
+"count": 20714
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"en",
+"people",
+"p i p ə ɫ"
+],
+[
+"fr",
+"par",
+"p a ʁ"
+],
+[
+"sl",
+"po",
+"p ɔ́"
+]
+],
+"langs": [
+[
+"fr",
+3.97
+],
+[
+"sl",
+3.48
+],
+[
+"tl",
+3.25
+],
+[
+"ms",
+3.24
+],
+[
+"pl",
+3.13
+],
+[
+"ro",
+3.09
+],
+[
+"cs",
+3.09
+],
+[
+"sk",
+3.07
+]
+],
+"also": [],
+"count": 28471
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"en",
+"the",
+"ð ɛ"
+],
+[
+"es-419",
+"de",
+"d ɛ"
+],
+[
+"hu",
+"nem",
+"n ɛ m"
+]
+],
+"langs": [
+[
+"es-419",
+13.98
+],
+[
+"hu",
+10.87
+],
+[
+"cs",
+10.81
+],
+[
+"pl",
+9.5
+],
+[
+"bs",
+6.18
+],
+[
+"lt",
+6.13
+],
+[
+"is",
+6.0
+],
+[
+"sl",
+5.67
+]
+],
+"also": [],
+"count": 43089
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”. Also used for wˀ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"were",
+"w ɪ ɹ"
+],
+[
+"sw",
+"wa",
+"w a"
+],
+[
+"pt-BR",
+"ao",
+"a w"
+]
+],
+"langs": [
+[
+"sw",
+4.42
+],
+[
+"pt-BR",
+1.85
+],
+[
+"pl",
+1.61
+],
+[
+"en",
+1.61
+],
+[
+"cy",
+1.6
+],
+[
+"da",
+1.55
+],
+[
+"mi",
+1.15
+],
+[
+"es-419",
+0.92
+]
+],
+"also": [
+"wˀ"
+],
+"count": 7911
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”. Also used for ɑˀ, ɑ͡ɪ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"on",
+"ɑ n"
+],
+[
+"fi",
+"ja",
+"j ɑ"
+],
+[
+"nb",
+"av",
+"ɑ ʋ"
+]
+],
+"langs": [
+[
+"fi",
+12.09
+],
+[
+"nb",
+6.26
+],
+[
+"uz",
+5.46
+],
+[
+"lb",
+4.95
+],
+[
+"ga",
+3.89
+],
+[
+"nl",
+3.43
+],
+[
+"da",
+2.77
+],
+[
+"sv",
+2.24
+]
+],
+"also": [
+"ɑˀ",
+"ɑ͡ɪ"
+],
+"count": 17235
+},
+"v": {
+"name": "voiced labiodental fricative",
+"class": "fricative",
+"plain": "v",
+"examples": [
+[
+"en",
+"have",
+"h e ɪ v"
+],
+[
+"sk",
+"v",
+"v e"
+],
+[
+"cs",
+"ve",
+"v ɛ"
+]
+],
+"langs": [
+[
+"sk",
+3.91
+],
+[
+"cs",
+3.89
+],
+[
+"bs",
+3.37
+],
+[
+"pl",
+3.13
+],
+[
+"is",
+2.77
+],
+[
+"fi",
+2.62
+],
+[
+"et",
+2.52
+],
+[
+"lb",
+2.51
+]
+],
+"also": [],
+"count": 17957
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”. Also used for ɡ̥, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"goods",
+"ɡ ʊ d z"
+],
+[
+"da",
+"ikke",
+"e ɡ ə"
+],
+[
+"cy",
+"gan",
+"ɡ a n"
+]
+],
+"langs": [
+[
+"da",
+3.44
+],
+[
+"cy",
+3.28
+],
+[
+"ga",
+2.54
+],
+[
+"tl",
+2.5
+],
+[
+"uz",
+2.33
+],
+[
+"hu",
+2.05
+],
+[
+"lb",
+1.99
+],
+[
+"et",
+1.82
+]
+],
+"also": [
+"ɡ̥"
+],
+"count": 16538
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"en",
+"as",
+"æ z"
+],
+[
+"lb",
+"se",
+"z ə"
+],
+[
+"hu",
+"az",
+"ɒ z"
+]
+],
+"langs": [
+[
+"lb",
+3.41
+],
+[
+"en",
+2.85
+],
+[
+"hu",
+2.36
+],
+[
+"de",
+2.18
+],
+[
+"sl",
+2.14
+],
+[
+"sw",
+2.07
+],
+[
+"bs",
+1.98
+],
+[
+"cs",
+1.87
+]
+],
+"also": [],
+"count": 12657
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"tl",
+"ng",
+"ʔ ɐ ŋ"
+],
+[
+"de",
+"und",
+"ʔ ʊ n t"
+],
+[
+"ms",
+"untuk",
+"u n t u ʔ"
+]
+],
+"langs": [
+[
+"tl",
+8.73
+],
+[
+"de",
+4.14
+],
+[
+"ms",
+1.62
+],
+[
+"sv",
+0.13
+],
+[
+"uz",
+0.08
+]
+],
+"also": [],
+"count": 7375
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”. Also used for ɔˀ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"for",
+"f ɔ ɹ"
+],
+[
+"pl",
+"do",
+"d ɔ"
+],
+[
+"sl",
+"lahko",
+"l à x k ɔ"
+]
+],
+"langs": [
+[
+"pl",
+9.02
+],
+[
+"sl",
+6.6
+],
+[
+"mi",
+6.53
+],
+[
+"cy",
+5.0
+],
+[
+"nb",
+2.98
+],
+[
+"fr",
+2.75
+],
+[
+"af",
+2.45
+],
+[
+"nl",
+2.45
+]
+],
+"also": [
+"ɔˀ"
+],
+"count": 19411
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"en",
+"young",
+"j ə ŋ"
+],
+[
+"tl",
+"ng",
+"ʔ ɐ ŋ"
+],
+[
+"mi",
+"ngā",
+"ŋ a"
+]
+],
+"langs": [
+[
+"tl",
+5.75
+],
+[
+"mi",
+3.49
+],
+[
+"ms",
+2.89
+],
+[
+"id",
+2.8
+],
+[
+"gl",
+2.7
+],
+[
+"uz",
+1.1
+],
+[
+"en",
+1.02
+],
+[
+"nb",
+1.02
+]
+],
+"also": [],
+"count": 11157
+},
+"ʊ": {
+"name": "near-close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “book”. Also used for ə͡ʊ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"most",
+"m o ʊ s t"
+],
+[
+"lt",
+"buvo",
+"b ʊ ʋ o"
+],
+[
+"uz",
+"uchun",
+"ʊ t͡ʃ ʊ n"
+]
+],
+"langs": [
+[
+"lt",
+4.01
+],
+[
+"uz",
+3.26
+],
+[
+"bs",
+2.36
+],
+[
+"af",
+1.91
+],
+[
+"en",
+1.87
+],
+[
+"de",
+1.86
+],
+[
+"tr",
+1.81
+],
+[
+"tl",
+1.63
+]
+],
+"also": [
+"ə͡ʊ"
+],
+"count": 9330
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”",
+"examples": [
+[
+"en",
+"which",
+"h w ɪ t ʃ"
+],
+[
+"hu",
+"és",
+"e ʃ"
+],
+[
+"ga",
+"is",
+"ɪ ʃ"
+]
+],
+"langs": [
+[
+"hu",
+3.84
+],
+[
+"ga",
+2.41
+],
+[
+"uz",
+2.32
+],
+[
+"ro",
+2.13
+],
+[
+"lb",
+1.75
+],
+[
+"az",
+1.7
+],
+[
+"en",
+1.43
+],
+[
+"sw",
+1.42
+]
+],
+"also": [],
+"count": 11117
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"tr",
+"farklı",
+"f a r k ɫ ɯ"
+],
+[
+"az",
+"yarışını",
+"j a ɾ ɯ ʃ ɯ n ɯ"
+],
+[
+"nb",
+"km²",
+"k ɛ m t s ɯ"
+]
+],
+"langs": [
+[
+"tr",
+4.69
+],
+[
+"az",
+3.65
+]
+],
+"also": [],
+"count": 3294
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"en",
+"which",
+"h w ɪ t ʃ"
+],
+[
+"mi",
+"he",
+"h e"
+],
+[
+"ms",
+"telah",
+"t ə l a h"
+]
+],
+"langs": [
+[
+"mi",
+4.58
+],
+[
+"ms",
+2.43
+],
+[
+"ga",
+2.27
+],
+[
+"id",
+2.2
+],
+[
+"sw",
+1.89
+],
+[
+"is",
+1.87
+],
+[
+"fi",
+1.75
+],
+[
+"af",
+1.65
+]
+],
+"also": [],
+"count": 13599
+},
+"ʁ": {
+"name": "voiced uvular fricative",
+"class": "fricative",
+"plain": "the r of French and German. Also used for ʁ̥, which this model has no token of its own for",
+"examples": [
+[
+"fr",
+"sur",
+"s y ʁ"
+],
+[
+"pt-BR",
+"ser",
+"s e ʁ"
+],
+[
+"da",
+"fra",
+"f ʁ ɑ"
+]
+],
+"langs": [
+[
+"fr",
+7.93
+],
+[
+"pt-BR",
+2.7
+],
+[
+"da",
+2.56
+],
+[
+"lb",
+2.18
+],
+[
+"de",
+0.95
+],
+[
+"sv",
+0.32
+],
+[
+"uz",
+0.18
+]
+],
+"also": [
+"ʁ̥"
+],
+"count": 5416
+},
+"ɐ": {
+"name": "near-open central vowel",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings). Also used for ɐ̯ˀ, which this model has no token of its own for",
+"examples": [
+[
+"tl",
+"sa",
+"s ɐ"
+],
+[
+"lt",
+"yra",
+"i r ɐ"
+],
+[
+"pt-BR",
+"para",
+"p a ɾ ɐ"
+]
+],
+"langs": [
+[
+"tl",
+18.62
+],
+[
+"lt",
+8.96
+],
+[
+"pt-BR",
+4.69
+],
+[
+"da",
+4.65
+],
+[
+"af",
+4.4
+],
+[
+"lb",
+0.99
+],
+[
+"de",
+0.49
+],
+[
+"sv",
+0.06
+]
+],
+"also": [
+"ɐ̯ˀ"
+],
+"count": 19377
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"af",
+"mag",
+"m ɐ x"
+],
+[
+"ga",
+"ach",
+"a x"
+],
+[
+"tl",
+"kung",
+"k x ʊ ŋ"
+]
+],
+"langs": [
+[
+"af",
+2.87
+],
+[
+"ga",
+2.56
+],
+[
+"tl",
+2.4
+],
+[
+"az",
+1.33
+],
+[
+"sl",
+1.33
+],
+[
+"nl",
+1.23
+],
+[
+"pl",
+1.2
+],
+[
+"sk",
+1.05
+]
+],
+"also": [],
+"count": 5909
+},
+"ð": {
+"name": "voiced dental fricative",
+"class": "fricative",
+"plain": "th as in “this”. Also used for ðˀ, ð̩, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"the",
+"ð ɛ"
+],
+[
+"is",
+"að",
+"a ð"
+],
+[
+"da",
+"med",
+"m e ð"
+]
+],
+"langs": [
+[
+"is",
+3.85
+],
+[
+"da",
+2.95
+],
+[
+"cy",
+2.79
+],
+[
+"en",
+2.48
+],
+[
+"gl",
+2.2
+],
+[
+"sw",
+0.01
+]
+],
+"also": [
+"ðˀ",
+"ð̩"
+],
+"count": 4290
+},
+"æ": {
+"name": "near-open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in “cat”. Also used for æˀ, which this model has no token of its own for",
+"examples": [
+[
+"en",
+"and",
+"æ n d"
+],
+[
+"uz",
+"va",
+"ʋ æ"
+],
+[
+"az",
+"və",
+"v æ"
+]
+],
+"langs": [
+[
+"uz",
+16.66
+],
+[
+"az",
+10.22
+],
+[
+"bs",
+5.92
+],
+[
+"fi",
+4.12
+],
+[
+"en",
+2.78
+],
+[
+"da",
+2.1
+],
+[
+"lb",
+1.79
+],
+[
+"nb",
+1.57
+]
+],
+"also": [
+"æˀ"
+],
+"count": 20213
+},
+"β": {
+"name": "voiced bilabial fricative",
+"class": "fricative",
+"plain": "a soft b where the lips do not close (Spanish b between vowels)",
+"examples": [
+[
+"gl",
+"nova",
+"n ɔ β a̝"
+],
+[
+"sw",
+"bums",
+"β u m s"
+]
+],
+"langs": [
+[
+"gl",
+1.46
+],
+[
+"sw",
+0.01
+]
+],
+"also": [],
+"count": 640
+},
+"ɫ": {
+"name": "velarised alveolar lateral",
+"class": "lateral",
+"plain": "the dark l of “full”",
+"examples": [
+[
+"en",
+"people",
+"p i p ə ɫ"
+],
+[
+"tr",
+"olarak",
+"o ɫ a ɾ a k"
+],
+[
+"uz",
+"boʻlgan",
+"b o ɫ ɡ æ n"
+]
+],
+"langs": [
+[
+"tr",
+4.09
+],
+[
+"en",
+4.07
+],
+[
+"uz",
+3.67
+],
+[
+"az",
+3.2
+],
+[
+"lt",
+0.01
+]
+],
+"also": [],
+"count": 5861
+},
+"q": {
+"name": "voiceless uvular stop",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”)",
+"examples": [
+[
+"uz",
+"qilish",
+"q y ɫ y ʃ"
+],
+[
+"fi",
+"velasquez",
+"v e l ɑ s q u e z"
+]
+],
+"langs": [
+[
+"uz",
+2.18
+]
+],
+"also": [],
+"count": 888
+},
+"ʒ": {
+"name": "voiced postalveolar fricative",
+"class": "fricative",
+"plain": "s as in “measure”",
+"examples": [
+[
+"en",
+"just",
+"d ʒ ə s t"
+],
+[
+"fr",
+"large",
+"l a ʁ ʒ"
+],
+[
+"cs",
+"že",
+"ʒ ɛ"
+]
+],
+"langs": [
+[
+"fr",
+1.14
+],
+[
+"cs",
+1.01
+],
+[
+"sk",
+0.96
+],
+[
+"ms",
+0.83
+],
+[
+"en",
+0.73
+],
+[
+"pt-BR",
+0.72
+],
+[
+"sl",
+0.63
+],
+[
+"bs",
+0.58
+]
+],
+"also": [],
+"count": 3100
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”)",
+"examples": [
+[
+"pl",
+"przez",
+"p ʂ ɛ s"
+],
+[
+"nb",
+"første",
+"f œ ʂ t ə"
+],
+[
+"sv",
+"första",
+"f œ ʂ ʈ a"
+]
+],
+"langs": [
+[
+"pl",
+1.66
+],
+[
+"nb",
+1.04
+],
+[
+"sv",
+0.36
+]
+],
+"also": [],
+"count": 836
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"nl",
+"sommige",
+"s ɔ m ə ɣ ə"
+],
+[
+"is",
+"og",
+"ɔ ɣ"
+],
+[
+"gl",
+"algúns",
+"a l ɣ u ŋ s"
+]
+],
+"langs": [
+[
+"nl",
+1.96
+],
+[
+"is",
+1.41
+],
+[
+"gl",
+0.6
+],
+[
+"ga",
+0.24
+],
+[
+"az",
+0.04
+],
+[
+"sv",
+0.04
+],
+[
+"sw",
+0.02
+]
+],
+"also": [],
+"count": 780
+},
+"y": {
+"name": "close front rounded vowel",
+"class": "vowel",
+"plain": "ee said with rounded lips (French “tu”, German “über”)",
+"examples": [
+[
+"uz",
+"qilish",
+"q y ɫ y ʃ"
+],
+[
+"fr",
+"du",
+"d y"
+],
+[
+"az",
+"üçün",
+"y t͡ʃ y n"
+]
+],
+"langs": [
+[
+"uz",
+13.12
+],
+[
+"fr",
+2.52
+],
+[
+"az",
+1.81
+],
+[
+"fi",
+1.72
+],
+[
+"hu",
+1.01
+],
+[
+"af",
+0.94
+],
+[
+"tr",
+0.78
+],
+[
+"et",
+0.63
+]
+],
+"also": [],
+"count": 9488
+},
+"ɨ": {
+"name": "close central unrounded vowel",
+"class": "vowel",
+"plain": "between ee and oo, lips spread (Polish “y”, Welsh “u”). Also used for ɨ̯, ɨ̞, which this model has no token of its own for",
+"examples": [
+[
+"cy",
+"mae",
+"m a ɨ"
+],
+[
+"pl",
+"tylko",
+"t ɨ l k ɔ"
+],
+[
+"ro",
+"în",
+"ɨ n"
+]
+],
+"langs": [
+[
+"cy",
+7.27
+],
+[
+"pl",
+4.52
+],
+[
+"ro",
+1.51
+],
+[
+"sv",
+0.02
+]
+],
+"also": [
+"ɨ̯",
+"ɨ̞"
+],
+"count": 5385
+},
+"ʕ": {
+"name": "voiced pharyngeal fricative",
+"class": "fricative",
+"plain": "a voiced throat sound (Arabic ع). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ħ": {
+"name": "voiceless pharyngeal fricative",
+"class": "fricative",
+"plain": "a strong h squeezed in the throat (Arabic ح). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"pl",
+"się",
+"ɕ ɛ"
+],
+[
+"lb",
+"sech",
+"z æ ɕ"
+],
+[
+"da",
+"officielle",
+"ɔ f i ɕ ɛ l ə"
+]
+],
+"langs": [
+[
+"pl",
+1.34
+],
+[
+"lb",
+0.98
+],
+[
+"da",
+0.45
+],
+[
+"sw",
+0.02
+]
+],
+"also": [],
+"count": 1017
+},
+"ɳ": {
+"name": "retroflex nasal",
+"class": "nasal",
+"plain": "n with the tongue tip curled back",
+"examples": [
+[
+"lb",
+"eng",
+"æ ɳ"
+],
+[
+"sv",
+"forskarna",
+"f ɔ ʂ k a ɳ a"
+],
+[
+"nb",
+"forskerne",
+"f ɔ ʂ k ə ɳ ə"
+]
+],
+"langs": [
+[
+"lb",
+1.33
+],
+[
+"sv",
+0.42
+],
+[
+"nb",
+0.16
+]
+],
+"also": [],
+"count": 705
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"pl",
+"nie",
+"ɲ ɛ"
+],
+[
+"cs",
+"není",
+"n ɛ ɲ i"
+],
+[
+"sk",
+"nie",
+"ɲ i e"
+]
+],
+"langs": [
+[
+"pl",
+2.33
+],
+[
+"cs",
+2.31
+],
+[
+"sk",
+1.89
+],
+[
+"bs",
+0.8
+],
+[
+"id",
+0.79
+],
+[
+"hu",
+0.73
+],
+[
+"sw",
+0.69
+],
+[
+"ms",
+0.68
+]
+],
+"also": [],
+"count": 4176
+},
+"ɵ": {
+"name": "close-mid central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between e and o (Swedish short u)",
+"examples": [
+[
+"et",
+"või",
+"v ɵ i"
+],
+[
+"sv",
+"grund",
+"ɡ r u ɵ n d"
+]
+],
+"langs": [
+[
+"et",
+1.34
+],
+[
+"sv",
+0.79
+]
+],
+"also": [],
+"count": 773
+},
+"t͡s": {
+"name": "voiceless alveolar affricate",
+"class": "affricate",
+"plain": "ts as in “cats”",
+"examples": [
+[
+"cs",
+"což",
+"t͡s o ʃ"
+],
+[
+"lb",
+"ze",
+"t͡s ə"
+],
+[
+"sk",
+"cicavce",
+"t͡s i t͡s a w t͡s e"
+]
+],
+"langs": [
+[
+"cs",
+1.61
+],
+[
+"lb",
+1.46
+],
+[
+"sk",
+1.4
+],
+[
+"pl",
+1.35
+],
+[
+"bs",
+1.12
+],
+[
+"sl",
+0.89
+],
+[
+"it",
+0.7
+],
+[
+"hu",
+0.35
+]
+],
+"also": [],
+"count": 3375
+},
+"ʏ": {
+"name": "near-close front rounded vowel",
+"class": "vowel",
+"plain": "i as in “sit” said with rounded lips (German “hübsch”)",
+"examples": [
+[
+"is",
+"eru",
+"ɛ r ʏ"
+],
+[
+"nl",
+"hun",
+"ɦ ʏ n"
+],
+[
+"nb",
+"byttet",
+"b ʏ t ə t"
+]
+],
+"langs": [
+[
+"is",
+4.26
+],
+[
+"nl",
+0.64
+],
+[
+"nb",
+0.44
+],
+[
+"de",
+0.35
+],
+[
+"sv",
+0.29
+]
+],
+"also": [],
+"count": 585
+},
+"ø": {
+"name": "close-mid front rounded vowel",
+"class": "vowel",
+"plain": "e said with rounded lips (German “schön”, French “peu”). Also used for øˀ, which this model has no token of its own for",
+"examples": [
+[
+"hu",
+"különböző",
+"k y l ø m b ø z ø"
+],
+[
+"tr",
+"büyük",
+"b y j ø k"
+],
+[
+"da",
+"før",
+"f ø ɐ"
+]
+],
+"langs": [
+[
+"hu",
+2.27
+],
+[
+"tr",
+0.93
+],
+[
+"da",
+0.85
+],
+[
+"sv",
+0.76
+],
+[
+"af",
+0.64
+],
+[
+"fi",
+0.48
+],
+[
+"nb",
+0.37
+],
+[
+"de",
+0.35
+]
+],
+"also": [
+"øˀ"
+],
+"count": 2546
+},
+"œ": {
+"name": "open-mid front rounded vowel",
+"class": "vowel",
+"plain": "e as in “bed” said with rounded lips (French “neuf”, German “können”). Also used for ɶ, which this model has no token of its own for",
+"examples": [
+[
+"is",
+"vörur",
+"v œ r ʏ r"
+],
+[
+"af",
+"hulle",
+"h œ l ə"
+],
+[
+"az",
+"görə",
+"ɟ œ ɾ æ"
+]
+],
+"langs": [
+[
+"is",
+0.81
+],
+[
+"af",
+0.8
+],
+[
+"az",
+0.75
+],
+[
+"tr",
+0.65
+],
+[
+"fr",
+0.65
+],
+[
+"nl",
+0.61
+],
+[
+"nb",
+0.6
+],
+[
+"sv",
+0.53
+]
+],
+"also": [
+"ɶ"
+],
+"count": 1523
+},
+"ʉ": {
+"name": "close central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between ee and oo (Norwegian and Swedish “du”)",
+"examples": [
+[
+"nb",
+"du",
+"d ʉ"
+],
+[
+"sv",
+"du",
+"d ʉ"
+]
+],
+"langs": [
+[
+"nb",
+1.84
+],
+[
+"sv",
+0.74
+]
+],
+"also": [],
+"count": 532
+},
+"tʲ": {
+"name": "voiceless alveolar stop, palatalised",
+"class": "stop",
+"plain": "t as in “ten”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"būti",
+"b u tʲ ɪ"
+],
+[
+"ga",
+"trí",
+"tʲ ɾʲ i"
+],
+[
+"sk",
+"keď",
+"k e tʲ"
+]
+],
+"langs": [
+[
+"lt",
+3.37
+],
+[
+"ga",
+2.04
+],
+[
+"sk",
+1.67
+],
+[
+"ro",
+0.02
+]
+],
+"also": [],
+"count": 2688
+},
+"lʲ": {
+"name": "alveolar lateral approximant, palatalised",
+"class": "lateral",
+"plain": "l as in “leaf”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"le",
+"lʲ ɛ"
+],
+[
+"lt",
+"gali",
+"ɡ a lʲ ɪ"
+],
+[
+"pl",
+"jeśli",
+"j ɛ ɕ lʲ i"
+]
+],
+"langs": [
+[
+"ga",
+2.03
+],
+[
+"lt",
+2.0
+],
+[
+"pl",
+0.68
+]
+],
+"also": [],
+"count": 1725
+},
+"sʲ": {
+"name": "voiceless alveolar fricative, palatalised",
+"class": "fricative",
+"plain": "s; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"valstijose",
+"ʋ a lʲ sʲ tʲ ɪ j o sʲ ɛ"
+],
+[
+"ro",
+"puteți",
+"p u t e t sʲ"
+],
+[
+"ga",
+"sinsir",
+"ʃ ɪ n̠ʲ sʲ ə ɾʲ"
+]
+],
+"langs": [
+[
+"lt",
+2.3
+],
+[
+"ro",
+0.2
+]
+],
+"also": [],
+"count": 1055
+},
+"nʲ": {
+"name": "alveolar nasal, palatalised",
+"class": "nasal",
+"plain": "n; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"ne",
+"nʲ ɛ"
+],
+[
+"ga",
+"in",
+"ɪ nʲ"
+],
+[
+"ro",
+"ani",
+"a nʲ"
+]
+],
+"langs": [
+[
+"lt",
+2.61
+],
+[
+"ga",
+1.64
+],
+[
+"ro",
+0.12
+]
+],
+"also": [],
+"count": 1682
+},
+"ɑ̃": {
+"name": "open back unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "a as in “father”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"fr",
+"en",
+"ɑ̃"
+],
+[
+"sv",
+"blandade",
+"b l ɑ̃ d a d"
+],
+[
+"af",
+"dans",
+"d ɑ̃ n s"
+]
+],
+"langs": [
+[
+"fr",
+3.61
+],
+[
+"sv",
+0.06
+],
+[
+"af",
+0.05
+],
+[
+"lb",
+0.03
+]
+],
+"also": [],
+"count": 939
+},
+"ʎ": {
+"name": "palatal lateral approximant",
+"class": "lateral",
+"plain": "an l made with the tongue body, close to “ly” (Italian “gli”)",
+"examples": [
+[
+"et",
+"oli",
+"o ʎ ɪ"
+],
+[
+"it",
+"gli",
+"ʎ"
+],
+[
+"bs",
+"ljudi",
+"ʎ u d ɪ"
+]
+],
+"langs": [
+[
+"et",
+0.8
+],
+[
+"it",
+0.53
+],
+[
+"bs",
+0.52
+],
+[
+"ca",
+0.44
+],
+[
+"sk",
+0.39
+],
+[
+"gl",
+0.3
+],
+[
+"es-419",
+0.28
+],
+[
+"pt-BR",
+0.18
+]
+],
+"also": [],
+"count": 1446
+},
+"ɒ": {
+"name": "open back rounded vowel",
+"class": "vowel",
+"plain": "a rounded “ah” (British “lot”, Hungarian “a”). Also used for ɒˀ, which this model has no token of its own for",
+"examples": [
+[
+"hu",
+"a",
+"ɒ"
+],
+[
+"da",
+"for",
+"f ɒ"
+],
+[
+"sv",
+"commonwealth",
+"k ɒ m ə n w ɛ l θ"
+]
+],
+"langs": [
+[
+"hu",
+9.86
+],
+[
+"da",
+1.13
+],
+[
+"sv",
+0.01
+]
+],
+"also": [
+"ɒˀ"
+],
+"count": 4576
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”)",
+"examples": [
+[
+"nb",
+"fullførte",
+"f ʉ l f œ ʈ ə"
+],
+[
+"sv",
+"första",
+"f œ ʂ ʈ a"
+]
+],
+"langs": [
+[
+"nb",
+0.65
+],
+[
+"sv",
+0.26
+]
+],
+"also": [],
+"count": 187
+},
+"ɹ": {
+"name": "alveolar approximant",
+"class": "rhotic",
+"plain": "English r",
+"examples": [
+[
+"en",
+"were",
+"w ɪ ɹ"
+],
+[
+"mt",
+"wara",
+"u a ɹ a"
+],
+[
+"pt-BR",
+"ter",
+"t e ɹ"
+]
+],
+"langs": [
+[
+"en",
+4.65
+],
+[
+"mt",
+2.69
+],
+[
+"pt-BR",
+0.03
+]
+],
+"also": [],
+"count": 2962
+},
+"rʲ": {
+"name": "alveolar trill, palatalised",
+"class": "rhotic",
+"plain": "a rolled r; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"turi",
+"t ʊ rʲ ɪ"
+],
+[
+"ro",
+"cazuri",
+"k a z u rʲ"
+],
+[
+"pl",
+"nigerii",
+"ɲ i ɡ ɛ rʲ j i"
+]
+],
+"langs": [
+[
+"lt",
+1.46
+],
+[
+"ro",
+0.29
+],
+[
+"pl",
+0.08
+]
+],
+"also": [],
+"count": 773
+},
+"t͡ʃ": {
+"name": "voiceless postalveolar affricate",
+"class": "affricate",
+"plain": "ch as in “church”",
+"examples": [
+[
+"pt-BR",
+"frequentemente",
+"f ɾ e k w ẽ t͡ʃ i m ẽ t͡ʃ i"
+],
+[
+"sl",
+"čeprav",
+"t͡ʃ ɛ p r á ʋ"
+],
+[
+"tr",
+"için",
+"i t͡ʃ ɪ n"
+]
+],
+"langs": [
+[
+"pt-BR",
+1.72
+],
+[
+"sl",
+1.34
+],
+[
+"tr",
+1.28
+],
+[
+"bs",
+1.12
+],
+[
+"uz",
+1.06
+],
+[
+"sk",
+0.91
+],
+[
+"az",
+0.87
+],
+[
+"mt",
+0.84
+]
+],
+"also": [],
+"count": 4826
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"is",
+"til",
+"tʰ ɪ l"
+],
+[
+"sv",
+"tillbaka",
+"tʰ ɪ l p a k a"
+]
+],
+"langs": [
+[
+"is",
+1.22
+],
+[
+"sv",
+0.06
+]
+],
+"also": [],
+"count": 64
+},
+"ɐ̯": {
+"name": "near-open central vowel, non-syllabic",
+"class": "glide",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings); non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"de",
+"für",
+"f y ɐ̯"
+],
+[
+"da",
+"der",
+"d ɛ ɐ̯"
+],
+[
+"sv",
+"använder",
+"ʔ a n v ɛ n d ɐ̯"
+]
+],
+"langs": [
+[
+"de",
+1.58
+],
+[
+"da",
+1.45
+],
+[
+"sv",
+0.12
+]
+],
+"also": [],
+"count": 1219
+},
+"t͡ɕ": {
+"name": "voiceless alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”)",
+"examples": [
+[
+"pl",
+"być",
+"b ɨ t͡ɕ"
+],
+[
+"bs",
+"će",
+"t͡ɕ ɛ"
+],
+[
+"sv",
+"maciej",
+"m a t͡ɕ ɛ j"
+]
+],
+"langs": [
+[
+"pl",
+1.27
+],
+[
+"bs",
+0.47
+]
+],
+"also": [],
+"count": 622
+},
+"θ": {
+"name": "voiceless dental fricative",
+"class": "fricative",
+"plain": "th as in “thin”",
+"examples": [
+[
+"en",
+"with",
+"w ɪ θ"
+],
+[
+"gl",
+"zonas",
+"θ o n a̝ s"
+],
+[
+"is",
+"því",
+"θ v i"
+]
+],
+"langs": [
+[
+"gl",
+1.62
+],
+[
+"is",
+1.19
+],
+[
+"cy",
+1.11
+],
+[
+"en",
+0.61
+],
+[
+"sw",
+0.16
+],
+[
+"tl",
+0.01
+],
+[
+"cs",
+0.01
+]
+],
+"also": [],
+"count": 1517
+},
+"ɔ̯": {
+"name": "open-mid back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "o as in British “thought”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"sv",
+"introducerade",
+"ẽ i t ʁ ɑ ɔ̯ d͡z ʏ s ə ʁ a d"
+]
+],
+"langs": [],
+"also": [],
+"count": 2
+},
+"t̪": {
+"name": "voiceless alveolar stop, dental",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"lt",
+"t",
+"t̪"
+],
+[
+"gl",
+"hábitat",
+"a β i t a̝ t̪"
+]
+],
+"langs": [
+[
+"lt",
+0.18
+]
+],
+"also": [],
+"count": 79
+},
+"c": {
+"name": "voiceless palatal stop",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”)",
+"examples": [
+[
+"az",
+"kimi",
+"c i m i"
+],
+[
+"is",
+"ekki",
+"ɛ h c ɪ"
+],
+[
+"ga",
+"minic",
+"mʲ ɪ nʲ ɪ c"
+]
+],
+"langs": [
+[
+"az",
+1.29
+],
+[
+"is",
+1.17
+],
+[
+"ga",
+0.98
+],
+[
+"cs",
+0.79
+],
+[
+"mt",
+0.53
+],
+[
+"hu",
+0.15
+],
+[
+"tr",
+0.03
+],
+[
+"sw",
+0.03
+]
+],
+"also": [],
+"count": 1521
+},
+"ɭ": {
+"name": "retroflex lateral approximant",
+"class": "lateral",
+"plain": "l with the tongue tip curled back",
+"examples": [
+[
+"nb",
+"arly",
+"ɑ ɭ y"
+],
+[
+"sv",
+"kärlekens",
+"k ɛ r ɭ e k e n s"
+],
+[
+"da",
+"nødbestemmelse",
+"n ø ð b e s d ɛ m ɭ s ə"
+]
+],
+"langs": [
+[
+"nb",
+0.24
+],
+[
+"sv",
+0.04
+]
+],
+"also": [],
+"count": 55
+},
+"mʲ": {
+"name": "bilabial nasal, palatalised",
+"class": "nasal",
+"plain": "m; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"metų",
+"mʲ æ t u"
+],
+[
+"ga",
+"minic",
+"mʲ ɪ nʲ ɪ c"
+],
+[
+"pl",
+"mieć",
+"mʲ ɛ t͡ɕ"
+]
+],
+"langs": [
+[
+"lt",
+1.13
+],
+[
+"ga",
+0.89
+],
+[
+"pl",
+0.64
+]
+],
+"also": [],
+"count": 982
+},
+"ɔ̃": {
+"name": "open-mid back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "o as in British “thought”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"fr",
+"ont",
+"ɔ̃"
+],
+[
+"pl",
+"są",
+"s ɔ̃"
+],
+[
+"sv",
+"information",
+"ɛ̃ f ɔ ʁ m a s j ɔ̃"
+]
+],
+"langs": [
+[
+"fr",
+1.99
+],
+[
+"pl",
+0.81
+],
+[
+"sv",
+0.08
+]
+],
+"also": [],
+"count": 790
+},
+"ç": {
+"name": "voiceless palatal fricative",
+"class": "fricative",
+"plain": "the ch of German “ich”; like a strong h before ee",
+"examples": [
+[
+"az",
+"ilk",
+"i l ç"
+],
+[
+"de",
+"sich",
+"z ɪ ç"
+],
+[
+"ga",
+"chéad",
+"ç e d"
+]
+],
+"langs": [
+[
+"az",
+1.08
+],
+[
+"de",
+1.08
+],
+[
+"ga",
+0.32
+],
+[
+"nb",
+0.19
+],
+[
+"is",
+0.19
+],
+[
+"sv",
+0.01
+]
+],
+"also": [],
+"count": 1089
+},
+"õ": {
+"name": "close-mid back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"com",
+"k õ"
+],
+[
+"af",
+"ons",
+"õ n s"
+],
+[
+"de",
+"saison",
+"s a z õ u"
+]
+],
+"langs": [
+[
+"pt-BR",
+0.87
+],
+[
+"af",
+0.04
+]
+],
+"also": [],
+"count": 357
+},
+"ʐ": {
+"name": "voiced retroflex fricative",
+"class": "fricative",
+"plain": "a hard zh (Polish “ż”, “rz”)",
+"examples": [
+[
+"pl",
+"że",
+"ʐ ɛ"
+],
+[
+"sv",
+"ogarzynska",
+"ɔ ɡ a ʐ ɨ n s k a"
+]
+],
+"langs": [
+[
+"pl",
+1.08
+]
+],
+"also": [],
+"count": 364
+},
+"vʲ": {
+"name": "voiced labiodental fricative, palatalised",
+"class": "fricative",
+"plain": "v; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"bhí",
+"vʲ i"
+],
+[
+"pl",
+"większość",
+"vʲ ɛ ŋ k ʂ ɔ ɕ t͡ɕ"
+],
+[
+"lt",
+"vis",
+"vʲ ɪ s̪"
+]
+],
+"langs": [
+[
+"ga",
+0.96
+],
+[
+"pl",
+0.87
+],
+[
+"lt",
+0.16
+],
+[
+"ro",
+0.01
+]
+],
+"also": [],
+"count": 675
+},
+"d͡ʒ": {
+"name": "voiced postalveolar affricate",
+"class": "affricate",
+"plain": "j as in “judge”",
+"examples": [
+[
+"pt-BR",
+"pode",
+"p ɔ d͡ʒ i"
+],
+[
+"tr",
+"önce",
+"œ n d͡ʒ ɛ"
+],
+[
+"id",
+"menjadi",
+"m ə n d͡ʒ a d i"
+]
+],
+"langs": [
+[
+"pt-BR",
+0.93
+],
+[
+"tr",
+0.93
+],
+[
+"id",
+0.87
+],
+[
+"mt",
+0.82
+],
+[
+"az",
+0.73
+],
+[
+"it",
+0.72
+],
+[
+"uz",
+0.55
+],
+[
+"ca",
+0.27
+]
+],
+"also": [],
+"count": 2523
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"da",
+"kan",
+"kʰ a n"
+],
+[
+"is",
+"nákvæmari",
+"n a u kʰ v a i m a r ɪ"
+],
+[
+"sv",
+"kvinnor",
+"kʰ v ɪ n ɔ r"
+]
+],
+"langs": [
+[
+"da",
+1.48
+],
+[
+"is",
+0.68
+],
+[
+"sv",
+0.07
+]
+],
+"also": [],
+"count": 577
+},
+"ʀ": {
+"name": "uvular trill",
+"class": "rhotic",
+"plain": "an r rolled at the uvula (Luxembourgish r)",
+"examples": [
+[
+"lb",
+"war",
+"v a ʀ"
+],
+[
+"de",
+"breit",
+"b ʀ a ɪ̯ t"
+],
+[
+"sv",
+"gränsen",
+"ɡ ʀ æ n z ə n"
+]
+],
+"langs": [
+[
+"lb",
+4.6
+],
+[
+"de",
+0.04
+]
+],
+"also": [],
+"count": 1895
+},
+"ă": {
+"name": "open front unrounded vowel, extra-short",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; extra-short: a very short version of the vowel",
+"examples": [
+[
+"ro",
+"sau",
+"s ă w"
+]
+],
+"langs": [
+[
+"ro",
+0.12
+]
+],
+"also": [],
+"count": 54
+},
+"dʲ": {
+"name": "voiced alveolar stop, palatalised",
+"class": "stop",
+"plain": "d as in “dog”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"de",
+"dʲ ɛ"
+],
+[
+"lt",
+"todėl",
+"t o dʲ e l"
+],
+[
+"sk",
+"bude",
+"b u dʲ e"
+]
+],
+"langs": [
+[
+"ga",
+1.57
+],
+[
+"lt",
+1.16
+],
+[
+"sk",
+0.65
+]
+],
+"also": [],
+"count": 1236
+},
+"ɤ": {
+"name": "close-mid back unrounded vowel",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”)",
+"examples": [
+[
+"ga",
+"curaí",
+"k ɤ ɾ i"
+]
+],
+"langs": [
+[
+"ga",
+0.03
+]
+],
+"also": [],
+"count": 9
+},
+"ɖ": {
+"name": "voiced retroflex stop",
+"class": "stop",
+"plain": "d with the tongue tip curled back (Swedish and Norwegian “rd”)",
+"examples": [
+[
+"sv",
+"världen",
+"v ɛ ɖ e n"
+],
+[
+"nb",
+"hvordan",
+"ʋ ʊ ɖ ɑ n"
+]
+],
+"langs": [
+[
+"sv",
+0.16
+],
+[
+"nb",
+0.16
+]
+],
+"also": [],
+"count": 78
+},
+"ʑ": {
+"name": "voiced alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft zh (Polish “ź”)",
+"examples": [
+[
+"pl",
+"więźniów",
+"vʲ ɛ̃ ʑ ɲ u f"
+],
+[
+"lb",
+"jiddwereen",
+"ʑ i d v ə ʀ e n"
+]
+],
+"langs": [
+[
+"pl",
+0.15
+],
+[
+"lb",
+0.09
+]
+],
+"also": [],
+"count": 86
+},
+"pʲ": {
+"name": "voiceless bilabial stop, palatalised",
+"class": "stop",
+"plain": "p as in “pen”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"per",
+"pʲ ɛ r"
+],
+[
+"pl",
+"opiera",
+"ɔ pʲ ɛ r a"
+],
+[
+"ga",
+"timpeall",
+"tʲ i mʲ pʲ ə l"
+]
+],
+"langs": [
+[
+"lt",
+0.97
+],
+[
+"pl",
+0.34
+],
+[
+"ga",
+0.27
+]
+],
+"also": [],
+"count": 609
+},
+"ʌ": {
+"name": "open-mid back unrounded vowel",
+"class": "vowel",
+"plain": "u as in “cup”",
+"examples": [
+[
+"da",
+"som",
+"s ʌ m"
+],
+[
+"ga",
+"don",
+"d ʌ n"
+]
+],
+"langs": [
+[
+"da",
+1.88
+],
+[
+"ga",
+0.12
+]
+],
+"also": [],
+"count": 713
+},
+"ʋ": {
+"name": "labiodental approximant",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v)",
+"examples": [
+[
+"sl",
+"v",
+"ʋ"
+],
+[
+"nb",
+"av",
+"ɑ ʋ"
+],
+[
+"nl",
+"was",
+"ʋ ɑ s"
+]
+],
+"langs": [
+[
+"sl",
+4.65
+],
+[
+"nb",
+2.37
+],
+[
+"nl",
+1.54
+],
+[
+"uz",
+1.46
+],
+[
+"da",
+1.46
+],
+[
+"lt",
+0.86
+],
+[
+"sv",
+0.06
+],
+[
+"sw",
+0.02
+]
+],
+"also": [],
+"count": 3777
+},
+"ɝ": {
+"name": "r-coloured mid central vowel",
+"class": "vowel",
+"plain": "the vowel of American “bird”, “first”",
+"examples": [
+[
+"en",
+"first",
+"f ɝ s t"
+]
+],
+"langs": [
+[
+"en",
+2.21
+]
+],
+"also": [],
+"count": 803
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"da",
+"på",
+"pʰ ɔ"
+],
+[
+"is",
+"perry",
+"pʰ ɛ r i"
+]
+],
+"langs": [
+[
+"da",
+1.28
+],
+[
+"is",
+0.19
+]
+],
+"also": [],
+"count": 465
+},
+"kʲ": {
+"name": "voiceless velar stop, palatalised",
+"class": "stop",
+"plain": "k as in “key”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants). Also used for kʲ̩, which this model has no token of its own for",
+"examples": [
+[
+"lt",
+"kitokių",
+"kʲ ɪ t o kʲ u"
+],
+[
+"pl",
+"afryki",
+"a f r ɨ kʲ i"
+],
+[
+"ro",
+"chiar",
+"kʲ a r"
+]
+],
+"langs": [
+[
+"lt",
+1.61
+],
+[
+"pl",
+0.66
+],
+[
+"ro",
+0.19
+],
+[
+"ga",
+0.03
+]
+],
+"also": [
+"kʲ̩"
+],
+"count": 991
+},
+"s̠": {
+"name": "voiceless alveolar fricative, retracted",
+"class": "fricative",
+"plain": "s; retracted: made a little further back in the mouth. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"d̪": {
+"name": "voiced alveolar stop, dental",
+"class": "stop",
+"plain": "d as in “dog”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"lt",
+"du",
+"d̪ ʊ"
+]
+],
+"langs": [
+[
+"lt",
+0.09
+]
+],
+"also": [],
+"count": 39
+},
+"d͡ʑ": {
+"name": "voiced alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft j (Polish “dź”)",
+"examples": [
+[
+"pl",
+"bardziej",
+"b a r d͡ʑ ɛ j"
+],
+[
+"sk",
+"medzi",
+"m e d͡ʑ i"
+],
+[
+"bs",
+"između",
+"i z m ɛ d͡ʑ ʊ"
+]
+],
+"langs": [
+[
+"pl",
+0.43
+],
+[
+"sk",
+0.17
+],
+[
+"bs",
+0.16
+]
+],
+"also": [],
+"count": 269
+},
+"o̞": {
+"name": "close-mid back rounded vowel, lowered",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; lowered: a little more open; a lowered fricative is a smooth approximant with no friction. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"bʲ": {
+"name": "voiced bilabial stop, palatalised",
+"class": "stop",
+"plain": "b as in “bed”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"bet",
+"bʲ ɛ t"
+],
+[
+"ga",
+"bíonn",
+"bʲ i n"
+],
+[
+"pl",
+"sobie",
+"s ɔ bʲ ɛ"
+]
+],
+"langs": [
+[
+"lt",
+0.61
+],
+[
+"ga",
+0.44
+],
+[
+"pl",
+0.18
+]
+],
+"also": [],
+"count": 457
+},
+"ɟ": {
+"name": "voiced palatal stop",
+"class": "stop",
+"plain": "a g made against the hard palate, close to “dy” (Hungarian “gy”, Czech “ď”). Also used for ʄ, which this model has no token of its own for",
+"examples": [
+[
+"hu",
+"hogy",
+"h o ɟ"
+],
+[
+"sw",
+"juu",
+"ɟ u u"
+],
+[
+"tr",
+"geri",
+"ɟ e ɾ ɪ"
+]
+],
+"langs": [
+[
+"hu",
+1.18
+],
+[
+"sw",
+1.15
+],
+[
+"tr",
+0.93
+],
+[
+"ga",
+0.75
+],
+[
+"az",
+0.72
+],
+[
+"cs",
+0.45
+]
+],
+"also": [
+"ʄ"
+],
+"count": 1776
+},
+"ẽ": {
+"name": "close-mid front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"em",
+"ẽ j̃"
+],
+[
+"af",
+"mense",
+"m ẽ n s ə"
+],
+[
+"sv",
+"influerade",
+"ẽ i f l y ə ʁ a d"
+]
+],
+"langs": [
+[
+"pt-BR",
+2.25
+],
+[
+"af",
+0.11
+],
+[
+"sv",
+0.02
+]
+],
+"also": [],
+"count": 921
+},
+"ɸ": {
+"name": "voiceless bilabial fricative",
+"class": "fricative",
+"plain": "blowing through nearly closed lips",
+"examples": [
+[
+"sw",
+"fic",
+"ɸ i c"
+]
+],
+"langs": [
+[
+"sw",
+0.03
+]
+],
+"also": [],
+"count": 6
+},
+"d͡z": {
+"name": "voiced alveolar affricate",
+"class": "affricate",
+"plain": "ds as in “beds”",
+"examples": [
+[
+"pl",
+"bardzo",
+"b a r d͡z ɔ"
+],
+[
+"it",
+"utilizza",
+"u t i l i d d͡z a"
+],
+[
+"ca",
+"utilitzant",
+"u t i l i d͡z a n"
+]
+],
+"langs": [
+[
+"pl",
+0.23
+],
+[
+"it",
+0.22
+],
+[
+"ca",
+0.04
+]
+],
+"also": [],
+"count": 201
+},
+"ɦ": {
+"name": "voiced glottal fricative",
+"class": "fricative",
+"plain": "a breathy, voiced h (Dutch and Czech h)",
+"examples": [
+[
+"nl",
+"het",
+"ɦ ɛ t"
+],
+[
+"cs",
+"jeho",
+"j ɛ ɦ o"
+],
+[
+"hu",
+"néhány",
+"n e ɦ a ɲ"
+]
+],
+"langs": [
+[
+"nl",
+1.41
+],
+[
+"cs",
+1.2
+],
+[
+"hu",
+0.42
+]
+],
+"also": [],
+"count": 786
+},
+"ʝ": {
+"name": "voiced palatal fricative",
+"class": "fricative",
+"plain": "a y with friction",
+"examples": [
+[
+"gl",
+"kruger",
+"k ɾ u ʝ e ɾ"
+]
+],
+"langs": [],
+"also": [],
+"count": 1
+},
+"ɥ": {
+"name": "labial-palatal approximant",
+"class": "glide",
+"plain": "y said with rounded lips (French “huit”)",
+"examples": [
+[
+"fr",
+"produits",
+"p ʁ ɔ d ɥ i"
+],
+[
+"sv",
+"situation",
+"s i t ɥ a s j ɔ̃"
+]
+],
+"langs": [
+[
+"fr",
+0.41
+]
+],
+"also": [],
+"count": 105
+},
+"i̯": {
+"name": "close front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "ee as in “see”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"cy",
+"ei",
+"e i̯"
+],
+[
+"nl",
+"zijn",
+"z ɛ i̯ n"
+],
+[
+"de",
+"podium",
+"p o d i̯ ʊ m"
+]
+],
+"langs": [
+[
+"cy",
+1.84
+],
+[
+"nl",
+1.4
+],
+[
+"de",
+0.03
+]
+],
+"also": [],
+"count": 1067
+},
+"ɛ̃": {
+"name": "open-mid front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in “bed”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"fr",
+"bien",
+"b j ɛ̃"
+],
+[
+"pl",
+"często",
+"t͡ʂ ɛ̃ s t ɔ"
+],
+[
+"sv",
+"mindre",
+"m ɛ̃ d ʁ"
+]
+],
+"langs": [
+[
+"fr",
+1.06
+],
+[
+"pl",
+0.17
+],
+[
+"sv",
+0.04
+],
+[
+"lb",
+0.02
+]
+],
+"also": [],
+"count": 343
+},
+"zʲ": {
+"name": "voiced alveolar fricative, palatalised",
+"class": "fricative",
+"plain": "z; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"pavyzdžiui",
+"p ɐ ʋʲ i zʲ dʲ ʒʲ ʊ ɪ"
+],
+[
+"ro",
+"apelezi",
+"a p e l e zʲ"
+]
+],
+"langs": [
+[
+"lt",
+0.12
+],
+[
+"ro",
+0.02
+]
+],
+"also": [],
+"count": 62
+},
+"o̝": {
+"name": "close-mid back rounded vowel, raised",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"gl",
+"do",
+"d o̝"
+]
+],
+"langs": [
+[
+"gl",
+3.93
+]
+],
+"also": [],
+"count": 1718
+},
+"n̪": {
+"name": "alveolar nasal, dental",
+"class": "nasal",
+"plain": "n; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"lt",
+"nors",
+"n̪ ô r s̪"
+]
+],
+"langs": [
+[
+"lt",
+0.15
+]
+],
+"also": [],
+"count": 62
+},
+"ɛ̝": {
+"name": "open-mid front unrounded vowel, raised",
+"class": "vowel",
+"plain": "e as in “bed”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"da",
+"omkring",
+"ʌ m k ʁ ɛ̝ ŋ"
+]
+],
+"langs": [
+[
+"da",
+0.05
+]
+],
+"also": [],
+"count": 17
+},
+"ɡʲ": {
+"name": "voiced velar stop, palatalised",
+"class": "stop",
+"plain": "g as in “go”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"daugelis",
+"d ɐ ʊ ɡʲ ɛ lʲ ɪ s"
+],
+[
+"pl",
+"technologii",
+"t ɛ x n ɔ l ɔ ɡʲ j i"
+],
+[
+"ro",
+"singh",
+"s i n ɡʲ"
+]
+],
+"langs": [
+[
+"lt",
+0.88
+],
+[
+"pl",
+0.12
+],
+[
+"ro",
+0.04
+]
+],
+"also": [],
+"count": 427
+},
+"ǎ": {
+"name": "open front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent. Also used for ä̌, which this model has no token of its own for",
+"examples": [
+[
+"lt",
+"tam",
+"t̪ ǎ m"
+]
+],
+"langs": [
+[
+"lt",
+0.08
+]
+],
+"also": [
+"ä̌"
+],
+"count": 32
+},
+"t͡ʂ": {
+"name": "voiceless retroflex affricate",
+"class": "affricate",
+"plain": "a hard ch (Polish “cz”)",
+"examples": [
+[
+"pl",
+"często",
+"t͡ʂ ɛ̃ s t ɔ"
+]
+],
+"langs": [
+[
+"pl",
+0.95
+]
+],
+"also": [],
+"count": 318
+},
+"æ̃": {
+"name": "near-open front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "a as in “cat”; nasalised: air also flows through the nose (French “an”, Portuguese “não”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"u̯": {
+"name": "close back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "oo as in “food”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"cy",
+"mewn",
+"m ɨ u̯ n"
+],
+[
+"cs",
+"jsou",
+"j s o u̯"
+],
+[
+"nl",
+"nieuwe",
+"n i u̯ ə"
+]
+],
+"langs": [
+[
+"cy",
+1.37
+],
+[
+"cs",
+0.69
+],
+[
+"nl",
+0.38
+],
+[
+"is",
+0.03
+]
+],
+"also": [],
+"count": 870
+},
+"ã": {
+"name": "open front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; nasalised: air also flows through the nose (French “an”, Portuguese “não”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"fʲ": {
+"name": "voiceless labiodental fricative, palatalised",
+"class": "fricative",
+"plain": "f; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"féidir",
+"fʲ e dʲ ə ɾʲ"
+],
+[
+"pl",
+"świata",
+"ɕ fʲ a t a"
+],
+[
+"lt",
+"afrikos",
+"a fʲ rʲ ɪ k o s"
+]
+],
+"langs": [
+[
+"ga",
+0.66
+],
+[
+"pl",
+0.29
+],
+[
+"lt",
+0.22
+]
+],
+"also": [],
+"count": 408
+},
+"a͡ɪ": {
+"name": "diphthong a to ɪ",
+"class": "diphthong",
+"plain": "eye",
+"examples": [
+[
+"mi",
+"mai",
+"m a͡ɪ"
+],
+[
+"id",
+"sebagai",
+"s ə b a ɡ a͡ɪ"
+],
+[
+"az",
+"aid",
+"a͡ɪ d"
+]
+],
+"langs": [
+[
+"mi",
+1.72
+],
+[
+"id",
+0.48
+],
+[
+"az",
+0.07
+]
+],
+"also": [],
+"count": 951
+},
+"r̥": {
+"name": "alveolar trill, voiceless",
+"class": "rhotic",
+"plain": "a rolled r; voiceless: said without vocal-fold vibration, as if whispered",
+"examples": [
+[
+"is",
+"fyrstu",
+"f ɪ r̥ s t ʏ"
+],
+[
+"cy",
+"rhai",
+"r̥ a i̯"
+],
+[
+"sv",
+"största",
+"s t œ r̥ s t a"
+]
+],
+"langs": [
+[
+"is",
+0.68
+],
+[
+"cy",
+0.39
+],
+[
+"sv",
+0.1
+]
+],
+"also": [],
+"count": 225
+},
+"s̺": {
+"name": "voiceless alveolar fricative, apical",
+"class": "fricative",
+"plain": "s; apical: made with the very tip of the tongue. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɫ̪": {
+"name": "velarised alveolar lateral, dental",
+"class": "lateral",
+"plain": "the dark l of “full”; dental: the tongue tip touches the upper teeth. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"l̪": {
+"name": "alveolar lateral approximant, dental",
+"class": "lateral",
+"plain": "l as in “leaf”; dental: the tongue tip touches the upper teeth. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"χ": {
+"name": "voiceless uvular fricative",
+"class": "fricative",
+"plain": "a rougher ch made at the uvula (Welsh “ch”)",
+"examples": [
+[
+"cy",
+"chi'n",
+"χ i n"
+],
+[
+"uz",
+"yaxshi",
+"j æ χ ʃ y"
+],
+[
+"mi",
+"gingrich",
+"ɡ i ŋ r i χ"
+]
+],
+"langs": [
+[
+"cy",
+1.05
+],
+[
+"uz",
+0.48
+],
+[
+"mi",
+0.03
+],
+[
+"id",
+0.02
+]
+],
+"also": [],
+"count": 678
+},
+"s̻": {
+"name": "voiceless alveolar fricative, laminal",
+"class": "fricative",
+"plain": "s; laminal: made with the blade of the tongue, just behind the tip. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"î": {
+"name": "close front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"lt",
+"rašyti",
+"ɾ ɐ ʃʲ î tʲ ɪ"
+]
+],
+"langs": [],
+"also": [],
+"count": 3
+},
+"ɽ": {
+"name": "retroflex flap",
+"class": "rhotic",
+"plain": "a flap with the tongue tip curled back",
+"examples": [
+[
+"de",
+"waren",
+"v a ɽ ə n"
+],
+[
+"nb",
+"ludvig-charles",
+"l ʉ d ʋ ɪ k æ ɽ ə l s"
+]
+],
+"langs": [
+[
+"de",
+0.12
+],
+[
+"nb",
+0.01
+]
+],
+"also": [],
+"count": 54
+},
+"á": {
+"name": "open front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"na",
+"n á"
+]
+],
+"langs": [
+[
+"sl",
+3.42
+]
+],
+"also": [],
+"count": 1193
+},
+"é": {
+"name": "close-mid front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"je",
+"j é"
+]
+],
+"langs": [
+[
+"sl",
+2.43
+]
+],
+"also": [],
+"count": 846
+},
+"ó": {
+"name": "close-mid back rounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"so",
+"s ó"
+]
+],
+"langs": [
+[
+"sl",
+2.27
+]
+],
+"also": [],
+"count": 791
+},
+"ĭ": {
+"name": "close front unrounded vowel, extra-short",
+"class": "vowel",
+"plain": "ee as in “see”; extra-short: a very short version of the vowel",
+"examples": [
+[
+"de",
+"population",
+"p o p u l ɑ t s ĭ o n"
+],
+[
+"sv",
+"friktionen",
+"f ɾ ɪ k t s ĭ o n ə n"
+]
+],
+"langs": [
+[
+"de",
+0.18
+],
+[
+"sv",
+0.03
+]
+],
+"also": [],
+"count": 85
+},
+"ʃʲ": {
+"name": "voiceless postalveolar fricative, palatalised",
+"class": "fricative",
+"plain": "sh as in “ship”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"tačiau",
+"t a tʲ ʃʲ ɛ ʊ̯"
+],
+[
+"ro",
+"își",
+"ɨ ʃʲ"
+]
+],
+"langs": [
+[
+"lt",
+0.98
+],
+[
+"ro",
+0.14
+]
+],
+"also": [],
+"count": 476
+},
+"â": {
+"name": "open front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"lt",
+"jav",
+"j â ʋ"
+]
+],
+"langs": [
+[
+"lt",
+0.03
+]
+],
+"also": [],
+"count": 13
+},
+"s̪": {
+"name": "voiceless alveolar fricative, dental",
+"class": "fricative",
+"plain": "s; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"lt",
+"nors",
+"n̪ ô r s̪"
+]
+],
+"langs": [
+[
+"lt",
+0.42
+]
+],
+"also": [],
+"count": 177
+},
+"í": {
+"name": "close front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"in",
+"í n"
+]
+],
+"langs": [
+[
+"sl",
+2.33
+]
+],
+"also": [],
+"count": 811
+},
+"tʼ": {
+"name": "voiceless alveolar stop, ejective",
+"class": "stop",
+"plain": "t as in “ten”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"r̩": {
+"name": "alveolar trill, syllabic",
+"class": "rhotic",
+"plain": "a rolled r; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"cs",
+"první",
+"p r̩ v ɲ i"
+],
+[
+"sk",
+"prvé",
+"p r̩ v e"
+],
+[
+"ro",
+"curry",
+"k u r̩ i"
+]
+],
+"langs": [
+[
+"cs",
+0.25
+],
+[
+"sk",
+0.21
+],
+[
+"ro",
+0.01
+]
+],
+"also": [],
+"count": 153
+},
+"xʲ": {
+"name": "voiceless velar fricative, palatalised",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"pl",
+"hiszpanie",
+"xʲ i ʂ p a ɲ ɛ"
+],
+[
+"lt",
+"michele",
+"mʲ ɪ xʲ ɛ lʲ ɛ"
+]
+],
+"langs": [
+[
+"pl",
+0.02
+]
+],
+"also": [],
+"count": 10
+},
+"ĩ": {
+"name": "close front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "ee as in “see”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"assim",
+"a s ĩ"
+]
+],
+"langs": [
+[
+"pt-BR",
+0.79
+]
+],
+"also": [],
+"count": 314
+},
+"ɜ": {
+"name": "open-mid central unrounded vowel",
+"class": "vowel",
+"plain": "like the vowel of British “bird”. Also used for ɜ͡ɪ, which this model has no token of its own for",
+"examples": [
+[
+"lb",
+"déi",
+"d ɜ ɪ"
+],
+[
+"da",
+"buffalo-pittsburgh",
+"b ɔ f a l o pʰ i d s b ɜ"
+]
+],
+"langs": [
+[
+"lb",
+1.54
+]
+],
+"also": [
+"ɜ͡ɪ"
+],
+"count": 633
+},
+"o͡ʊ": {
+"name": "diphthong o to ʊ",
+"class": "diphthong",
+"plain": "o as in American “go”",
+"examples": [
+[
+"sk",
+"pomocou",
+"p o m o t͡s o͡ʊ"
+],
+[
+"bs",
+"mount",
+"m o͡ʊ n t"
+]
+],
+"langs": [
+[
+"sk",
+0.18
+],
+[
+"bs",
+0.02
+]
+],
+"also": [],
+"count": 72
+},
+"l̥": {
+"name": "alveolar lateral approximant, voiceless",
+"class": "lateral",
+"plain": "l as in “leaf”; voiceless: said without vocal-fold vibration, as if whispered",
+"examples": [
+[
+"is",
+"elti",
+"ɛ l̥ t ɪ"
+],
+[
+"da",
+"klare",
+"kʰ l̥ ɑ ɑ"
+]
+],
+"langs": [
+[
+"is",
+0.27
+],
+[
+"da",
+0.11
+]
+],
+"also": [],
+"count": 49
+},
+"ô": {
+"name": "close-mid back rounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"lt",
+"nors",
+"n̪ ô r s̪"
+]
+],
+"langs": [
+[
+"lt",
+0.12
+]
+],
+"also": [],
+"count": 50
+},
+"ɐ̃": {
+"name": "near-open central vowel, nasalised",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings); nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"não",
+"n ɐ̃ w̃"
+]
+],
+"langs": [
+[
+"pt-BR",
+2.09
+]
+],
+"also": [],
+"count": 827
+},
+"kʼ": {
+"name": "voiceless velar stop, ejective",
+"class": "stop",
+"plain": "k as in “key”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a̯": {
+"name": "open front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "a as in Spanish “casa”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʊ̃": {
+"name": "near-close back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "oo as in “book”; nasalised: air also flows through the nose (French “an”, Portuguese “não”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"l̠": {
+"name": "alveolar lateral approximant, retracted",
+"class": "lateral",
+"plain": "l as in “leaf”; retracted: made a little further back in the mouth. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a͡ʊ": {
+"name": "diphthong a to ʊ",
+"class": "diphthong",
+"plain": "ow as in “now”",
+"examples": [
+[
+"id",
+"atau",
+"a t a͡ʊ"
+],
+[
+"mi",
+"ao",
+"a͡ʊ"
+]
+],
+"langs": [
+[
+"id",
+0.25
+],
+[
+"mi",
+0.24
+]
+],
+"also": [],
+"count": 197
+},
+"cʰ": {
+"name": "voiceless palatal stop, aspirated",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"is",
+"kynna",
+"cʰ ɪ n a"
+],
+[
+"sv",
+"kycklingdun",
+"cʰ ɪ k l i ŋ d ʏ n"
+]
+],
+"langs": [
+[
+"is",
+0.3
+]
+],
+"also": [],
+"count": 14
+},
+"à": {
+"name": "open front unrounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"lahko",
+"l à x k ɔ"
+]
+],
+"langs": [
+[
+"sl",
+2.01
+]
+],
+"also": [],
+"count": 700
+},
+"ɪ̯": {
+"name": "near-close front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "i as in “sit”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"tl",
+"ay",
+"ʔ a ɪ̯"
+],
+[
+"de",
+"sein",
+"z a ɪ̯ n"
+],
+[
+"lt",
+"jie",
+"j ɪ̯"
+]
+],
+"langs": [
+[
+"tl",
+1.06
+],
+[
+"de",
+0.43
+],
+[
+"lt",
+0.12
+]
+],
+"also": [],
+"count": 836
+},
+"e̯": {
+"name": "close-mid front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"y̯": {
+"name": "close front rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "ee said with rounded lips (French “tu”, German “über”); non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"nl",
+"uit",
+"œ y̯ t"
+]
+],
+"langs": [
+[
+"nl",
+0.61
+]
+],
+"also": [],
+"count": 110
+},
+"n̥": {
+"name": "alveolar nasal, voiceless",
+"class": "nasal",
+"plain": "n; voiceless: said without vocal-fold vibration, as if whispered",
+"examples": [
+[
+"is",
+"hnakkar",
+"n̥ a h k a r"
+],
+[
+"cy",
+"nhw'n",
+"n̥ u n"
+],
+[
+"sv",
+"uppmuntrande",
+"ʏ h p m ʏ n̥ t r a n d ə"
+]
+],
+"langs": [
+[
+"is",
+0.27
+],
+[
+"cy",
+0.08
+]
+],
+"also": [],
+"count": 47
+},
+"l̩": {
+"name": "alveolar lateral approximant, syllabic",
+"class": "lateral",
+"plain": "l as in “leaf”; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"cs",
+"řekl",
+"r̝ ɛ k l̩"
+],
+[
+"sk",
+"hall",
+"h a l l̩"
+],
+[
+"da",
+"enkel",
+"ɛ ŋ ɡ l̩"
+]
+],
+"langs": [
+[
+"cs",
+0.11
+],
+[
+"sk",
+0.08
+],
+[
+"da",
+0.04
+],
+[
+"ro",
+0.02
+],
+[
+"bs",
+0.02
+]
+],
+"also": [],
+"count": 96
+},
+"ɬ": {
+"name": "voiceless alveolar lateral fricative",
+"class": "fricative",
+"plain": "the Welsh “ll”: an l blown without voice",
+"examples": [
+[
+"cy",
+"gallu",
+"ɡ a ɬ ɨ"
+],
+[
+"sw",
+"karne",
+"ɬ a ɾ n e"
+]
+],
+"langs": [
+[
+"cy",
+0.88
+],
+[
+"sw",
+0.06
+]
+],
+"also": [],
+"count": 395
+},
+"ʋʲ": {
+"name": "labiodental approximant, palatalised",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v); palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"vyrų",
+"ʋʲ i ɾ u"
+]
+],
+"langs": [
+[
+"lt",
+1.04
+]
+],
+"also": [],
+"count": 433
+},
+"ɾʲ": {
+"name": "alveolar tap, palatalised",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"féidir",
+"fʲ e dʲ ə ɾʲ"
+],
+[
+"lt",
+"varžybos",
+"ʋ ɐ ɾʲ ʒʲ i b o s"
+]
+],
+"langs": [
+[
+"ga",
+2.7
+],
+[
+"lt",
+0.58
+]
+],
+"also": [],
+"count": 1127
+},
+"t̪ʰ": {
+"name": "voiceless alveolar stop, dental, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"e͡ɪ": {
+"name": "diphthong e to ɪ",
+"class": "diphthong",
+"plain": "ay as in “say”",
+"examples": [
+[
+"mi",
+"maciej",
+"m a t͡s i e͡ɪ"
+]
+],
+"langs": [],
+"also": [],
+"count": 3
+},
+"ŋ̩": {
+"name": "velar nasal, syllabic",
+"class": "nasal",
+"plain": "ng as in “sing”; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"da",
+"mange",
+"m ɑ ŋ ŋ̩"
+],
+[
+"de",
+"fliegen",
+"f l i ɡ ŋ̩"
+]
+],
+"langs": [
+[
+"da",
+0.13
+],
+[
+"de",
+0.01
+]
+],
+"also": [],
+"count": 54
+},
+"ɰ": {
+"name": "velar approximant",
+"class": "glide",
+"plain": "a g so weak the tongue never closes",
+"examples": [
+[
+"tl",
+"pamamagitan",
+"p ɐ m ɐ m ɐ ɰ i t ɐ n"
+]
+],
+"langs": [
+[
+"tl",
+0.85
+]
+],
+"also": [],
+"count": 486
+},
+"a̝": {
+"name": "open front unrounded vowel, raised",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"gl",
+"para",
+"p a ɾ a̝"
+]
+],
+"langs": [
+[
+"gl",
+3.72
+]
+],
+"also": [],
+"count": 1627
+},
+"ɻ": {
+"name": "retroflex approximant",
+"class": "rhotic",
+"plain": "an English-like r with the tongue tip curled back",
+"examples": [
+[
+"pt-BR",
+"por",
+"p o ɻ"
+]
+],
+"langs": [
+[
+"pt-BR",
+0.15
+]
+],
+"also": [],
+"count": 61
+},
+"ʍ": {
+"name": "voiceless labial-velar approximant",
+"class": "glide",
+"plain": "a breathy w (“wh” in some accents)",
+"examples": [
+[
+"sw",
+"wilaya",
+"ʍ i l a j a"
+]
+],
+"langs": [
+[
+"sw",
+0.04
+]
+],
+"also": [],
+"count": 9
+},
+"ũ": {
+"name": "close back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "oo as in “food”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"um",
+"ũ"
+]
+],
+"langs": [
+[
+"pt-BR",
+0.8
+]
+],
+"also": [],
+"count": 316
+},
+"m̩": {
+"name": "bilabial nasal, syllabic",
+"class": "nasal",
+"plain": "m; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"da",
+"gennem",
+"ɡ ɛ m m̩"
+],
+[
+"cs",
+"směnu",
+"s m̩ ɲ ɛ n u"
+],
+[
+"de",
+"km²",
+"k m̩ t v o ɾ i k t s i"
+]
+],
+"langs": [
+[
+"da",
+0.1
+],
+[
+"cs",
+0.05
+]
+],
+"also": [],
+"count": 55
+},
+"r̝": {
+"name": "alveolar trill, raised",
+"class": "rhotic",
+"plain": "a rolled r; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"cs",
+"řešení",
+"r̝ ɛ ʃ ɛ ɲ i"
+]
+],
+"langs": [
+[
+"cs",
+0.57
+]
+],
+"also": [],
+"count": 167
+},
+"w̃": {
+"name": "labial-velar approximant, nasalised",
+"class": "glide",
+"plain": "w as in “we”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"não",
+"n ɐ̃ w̃"
+]
+],
+"langs": [
+[
+"pt-BR",
+1.16
+]
+],
+"also": [],
+"count": 462
+},
+"o͡ɪ": {
+"name": "diphthong o to ɪ",
+"class": "diphthong",
+"plain": "oy as in “boy”",
+"examples": [
+[
+"mi",
+"koinei",
+"k o͡ɪ n e i"
+],
+[
+"lb",
+"europa",
+"o͡ɪ ʀ o p ɑ"
+]
+],
+"langs": [
+[
+"mi",
+0.08
+],
+[
+"lb",
+0.04
+]
+],
+"also": [],
+"count": 48
+},
+"n̩": {
+"name": "alveolar nasal, syllabic",
+"class": "nasal",
+"plain": "n; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"da",
+"jorden",
+"j o ɐ n̩"
+],
+[
+"de",
+"finden",
+"f ɪ n d n̩"
+],
+[
+"nb",
+"navn",
+"n ɑ ʋ n̩"
+]
+],
+"langs": [
+[
+"da",
+0.59
+],
+[
+"de",
+0.11
+],
+[
+"nb",
+0.04
+],
+[
+"ro",
+0.01
+],
+[
+"cs",
+0.01
+]
+],
+"also": [],
+"count": 274
+},
+"ì": {
+"name": "close front unrounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"bila",
+"b ì l a"
+]
+],
+"langs": [
+[
+"sl",
+1.76
+]
+],
+"also": [],
+"count": 615
+},
+"ʊ̯": {
+"name": "near-close back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "oo as in “book”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"tl",
+"tao",
+"t a ʊ̯"
+],
+[
+"lt",
+"tačiau",
+"t a tʲ ʃʲ ɛ ʊ̯"
+],
+[
+"de",
+"auch",
+"a ʊ̯ x"
+]
+],
+"langs": [
+[
+"tl",
+0.2
+],
+[
+"lt",
+0.14
+],
+[
+"de",
+0.05
+]
+],
+"also": [],
+"count": 202
+},
+"ʒʲ": {
+"name": "voiced postalveolar fricative, palatalised",
+"class": "fricative",
+"plain": "s as in “measure”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"pavyzdžiui",
+"p ɐ ʋʲ i zʲ dʲ ʒʲ ʊ ɪ"
+],
+[
+"ro",
+"lungi",
+"l u n d ʒʲ"
+]
+],
+"langs": [
+[
+"lt",
+0.57
+],
+[
+"ro",
+0.02
+]
+],
+"also": [],
+"count": 244
+},
+"n̠ʲ": {
+"name": "alveolar nasal, retracted, palatalised",
+"class": "nasal",
+"plain": "n; retracted: made a little further back in the mouth; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"ní",
+"n̠ʲ i"
+]
+],
+"langs": [
+[
+"ga",
+0.95
+]
+],
+"also": [],
+"count": 312
+},
+"ɱ": {
+"name": "labiodental nasal",
+"class": "nasal",
+"plain": "m made with the lower lip against the teeth, before f or v (“comfort”)",
+"examples": [
+[
+"sw",
+"marekani",
+"ɱ a ɾ e k a n i"
+],
+[
+"gl",
+"información",
+"i ɱ f o ɾ m a θ j o ŋ"
+],
+[
+"hu",
+"különféle",
+"k y l ø ɱ f e l ɛ"
+]
+],
+"langs": [
+[
+"sw",
+0.11
+],
+[
+"gl",
+0.08
+],
+[
+"hu",
+0.06
+]
+],
+"also": [],
+"count": 84
+},
+"qʼ": {
+"name": "voiceless uvular stop, ejective",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”); ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡ʃʼ": {
+"name": "ejective postalveolar affricate",
+"class": "affricate",
+"plain": "ch said with a pop from the throat, no breath. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"è": {
+"name": "close-mid front unrounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"leta",
+"l è t a"
+]
+],
+"langs": [
+[
+"sl",
+0.85
+]
+],
+"also": [],
+"count": 295
+},
+"ŋ̥": {
+"name": "velar nasal, voiceless",
+"class": "nasal",
+"plain": "ng as in “sing”; voiceless: said without vocal-fold vibration, as if whispered",
+"examples": [
+[
+"is",
+"hringt",
+"r̥ i ŋ̥ t"
+],
+[
+"cy",
+"enghraifft",
+"ɛ ŋ̥ r a i̯ f d"
+]
+],
+"langs": [
+[
+"is",
+0.19
+],
+[
+"cy",
+0.05
+]
+],
+"also": [],
+"count": 28
+},
+"m̥": {
+"name": "bilabial nasal, voiceless",
+"class": "nasal",
+"plain": "m; voiceless: said without vocal-fold vibration, as if whispered",
+"examples": [
+[
+"is",
+"samt",
+"s a m̥ t"
+]
+],
+"langs": [
+[
+"is",
+0.05
+]
+],
+"also": [],
+"count": 2
+},
+"ú": {
+"name": "close back rounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "oo as in “food”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"puh",
+"p ú x"
+]
+],
+"langs": [
+[
+"sl",
+0.4
+]
+],
+"also": [],
+"count": 140
+},
+"kʷ": {
+"name": "voiceless velar stop, labialised",
+"class": "stop",
+"plain": "k as in “key”; labialised: said with rounded lips. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ò": {
+"name": "close-mid back rounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"območij",
+"ɔ b m ò t͡ʃ i j"
+]
+],
+"langs": [
+[
+"sl",
+0.18
+]
+],
+"also": [],
+"count": 64
+},
+"ù": {
+"name": "close back rounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "oo as in “food”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"tudi",
+"t ù d i"
+]
+],
+"langs": [
+[
+"sl",
+0.24
+]
+],
+"also": [],
+"count": 84
+},
+"o̯": {
+"name": "close-mid back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "o as in Spanish or Italian “no”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"gl",
+"ao",
+"a o̯"
+]
+],
+"langs": [
+[
+"gl",
+0.24
+]
+],
+"also": [],
+"count": 107
+},
+"l̠ʲ": {
+"name": "alveolar lateral approximant, retracted, palatalised",
+"class": "lateral",
+"plain": "l as in “leaf”; retracted: made a little further back in the mouth; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ga",
+"leis",
+"l̠ʲ ɛ ʃ"
+]
+],
+"langs": [
+[
+"ga",
+0.64
+]
+],
+"also": [],
+"count": 210
+},
+"e̝": {
+"name": "close-mid front unrounded vowel, raised",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"gl",
+"entre",
+"ɛ n t ɾ e̝"
+]
+],
+"langs": [
+[
+"gl",
+2.48
+]
+],
+"also": [],
+"count": 1085
+},
+"j̃": {
+"name": "palatal approximant, nasalised",
+"class": "glide",
+"plain": "y as in “yes”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"pt-BR",
+"em",
+"ẽ j̃"
+]
+],
+"langs": [
+[
+"pt-BR",
+1.12
+]
+],
+"also": [],
+"count": 443
+},
+"ɛ́": {
+"name": "open-mid front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "e as in “bed”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"ne",
+"n ɛ́"
+]
+],
+"langs": [
+[
+"sl",
+0.44
+]
+],
+"also": [],
+"count": 155
+},
+"ɔ́": {
+"name": "open-mid back rounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "o as in British “thought”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"po",
+"p ɔ́"
+]
+],
+"langs": [
+[
+"sl",
+0.26
+]
+],
+"also": [],
+"count": 90
+},
+"ɔ̀": {
+"name": "open-mid back rounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "o as in British “thought”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"skoraj",
+"s k ɔ̀ r a j"
+]
+],
+"langs": [
+[
+"sl",
+0.14
+]
+],
+"also": [],
+"count": 48
+},
+"e͡ʊ": {
+"name": "diphthong e to ʊ",
+"class": "diphthong",
+"plain": "e gliding to oo. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɛ̀": {
+"name": "open-mid front unrounded vowel, accent ` (low)",
+"class": "vowel",
+"plain": "e as in “bed”; accent ` (low): the G2P's dictionary marks a pitch accent or stress here",
+"examples": [
+[
+"sl",
+"mestu",
+"m ɛ̀ s t u"
+]
+],
+"langs": [
+[
+"sl",
+0.14
+]
+],
+"also": [],
+"count": 48
+},
+"œ̃": {
+"name": "open-mid front rounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in “bed” said with rounded lips (French “neuf”, German “können”); nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"fr",
+"un",
+"œ̃"
+]
+],
+"langs": [
+[
+"fr",
+0.38
+]
+],
+"also": [],
+"count": 94
+},
+"ɑ̯": {
+"name": "open back unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "a as in “father”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɘ": {
+"name": "close-mid central unrounded vowel",
+"class": "vowel",
+"plain": "a schwa-like vowel, a little higher than ə. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ŋʲ": {
+"name": "velar nasal, palatalised",
+"class": "nasal",
+"plain": "ng as in “sing”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"lt",
+"išvengti",
+"ɪ ʃʲ ʋʲ ɛ ŋʲ kʲ tʲ ɪ"
+]
+],
+"langs": [
+[
+"lt",
+0.06
+]
+],
+"also": [],
+"count": 27
+},
+"ð̞": {
+"name": "voiced dental fricative, lowered",
+"class": "fricative",
+"plain": "th as in “this”; lowered: a little more open; a lowered fricative is a smooth approximant with no friction. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"β̞": {
+"name": "voiced bilabial fricative, lowered",
+"class": "fricative",
+"plain": "a soft b where the lips do not close (Spanish b between vowels); lowered: a little more open; a lowered fricative is a smooth approximant with no friction. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+}
+}
+}

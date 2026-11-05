@@ -1,0 +1,520 @@
+{
+"group": "japanese",
+"model": "mbfa-japanese",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Japanese has no tone layer in this model. A long vowel is one token (its length is a separate layer): ドーブツ = d o b ɯ t s ɯ. Affricates are split into two tokens (ツ = t s, ジ = d ʑ): give the stop and the fricative part their own spans. The syllable-final ン is ɴ.",
+"lang_names": {
+"ja": "Japanese"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"ja",
+"ワ",
+"ɰ a"
+]
+],
+"langs": [
+[
+"ja",
+13.61
+]
+],
+"also": [],
+"count": 2644
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"ja",
+"マス",
+"m a s ɯ"
+]
+],
+"langs": [
+[
+"ja",
+4.33
+]
+],
+"also": [],
+"count": 842
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"ja",
+"ニ",
+"n i"
+]
+],
+"langs": [
+[
+"ja",
+10.15
+]
+],
+"also": [],
+"count": 1972
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"ja",
+"デ",
+"d e"
+]
+],
+"langs": [
+[
+"ja",
+6.79
+]
+],
+"also": [],
+"count": 1319
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"ja",
+"ノ",
+"n o"
+]
+],
+"langs": [
+[
+"ja",
+4.78
+]
+],
+"also": [],
+"count": 928
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"ja",
+"ト",
+"t o"
+]
+],
+"langs": [
+[
+"ja",
+6.9
+]
+],
+"also": [],
+"count": 1341
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"ja",
+"テキ",
+"t e k i"
+]
+],
+"langs": [
+[
+"ja",
+7.21
+]
+],
+"also": [],
+"count": 1401
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"ja",
+"ノ",
+"n o"
+]
+],
+"langs": [
+[
+"ja",
+11.57
+]
+],
+"also": [],
+"count": 2248
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"ja",
+"マス",
+"m a s ɯ"
+]
+],
+"langs": [
+[
+"ja",
+2.95
+]
+],
+"also": [],
+"count": 574
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"ja",
+"デ",
+"d e"
+]
+],
+"langs": [
+[
+"ja",
+3.1
+]
+],
+"also": [],
+"count": 603
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”",
+"examples": [
+[
+"ja",
+"レ",
+"ɾ e"
+]
+],
+"langs": [
+[
+"ja",
+4.35
+]
+],
+"also": [],
+"count": 846
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"ja",
+"ヤ",
+"j a"
+]
+],
+"langs": [
+[
+"ja",
+2.14
+]
+],
+"also": [],
+"count": 415
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"ja",
+"ドーブツ",
+"d o b ɯ t s ɯ"
+]
+],
+"langs": [
+[
+"ja",
+1.11
+]
+],
+"also": [],
+"count": 215
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"ja",
+"ポロ",
+"p o ɾ o"
+]
+],
+"langs": [
+[
+"ja",
+0.34
+]
+],
+"also": [],
+"count": 66
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”",
+"examples": [
+[
+"ja",
+"ガ",
+"ɡ a"
+]
+],
+"langs": [
+[
+"ja",
+1.85
+]
+],
+"also": [],
+"count": 360
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"ja",
+"ズ",
+"z ɯ"
+]
+],
+"langs": [
+[
+"ja",
+0.53
+]
+],
+"also": [],
+"count": 102
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"ja",
+"マス",
+"m a s ɯ"
+]
+],
+"langs": [
+[
+"ja",
+7.89
+]
+],
+"also": [],
+"count": 1533
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"ja",
+"ホトンド",
+"h o t o ɴ d o"
+]
+],
+"langs": [
+[
+"ja",
+0.86
+]
+],
+"also": [],
+"count": 167
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"ja",
+"シ",
+"ɕ i"
+]
+],
+"langs": [
+[
+"ja",
+3.64
+]
+],
+"also": [],
+"count": 708
+},
+"ɴ": {
+"name": "uvular nasal",
+"class": "nasal",
+"plain": "an n made far back, at the uvula (Japanese syllable-final ん)",
+"examples": [
+[
+"ja",
+"ン",
+"ɴ"
+]
+],
+"langs": [
+[
+"ja",
+2.78
+]
+],
+"also": [],
+"count": 541
+},
+"ç": {
+"name": "voiceless palatal fricative",
+"class": "fricative",
+"plain": "the ch of German “ich”; like a strong h before ee",
+"examples": [
+[
+"ja",
+"ヒツヨー",
+"ç i t s ɯ j o"
+]
+],
+"langs": [
+[
+"ja",
+0.45
+]
+],
+"also": [],
+"count": 87
+},
+"ʑ": {
+"name": "voiced alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft zh (Polish “ź”)",
+"examples": [
+[
+"ja",
+"ハジメ",
+"h a d ʑ i m e"
+]
+],
+"langs": [
+[
+"ja",
+0.82
+]
+],
+"also": [],
+"count": 160
+},
+"ɸ": {
+"name": "voiceless bilabial fricative",
+"class": "fricative",
+"plain": "blowing through nearly closed lips",
+"examples": [
+[
+"ja",
+"フ",
+"ɸ ɯ"
+]
+],
+"langs": [
+[
+"ja",
+0.27
+]
+],
+"also": [],
+"count": 53
+},
+"ɰ": {
+"name": "velar approximant",
+"class": "glide",
+"plain": "a g so weak the tongue never closes. Also used for ɰᵝ, which this model has no token of its own for",
+"examples": [
+[
+"ja",
+"ワ",
+"ɰ a"
+]
+],
+"langs": [
+[
+"ja",
+1.56
+]
+],
+"also": [
+"ɰᵝ"
+],
+"count": 303
+}
+}
+}

@@ -1,0 +1,11 @@
+/* Home page: a little more room around the title block. */
+.bfa-hero { margin-bottom: 1.5rem; }
+.bfa-hero h1 { margin-bottom: 0.4rem; font-weight: 700; }
+.bfa-hero p strong:first-child { font-size: 1.15em; }
+.bfa-hero .md-button { margin: 0.25rem 0.4rem 0.25rem 0; }
+
+/* Wide tables (language lists, phoneme guides) scroll inside their box on small screens. */
+.md-typeset table:not([class]) { font-size: 0.72rem; }
+
+/* Two-column key/value tables written with an empty header row (| | |): hide that row. */
+.md-typeset table:not([class]) thead:not(:has(th:not(:empty))) { display: none; }

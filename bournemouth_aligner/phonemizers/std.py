@@ -13,11 +13,11 @@ up with it, one entry per token.
 
 ## What is different from ph66
 
-  - No silence at punctuation. ph66 writes a SIL for every comma and full stop; the p4mbfa
-    models were trained on sequences with none inside a segment, so by default none is
-    written here either. `punctuation_sil=True` writes them (the aligner may skip any SIL at
-    no cost, so this only offers the path a place to put a pause). An explicit `<SIL>` in the
-    text is always honoured.
+  - Silence at punctuation is optional. Like ph66, a SIL is written at every pause mark by
+    default (`punctuation_sil=True`): without one a pause is swallowed by the phone next to
+    it. The aligner may skip any SIL at no cost, so this only offers the path a place to put a
+    pause. The p4mbfa models were trained on sequences with none inside a segment;
+    `punctuation_sil=False` reproduces that. An explicit `<SIL>` is always honoured.
   - No text normalisation. The G2P reads one word at a time and was trained on dictionary
     entries: digits, abbreviations and symbols are not expanded the way espeak-ng expands
     them. Spell them out in the transcript.
@@ -102,7 +102,7 @@ class StdPhonemizer:
     """
 
     def __init__(self, language, device="cpu", model_dir=None, cache_size=None,
-                 punctuation_sil=False, verbose=1):
+                 punctuation_sil=True, verbose=1):
         self.device = device
         self.model_dir = model_dir
         self.cache_size = cache_size

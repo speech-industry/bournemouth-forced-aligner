@@ -73,9 +73,10 @@ def _resolve_model_lang(preset, model, lang, phoneme_set=None):
                    '--phoneme-set=ph66). Overrides the language part of --preset.')
 @click.option('--g2p-device', default=None,
               help='Device for the std set\'s G2P model. Default: same as --device.')
-@click.option('--punctuation-sil/--no-punctuation-sil', default=False,
+@click.option('--punctuation-sil/--no-punctuation-sil', default=True,
               help='std set only: write a silence at pause punctuation, as ph66 always '
-                   'does. Off by default, matching how the p4mbfa models were trained.')
+                   'does, so a pause has somewhere to go. On by default; the aligner skips '
+                   'a silence the speaker did not make.')
 # ---- output options ----
 @click.option('--embeddings', type=click.Path(), default=None,
               help='Save per-phoneme embeddings to this .pt file.')

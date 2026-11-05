@@ -1,0 +1,4012 @@
+{
+"group": "cyrillic",
+"model": "mbfa-cyrillic",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Soft (palatalised) consonants are tokens of their own: tʲ is not t. Place their boundaries like those of the plain consonant; the soft colour belongs to the consonant. Croatian (`hbs`, Latin script) is aligned with this model too, and its accent marks (â, ǎ, ô …) are pitch accents: separate tokens, placed like the plain vowel.",
+"lang_names": {
+"be": "Belarusian",
+"bg": "Bulgarian",
+"hbs": "Croatian",
+"kk": "Kazakh",
+"mk": "Macedonian",
+"ru": "Russian",
+"sr": "Serbian",
+"uk": "Ukrainian"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”. Also used for j͡a, which this model has no token of its own for",
+"examples": [
+[
+"be",
+"можна",
+"m o ʐ n a"
+],
+[
+"mk",
+"на",
+"n a"
+],
+[
+"hbs",
+"na",
+"n a"
+]
+],
+"langs": [
+[
+"be",
+12.97
+],
+[
+"mk",
+12.94
+],
+[
+"hbs",
+7.24
+],
+[
+"bg",
+5.68
+],
+[
+"sr",
+4.54
+],
+[
+"ru",
+4.09
+],
+[
+"kk",
+0.42
+]
+],
+"also": [
+"j͡a"
+],
+"count": 20259
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"bg",
+"се",
+"s ɛ"
+],
+[
+"hbs",
+"se",
+"s ê"
+],
+[
+"sr",
+"se",
+"s ɛ"
+]
+],
+"langs": [
+[
+"bg",
+5.72
+],
+[
+"hbs",
+4.77
+],
+[
+"sr",
+4.65
+],
+[
+"mk",
+4.64
+],
+[
+"kk",
+3.86
+],
+[
+"ru",
+3.48
+],
+[
+"be",
+3.42
+],
+[
+"uk",
+2.75
+]
+],
+"also": [],
+"count": 13139
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"mk",
+"и",
+"i"
+],
+[
+"bg",
+"и",
+"i"
+],
+[
+"hbs",
+"i",
+"i"
+]
+],
+"langs": [
+[
+"mk",
+9.71
+],
+[
+"bg",
+9.49
+],
+[
+"hbs",
+7.58
+],
+[
+"uk",
+6.81
+],
+[
+"be",
+5.01
+],
+[
+"sr",
+3.28
+],
+[
+"ru",
+2.39
+],
+[
+"kk",
+0.02
+]
+],
+"also": [],
+"count": 17924
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"kk",
+"және",
+"ʒ æ n e"
+],
+[
+"uk",
+"були",
+"b u ɫ e"
+],
+[
+"hbs",
+"koje",
+"k ô j e"
+]
+],
+"langs": [
+[
+"kk",
+7.94
+],
+[
+"uk",
+7.72
+],
+[
+"hbs",
+5.38
+],
+[
+"ru",
+3.82
+],
+[
+"sr",
+2.21
+]
+],
+"also": [],
+"count": 9953
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"kk",
+"және",
+"ʒ æ n e"
+],
+[
+"bg",
+"на",
+"n a"
+],
+[
+"mk",
+"на",
+"n a"
+]
+],
+"langs": [
+[
+"kk",
+6.78
+],
+[
+"bg",
+6.73
+],
+[
+"mk",
+6.46
+],
+[
+"sr",
+5.86
+],
+[
+"hbs",
+5.85
+],
+[
+"be",
+5.73
+],
+[
+"uk",
+4.63
+],
+[
+"ru",
+4.24
+]
+],
+"also": [],
+"count": 18361
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"mk",
+"од",
+"ɔ t"
+],
+[
+"kk",
+"айтты",
+"ɑ j t t ə"
+],
+[
+"hbs",
+"što",
+"ʃ t ô"
+]
+],
+"langs": [
+[
+"mk",
+8.42
+],
+[
+"kk",
+5.78
+],
+[
+"hbs",
+5.09
+],
+[
+"sr",
+4.68
+],
+[
+"ru",
+4.4
+],
+[
+"uk",
+4.12
+],
+[
+"be",
+3.76
+],
+[
+"bg",
+3.44
+]
+],
+"also": [],
+"count": 15727
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"sr",
+"bilo",
+"b i l o"
+],
+[
+"hbs",
+"ili",
+"î l i"
+],
+[
+"bg",
+"или",
+"i l i"
+]
+],
+"langs": [
+[
+"sr",
+3.41
+],
+[
+"hbs",
+3.09
+],
+[
+"bg",
+1.91
+],
+[
+"mk",
+1.62
+],
+[
+"kk",
+0.91
+]
+],
+"also": [],
+"count": 4015
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"mk",
+"како",
+"k a k ɔ"
+],
+[
+"sr",
+"kako",
+"k a k o"
+],
+[
+"hbs",
+"kako",
+"k â k o"
+]
+],
+"langs": [
+[
+"mk",
+3.68
+],
+[
+"sr",
+3.58
+],
+[
+"hbs",
+3.55
+],
+[
+"be",
+3.24
+],
+[
+"bg",
+3.08
+],
+[
+"uk",
+3.02
+],
+[
+"kk",
+2.9
+],
+[
+"ru",
+2.58
+]
+],
+"also": [],
+"count": 10079
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"sr",
+"od",
+"o d"
+],
+[
+"bg",
+"от",
+"o t̪"
+],
+[
+"hbs",
+"kao",
+"k â o"
+]
+],
+"langs": [
+[
+"sr",
+9.47
+],
+[
+"bg",
+5.74
+],
+[
+"hbs",
+5.21
+],
+[
+"ru",
+3.41
+],
+[
+"kk",
+2.83
+],
+[
+"be",
+1.97
+],
+[
+"uk",
+0.41
+]
+],
+"also": [],
+"count": 10645
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"hbs",
+"prema",
+"p r ě m a"
+],
+[
+"sr",
+"temperature",
+"t ɛ m p ɛ r ɐ t ʊ r ɛ"
+],
+[
+"be",
+"сярод",
+"sʲ j a r ʌ d"
+]
+],
+"langs": [
+[
+"hbs",
+4.8
+],
+[
+"sr",
+4.78
+],
+[
+"be",
+4.31
+],
+[
+"uk",
+4.26
+],
+[
+"bg",
+4.1
+],
+[
+"ru",
+3.1
+],
+[
+"mk",
+3.07
+]
+],
+"also": [],
+"count": 11054
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"hbs",
+"može",
+"m ô ʒ e"
+],
+[
+"sr",
+"ima",
+"i m ɐ"
+],
+[
+"uk",
+"потім",
+"p o tʲ i m"
+]
+],
+"langs": [
+[
+"hbs",
+3.4
+],
+[
+"sr",
+3.21
+],
+[
+"uk",
+2.93
+],
+[
+"be",
+2.78
+],
+[
+"kk",
+2.63
+],
+[
+"mk",
+2.24
+],
+[
+"bg",
+2.14
+],
+[
+"ru",
+2.12
+]
+],
+"also": [],
+"count": 8330
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"kk",
+"деп",
+"d e p"
+],
+[
+"sr",
+"da",
+"d a"
+],
+[
+"be",
+"да",
+"d ɑ"
+]
+],
+"langs": [
+[
+"kk",
+4.76
+],
+[
+"sr",
+3.26
+],
+[
+"be",
+3.23
+],
+[
+"mk",
+2.89
+],
+[
+"hbs",
+2.8
+],
+[
+"uk",
+2.46
+],
+[
+"ru",
+1.5
+],
+[
+"bg",
+0.77
+]
+],
+"also": [],
+"count": 8468
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"be",
+"у",
+"u"
+],
+[
+"hbs",
+"u",
+"u"
+],
+[
+"sr",
+"u",
+"u"
+]
+],
+"langs": [
+[
+"be",
+3.26
+],
+[
+"hbs",
+2.99
+],
+[
+"sr",
+2.22
+],
+[
+"mk",
+2.18
+],
+[
+"uk",
+1.26
+],
+[
+"bg",
+1.16
+],
+[
+"kk",
+0.98
+],
+[
+"ru",
+0.82
+]
+],
+"also": [],
+"count": 5932
+},
+"ɪ": {
+"name": "near-close front unrounded vowel",
+"class": "vowel",
+"plain": "i as in “sit”",
+"examples": [
+[
+"ru",
+"или",
+"i lʲ ɪ"
+],
+[
+"sr",
+"ili",
+"i l ɪ"
+],
+[
+"kk",
+"бірінші",
+"b ɪ ɾ ɪ n ʃ ɪ"
+]
+],
+"langs": [
+[
+"ru",
+8.92
+],
+[
+"sr",
+6.46
+],
+[
+"kk",
+4.96
+],
+[
+"uk",
+2.01
+],
+[
+"be",
+1.13
+]
+],
+"also": [],
+"count": 8538
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”",
+"examples": [
+[
+"kk",
+"бар",
+"b ɑ ɾ"
+],
+[
+"mk",
+"поради",
+"p ɔ ɾ a d i"
+],
+[
+"bg",
+"поради",
+"p o̝ ɾ ɐ d̪ i"
+]
+],
+"langs": [
+[
+"kk",
+5.96
+],
+[
+"mk",
+1.11
+],
+[
+"bg",
+0.5
+],
+[
+"sr",
+0.04
+]
+],
+"also": [],
+"count": 3088
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"ru",
+"всего",
+"f sʲ ɪ v o"
+],
+[
+"mk",
+"всушност",
+"f s u ʃ n ɔ s t"
+],
+[
+"bg",
+"все",
+"f s ɛ"
+]
+],
+"langs": [
+[
+"ru",
+0.84
+],
+[
+"mk",
+0.69
+],
+[
+"bg",
+0.69
+],
+[
+"sr",
+0.35
+],
+[
+"hbs",
+0.29
+],
+[
+"uk",
+0.29
+],
+[
+"be",
+0.28
+],
+[
+"kk",
+0.25
+]
+],
+"also": [],
+"count": 1483
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”. Also used for j͡a, which this model has no token of its own for",
+"examples": [
+[
+"ru",
+"является",
+"j ɪ v lʲ æ j ɪ t͡s ə"
+],
+[
+"hbs",
+"je",
+"j ê"
+],
+[
+"kk",
+"дейін",
+"d e j ɪ n"
+]
+],
+"langs": [
+[
+"ru",
+4.21
+],
+[
+"hbs",
+3.84
+],
+[
+"kk",
+3.55
+],
+[
+"sr",
+3.3
+],
+[
+"uk",
+2.61
+],
+[
+"be",
+2.14
+],
+[
+"mk",
+2.04
+],
+[
+"bg",
+1.4
+]
+],
+"also": [
+"j͡a"
+],
+"count": 8883
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"kk",
+"оның",
+"o n ə ŋ"
+],
+[
+"ru",
+"это",
+"ɛ t ə"
+],
+[
+"bg",
+"са",
+"s ə"
+]
+],
+"langs": [
+[
+"kk",
+8.66
+],
+[
+"ru",
+7.45
+],
+[
+"bg",
+7.42
+],
+[
+"sr",
+0.12
+],
+[
+"uk",
+0.01
+]
+],
+"also": [],
+"count": 9662
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"kk",
+"бұл",
+"b ʊ ɫ"
+],
+[
+"uk",
+"або",
+"ɐ b ɔ"
+],
+[
+"mk",
+"биле",
+"b i l ɛ"
+]
+],
+"langs": [
+[
+"kk",
+2.29
+],
+[
+"uk",
+1.46
+],
+[
+"mk",
+1.44
+],
+[
+"hbs",
+1.42
+],
+[
+"sr",
+1.4
+],
+[
+"be",
+1.33
+],
+[
+"bg",
+1.28
+],
+[
+"ru",
+1.11
+]
+],
+"also": [],
+"count": 4613
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"sr",
+"populacija",
+"p o p ʊ l ɐ t͡s ɪ j ɐ"
+],
+[
+"mk",
+"по",
+"p ɔ"
+],
+[
+"hbs",
+"prema",
+"p r ě m a"
+]
+],
+"langs": [
+[
+"sr",
+3.14
+],
+[
+"mk",
+3.08
+],
+[
+"hbs",
+2.91
+],
+[
+"bg",
+2.9
+],
+[
+"uk",
+2.57
+],
+[
+"be",
+2.51
+],
+[
+"ru",
+2.41
+],
+[
+"kk",
+1.37
+]
+],
+"also": [],
+"count": 8193
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"mk",
+"се",
+"s ɛ"
+],
+[
+"bg",
+"се",
+"s ɛ"
+],
+[
+"sr",
+"se",
+"s ɛ"
+]
+],
+"langs": [
+[
+"mk",
+8.95
+],
+[
+"bg",
+8.45
+],
+[
+"sr",
+7.52
+],
+[
+"be",
+5.65
+],
+[
+"uk",
+1.86
+],
+[
+"ru",
+1.18
+],
+[
+"kk",
+0.02
+]
+],
+"also": [],
+"count": 13601
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"be",
+"ў",
+"w ɛ"
+],
+[
+"kk",
+"аулау",
+"ɑ w ɫ ɑ w"
+],
+[
+"uk",
+"вони",
+"w ɔ n ɪ"
+]
+],
+"langs": [
+[
+"be",
+2.0
+],
+[
+"kk",
+1.8
+],
+[
+"uk",
+0.78
+],
+[
+"hbs",
+0.02
+]
+],
+"also": [],
+"count": 1966
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”. Also used for ɑʲ, which this model has no token of its own for",
+"examples": [
+[
+"kk",
+"арасындағы",
+"ɑ ɾ ɑ s ə n d ɑ ʀ ə"
+],
+[
+"be",
+"на",
+"n ɑ"
+],
+[
+"uk",
+"на",
+"n ɑ"
+]
+],
+"langs": [
+[
+"kk",
+12.64
+],
+[
+"be",
+5.33
+],
+[
+"uk",
+4.96
+],
+[
+"sr",
+1.05
+]
+],
+"also": [
+"ɑʲ"
+],
+"count": 9604
+},
+"v": {
+"name": "voiced labiodental fricative",
+"class": "fricative",
+"plain": "v",
+"examples": [
+[
+"mk",
+"во",
+"v ɔ"
+],
+[
+"bg",
+"в",
+"v"
+],
+[
+"sr",
+"verovatno",
+"v ɛ r o v ɐ t n o"
+]
+],
+"langs": [
+[
+"mk",
+4.06
+],
+[
+"bg",
+3.69
+],
+[
+"sr",
+3.66
+],
+[
+"ru",
+3.32
+],
+[
+"be",
+2.44
+],
+[
+"kk",
+0.26
+]
+],
+"also": [],
+"count": 7028
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”",
+"examples": [
+[
+"mk",
+"го",
+"ɡ ɔ"
+],
+[
+"hbs",
+"mogu",
+"m ǒ ɡ u"
+],
+[
+"kk",
+"негізгі",
+"n e ɡ ɪ z ɡ ɪ"
+]
+],
+"langs": [
+[
+"mk",
+1.42
+],
+[
+"hbs",
+1.38
+],
+[
+"kk",
+1.32
+],
+[
+"sr",
+1.3
+],
+[
+"bg",
+1.17
+],
+[
+"ru",
+0.86
+],
+[
+"uk",
+0.03
+]
+],
+"also": [],
+"count": 2892
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"be",
+"з",
+"z ɛ"
+],
+[
+"hbs",
+"za",
+"z a"
+],
+[
+"uk",
+"з",
+"z"
+]
+],
+"langs": [
+[
+"be",
+2.16
+],
+[
+"hbs",
+2.09
+],
+[
+"uk",
+1.97
+],
+[
+"sr",
+1.88
+],
+[
+"bg",
+1.87
+],
+[
+"mk",
+1.81
+],
+[
+"ru",
+1.25
+],
+[
+"kk",
+1.19
+]
+],
+"also": [],
+"count": 5614
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"kk",
+"ньют",
+"n ʔ j u t"
+]
+],
+"langs": [
+[
+"kk",
+0.13
+]
+],
+"also": [],
+"count": 51
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"mk",
+"во",
+"v ɔ"
+],
+[
+"uk",
+"що",
+"ʃ t͡ʃ ɔ"
+],
+[
+"bg",
+"много",
+"m n ɔ ɡ o"
+]
+],
+"langs": [
+[
+"mk",
+10.65
+],
+[
+"uk",
+8.48
+],
+[
+"bg",
+1.56
+],
+[
+"be",
+0.41
+]
+],
+"also": [],
+"count": 8547
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"kk",
+"ең",
+"e ŋ"
+],
+[
+"bg",
+"inc",
+"i ŋ k"
+],
+[
+"sr",
+"jedinke",
+"j e d ɪ ŋ k ɛ"
+]
+],
+"langs": [
+[
+"kk",
+1.3
+],
+[
+"bg",
+0.1
+],
+[
+"sr",
+0.1
+],
+[
+"mk",
+0.1
+]
+],
+"also": [],
+"count": 633
+},
+"ʊ": {
+"name": "near-close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “book”",
+"examples": [
+[
+"uk",
+"стверджують",
+"s t ʋ ɛ r d͡ʒ ʊ j ʊ tʲ"
+],
+[
+"sr",
+"nisu",
+"n i s ʊ"
+],
+[
+"ru",
+"поскольку",
+"p ɐ s k o k ʊ"
+]
+],
+"langs": [
+[
+"uk",
+3.11
+],
+[
+"sr",
+2.43
+],
+[
+"ru",
+1.82
+],
+[
+"kk",
+0.62
+]
+],
+"also": [],
+"count": 2710
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”",
+"examples": [
+[
+"bg",
+"че",
+"t ʃ ɛ"
+],
+[
+"kk",
+"үшін",
+"u ʃ ɪ n"
+],
+[
+"uk",
+"що",
+"ʃ t͡ʃ ɔ"
+]
+],
+"langs": [
+[
+"bg",
+2.15
+],
+[
+"kk",
+1.34
+],
+[
+"uk",
+1.19
+],
+[
+"mk",
+1.11
+],
+[
+"sr",
+0.87
+],
+[
+"hbs",
+0.8
+]
+],
+"also": [],
+"count": 2913
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"sr",
+"којих",
+"k o j ɪ h"
+],
+[
+"bg",
+"nhk",
+"ɛ n ɛ h k ɛ"
+],
+[
+"uk",
+"nhk",
+"ɛ n h ɛ k"
+]
+],
+"langs": [
+[
+"sr",
+0.45
+]
+],
+"also": [],
+"count": 133
+},
+"ʁ": {
+"name": "voiced uvular fricative",
+"class": "fricative",
+"plain": "the r of French and German. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɐ": {
+"name": "near-open central vowel",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings)",
+"examples": [
+[
+"sr",
+"populacija",
+"p o p ʊ l ɐ t͡s ɪ j ɐ"
+],
+[
+"uk",
+"також",
+"t ɐ k ɔ ʒ"
+],
+[
+"ru",
+"к",
+"kʲ ɪ ɫ ɐ mʲ e t r"
+]
+],
+"langs": [
+[
+"sr",
+5.87
+],
+[
+"uk",
+5.8
+],
+[
+"ru",
+5.23
+],
+[
+"bg",
+1.22
+]
+],
+"also": [],
+"count": 6232
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"be",
+"іх",
+"i x"
+],
+[
+"uk",
+"яких",
+"j ɐ k ɪ x"
+],
+[
+"ru",
+"их",
+"i x"
+]
+],
+"langs": [
+[
+"be",
+1.39
+],
+[
+"uk",
+1.3
+],
+[
+"ru",
+1.12
+],
+[
+"hbs",
+0.77
+],
+[
+"bg",
+0.55
+],
+[
+"kk",
+0.27
+],
+[
+"mk",
+0.18
+],
+[
+"sr",
+0.17
+]
+],
+"also": [],
+"count": 2321
+},
+"æ": {
+"name": "near-open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in “cat”",
+"examples": [
+[
+"kk",
+"және",
+"ʒ æ n e"
+],
+[
+"ru",
+"является",
+"j ɪ v lʲ æ j ɪ t͡s ə"
+],
+[
+"sr",
+"cvetanja",
+"t͡s v ɛ t æ ɲ ɐ"
+]
+],
+"langs": [
+[
+"kk",
+0.82
+],
+[
+"ru",
+0.3
+],
+[
+"sr",
+0.18
+]
+],
+"also": [],
+"count": 493
+},
+"ɫ": {
+"name": "velarised alveolar lateral",
+"class": "lateral",
+"plain": "the dark l of “full”",
+"examples": [
+[
+"kk",
+"бұл",
+"b ʊ ɫ"
+],
+[
+"uk",
+"були",
+"b u ɫ e"
+],
+[
+"mk",
+"супервелеслаломот",
+"s u p ɛ r v ɛ l ɛ s ɫ a ɫ ɔ m ɔ t"
+]
+],
+"langs": [
+[
+"kk",
+4.2
+],
+[
+"uk",
+2.0
+],
+[
+"mk",
+1.8
+],
+[
+"ru",
+1.58
+],
+[
+"bg",
+1.23
+]
+],
+"also": [],
+"count": 4316
+},
+"q": {
+"name": "voiceless uvular stop",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”)",
+"examples": [
+[
+"kk",
+"бірақ",
+"b ɪ ɾ ɑ q"
+]
+],
+"langs": [
+[
+"kk",
+2.77
+]
+],
+"also": [],
+"count": 1098
+},
+"ʒ": {
+"name": "voiced postalveolar fricative",
+"class": "fricative",
+"plain": "s as in “measure”",
+"examples": [
+[
+"kk",
+"және",
+"ʒ æ n e"
+],
+[
+"uk",
+"також",
+"t ɐ k ɔ ʒ"
+],
+[
+"bg",
+"може",
+"m ɔ ʒ ɛ"
+]
+],
+"langs": [
+[
+"kk",
+1.8
+],
+[
+"uk",
+0.74
+],
+[
+"bg",
+0.73
+],
+[
+"sr",
+0.67
+],
+[
+"mk",
+0.63
+],
+[
+"hbs",
+0.6
+]
+],
+"also": [],
+"count": 1982
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”). Also used for ʈ͡ʂ, which this model has no token of its own for",
+"examples": [
+[
+"be",
+"што",
+"ʂ t o"
+],
+[
+"ru",
+"что",
+"ʂ t o"
+]
+],
+"langs": [
+[
+"be",
+2.24
+],
+[
+"ru",
+0.89
+]
+],
+"also": [
+"ʈ͡ʂ"
+],
+"count": 1438
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"be",
+"таго",
+"t ɑ ɣ ʌ"
+]
+],
+"langs": [
+[
+"be",
+1.72
+]
+],
+"also": [],
+"count": 831
+},
+"y": {
+"name": "close front rounded vowel",
+"class": "vowel",
+"plain": "ee said with rounded lips (French “tu”, German “über”)",
+"examples": [
+[
+"hbs",
+"shyamu",
+"s x y ǎ m u"
+]
+],
+"langs": [
+[
+"hbs",
+0.02
+]
+],
+"also": [],
+"count": 7
+},
+"ɨ": {
+"name": "close central unrounded vowel",
+"class": "vowel",
+"plain": "between ee and oo, lips spread (Polish “y”, Welsh “u”)",
+"examples": [
+[
+"be",
+"яны",
+"j a n ɨ"
+],
+[
+"ru",
+"было",
+"b ɨ ɫ ə"
+]
+],
+"langs": [
+[
+"be",
+4.76
+],
+[
+"ru",
+3.26
+]
+],
+"also": [],
+"count": 3596
+},
+"ħ": {
+"name": "voiceless pharyngeal fricative",
+"class": "fricative",
+"plain": "a strong h squeezed in the throat (Arabic ح). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"ru",
+"еще",
+"j ɪ ɕ e"
+],
+[
+"hbs",
+"većinska",
+"ʋ ě t ɕ i n s k a"
+]
+],
+"langs": [
+[
+"ru",
+0.48
+]
+],
+"also": [],
+"count": 191
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"hbs",
+"životinje",
+"ʒ i ʋ ǒ t i ɲ e"
+],
+[
+"sr",
+"životinje",
+"ʒ i v o t ɪ ɲ e"
+],
+[
+"mk",
+"учење",
+"u t͡ʃ ɛ ɲ ɛ"
+]
+],
+"langs": [
+[
+"hbs",
+0.8
+],
+[
+"sr",
+0.74
+],
+[
+"mk",
+0.37
+]
+],
+"also": [],
+"count": 668
+},
+"ɵ": {
+"name": "close-mid central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between e and o (Swedish short u)",
+"examples": [
+[
+"kk",
+"көп",
+"k ɵ p"
+],
+[
+"ru",
+"всё",
+"f sʲ ɵ"
+]
+],
+"langs": [
+[
+"kk",
+0.88
+],
+[
+"ru",
+0.2
+]
+],
+"also": [],
+"count": 430
+},
+"t͡s": {
+"name": "voiceless alveolar affricate",
+"class": "affricate",
+"plain": "ts as in “cats”. Also used for t̻͡s, which this model has no token of its own for",
+"examples": [
+[
+"be",
+"з'яўляецца",
+"zʲ ɪ w ɭ ɪ ɛ t͡s t͡s a"
+],
+[
+"ru",
+"является",
+"j ɪ v lʲ æ j ɪ t͡s ə"
+],
+[
+"hbs",
+"znanstvenici",
+"z n a n s t ʋ ě n i t͡s i"
+]
+],
+"langs": [
+[
+"be",
+2.72
+],
+[
+"ru",
+1.11
+],
+[
+"hbs",
+1.1
+],
+[
+"sr",
+0.94
+],
+[
+"mk",
+0.84
+],
+[
+"uk",
+0.42
+],
+[
+"bg",
+0.38
+]
+],
+"also": [
+"t̻͡s"
+],
+"count": 3109
+},
+"œ": {
+"name": "open-mid front rounded vowel",
+"class": "vowel",
+"plain": "e as in “bed” said with rounded lips (French “neuf”, German “können”)",
+"examples": [
+[
+"ru",
+"number",
+"n œ m b ə r"
+]
+],
+"langs": [],
+"also": [],
+"count": 3
+},
+"ʉ": {
+"name": "close central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between ee and oo (Norwegian and Swedish “du”)",
+"examples": [
+[
+"ru",
+"окружающей",
+"ɐ k r ʊ ʐ a j ʉ ɕ ɪ j"
+],
+[
+"uk",
+"примушують",
+"p r e m u ʃ ʊ j ʉ tʲ"
+]
+],
+"langs": [
+[
+"ru",
+0.23
+],
+[
+"uk",
+0.01
+]
+],
+"also": [],
+"count": 96
+},
+"tʲ": {
+"name": "voiceless alveolar stop, palatalised",
+"class": "stop",
+"plain": "t as in “ten”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"есть",
+"j e sʲ tʲ"
+],
+[
+"uk",
+"потім",
+"p o tʲ i m"
+],
+[
+"bg",
+"тя",
+"tʲ a"
+]
+],
+"langs": [
+[
+"ru",
+1.81
+],
+[
+"uk",
+1.06
+],
+[
+"bg",
+0.09
+]
+],
+"also": [],
+"count": 1121
+},
+"lʲ": {
+"name": "alveolar lateral approximant, palatalised",
+"class": "lateral",
+"plain": "l as in “leaf”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"для",
+"d lʲ a"
+],
+[
+"uk",
+"для",
+"dʲ lʲ ɑ"
+],
+[
+"bg",
+"определят",
+"o̝ p r ɛ d̪ ɛ lʲ ɤ t̪"
+]
+],
+"langs": [
+[
+"ru",
+2.64
+],
+[
+"uk",
+1.57
+],
+[
+"bg",
+0.33
+]
+],
+"also": [],
+"count": 1731
+},
+"sʲ": {
+"name": "voiceless alveolar fricative, palatalised",
+"class": "fricative",
+"plain": "s; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"осіб",
+"o sʲ i b"
+],
+[
+"ru",
+"всего",
+"f sʲ ɪ v o"
+],
+[
+"be",
+"сярод",
+"sʲ j a r ʌ d"
+]
+],
+"langs": [
+[
+"uk",
+1.32
+],
+[
+"ru",
+1.32
+],
+[
+"be",
+0.69
+],
+[
+"bg",
+0.04
+]
+],
+"also": [],
+"count": 1325
+},
+"nʲ": {
+"name": "alveolar nasal, palatalised",
+"class": "nasal",
+"plain": "n; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"не",
+"nʲ e"
+],
+[
+"uk",
+"ніж",
+"nʲ i ʒ"
+],
+[
+"be",
+"не",
+"nʲ ɛ"
+]
+],
+"langs": [
+[
+"ru",
+2.29
+],
+[
+"uk",
+1.86
+],
+[
+"be",
+1.15
+],
+[
+"bg",
+0.11
+]
+],
+"also": [],
+"count": 2154
+},
+"ʎ": {
+"name": "palatal lateral approximant",
+"class": "lateral",
+"plain": "an l made with the tongue body, close to “ly” (Italian “gli”)",
+"examples": [
+[
+"hbs",
+"ljudi",
+"ʎ û d i"
+],
+[
+"sr",
+"ljudi",
+"ʎ u d ɪ"
+]
+],
+"langs": [
+[
+"hbs",
+0.76
+],
+[
+"sr",
+0.52
+]
+],
+"also": [],
+"count": 426
+},
+"ɒ": {
+"name": "open back rounded vowel",
+"class": "vowel",
+"plain": "a rounded “ah” (British “lot”, Hungarian “a”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”). Also used for ʈ͡ʂ, which this model has no token of its own for",
+"examples": [
+[
+"be",
+"час",
+"ʈ ʂ ɑ s"
+]
+],
+"langs": [
+[
+"be",
+1.31
+]
+],
+"also": [
+"ʈ͡ʂ"
+],
+"count": 633
+},
+"rʲ": {
+"name": "alveolar trill, palatalised",
+"class": "rhotic",
+"plain": "a rolled r; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"скорее",
+"s k ɐ rʲ e j e"
+],
+[
+"uk",
+"товарів",
+"t ɔ ʋ ɑ rʲ i u̯"
+],
+[
+"bg",
+"трябва",
+"t̪ rʲ a b v ə"
+]
+],
+"langs": [
+[
+"ru",
+1.52
+],
+[
+"uk",
+0.5
+],
+[
+"bg",
+0.09
+],
+[
+"be",
+0.04
+]
+],
+"also": [],
+"count": 830
+},
+"t͡ʃ": {
+"name": "voiceless postalveolar affricate",
+"class": "affricate",
+"plain": "ch as in “church”",
+"examples": [
+[
+"uk",
+"що",
+"ʃ t͡ʃ ɔ"
+],
+[
+"hbs",
+"često",
+"t͡ʃ ê s t o"
+],
+[
+"mk",
+"често",
+"t͡ʃ ɛ s t ɔ"
+]
+],
+"langs": [
+[
+"uk",
+1.63
+],
+[
+"hbs",
+1.04
+],
+[
+"mk",
+0.96
+],
+[
+"sr",
+0.83
+],
+[
+"kk",
+0.03
+]
+],
+"also": [],
+"count": 1621
+},
+"t͡ɕ": {
+"name": "voiceless alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”)",
+"examples": [
+[
+"ru",
+"часто",
+"t͡ɕ a s t ə"
+],
+[
+"sr",
+"će",
+"t͡ɕ ɛ"
+],
+[
+"hbs",
+"većina",
+"ʋ e t͡ɕ ǐ n a"
+]
+],
+"langs": [
+[
+"ru",
+1.04
+],
+[
+"sr",
+0.56
+],
+[
+"hbs",
+0.55
+]
+],
+"also": [],
+"count": 771
+},
+"t̪": {
+"name": "voiceless alveolar stop, dental",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"bg",
+"от",
+"o t̪"
+]
+],
+"langs": [
+[
+"bg",
+6.69
+]
+],
+"also": [],
+"count": 2913
+},
+"c": {
+"name": "voiceless palatal stop",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”)",
+"examples": [
+[
+"mk",
+"ќе",
+"c ɛ"
+]
+],
+"langs": [
+[
+"mk",
+0.27
+]
+],
+"also": [],
+"count": 119
+},
+"ɭ": {
+"name": "retroflex lateral approximant",
+"class": "lateral",
+"plain": "l with the tongue tip curled back. Also used for ɭʲ, which this model has no token of its own for",
+"examples": [
+[
+"be",
+"для",
+"d ɭ j a"
+]
+],
+"langs": [
+[
+"be",
+3.71
+]
+],
+"also": [
+"ɭʲ"
+],
+"count": 1796
+},
+"mʲ": {
+"name": "bilabial nasal, palatalised",
+"class": "nasal",
+"plain": "m; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"к",
+"kʲ ɪ ɫ ɐ mʲ e t r"
+],
+[
+"be",
+"месца",
+"mʲ ɛ s t͡s a"
+],
+[
+"uk",
+"між",
+"mʲ i ʒ"
+]
+],
+"langs": [
+[
+"ru",
+1.1
+],
+[
+"be",
+0.61
+],
+[
+"uk",
+0.29
+],
+[
+"bg",
+0.08
+]
+],
+"also": [],
+"count": 870
+},
+"ʐ": {
+"name": "voiced retroflex fricative",
+"class": "fricative",
+"plain": "a hard zh (Polish “ż”, “rz”)",
+"examples": [
+[
+"ru",
+"также",
+"t a ɡ ʐ ɨ"
+],
+[
+"be",
+"можна",
+"m o ʐ n a"
+]
+],
+"langs": [
+[
+"ru",
+0.96
+],
+[
+"be",
+0.77
+]
+],
+"also": [],
+"count": 751
+},
+"vʲ": {
+"name": "voiced labiodental fricative, palatalised",
+"class": "fricative",
+"plain": "v; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"человек",
+"t͡ɕ ɪ ɫ ɐ vʲ e k"
+],
+[
+"be",
+"жывёлы",
+"ʐ ɨ vʲ ɔ ɭ ɨ"
+],
+[
+"bg",
+"вятър",
+"vʲ a t ə r"
+]
+],
+"langs": [
+[
+"ru",
+0.8
+],
+[
+"be",
+0.68
+],
+[
+"bg",
+0.04
+]
+],
+"also": [],
+"count": 664
+},
+"d͡ʒ": {
+"name": "voiced postalveolar affricate",
+"class": "affricate",
+"plain": "j as in “judge”",
+"examples": [
+[
+"uk",
+"стверджують",
+"s t ʋ ɛ r d͡ʒ ʊ j ʊ tʲ"
+],
+[
+"mk",
+"џорџ",
+"d͡ʒ ɔ r d͡ʒ"
+],
+[
+"sr",
+"džordž",
+"d͡ʒ o r d͡ʒ"
+]
+],
+"langs": [
+[
+"uk",
+0.13
+],
+[
+"mk",
+0.06
+],
+[
+"sr",
+0.05
+],
+[
+"hbs",
+0.02
+],
+[
+"kk",
+0.01
+]
+],
+"also": [],
+"count": 94
+},
+"ʀ": {
+"name": "uvular trill",
+"class": "rhotic",
+"plain": "an r rolled at the uvula (Luxembourgish r)",
+"examples": [
+[
+"kk",
+"болған",
+"b o ɫ ʀ ɑ n"
+]
+],
+"langs": [
+[
+"kk",
+1.75
+]
+],
+"also": [],
+"count": 694
+},
+"dʲ": {
+"name": "voiced alveolar stop, palatalised",
+"class": "stop",
+"plain": "d as in “dog”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"среди",
+"s rʲ ɪ dʲ i"
+],
+[
+"uk",
+"для",
+"dʲ lʲ ɑ"
+],
+[
+"bg",
+"седящи",
+"s ɛ dʲ a ʃ t̪ i"
+]
+],
+"langs": [
+[
+"ru",
+0.9
+],
+[
+"uk",
+0.57
+],
+[
+"bg",
+0.05
+]
+],
+"also": [],
+"count": 576
+},
+"ɤ": {
+"name": "close-mid back unrounded vowel",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”)",
+"examples": [
+[
+"bg",
+"към",
+"k ɤ m"
+]
+],
+"langs": [
+[
+"bg",
+0.83
+]
+],
+"also": [],
+"count": 363
+},
+"ʑ": {
+"name": "voiced alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft zh (Polish “ź”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"pʲ": {
+"name": "voiceless bilabial stop, palatalised",
+"class": "stop",
+"plain": "p as in “pen”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"оперение",
+"ɐ pʲ ɪ rʲ e nʲ ɪ j e"
+],
+[
+"be",
+"першыя",
+"pʲ ɛ r ʂ ɨ a"
+],
+[
+"uk",
+"під",
+"pʲ i d"
+]
+],
+"langs": [
+[
+"ru",
+0.36
+],
+[
+"be",
+0.31
+],
+[
+"uk",
+0.27
+]
+],
+"also": [],
+"count": 388
+},
+"ʌ": {
+"name": "open-mid back unrounded vowel",
+"class": "vowel",
+"plain": "u as in “cup”",
+"examples": [
+[
+"be",
+"таго",
+"t ɑ ɣ ʌ"
+]
+],
+"langs": [
+[
+"be",
+1.58
+]
+],
+"also": [],
+"count": 766
+},
+"ʋ": {
+"name": "labiodental approximant",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v)",
+"examples": [
+[
+"hbs",
+"sve",
+"s ʋ ê"
+],
+[
+"uk",
+"в",
+"ʋ"
+]
+],
+"langs": [
+[
+"hbs",
+3.53
+],
+[
+"uk",
+1.94
+]
+],
+"also": [],
+"count": 1991
+},
+"kʲ": {
+"name": "voiceless velar stop, palatalised",
+"class": "stop",
+"plain": "k as in “key”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"к",
+"kʲ ɪ ɫ ɐ mʲ e t r"
+],
+[
+"uk",
+"років",
+"r ɔ kʲ i u̯"
+],
+[
+"bg",
+"малки",
+"m a ɫ kʲ i"
+]
+],
+"langs": [
+[
+"ru",
+0.5
+],
+[
+"uk",
+0.36
+],
+[
+"bg",
+0.34
+],
+[
+"be",
+0.03
+]
+],
+"also": [],
+"count": 487
+},
+"d̪": {
+"name": "voiced alveolar stop, dental",
+"class": "stop",
+"plain": "d as in “dog”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"bg",
+"да",
+"d̪ a"
+]
+],
+"langs": [
+[
+"bg",
+2.03
+]
+],
+"also": [],
+"count": 883
+},
+"d͡ʑ": {
+"name": "voiced alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft j (Polish “dź”)",
+"examples": [
+[
+"sr",
+"takođe",
+"t a k o d͡ʑ ɛ"
+],
+[
+"hbs",
+"također",
+"t â k o d͡ʑ e r"
+]
+],
+"langs": [
+[
+"sr",
+0.24
+],
+[
+"hbs",
+0.18
+]
+],
+"also": [],
+"count": 133
+},
+"bʲ": {
+"name": "voiced bilabial stop, palatalised",
+"class": "stop",
+"plain": "b as in “bed”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"більш",
+"bʲ i lʲ ʃ"
+],
+[
+"ru",
+"себя",
+"sʲ ɪ bʲ a"
+],
+[
+"be",
+"сябе",
+"sʲ j a bʲ ɛ"
+]
+],
+"langs": [
+[
+"uk",
+0.3
+],
+[
+"ru",
+0.29
+],
+[
+"be",
+0.12
+],
+[
+"bg",
+0.03
+]
+],
+"also": [],
+"count": 294
+},
+"ɟ": {
+"name": "voiced palatal stop",
+"class": "stop",
+"plain": "a g made against the hard palate, close to “dy” (Hungarian “gy”, Czech “ď”)",
+"examples": [
+[
+"mk",
+"луѓе",
+"ɫ u ɟ ɛ"
+]
+],
+"langs": [
+[
+"mk",
+0.12
+]
+],
+"also": [],
+"count": 53
+},
+"d͡z": {
+"name": "voiced alveolar affricate",
+"class": "affricate",
+"plain": "ds as in “beds”",
+"examples": [
+[
+"uk",
+"представників",
+"p r e d͡z s t ɐ u̯ n e kʲ i u̯"
+],
+[
+"mk",
+"ѕвонче",
+"d͡z v ɔ n t͡ʃ ɛ"
+],
+[
+"ru",
+"буффало-питсбург",
+"b ʊ f a ɫ ɐ pʲ i d͡z b ʊ r k"
+]
+],
+"langs": [
+[
+"uk",
+0.12
+],
+[
+"mk",
+0.02
+]
+],
+"also": [],
+"count": 55
+},
+"ɦ": {
+"name": "voiced glottal fricative",
+"class": "fricative",
+"plain": "a breathy, voiced h (Dutch and Czech h). Also used for ɦʲ, which this model has no token of its own for",
+"examples": [
+[
+"uk",
+"його",
+"j ɔ ɦ ɔ"
+],
+[
+"ru",
+"nhk",
+"ɛ n ɦ a ɡ r ə"
+]
+],
+"langs": [
+[
+"uk",
+1.35
+]
+],
+"also": [
+"ɦʲ"
+],
+"count": 469
+},
+"i̯": {
+"name": "close front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "ee as in “see”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"uk",
+"й",
+"i̯"
+],
+[
+"bg",
+"дейвид",
+"d ɛ i̯ v i t"
+]
+],
+"langs": [
+[
+"uk",
+0.88
+],
+[
+"bg",
+0.01
+]
+],
+"also": [],
+"count": 308
+},
+"zʲ": {
+"name": "voiced alveolar fricative, palatalised",
+"class": "fricative",
+"plain": "z; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"be",
+"з'яўляецца",
+"zʲ ɪ w ɭ ɪ ɛ t͡s t͡s a"
+],
+[
+"ru",
+"земле",
+"zʲ ɪ m lʲ e"
+],
+[
+"uk",
+"близько",
+"b ɫ ɪ zʲ k ɔ"
+]
+],
+"langs": [
+[
+"be",
+0.52
+],
+[
+"ru",
+0.25
+],
+[
+"uk",
+0.23
+],
+[
+"bg",
+0.01
+]
+],
+"also": [],
+"count": 435
+},
+"o̝": {
+"name": "close-mid back rounded vowel, raised",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"bg",
+"които",
+"k o i t̪ o̝"
+]
+],
+"langs": [
+[
+"bg",
+1.8
+]
+],
+"also": [],
+"count": 783
+},
+"ɡʲ": {
+"name": "voiced velar stop, palatalised",
+"class": "stop",
+"plain": "g as in “go”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"многих",
+"m n o ɡʲ ɪ x"
+],
+[
+"bg",
+"ги",
+"ɡʲ i"
+]
+],
+"langs": [
+[
+"ru",
+0.25
+],
+[
+"bg",
+0.1
+]
+],
+"also": [],
+"count": 140
+},
+"ǎ": {
+"name": "open front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"iako",
+"i ǎ k o"
+]
+],
+"langs": [
+[
+"hbs",
+1.86
+]
+],
+"also": [],
+"count": 696
+},
+"t͡ʂ": {
+"name": "voiceless retroflex affricate",
+"class": "affricate",
+"plain": "a hard ch (Polish “cz”)",
+"examples": [
+[
+"ru",
+"джордж",
+"d͡ʐ ʐ o r t͡ʂ ʂ"
+]
+],
+"langs": [
+[
+"ru",
+0.04
+]
+],
+"also": [],
+"count": 16
+},
+"u̯": {
+"name": "close back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "oo as in “food”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"uk",
+"представників",
+"p r e d͡z s t ɐ u̯ n e kʲ i u̯"
+]
+],
+"langs": [
+[
+"uk",
+1.36
+]
+],
+"also": [],
+"count": 469
+},
+"fʲ": {
+"name": "voiceless labiodental fricative, palatalised",
+"class": "fricative",
+"plain": "f; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"ru",
+"финишировал",
+"fʲ ɪ nʲ ɪ ʂ ɨ r ə v ə ɫ"
+],
+[
+"uk",
+"філіппін",
+"fʲ i lʲ i pʲ i n"
+],
+[
+"be",
+"атмасфера",
+"a t m a s fʲ ɛ r a"
+]
+],
+"langs": [
+[
+"ru",
+0.14
+],
+[
+"uk",
+0.1
+],
+[
+"be",
+0.05
+]
+],
+"also": [],
+"count": 121
+},
+"ǒ": {
+"name": "close-mid back rounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"koji",
+"k ǒ j i"
+]
+],
+"langs": [
+[
+"hbs",
+2.03
+]
+],
+"also": [],
+"count": 759
+},
+"ě": {
+"name": "close-mid front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"tijekom",
+"t j ě k o m"
+]
+],
+"langs": [
+[
+"hbs",
+1.56
+]
+],
+"also": [],
+"count": 585
+},
+"ǐ": {
+"name": "close front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"većina",
+"ʋ e t͡ɕ ǐ n a"
+]
+],
+"langs": [
+[
+"hbs",
+1.27
+]
+],
+"also": [],
+"count": 475
+},
+"χ": {
+"name": "voiceless uvular fricative",
+"class": "fricative",
+"plain": "a rougher ch made at the uvula (Welsh “ch”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"î": {
+"name": "close front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"ili",
+"î l i"
+]
+],
+"langs": [
+[
+"hbs",
+1.28
+]
+],
+"also": [],
+"count": 477
+},
+"ê": {
+"name": "close-mid front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"je",
+"j ê"
+]
+],
+"langs": [
+[
+"hbs",
+2.53
+]
+],
+"also": [],
+"count": 947
+},
+"ʃʲ": {
+"name": "voiceless postalveolar fricative, palatalised",
+"class": "fricative",
+"plain": "sh as in “ship”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"більшість",
+"bʲ i lʲ ʃʲ i sʲ tʲ"
+]
+],
+"langs": [
+[
+"uk",
+0.1
+]
+],
+"also": [],
+"count": 33
+},
+"â": {
+"name": "open front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"da",
+"d â"
+]
+],
+"langs": [
+[
+"hbs",
+1.96
+]
+],
+"also": [],
+"count": 731
+},
+"tʼ": {
+"name": "voiceless alveolar stop, ejective",
+"class": "stop",
+"plain": "t as in “ten”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"r̩": {
+"name": "alveolar trill, syllabic",
+"class": "rhotic",
+"plain": "a rolled r; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"mk",
+"заврши",
+"z a v r̩ ʃ i"
+]
+],
+"langs": [
+[
+"mk",
+0.42
+]
+],
+"also": [],
+"count": 185
+},
+"xʲ": {
+"name": "voiceless velar fricative, palatalised",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"арахіс",
+"ɐ r ɑ xʲ i s"
+],
+[
+"ru",
+"сухим",
+"s u xʲ ɪ m"
+]
+],
+"langs": [
+[
+"uk",
+0.06
+],
+[
+"ru",
+0.03
+]
+],
+"also": [],
+"count": 32
+},
+"ǔ": {
+"name": "close back rounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "oo as in “food”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"međutim",
+"m e d͡ʑ ǔ t i m"
+]
+],
+"langs": [
+[
+"hbs",
+0.63
+]
+],
+"also": [],
+"count": 235
+},
+"ô": {
+"name": "close-mid back rounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"od",
+"ô d"
+]
+],
+"langs": [
+[
+"hbs",
+1.78
+]
+],
+"also": [],
+"count": 664
+},
+"û": {
+"name": "close back rounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "oo as in “food”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"su",
+"s û"
+]
+],
+"langs": [
+[
+"hbs",
+0.98
+]
+],
+"also": [],
+"count": 367
+},
+"uʲ": {
+"name": "close back rounded vowel, palatalised",
+"class": "vowel",
+"plain": "oo as in “food”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"be",
+"дзякуючы",
+"d zʲ ɪ k uʲ u ʈ ʂ ɨ"
+]
+],
+"langs": [
+[
+"be",
+0.2
+]
+],
+"also": [],
+"count": 95
+},
+"ɬ": {
+"name": "voiceless alveolar lateral fricative",
+"class": "fricative",
+"plain": "the Welsh “ll”: an l blown without voice. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʋʲ": {
+"name": "labiodental approximant, palatalised",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v); palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"він",
+"ʋʲ i n"
+]
+],
+"langs": [
+[
+"uk",
+0.88
+]
+],
+"also": [],
+"count": 305
+},
+"pʼ": {
+"name": "voiceless bilabial stop, ejective",
+"class": "stop",
+"plain": "p as in “pen”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡sʲ": {
+"name": "voiceless alveolar affricate, palatalised",
+"class": "affricate",
+"plain": "ts as in “cats”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants). Also used for t̻͡sʲ, which this model has no token of its own for",
+"examples": [
+[
+"uk",
+"році",
+"r ɔ t͡sʲ i"
+],
+[
+"be",
+"цягам",
+"t͡sʲ j a ɣ a m"
+],
+[
+"bg",
+"цяло",
+"t͡sʲ a ɫ o"
+]
+],
+"langs": [
+[
+"uk",
+0.73
+],
+[
+"be",
+0.29
+],
+[
+"bg",
+0.03
+]
+],
+"also": [
+"t̻͡sʲ"
+],
+"count": 402
+},
+"d͡ʐ": {
+"name": "voiced retroflex affricate",
+"class": "affricate",
+"plain": "a hard j (Polish “dż”)",
+"examples": [
+[
+"ru",
+"джордж",
+"d͡ʐ ʐ o r t͡ʂ ʂ"
+]
+],
+"langs": [
+[
+"ru",
+0.04
+]
+],
+"also": [],
+"count": 14
+},
+"ʍ": {
+"name": "voiceless labial-velar approximant",
+"class": "glide",
+"plain": "a breathy w (“wh” in some accents)",
+"examples": [
+[
+"uk",
+"все",
+"ʍ s ɛ"
+]
+],
+"langs": [
+[
+"uk",
+0.22
+]
+],
+"also": [],
+"count": 75
+},
+"ř": {
+"name": "alveolar trill, accent ˇ (rising)",
+"class": "rhotic",
+"plain": "a rolled r; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent",
+"examples": [
+[
+"hbs",
+"svrhu",
+"s ʋ ř x u"
+]
+],
+"langs": [
+[
+"hbs",
+0.05
+]
+],
+"also": [],
+"count": 17
+},
+"t͡sʼ": {
+"name": "voiceless alveolar affricate, ejective",
+"class": "affricate",
+"plain": "ts as in “cats”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʒʲ": {
+"name": "voiced postalveolar fricative, palatalised",
+"class": "fricative",
+"plain": "s as in “measure”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"пляжів",
+"p lʲ ɑ ʒʲ i u̯"
+]
+],
+"langs": [
+[
+"uk",
+0.04
+]
+],
+"also": [],
+"count": 13
+},
+"ɱ": {
+"name": "labiodental nasal",
+"class": "nasal",
+"plain": "m made with the lower lip against the teeth, before f or v (“comfort”)",
+"examples": [
+[
+"mk",
+"информации",
+"i ɱ f ɔ r m a t͡s i i"
+],
+[
+"bg",
+"инвазия",
+"i ɱ v a z i j ə"
+]
+],
+"langs": [
+[
+"mk",
+0.05
+],
+[
+"bg",
+0.02
+]
+],
+"also": [],
+"count": 32
+},
+"t͡ʃʼ": {
+"name": "ejective postalveolar affricate",
+"class": "affricate",
+"plain": "ch said with a pop from the throat, no breath. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɣʲ": {
+"name": "voiced velar fricative, palatalised",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels); palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"be",
+"нігерыі",
+"n i ɣʲ ɛ r ɨ i"
+]
+],
+"langs": [
+[
+"be",
+0.04
+]
+],
+"also": [],
+"count": 17
+},
+"kʷ": {
+"name": "voiceless velar stop, labialised",
+"class": "stop",
+"plain": "k as in “key”; labialised: said with rounded lips. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"r̂": {
+"name": "alveolar trill, accent ˆ (falling)",
+"class": "rhotic",
+"plain": "a rolled r; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent",
+"examples": [
+[
+"hbs",
+"prvi",
+"p r̂ ʋ i"
+],
+[
+"uk",
+"рс",
+"r̂ ə s ə"
+]
+],
+"langs": [
+[
+"hbs",
+0.22
+]
+],
+"also": [],
+"count": 85
+},
+"ɡʷ": {
+"name": "voiced velar stop, labialised",
+"class": "stop",
+"plain": "g as in “go”; labialised: said with rounded lips. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"d͡zʲ": {
+"name": "voiced alveolar affricate, palatalised",
+"class": "affricate",
+"plain": "ds as in “beds”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"дзвінок",
+"d͡zʲ ʋʲ i n ɔ k"
+],
+[
+"ru",
+"надзиратели",
+"n ə d͡zʲ zʲ ɪ r a tʲ ɪ lʲ ɪ"
+]
+],
+"langs": [
+[
+"uk",
+0.04
+]
+],
+"also": [],
+"count": 14
+},
+"ʃʼ": {
+"name": "voiceless postalveolar fricative, ejective",
+"class": "fricative",
+"plain": "sh as in “ship”; ejective: a pop made by the throat, with no breath from the lungs. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡ʃʲ": {
+"name": "voiceless postalveolar affricate, palatalised",
+"class": "affricate",
+"plain": "ch as in “church”; palatalised: said with the tongue body raised toward the palate: a y-like colour (“soft” consonants)",
+"examples": [
+[
+"uk",
+"тисячі",
+"t ɪ sʲ ɐ t͡ʃʲ i"
+]
+],
+"langs": [
+[
+"uk",
+0.09
+]
+],
+"also": [],
+"count": 32
+}
+}
+}

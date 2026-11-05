@@ -1,11 +1,9 @@
 # Evaluation: how accurate are BFA's boundaries?
 
-[Main README](../README.md) · [Developer guide](README.md) · [About the models](about-models.md) · **Evaluation** · [Language support](language-support.md)
-
 This page reports how close BFA v2's phoneme onsets come to hand-labelled ones on two English
 corpora, how much they suffer when the transcript is wrong, and what they cost to compute. The
 comparison throughout is the Montreal Forced Aligner (MFA). The harness that produced these
-numbers is described in [`evaluation/README.md`](../evaluation/README.md). The raw scores are in
+numbers is described in [evaluation methods](evaluation-methods.md). The raw scores are in
 [`evaluation/results/`](../evaluation/results/), one CSV per corpus.
 
 ## Summary
@@ -521,5 +519,5 @@ python evaluation/plot_summary.py               # the two comparison figures abo
 
 The transcript-error test and the timing benchmark are not part of this harness yet.
 
-See [`evaluation/README.md`](../evaluation/README.md) for the configuration, run naming, caching
+See [evaluation methods](evaluation-methods.md) for the configuration, run naming, caching
 and parallel runs.

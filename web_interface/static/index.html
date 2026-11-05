@@ -10,22 +10,34 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">BFA <span class="muted">aligner</span></div>
+  <a class="brand" href="https://github.com/tabahi/bournemouth-forced-aligner" target="_blank" rel="noopener" title="Bournemouth Forced Aligner on GitHub&#10;Source code, models, documentation and issues. Opens in a new tab.">BFA <span class="muted">aligner</span></a>
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-mode="single" role="tab">Single</button>
-    <button class="tab" data-mode="batch" role="tab">Batch</button>
+    <button class="tab active" data-mode="single" role="tab"
+      title="Single mode&#10;One recording at a time. The page starts with a demo clip (&quot;butterfly&quot;). Your work on it is kept in this browser until you load another file.">Single</button>
+    <button class="tab" data-mode="batch" role="tab"
+      title="Batch mode&#10;Many recordings: drop audio files, and any .vs.json files you saved earlier, into the list on the left. Work through them, tick Done on each, then download them all as one zip.">Batch</button>
   </nav>
   <div class="config">
-    <label title="Language of the speech; picks the aligner model and the G2P">Language
+    <label title="Language of the speech&#10;Picks the aligner model (one per language group) and the G2P that turns the text into phonemes. Set it before pressing Align: a clip keeps the language it was aligned with.&#10;Click the word &quot;Language&quot; for the list of supported languages and their groups."><a href="https://tabahi.github.io/bournemouth-forced-aligner/language-support/" target="_blank" rel="noopener" class="cfg-link">Language</a>
       <select id="cfg-lang"></select></label>
-    <label title="Whisper model for Transcribe. Downloaded on first use.">Whisper
+    <label title="Whisper model for Transcribe&#10;Larger models are more accurate but slower, and bigger to download (each is downloaded once, on first use). Align does not use Whisper.">Whisper
       <select id="cfg-whisper"></select></label>
-    <label title="Extra audio played before and after a phoneme or word">Padding
+    <label title="Playback padding&#10;Extra audio played before and after a phoneme or word. 50–100 ms of context makes short sounds much easier to hear; 0 plays exactly the selected span. It does not change the alignment.">Padding
       <input id="cfg-pad" type="number" min="0" max="500" step="10" value="0"> ms</label>
-    <label class="switch" title="Keep uploaded audio in this browser, so a reload loses nothing">
+    <label class="switch" title="Uniform seed (for building unbiased reference data)&#10;After Align, every word boundary is moved a random 20–40 ms earlier or later, and each word's phonemes are spread evenly across it. No aligner's phoneme boundaries survive, so the corrected data is not biased toward BFA, MFA or any other aligner.&#10;&#10;Turning it on resets every alignment in this browser that is not already a uniform seed: labels and words are kept, all times are replaced. Turning it off changes nothing already seeded; new alignments then keep BFA's boundaries.&#10;The random seed and the seeded times are saved in the .vs.json.">
+      <input id="cfg-uniform" type="checkbox"> Uniform seed</label>
+    <label class="switch" title="SIL at pauses&#10;Align writes an optional silence (SIL) at each pause punctuation mark: , . ; : ! ? … and dashes. Without it a pause has nowhere to go and is swallowed by the phone before or after it. The aligner skips any SIL where the speaker did not pause, so it costs nothing.&#10;For a pause with no punctuation, type &lt;SIL&gt; into the text there.">
+      <input id="cfg-psil" type="checkbox" checked> SIL at pauses</label>
+    <label class="switch" title="Keep audio in this browser&#10;On: the audio and its spectrogram are saved here too, so a reload loses nothing. Off: only alignments are kept, and after a reload you choose the audio file again. Stored audio is deleted after the number of days on the right.">
       <input id="cfg-keep-audio" type="checkbox" checked> Keep audio
-      <input id="cfg-expiry" type="number" min="1" max="365" value="7" title="Days to keep it"> days</label>
-    <span id="storage-info" class="muted small" title="Browser storage used by this page"></span>
+      <input id="cfg-expiry" type="number" min="1" max="365" value="7"
+        title="Days to keep stored audio&#10;Audio unused for this many days is deleted from this browser. Alignments are kept."> days</label>
+    <span id="storage-info" class="muted small"
+      title="Browser storage used by this page&#10;Audio, spectrograms and alignments, all inside this browser. Nothing leaves this computer: the local BFA server only sees audio while it works on a job."></span>
+    <button id="btn-guide" class="btn small"
+      title="Phoneme and tone guide&#10;What every phoneme symbol of the current language's model means, with example words from real sentences, and what the tone numbers mean.">Guide</button>
+    <a id="btn-help" class="btn small" href="https://tabahi.github.io/bournemouth-forced-aligner/web-interface/" target="_blank" rel="noopener"
+      title="Help&#10;How to use this page: the web interface guide on the documentation site. Opens in a new tab.">?</a>
   </div>
 </header>
 
@@ -34,16 +46,19 @@
 <main>
   <!-- Batch file list (batch mode only) -->
   <aside id="batch-panel" class="batch-panel" hidden>
-    <div class="dropzone" id="dropzone">
+    <div class="dropzone" id="dropzone"
+      title="Drop files here&#10;Audio: WAV, FLAC, OGG or MP3. A .vs.json is paired with its audio by the audio_file name stored inside it (older files without one: x.vs.json goes with x.wav).">
       <p><b>Drop audio files and their .vs.json files here</b></p>
       <p class="muted small">Pairs are matched by the audio file name stored in each .vs.json.</p>
-      <label class="btn">Choose files<input id="batch-files" type="file" multiple
+      <label class="btn" title="Choose audio and .vs.json files from disk (several at once).">Choose files<input id="batch-files" type="file" multiple
         accept="audio/*,.wav,.flac,.ogg,.mp3,.json" hidden></label>
     </div>
     <div class="batch-actions">
       <span id="batch-count" class="muted small"></span>
-      <button id="batch-download" class="btn small" title="Download every .vs.json as one zip">Download all (.zip)</button>
-      <button id="batch-clear" class="btn small danger">Clear list</button>
+      <button id="batch-download" class="btn small"
+        title="Download all (.zip)&#10;Every aligned clip's .vs.json, edits included, in one zip. Clips not aligned yet are left out.">Download all (.zip)</button>
+      <button id="batch-clear" class="btn small danger"
+        title="Clear list&#10;Remove every batch clip (audio, alignment and edits) from this browser. Download first: this cannot be undone.">Clear list</button>
     </div>
     <ul id="batch-list" class="batch-list"></ul>
   </aside>
@@ -52,31 +67,42 @@
     <!-- Input: audio + text / segments -->
     <section class="card input-card">
       <div class="row">
-        <label class="btn" id="audio-pick-label">Audio…<input id="audio-file" type="file"
+        <label class="btn" id="audio-pick-label"
+          title="Choose the recording&#10;WAV, FLAC, OGG or MP3, any sample rate (the model hears it at 16 kHz). A different file clears the current alignment.">Audio…<input id="audio-file" type="file"
           accept="audio/*,.wav,.flac,.ogg,.mp3" hidden></label>
         <span id="audio-name" class="audio-name muted">No audio</span>
+        <span id="seed-badge" class="badge seed" hidden></span>
         <span class="spacer"></span>
         <div class="seg-mode" role="radiogroup">
-          <label><input type="radio" name="segmode" value="text" checked> Single text</label>
-          <label><input type="radio" name="segmode" value="table"> Timed segments</label>
+          <label title="Single text&#10;The whole recording is one segment: type everything that is said in the box below. Best for clips up to about 30 s."><input type="radio" name="segmode" value="text" checked> Single text</label>
+          <label title="Timed segments&#10;Split the recording into timed parts, each with its own text. Use it for long recordings; Transcribe fills this table for you. Segments may leave gaps (silence, music) but must not overlap."><input type="radio" name="segmode" value="table"> Timed segments</label>
         </div>
       </div>
-      <textarea id="text-input" rows="2" placeholder="Type what is said in the recording"></textarea>
+      <textarea id="text-input" rows="2" placeholder="Type what is said in the recording"
+        title="What is said&#10;Type it exactly, in the language chosen at the top. Write numbers and abbreviations as words (&quot;twenty five&quot;, not &quot;25&quot;): the G2P does not expand them. Punctuation is ignored."></textarea>
       <div id="seg-table-wrap" hidden>
         <table class="seg-table">
-          <thead><tr><th>#</th><th>Start (s)</th><th>End (s)</th><th>Text</th><th></th></tr></thead>
+          <thead><tr><th title="Segment number">#</th>
+            <th title="Start (s)&#10;Where the segment starts, in seconds from the start of the recording.">Start (s)</th>
+            <th title="End (s)&#10;Where the segment ends. It must come after the start and not overlap the next segment.">End (s)</th>
+            <th title="Text&#10;What is said in this segment. Alignment follows it exactly, so a wrong word becomes wrong phonemes.">Text</th><th></th></tr></thead>
           <tbody id="seg-table"></tbody>
         </table>
-        <button id="seg-add" class="btn small">+ Add segment</button>
+        <button id="seg-add" class="btn small" title="Add a segment after the last one (5 s long, or up to the end of the audio).">+ Add segment</button>
       </div>
       <div class="row">
-        <button id="btn-transcribe" class="btn" title="Fill the segments with Whisper">Transcribe (Whisper)</button>
-        <button id="btn-align" class="btn primary">Align</button>
+        <button id="btn-transcribe" class="btn"
+          title="Transcribe (Whisper)&#10;Fills the timed segments table with Whisper's transcript and times. Check and correct the text before aligning: alignment follows the text exactly.">Transcribe (Whisper)</button>
+        <button id="btn-align" class="btn primary"
+          title="Align&#10;The local BFA server turns the text into phonemes (G2P) and finds where each one is in the audio. With Uniform seed on, the result is then reset to evenly spread phonemes inside each word.&#10;Aligning again replaces the alignment and discards all edits (it asks first).">Align</button>
         <span id="job-status" class="muted small"></span>
         <span class="spacer"></span>
-        <label class="small" id="done-wrap" hidden><input type="checkbox" id="clip-done"> Done</label>
-        <button id="btn-download" class="btn" disabled>Download .vs.json</button>
-        <button id="btn-textgrid" class="btn" disabled>TextGrid</button>
+        <label class="small" id="done-wrap" hidden
+          title="Done&#10;Mark this clip as finished. It is only a label for your own tracking in the batch list; it does not lock the clip."><input type="checkbox" id="clip-done"> Done</label>
+        <button id="btn-download" class="btn" disabled
+          title="Download .vs.json&#10;The alignment with your edits, in BFA's format. Edited phonemes carry &quot;edited&quot;: true. Load it again in Batch mode to carry on later.">Download .vs.json</button>
+        <button id="btn-textgrid" class="btn" disabled
+          title="Download TextGrid&#10;A Praat TextGrid with a words tier and a phonemes tier (IPA labels). Tone, confidence and edit marks are not included.">TextGrid</button>
       </div>
     </section>
 
@@ -84,61 +110,81 @@
     <section class="card editor-card">
       <div class="row toolbar">
         <div class="seg-mode">
-          <label><input type="radio" name="viewmode" value="mel" checked> Spectrogram</label>
-          <label><input type="radio" name="viewmode" value="wave"> Waveform</label>
+          <label title="Spectrogram&#10;Energy by time and frequency (80 mel bands, 5 ms steps). Vowel formants, frication noise, stop closures and bursts show clearly: usually the best view for placing boundaries."><input type="radio" name="viewmode" value="mel" checked> Spectrogram</label>
+          <label title="Waveform&#10;The raw signal. Good for stop closures, bursts and the start of voicing; zoom in far enough to see single glottal pulses."><input type="radio" name="viewmode" value="wave"> Waveform</label>
         </div>
-        <button class="btn small" id="btn-play" title="Play selection, or the visible part (Space)">▶ Play</button>
-        <button class="btn small" id="btn-play-all" title="Play the whole clip">▶ All</button>
+        <button class="btn small" id="btn-play" title="Play (Space)&#10;Plays the selection: a phoneme, word, segment, gap or a span dragged on the spectrogram. With nothing selected, plays the visible part from the cursor.">▶ Play</button>
+        <button class="btn small" id="btn-play-all" title="Play all&#10;Plays the whole recording from the start.">▶ All</button>
         <button class="btn small" id="btn-stop" title="Stop (Esc)">■</button>
-        <label class="small"><input type="checkbox" id="cfg-loop"> Loop</label>
+        <label class="small" title="Loop&#10;Repeat playback until you stop it. Handy for listening to one short phoneme several times."><input type="checkbox" id="cfg-loop"> Loop</label>
+        <label class="small" title="Speed ([ and ] keys)&#10;Play slower to hear short sounds. The pitch stays the same: the audio is stretched in time (WSOLA), so a vowel does not turn into a growl. Slowing down a long span takes a moment the first time; replays are instant.">Speed
+          <select id="cfg-speed">
+            <option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option>
+            <option value="0.33">33%</option><option value="0.25">25%</option>
+          </select></label>
         <span class="spacer"></span>
-        <button class="btn small" id="btn-undo" title="Undo (Ctrl+Z)">↶ Undo</button>
-        <button class="btn small" id="btn-redo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
-        <button class="btn small" id="btn-zoom-out" title="Zoom out (Ctrl+wheel)">−</button>
-        <button class="btn small" id="btn-zoom-fit" title="Show the whole clip">Fit</button>
-        <button class="btn small" id="btn-zoom-in" title="Zoom in (Ctrl+wheel)">+</button>
+        <button class="btn small" id="btn-undo" title="Undo (Ctrl+Z)&#10;Steps back one edit. Up to 200 steps per clip, kept until the page is reloaded.">↶ Undo</button>
+        <button class="btn small" id="btn-redo" title="Redo (Ctrl+Shift+Z or Ctrl+Y)">↷ Redo</button>
+        <button class="btn small" id="btn-zoom-out" title="Zoom out (Ctrl + mouse wheel)">−</button>
+        <button class="btn small" id="btn-zoom-fit" title="Fit&#10;Show the whole recording.">Fit</button>
+        <button class="btn small" id="btn-zoom-in" title="Zoom in (Ctrl + mouse wheel)&#10;Double-click a phoneme or word to zoom straight to it.">+</button>
       </div>
       <div id="view-wrap" class="view-wrap">
         <canvas id="view"></canvas>
         <div id="view-empty" class="view-empty muted">Choose audio, enter its text, and press Align.</div>
       </div>
-      <canvas id="overview" class="overview" title="Drag to scroll"></canvas>
+      <canvas id="overview" class="overview"
+        title="Overview&#10;The whole recording. The highlighted box is the part shown above: click or drag to move it."></canvas>
       <p class="hint muted small">Click a phoneme or word to select it · drag a boundary to move it ·
         drag on the spectrogram to select a span · Space play · Esc stop · Del delete phoneme ·
-        Ctrl+wheel zoom · wheel scroll</p>
+        ← → next phoneme · W play word · E spread word evenly · A align word alone · [ ] speed · Ctrl+wheel zoom · wheel scroll ·
+        hover anything for help</p>
     </section>
 
     <!-- Inspector -->
     <section class="card inspector" id="inspector">
-      <div id="insp-empty" class="muted">Nothing selected.</div>
+      <div id="insp-empty" class="muted">Nothing selected. Click a phoneme or a word in the tiers under the spectrogram.</div>
       <div id="insp-body" hidden>
         <div class="row">
           <b id="insp-title"></b>
-          <span id="insp-times" class="muted small"></span>
+          <span id="insp-times" class="muted small" title="Start – end of the selection, and its length, in ms from the start of the recording."></span>
           <span class="spacer"></span>
-          <button class="btn small" id="insp-play">▶ Play</button>
-          <button class="btn small" id="insp-play-word">▶ Word</button>
+          <button class="btn small" id="insp-align-word"
+            title="Align word (A)&#10;Run BFA on this word alone, in a short window around it (± the padding below). An isolated word usually aligns much better than a long sentence. The word's phoneme labels are kept as they are now, including your fixes; only the times change. The phone just before and just after are trimmed if they overlap.&#10;With Uniform seed on, this puts BFA's boundaries back for this word; its phonemes are marked &quot;realigned&quot; in the .vs.json.">Align word</button>
+          <label class="small" title="Window padding for Align word&#10;How far beyond the word's current edges BFA may look, on each side. Widen it when the word is far off; it never reaches past the neighbouring phones.">±<input id="cfg-word-pad" type="number" min="0" max="1000" step="25" value="150"> ms</label>
+          <button class="btn small" id="insp-spread"
+            title="Spread evenly (E)&#10;Spread this word's phonemes evenly between its first and last boundary. A quick way to start a word over after moving its edges. Undo with Ctrl+Z.">Spread evenly</button>
+          <button class="btn small" id="insp-play" title="Play (Space)&#10;Plays the selection, with the padding set at the top.">▶ Play</button>
+          <button class="btn small" id="insp-play-word" title="Play word (W)&#10;Plays the whole word this phoneme belongs to.">▶ Word</button>
         </div>
+        <div id="insp-desc" class="insp-desc"></div>
         <div id="insp-phoneme" class="insp-grid">
-          <label>Start (ms) <input type="number" id="insp-start" step="1"></label>
-          <label>End (ms) <input type="number" id="insp-end" step="1"></label>
-          <label>Confidence <output id="insp-conf"></output></label>
-          <label>Word <select id="insp-word"></select></label>
-          <label>Tone <select id="insp-tone"></select></label>
-          <label>Stress <output id="insp-stress"></output></label>
-          <label>Length <output id="insp-length"></output></label>
+          <label title="Start (ms)&#10;Where this phoneme starts. Type a value and press Enter. A boundary shared with the previous phoneme moves for both.">Start (ms) <input type="number" id="insp-start" step="1"></label>
+          <label title="End (ms)&#10;Where this phoneme ends. A boundary shared with the next phoneme moves for both.">End (ms) <input type="number" id="insp-end" step="1"></label>
+          <label title="Confidence&#10;The model's highest probability for this phoneme inside its span, 0–1, shown as the coloured bar under each phoneme (red low, green high). A low value often marks a misplaced boundary or a wrong label, but short and unstressed sounds score low too. Recomputed after every edit.">Confidence <output id="insp-conf"></output></label>
+          <label title="Word&#10;The word this phoneme belongs to. Change it when a phoneme ended up on the wrong side of a word boundary.">Word <select id="insp-word"></select></label>
+          <label id="insp-tone-wrap" title="Tone&#10;The lexical tone of this syllable, from the G2P's dictionary (sandhi not applied), so the speaker may say it differently. It sits on the syllable's vowel; consonants have none. With a tonal model the list is sorted by the model's probability. Open the Guide for what each tone means.">Tone <select id="insp-tone"></select></label>
+          <label title="Stress&#10;From the G2P's dictionary: none, primary or secondary. Shown only: the model does not predict it, and it does not change the alignment.">Stress <output id="insp-stress"></output></label>
+          <label title="Length&#10;From the G2P's dictionary: short, half-long or long. Shown only: the model does not predict it.">Length <output id="insp-length"></output></label>
           <div class="insp-buttons">
-            <button class="btn small" id="insp-split" title="Split this phoneme in two at its middle">Split</button>
-            <button class="btn small danger" id="insp-delete" title="Delete this phoneme (Del); its time becomes a gap">Delete</button>
+            <button class="btn small" id="insp-split" title="Split&#10;Cut this phoneme in two at its middle; the right half is a copy with the same label. Use it to add a sound the G2P left out, then relabel one half.">Split</button>
+            <button class="btn small danger" id="insp-delete" title="Delete (Del)&#10;Remove this phoneme. Its time becomes a gap; select the gap to insert a phoneme there again.">Delete</button>
           </div>
         </div>
+        <div id="insp-range" class="row" hidden>
+          <label class="small" title="Word to align&#10;The words that overlap the dragged span; the one covering most of it is chosen.">Align
+            <select id="insp-range-word"></select></label>
+          <button class="btn small" id="insp-range-align"
+            title="Align into this span&#10;Run BFA on the chosen word alone, inside exactly the span you dragged. Use it when the word is far from where it should be: drag over where you hear it, then align. Its labels are kept; the phone just before and after it are trimmed if they overlap.">into this span</button>
+        </div>
         <div id="insp-gap" class="row" hidden>
-          <button class="btn small" id="insp-fill" title="Insert a phoneme filling this gap">Insert phoneme here</button>
+          <button class="btn small" id="insp-fill" title="Insert phoneme here&#10;Fill this gap with a new phoneme. Its label is the model's most likely sound here; change it in the list that appears.">Insert phoneme here</button>
         </div>
         <div id="insp-tokens-wrap">
           <div class="row">
-            <input id="insp-filter" type="search" placeholder="Replace with… (type to filter, Enter picks the first)">
-            <span class="muted small" id="insp-token-note">sorted by model probability in this span</span>
+            <input id="insp-filter" type="search" placeholder="Replace with… (type to filter, Enter picks the first)"
+              title="Find a replacement&#10;Type part of a symbol (t shows t, tʰ, t͡ʃ …) or of its name (&quot;nasal&quot;, &quot;rounded&quot;, &quot;voiced&quot;). Enter picks the first one in the list.">
+            <span class="muted small" id="insp-token-note"></span>
           </div>
           <div id="insp-tokens" class="token-list"></div>
         </div>
@@ -146,6 +192,23 @@
     </section>
   </section>
 </main>
+
+<dialog id="guide" class="guide">
+  <div class="guide-head row">
+    <b id="guide-title">Guide</b>
+    <label class="small" title="Language group&#10;Each group of languages has its own model and phoneme list. The current language's group is shown first; pick another to browse its phonemes.">Group
+      <select id="guide-group"></select></label>
+    <span class="spacer"></span>
+    <div class="seg-mode">
+      <label title="Every phoneme symbol of the current model, what it sounds like, and example words."><input type="radio" name="guidetab" value="phonemes" checked> Phonemes</label>
+      <label title="What the tone numbers mean in each tonal language."><input type="radio" name="guidetab" value="tones"> Tones</label>
+    </div>
+    <input id="guide-filter" type="search" placeholder="Filter: symbol, name or language"
+      title="Filter&#10;Type a symbol (ɐ), part of a name (&quot;fricative&quot;, &quot;nasalised&quot;) or a language (&quot;Polish&quot;).">
+    <button class="btn small" id="guide-close" title="Close (Esc)">✕</button>
+  </div>
+  <div id="guide-body" class="guide-body"></div>
+</dialog>
 
 <script type="module" src="/static/js/app.js"></script>
 </body>

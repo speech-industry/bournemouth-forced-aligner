@@ -6,9 +6,92 @@ import * as M from "./model.js";
 import { decode, Player } from "./audio.js";
 import { Editor } from "./view.js";
 import { makeZip } from "./zip.js";
+import * as tooltip from "./tooltip.js";
 
 const $ = (id) => document.getElementById(id);
 const UNDO_LIMIT = 200;
+
+tooltip.install();
+
+// ---------------------------------------------------------------------------------------------
+// Guides: what each phoneme token and each tone means (static/guides, built by
+// tools/build_annotation_guides.py). Optional: without them the page shows bare symbols.
+// ---------------------------------------------------------------------------------------------
+
+const guideCache = new Map();
+function loadGuide(name) {
+  if (!guideCache.has(name)) {
+    guideCache.set(name, fetch(`/static/guides/${name}.json`)
+      .then((r) => (r.ok ? r.json() : null)).catch(() => null));
+  }
+  return guideCache.get(name);
+}
+let toneGuide = null;
+const phonemeGuides = {};          // lang group -> guide json (or null when none is written)
+
+async function ensureGuides(inv) {
+  const index = (await loadGuide("index")) || { phonemes: [] };
+  if (!toneGuide) toneGuide = await loadGuide("tones");
+  if (inv && !(inv.lang_group in phonemeGuides)) {
+    phonemeGuides[inv.lang_group] = index.phonemes.includes(inv.lang_group) ?
+      await loadGuide(`phonemes-${inv.lang_group}`) : null;
+  }
+}
+
+function phonemeInfo(inv, label) {
+  const g = inv && phonemeGuides[inv.lang_group];
+  return (g && g.tokens[label]) || null;
+}
+
+/** Tone guide entry of a language code (zh-Hant -> zh, vi-s -> vi), or null. */
+function toneLang(lang) {
+  if (!toneGuide || !lang) return null;
+  const l = String(lang);
+  return toneGuide.langs[l] || toneGuide.langs[l.split("-")[0]] || null;
+}
+
+function toneLabel(lang, t) {
+  if (!t) return "none";
+  const L = toneLang(lang);
+  const e = L && L.tones[t];
+  const c = toneGuide && toneGuide.contours[t];
+  if (e) return `${t}  ${e.name}`;
+  return c ? `${t}  ${c.shape}` : t;
+}
+
+function toneTip(lang, t) {
+  if (!t) return "No tone\nConsonants, and every phoneme of an atonal language, carry none.";
+  const L = toneLang(lang);
+  const e = L && L.tones[t];
+  const c = toneGuide && toneGuide.contours[t];
+  const lines = [`Tone ${t}${c ? "  " + c.letters : ""}`];
+  if (c) lines.push(`Pitch: ${c.shape}. ${c.explain}`);
+  if (e) {
+    lines.push(`${L.name}: ${e.name}. ${e.desc || ""}`.trim());
+    if (e.examples && e.examples.length) lines.push("e.g. " + e.examples.slice(0, 3).map((x) => x[0]).join(", "));
+  }
+  return lines.join("\n");
+}
+
+function examplesText(info, n = 3) {
+  return (info.examples || []).slice(0, n).map(([lang, word, seq]) => `${word} /${seq}/ (${lang})`).join(", ");
+}
+
+/** Tooltip text for a phoneme token. */
+function phonemeTip(inv, label, extra = "") {
+  const info = phonemeInfo(inv, label);
+  const lines = [`/${label}/${info ? "  " + info.name : ""}`];
+  if (info) {
+    if (info.plain) lines.push(info.plain);
+    const ex = examplesText(info);
+    if (ex) lines.push("Examples: " + ex);
+    if (info.langs && info.langs.length) {
+      lines.push("Used most in: " + info.langs.slice(0, 6).map(([l]) => l).join(", "));
+    }
+  }
+  if (extra) lines.push(extra);
+  return lines.join("\n");
+}
 
 // ---------------------------------------------------------------------------------------------
 // Settings (per browser, small: localStorage)
@@ -17,7 +100,8 @@ const UNDO_LIMIT = 200;
 const SETTINGS_KEY = "bfa-web-settings";
 const settings = Object.assign({
   lang: "en-us", whisper: null, pad: 0, keepAudio: true, expiryDays: 7, loop: false,
-  view: "mel", mode: "single", batchCurrent: null,
+  view: "mel", mode: "single", batchCurrent: null, uniform: false,
+  speed: 1, psil: true, wordPad: 150,
 }, (() => { try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {}; } catch (_) { return {}; } })());
 
 function saveSettings() {
@@ -118,7 +202,56 @@ const editor = new Editor($("view"), $("overview"), {
   },
   onEditEnd: () => { scheduleSave(); renderInspector(); renderBatchList(); },
   onSeek: (t) => { if (clip) clip.cursor = t; },
+  onHover: (h, x, y) => {
+    if (!h || editor.drag) return tooltip.hide();
+    const r = canvasTip(h);
+    if (r) tooltip.showAt(x, y, r.text, r.key); else tooltip.hide();
+  },
 });
+
+/** Tooltip for what the pointer is over in the editor: {text, key} or null. */
+function canvasTip(h) {
+  if (!clip || !clip.vs) return null;
+  const segs = clip.vs.segments;
+  const ms = (v) => `${v.toFixed(1)} ms`;
+  if (h.edge) {
+    const seg = segs[h.edge.si], e = h.edge.edge, ph = seg.phoneme_ts;
+    const L = e.left >= 0 ? ph[e.left] : null, R = e.right >= 0 ? ph[e.right] : null;
+    const what = L && R ? `between /${L.phoneme_label}/ and /${R.phoneme_label}/` :
+      L ? `end of /${L.phoneme_label}/ (a gap follows)` : `start of /${R.phoneme_label}/ (after a gap)`;
+    const wordEdge = L && R && L._w !== R._w ? "\nThis is also a word boundary." : "";
+    return { key: `e${h.edge.si}:${e.t}`, text: `Boundary at ${ms(e.t)}\n${what}.${wordEdge}\n` +
+      "Drag to move it; it cannot pass the neighbouring boundaries. Click to select the phoneme on its right." };
+  }
+  const s = h.sel;
+  if (!s) return null;
+  const seg = segs[s.si];
+  if (s.type === "phoneme") {
+    const p = seg.phoneme_ts[s.j];
+    const tone = p.tone ? `\nTone: ${toneLabel(clip.vs.lang || clip.lang, info.tone_vocab[p.tone])}` : "";
+    const extra = `In “${seg.words[p._w] ?? "?"}”, ${ms(p.start_ms)} – ${ms(p.end_ms)} ` +
+      `(${ms(p.end_ms - p.start_ms)}), confidence ${(p.confidence ?? 0).toFixed(2)}${p.edited ? ", edited" : ""}.${tone}\n` +
+      "Click to select · double-click to zoom in";
+    return { key: `p${s.si}:${s.j}:${p.phoneme_id}`, text: phonemeTip(clip.inventory, p.phoneme_label, extra) };
+  }
+  if (s.type === "word") {
+    const ph = M.wordPhones(seg, s.w);
+    if (!ph.length) return null;
+    const a = ph[0].start_ms, b = ph[ph.length - 1].end_ms;
+    return { key: `w${s.si}:${s.w}`, text: `Word “${seg.words[s.w] ?? "?"}”\n/${ph.map((p) => p.phoneme_label).join(" ")}/\n` +
+      `${ms(a)} – ${ms(b)} (${ms(b - a)}), ${ph.length} phonemes.\n` +
+      "Click to select it, then Play, or Spread evenly (E) to share its time out equally between its phonemes." };
+  }
+  if (s.type === "gap") {
+    return { key: `g${s.si}:${s.gap.t0}`, text: `Gap, ${ms(s.gap.t1 - s.gap.t0)}\nNo phoneme covers this time. ` +
+      "Click it and press “Insert phoneme here” to fill it, or leave it as a pause." };
+  }
+  if (s.type === "segment") {
+    return { key: `s${s.si}`, text: `Segment ${s.si + 1}: ${seg.start.toFixed(2)} – ${seg.end.toFixed(2)} s\n${seg.text || ""}\n` +
+      "Click to select and play the whole segment." };
+  }
+  return null;
+}
 
 function pushUndo() {
   if (!clip || !clip.vs) return;
@@ -167,6 +300,7 @@ function play(t0, t1, padded = false) {
   if (!clip || !clip.audioBuffer) return;
   const pad = padded ? (settings.pad || 0) / 1000 : 0;
   player.loop = $("cfg-loop").checked;
+  player.rate = settings.speed || 1;
   player.play(clip.audioBuffer, t0 - pad, t1 + pad);
   animatePlayhead();
 }
@@ -223,18 +357,39 @@ function renderInspector(timesOnly = false) {
   $("insp-gap").hidden = s.type !== "gap";
   $("insp-tokens-wrap").hidden = !isPh;
   $("insp-play-word").hidden = !isPh;
+  $("insp-spread").hidden = !(isPh || s.type === "word");
+  $("insp-align-word").hidden = !(isPh || s.type === "word");
+  $("cfg-word-pad").parentElement.hidden = !(isPh || s.type === "word");
+  $("insp-range").hidden = s.type !== "range" || !renderRangeWords(s);
 
   const segs = clip.vs ? clip.vs.segments : [];
+  const desc = $("insp-desc");
+  desc.textContent = "";
   if (s.type === "range") $("insp-title").textContent = "Selection";
   if (s.type === "segment") $("insp-title").textContent = `Segment ${s.si + 1}: ${segs[s.si].text}`;
   if (s.type === "gap") $("insp-title").textContent = "Gap (no phoneme)";
-  if (s.type === "word") $("insp-title").textContent = `Word: ${segs[s.si].words[s.w] ?? "?"}`;
+  if (s.type === "word") {
+    const seg = segs[s.si];
+    $("insp-title").textContent = `Word: ${seg.words[s.w] ?? "?"}`;
+    desc.textContent = "/" + M.wordPhones(seg, s.w).map((p) => p.phoneme_label).join(" ") + "/";
+  }
   if (!isPh) return;
 
   const seg = segs[s.si];
   const p = seg.phoneme_ts[s.j];
   $("insp-title").textContent = `/${p.phoneme_label}/  in “${seg.words[p._w] ?? "?"}”` +
     (p.edited ? "  · edited" : "");
+  const pi = phonemeInfo(clip.inventory, p.phoneme_label);
+  if (pi) {
+    const name = document.createElement("span");
+    name.className = "name"; name.textContent = pi.name;
+    const ex = document.createElement("span");
+    ex.className = "ex";
+    const e = examplesText(pi, 2);
+    ex.textContent = (pi.plain ? ` · ${pi.plain.split(";")[0]}` : "") + (e ? ` · e.g. ${e}` : "");
+    desc.append(name, ex);
+    tooltip.tip(desc, phonemeTip(clip.inventory, p.phoneme_label));
+  } else delete desc.dataset.tip;
   if (document.activeElement !== $("insp-start")) $("insp-start").value = p.start_ms.toFixed(1);
   if (document.activeElement !== $("insp-end")) $("insp-end").value = p.end_ms.toFixed(1);
   $("insp-conf").textContent = (p.confidence ?? 0).toFixed(3);
@@ -248,17 +403,31 @@ function renderInspector(timesOnly = false) {
   seg.words.forEach((w, i) => wsel.add(new Option(`${i + 1}. ${w}`, i)));
   wsel.value = p._w;
 
-  // tone, ranked by the tone head when present
+  // Tone: only for tonal languages (or a phone that already has one). The tones the language
+  // uses come first, named; ranked by the tone head when the model has one.
+  const lang = clip.vs.lang || clip.lang;
+  const L = toneLang(lang);
+  const tp = M.spanToneProbs(clip, s.si, p.start_ms, p.end_ms);
+  $("insp-tone-wrap").hidden = !L && !p.tone;     // every model has a tone head; only tonal languages use it
   const tsel = $("insp-tone");
   tsel.innerHTML = "";
-  const tp = M.spanToneProbs(clip, s.si, p.start_ms, p.end_ms);
-  const tones = info.tone_vocab.map((t, i) => ({ i, t, pr: tp ? tp[i] : null }));
-  if (tp) tones.sort((a, b) => b.pr - a.pr);
+  const tones = info.tone_vocab.map((t, i) => ({ i, t, pr: tp ? tp[i] : null, own: !t || !!(L && L.tones[t]) }));
+  const rank = (t) => (L && L.order ? L.order.indexOf(t.t) : 0);
+  tones.sort((a, b) => (b.own - a.own) || (tp ? b.pr - a.pr : rank(a) - rank(b)));
+  let sep = false;
   for (const t of tones) {
-    const label = (t.t || "none") + (t.pr !== null ? `  (${(t.pr * 100).toFixed(1)}%)` : "");
-    tsel.add(new Option(label, t.i));
+    if (L && !t.own && !sep) {
+      const o = new Option(`── not used in ${L.name} ──`, ""); o.disabled = true; tsel.add(o); sep = true;
+    }
+    const label = toneLabel(lang, t.t) + (t.pr !== null ? `  (${(t.pr * 100).toFixed(1)}%)` : "");
+    const o = new Option(label, t.i);
+    o.title = toneTip(lang, t.t);
+    tsel.add(o);
   }
   tsel.value = p.tone ?? 0;
+  tooltip.tip($("insp-tone-wrap"), toneTip(lang, info.tone_vocab[p.tone ?? 0]) +
+    "\n\nThe tone comes from the G2P's dictionary (sandhi not applied) and never moves a boundary. " +
+    "Open the Guide for every tone of this language.");
 
   renderTokens();
 }
@@ -273,9 +442,17 @@ function renderTokens() {
   $("insp-token-note").textContent = probs ? `${inv.tokens.length - 1} tokens of ${inv.model}, ` +
     "sorted by model probability in this span" : `${inv.tokens.length - 1} tokens of ${inv.model}`;
   const q = $("insp-filter").value.trim();
+  const ql = q.toLowerCase();
+  const matches = (t) => {
+    if (!q) return true;
+    if (t.includes(q)) return true;
+    const pi = phonemeInfo(inv, t);
+    return !!(pi && ql.length >= 3 && (pi.name.toLowerCase().includes(ql) || pi.plain.toLowerCase().includes(ql)));
+  };
   let items = inv.tokens.map((t, id) => ({ id, t, pr: probs ? probs[id] : 0 }))
-    .filter((x) => x.id !== inv.pad_id && (!q || x.t.includes(q)));
-  if (probs) items.sort((a, b) => b.pr - a.pr);
+    .filter((x) => x.id !== inv.pad_id && matches(x.t));
+  // Symbol matches before name matches; then by model probability.
+  items.sort((a, b) => (q ? (b.t.includes(q) - a.t.includes(q)) : 0) || (probs ? b.pr - a.pr : 0));
   const box = $("insp-tokens");
   box.innerHTML = "";
   for (const x of items) {
@@ -283,11 +460,19 @@ function renderTokens() {
     b.className = "token" + (x.id === p.phoneme_id ? " current" : "");
     b.textContent = x.t;
     if (probs) {
+      // Shade by probability; sqrt so that 1-10% still shows. Dark text on light shades only.
+      const v = Math.sqrt(Math.max(0, x.pr));
+      b.style.setProperty("--p", v.toFixed(3));
+      b.classList.add("shaded");
+      if (v > 0.6) b.classList.add("hot");
+    }
+    if (probs) {
       const sm = document.createElement("small");
       sm.textContent = x.pr >= 0.001 ? (x.pr * 100).toFixed(1) : "0";
       b.append(sm);
     }
-    b.title = `id ${x.id}`;
+    tooltip.tip(b, phonemeTip(inv, x.t, (probs ? `Model probability in this span: ${(x.pr * 100).toFixed(1)}%. ` : "") +
+      (x.id === p.phoneme_id ? "This is the current label." : "Click to relabel the selected phoneme with it.")));
     b.onclick = () => {
       edit(() => M.relabel(clip, s.si, s.j, x.id));
       renderInspector();
@@ -354,6 +539,85 @@ $("insp-fill").onclick = () => {
 $("insp-play").onclick = playSelection;
 $("insp-play-word").onclick = playWordOfSelection;
 
+/** Spread the selected word's phonemes (or the selected phoneme's word) evenly. */
+function spreadSelected() {
+  const s = editor.sel;
+  if (!clip || !clip.vs || !s || (s.type !== "phoneme" && s.type !== "word")) return;
+  const seg = clip.vs.segments[s.si];
+  const w = s.type === "word" ? s.w : seg.phoneme_ts[s.j]._w;
+  pushUndo();
+  if (!M.spreadWord(clip, s.si, w)) { clip.undo.pop(); updateUndoButtons(); return; }
+  editor.draw(); scheduleSave(); renderBatchList(); renderInspector();
+}
+$("insp-spread").onclick = spreadSelected;
+
+/** Fill the "align a word into this span" menu for a dragged range. False if no word fits. */
+function renderRangeWords(s) {
+  if (!clip || !clip.vs) return false;
+  const t0 = s.t0 * 1000, t1 = s.t1 * 1000;
+  const sel = $("insp-range-word");
+  sel.innerHTML = "";
+  let best = null, bestOv = 0;
+  clip.vs.segments.forEach((seg, si) => {
+    if (seg.end * 1000 < t0 || seg.start * 1000 > t1) return;
+    for (const w of seg.words_ts || []) {
+      const wi = seg.phoneme_ts.find((p) => Math.abs(p.start_ms - w.start_ms) < 0.01);
+      if (!wi) continue;
+      const ov = Math.min(t1, w.end_ms) - Math.max(t0, w.start_ms);
+      if (ov <= 0 && !(w.end_ms > t0 - 300 && w.start_ms < t1 + 300)) continue;
+      const v = `${si}:${wi._w}`;
+      sel.add(new Option(`${w.word}  (${(w.start_ms / 1000).toFixed(2)} s)`, v));
+      if (ov > bestOv) { bestOv = ov; best = v; }
+    }
+  });
+  if (best) sel.value = best;
+  return sel.options.length > 0;
+}
+
+/** Align word w of segment si on its own, in `want` (ms) or its span +- the padding. */
+async function alignWord(si, w, want = null) {
+  if (!clip || !clip.vs || busy) return;
+  if (!clip.audioBlob) return alert("The audio is not loaded: choose the file again first.");
+  const c = clip, seg = c.vs.segments[si];
+  const ph = M.wordPhones(seg, w);
+  const win = M.wordAlignWindow(seg, w, settings.wordPad, want);
+  if (!win) return alert("There is no room to align this word here: the window is shorter than its phonemes need.");
+  const labels = ph.map((p) => p.phoneme_label);
+  const word = seg.words[w] ?? "word";
+  setBusy(true);
+  try {
+    setStatus(`Aligning “${word}” alone…`);
+    const r = await runJob("align_word", c.audioBlob, {
+      lang: c.vs.lang || c.lang, start: win[0] / 1000, end: win[1] / 1000, labels, word,
+      tone: ph.map((p) => p.tone || 0), audio_name: c.name,
+    }, (st) => setStatus(st + "…"));
+    if (c !== clip) { setStatus(""); return; }
+    pushUndo();
+    const err = M.applyWordAlignment(c, si, w, labels, r);
+    if (err) { c.undo.pop(); updateUndoButtons(); setStatus(""); return alert(err); }
+    editor.draw(); scheduleSave(); renderBatchList(); renderInspector();
+    const a = ph[0].start_ms, b = ph[ph.length - 1].end_ms;
+    setStatus(`Aligned “${word}” alone: ${(a / 1000).toFixed(3)} – ${(b / 1000).toFixed(3)} s ` +
+      `(window ${(win[0] / 1000).toFixed(2)} – ${(win[1] / 1000).toFixed(2)} s). Ctrl+Z undoes it.`);
+  } catch (e) {
+    setStatus("");
+    alert(`Aligning the word failed: ${e.message}`);
+  } finally { setBusy(false); }
+}
+
+function alignSelectedWord() {
+  const s = editor.sel;
+  if (!clip || !clip.vs || !s) return;
+  if (s.type === "word") return alignWord(s.si, s.w);
+  if (s.type === "phoneme") return alignWord(s.si, clip.vs.segments[s.si].phoneme_ts[s.j]._w);
+  if (s.type === "range" && !$("insp-range").hidden) {
+    const [si, w] = $("insp-range-word").value.split(":").map(Number);
+    return alignWord(si, w, [s.t0 * 1000, s.t1 * 1000]);
+  }
+}
+$("insp-align-word").onclick = alignSelectedWord;
+$("insp-range-align").onclick = alignSelectedWord;
+
 // ---------------------------------------------------------------------------------------------
 // Input card: audio, text / segments, transcribe, align, download
 // ---------------------------------------------------------------------------------------------
@@ -379,6 +643,16 @@ function renderInputs() {
   $("seg-table-wrap").hidden = !(has && c.segMode === "table");
   renderSegTable();
   const aligned = !!(c && c.vs);
+  const badge = $("seed-badge");
+  badge.hidden = !(aligned && M.isUniformSeeded(c.vs));
+  if (!badge.hidden) {
+    const sd = c.vs.seed;
+    badge.textContent = "uniform seed";
+    tooltip.tip(badge, `Uniform seed #${sd.rng_seed}\nThis clip started from word boundaries moved a random ` +
+      `${sd.word_jitter_ms[0]}–${sd.word_jitter_ms[1]} ms, with each word's phonemes spread evenly ` +
+      `(${(sd.created || "").slice(0, 10)}). No phoneme boundary in it comes from an aligner: every one ` +
+      "you keep is your own call. The seeded times are saved in the .vs.json.");
+  }
   $("btn-download").disabled = !aligned;
   $("btn-textgrid").disabled = !aligned;
   $("done-wrap").hidden = !(c && c.mode === "batch");
@@ -408,11 +682,14 @@ function renderSegTable() {
     const num = (k) => {
       const inp = document.createElement("input");
       inp.type = "number"; inp.step = "0.01"; inp.min = "0"; inp.value = s[k];
+      tooltip.tip(inp, k === "start" ? "Segment start (s)\nSeconds from the start of the recording." :
+        "Segment end (s)\nMust come after the start, inside the audio, and before the next segment starts.");
       inp.onchange = () => { s[k] = Number(inp.value); scheduleSave(); renderSegTable(); };
       return inp;
     };
     const txt = document.createElement("input");
     txt.type = "text"; txt.value = s.text;
+    tooltip.tip(txt, "Segment text\nExactly what is said in this segment. Numbers as words; punctuation is ignored.");
     txt.oninput = () => { s.text = txt.value; scheduleSave(); };
     const del = document.createElement("button");
     del.className = "btn small danger"; del.textContent = "✕"; del.title = "Remove this segment";
@@ -527,15 +804,22 @@ async function align(c, segs) {
   setBusy(true);
   try {
     setStatus("Aligning…");
-    const r = await runJob("align", c.audioBlob, { lang: settings.lang, segments: segs, audio_name: c.name },
+    const r = await runJob("align", c.audioBlob, { lang: settings.lang, segments: segs, audio_name: c.name, punctuation_sil: settings.psil },
       (s) => setStatus(s + "…"));
     c.lang = settings.lang;
     c.vs = M.prepareVs(r.vs);
     c.analysis = unpackAnalysis(r.analysis);
     c.inventory = await getInventory(c.lang);
+    await ensureGuides(c.inventory);
     c.undo = []; c.redo = [];
     const n = c.vs.segments.reduce((s, x) => s + x.phoneme_ts.length, 0);
-    setStatus(`Aligned ${n} phonemes in ${c.vs.segments.length} segment(s).`);
+    if (settings.uniform) {
+      M.applyUniformSeed(c);
+      setStatus(`Aligned ${n} phonemes in ${c.vs.segments.length} segment(s); uniform seed applied ` +
+        "(word boundaries moved 20–40 ms, phonemes spread evenly). Correct every boundary.");
+    } else {
+      setStatus(`Aligned ${n} phonemes in ${c.vs.segments.length} segment(s).`);
+    }
     scheduleSave(c);
     saveAnalysisFor(c);
     if (c === clip) { editor.setClip(c); renderInputs(); renderInspector(); }
@@ -586,6 +870,7 @@ async function openClip(c) {
     try { c.inventory = await getInventory(c.vs.lang || c.lang); }
     catch (e) { alert(`Cannot edit this file: ${e.message}`); }
   }
+  await ensureGuides(c.inventory);
   editor.setClip(c);
   renderInputs();
   renderInspector();
@@ -609,6 +894,7 @@ async function analyze(c) {
       (s) => setStatus(s + "…"));
     c.analysis = unpackAnalysis(r.analysis);
     saveAnalysisFor(c);
+    if (M.isUniformSeeded(c.vs)) { M.refreshConfidence(c); scheduleSave(c); }
     setStatus("");
   } catch (e) {
     setStatus(`Could not compute the spectrogram: ${e.message}`);
@@ -639,8 +925,19 @@ function renderBatchList() {
     };
     if (!c.audioBlob) badge("no audio", "warn");
     if (!c.vs) badge("not aligned");
-    else if (M.isEdited(c.vs)) badge("edited");
+    else {
+      if (M.isUniformSeeded(c.vs)) badge("uniform", "seed");
+      if (M.isEdited(c.vs)) badge("edited");
+    }
     if (c.done) badge("done", "ok");
+    const n = c.vs ? c.vs.segments.reduce((s, x) => s + x.phoneme_ts.length, 0) : 0;
+    tooltip.tip(li, `${c.name}\n` + [
+      c.audioBlob ? "Audio loaded." : "No audio in this browser: choose or drop the file again.",
+      c.vs ? `Aligned: ${c.vs.segments.length} segment(s), ${n} phonemes` +
+        (M.isUniformSeeded(c.vs) ? ", from a uniform seed" : "") + (M.isEdited(c.vs) ? ", with edits." : ".") : "Not aligned yet.",
+      c.done ? "Marked done." : "",
+      "Click to open it.",
+    ].filter(Boolean).join("\n"));
     li.onclick = () => { settings.batchCurrent = c.id; saveSettings(); openClip(c); };
     ul.append(li);
   }
@@ -650,11 +947,21 @@ function renderBatchList() {
 
 function isJson(f) { return /\.json$/i.test(f.name); }
 
+/** Apply a uniform seed to a clip, loading its inventory first. False if that fails. */
+async function seedClip(c) {
+  try {
+    if (!c.inventory) c.inventory = await getInventory(c.vs.lang || c.lang);
+  } catch (e) { console.error(e); return false; }
+  M.applyUniformSeed(c);
+  return true;
+}
+
 async function addBatchFiles(files) {
   files = [...files];
   const audios = files.filter((f) => !isJson(f));
   const jsons = files.filter(isJson);
   const problems = [];
+  let seeded = 0;
   for (const f of audios) {
     const id = "batch:" + f.name;
     const c = clips.get(id) || newClip(id, "batch", f.name);
@@ -683,6 +990,8 @@ async function addBatchFiles(files) {
     c.vs = M.prepareVs(vs);
     c.lang = vs.lang || c.lang;
     c.inventory = null; c.analysis = null; c.undo = []; c.redo = [];
+    // With Uniform seed on, an aligner's file is reset on the way in; a seeded one is kept as is.
+    if (settings.uniform && !M.isUniformSeeded(c.vs) && await seedClip(c)) seeded++;
     c.segInput = vs.segments.map((s) => ({ start: s.start, end: s.end, text: s.text || "" }));
     c.segMode = c.segInput.length > 1 ? "table" : "text";
     c.text = c.segInput.map((s) => s.text).join(" ");
@@ -690,6 +999,7 @@ async function addBatchFiles(files) {
     scheduleSave(c);
   }
   if (problems.length) alert("Some files were skipped:\n" + problems.join("\n"));
+  if (seeded) setStatus(`Uniform seed applied to ${seeded} imported .vs.json file(s).`);
   renderBatchList();
   const first = batchClips().find((c) => !c.done);
   if (first && (!clip || clip.mode !== "batch")) openClip(first);
@@ -768,6 +1078,47 @@ function initConfig() {
     settings.expiryDays = Math.max(1, Number($("cfg-expiry").value) || 7); saveSettings();
     for (const c of clips.values()) { saveAudioFor(c); saveAnalysisFor(c); }
   };
+  const sp = $("cfg-speed");
+  sp.value = String(settings.speed);
+  if (sp.value !== String(settings.speed)) { settings.speed = 1; sp.value = "1"; }
+  sp.onchange = () => { settings.speed = Number(sp.value); saveSettings(); };
+  $("cfg-psil").checked = settings.psil;
+  $("cfg-psil").onchange = (e) => { settings.psil = e.target.checked; saveSettings(); };
+  $("cfg-word-pad").value = settings.wordPad;
+  $("cfg-word-pad").onchange = () => {
+    settings.wordPad = Math.max(0, Math.min(1000, Number($("cfg-word-pad").value) || 0)); saveSettings();
+  };
+
+  $("cfg-uniform").checked = settings.uniform;
+  $("cfg-uniform").onchange = async (e) => {
+    if (!e.target.checked) {
+      settings.uniform = false; saveSettings();
+      setStatus("Uniform seed off: clips already seeded stay as they are; new alignments keep BFA's boundaries.");
+      return;
+    }
+    const todo = [...clips.values()].filter((c) => c.vs && !M.isUniformSeeded(c.vs));
+    const edited = todo.filter((c) => M.isEdited(c.vs)).length;
+    if (todo.length && !confirm(
+      `Uniform seed resets ${todo.length} alignment(s) in this browser` +
+      (edited ? `, ${edited} of them with your edits, which will be lost` : "") + ".\n\n" +
+      "Labels and words are kept. Every word boundary is moved a random 20–40 ms, and each word's " +
+      "phonemes are spread evenly. Alignments made from now on are seeded the same way.\n\nContinue?")) {
+      e.target.checked = false; return;
+    }
+    settings.uniform = true; saveSettings();
+    const failed = [];
+    for (const c of todo) {
+      if (!(await seedClip(c))) { failed.push(c.name); continue; }
+      c.undo = []; c.redo = [];
+      scheduleSave(c);
+    }
+    if (failed.length) alert("Could not seed (language model unknown to the server):\n" + failed.join("\n"));
+    if (clip) { editor.setClip(clip, true); renderInputs(); renderInspector(); }
+    renderBatchList();
+    setStatus(todo.length ? `Uniform seed applied to ${todo.length} alignment(s).` :
+      "Uniform seed on: the next alignments will be seeded.");
+  };
+
   $("cfg-keep-audio").checked = settings.keepAudio;
   $("cfg-keep-audio").onchange = async (e) => {
     if (!e.target.checked) {
@@ -791,6 +1142,150 @@ function initConfig() {
   editor.setMode(settings.view);
 }
 
+// ---------------------------------------------------------------------------------------------
+// Guide dialog: every phoneme of the current model, and the tone tables
+// ---------------------------------------------------------------------------------------------
+
+const CLASS_TITLES = {
+  special: "Special tokens", vowel: "Vowels", diphthong: "Diphthongs", glide: "Glides and non-syllabic vowels",
+  stop: "Stops", affricate: "Affricates", fricative: "Fricatives", nasal: "Nasals", lateral: "Laterals",
+  rhotic: "Rhotics (r sounds)",
+};
+
+function el(tag, props = {}, ...kids) {
+  const e = Object.assign(document.createElement(tag), props);
+  e.append(...kids);
+  return e;
+}
+
+/** The inventory the guide shows: the group picked in the dialog, else the current clip's. */
+async function guideInventory() {
+  const g = $("guide-group").value;
+  try {
+    if (g && info.languages[g]) return await getInventory(info.languages[g][0]);
+    if (clip && clip.inventory) return clip.inventory;
+    return await getInventory(settings.lang);
+  } catch (_) { return null; }
+}
+
+async function fillGuideGroups() {
+  const sel = $("guide-group");
+  if (!sel.options.length) {
+    for (const g of Object.keys(info.languages)) sel.add(new Option(g, g));
+  }
+  let cur = clip && clip.inventory ? clip.inventory.lang_group : null;
+  if (!cur) { try { cur = (await getInventory(settings.lang)).lang_group; } catch (_) { /* offline */ } }
+  if (cur) sel.value = cur;
+}
+
+async function renderGuide() {
+  const body = $("guide-body");
+  const tab = document.querySelector("input[name=guidetab]:checked").value;
+  const q = $("guide-filter").value.trim().toLowerCase();
+  const inv = await guideInventory();
+  await ensureGuides(inv);
+  if (q !== $("guide-filter").value.trim().toLowerCase()) return;   // a newer call will draw
+  body.innerHTML = "";
+  if (tab === "tones") return renderToneGuide(body, q);
+
+  const g = inv && phonemeGuides[inv.lang_group];
+  $("guide-title").textContent = inv ? `Phonemes of ${inv.model}` : "Phonemes";
+  if (!g) {
+    body.append(el("p", { className: "muted", textContent:
+      `No phoneme guide has been written for the ${inv ? inv.lang_group : ""} group yet.` }));
+    return;
+  }
+  const names = g.lang_names || {};
+  const sameGroup = clip && clip.inventory && clip.inventory.lang_group === inv.lang_group;
+  const cur = sameGroup && editor.sel && editor.sel.type === "phoneme" && clip.vs ?
+    clip.vs.segments[editor.sel.si].phoneme_ts[editor.sel.j].phoneme_label : null;
+  if (g.note) body.append(el("p", { textContent: g.note }));
+  body.append(el("p", { className: "muted", textContent:
+    "Example words are the most frequent words with the symbol in real sentences (FLEURS), written the way " +
+    "the G2P writes them. Used most in: share of each language's phonemes. Hover a row's symbol in the " +
+    "phoneme tier for the same text." }));
+  const byClass = new Map();
+  for (const [tok, t] of Object.entries(g.tokens)) {
+    if (!inv.tokens.includes(tok)) continue;
+    const langs = (t.langs || []).map(([l]) => names[l] || l).join(" ");
+    const hay = `${tok} ${t.name} ${t.plain} ${langs}`.toLowerCase();
+    if (q && !hay.includes(q) && tok !== q) continue;
+    if (!byClass.has(t.class)) byClass.set(t.class, []);
+    byClass.get(t.class).push([tok, t]);
+  }
+  for (const [cls, title] of Object.entries(CLASS_TITLES)) {
+    const rows = byClass.get(cls);
+    if (!rows) continue;
+    body.append(el("h3", { textContent: title }));
+    const tb = el("tbody");
+    for (const [tok, t] of rows) {
+      const ex = (t.examples || []).map(([l, w, s]) => `${names[l] || l} ${w} /${s}/`).join(" · ");
+      const used = t.count === 0 && cls !== "special" ? "rare" :
+        (t.langs || []).slice(0, 4).map(([l, p]) => `${names[l] || l} ${p}%`).join(", ");
+      const tr = el("tr", {},
+        el("td", { className: "sym", textContent: tok }),
+        el("td", {}, el("b", { textContent: t.name }), el("br"), t.plain,
+          ex ? el("div", { className: "ex", textContent: "e.g. " + ex }) : ""),
+        el("td", { className: "ex", textContent: used }));
+      if (tok === cur) tr.className = "current";
+      tb.append(tr);
+    }
+    body.append(el("table", {}, el("thead", {}, el("tr", {},
+      el("th", { textContent: "symbol" }), el("th", { textContent: "what it is" }),
+      el("th", { textContent: "used most in" }))), tb));
+  }
+  const curRow = body.querySelector("tr.current");
+  if (curRow && !q) curRow.scrollIntoView({ block: "center" });
+}
+
+function renderToneGuide(body, q) {
+  $("guide-title").textContent = "Tones";
+  if (!toneGuide) { body.append(el("p", { textContent: "The tone guide is not available." })); return; }
+  body.append(
+    el("p", { textContent: "Tone numbers are Chao numbers: pitch from 1 (lowest) to 5 (highest) in the " +
+      "speaker's range. Two digits: where the pitch starts and ends; three: start, turn, end; one: a level " +
+      "pitch. The same number means a different tone in another language, so read your language's table." }),
+    el("p", { className: "muted", textContent: "Tone comes from the G2P's dictionary (sandhi not applied), sits on " +
+      "the syllable's vowel, and never moves a boundary." }));
+  const cur = toneLang(clip && clip.vs ? clip.vs.lang || clip.lang : settings.lang);
+  const langs = Object.entries(toneGuide.langs).sort(([, a], [, b]) => (b === cur) - (a === cur));
+  for (const [code, L] of langs) {
+    const rows = (L.order || Object.keys(L.tones)).map((t) => [t, L.tones[t]]).filter(([t, e]) =>
+      !q || `${code} ${L.name} ${t} ${e.name} ${e.desc}`.toLowerCase().includes(q));
+    if (!rows.length) continue;
+    body.append(el("h3", { textContent: `${L.name} (${code})` }), el("p", { textContent: L.intro }));
+    const tb = el("tbody");
+    for (const [t, e] of rows) {
+      const c = toneGuide.contours[t] || {};
+      tb.append(el("tr", {},
+        el("td", { className: "sym", textContent: `${t} ${c.letters || ""}` }),
+        el("td", {}, el("b", { textContent: e.name }), el("br"), `${c.shape || ""}. ${e.desc}`),
+        el("td", { className: "ex", textContent: (e.examples || []).map(([w, s]) => `${w} /${s}/`).join(" · ") }),
+        el("td", { className: "ex", textContent: `${e.share}%` })));
+    }
+    body.append(el("table", {}, el("thead", {}, el("tr", {},
+      el("th", { textContent: "number" }), el("th", { textContent: "tone" }),
+      el("th", { textContent: "examples" }), el("th", { textContent: "share" }))), tb));
+  }
+}
+
+$("btn-guide").onclick = async () => {
+  const lang = clip && clip.vs ? clip.vs.lang || clip.lang : settings.lang;
+  const tonal = !!toneLang(lang);
+  document.querySelector(`input[name=guidetab][value=${tonal ? "tones" : "phonemes"}]`).checked = true;
+  await fillGuideGroups();
+  $("guide").showModal();
+  renderGuide();
+};
+$("guide-group").addEventListener("change", () => {
+  document.querySelector("input[name=guidetab][value=phonemes]").checked = true;
+  renderGuide();
+});
+$("guide-close").onclick = () => $("guide").close();
+$("guide-filter").addEventListener("input", renderGuide);
+for (const r of document.querySelectorAll("input[name=guidetab]")) r.addEventListener("change", renderGuide);
+$("guide").addEventListener("click", (e) => { if (e.target === $("guide")) $("guide").close(); });
+
 // toolbar
 $("btn-play").onclick = playSelection;
 $("btn-play-all").onclick = () => clip && clip.audioBuffer && play(0, clip.audioBuffer.duration);
@@ -802,6 +1297,14 @@ $("btn-zoom-out").onclick = () => editor.zoom(2);
 $("btn-zoom-fit").onclick = () => editor.fit();
 
 // keyboard
+function stepSpeed(dir) {
+  const sp = $("cfg-speed");
+  const i = Math.max(0, Math.min(sp.options.length - 1, sp.selectedIndex - dir));   // ] = faster
+  sp.selectedIndex = i;
+  settings.speed = Number(sp.value); saveSettings();
+  setStatus(`Playback speed ${sp.options[i].textContent}`);
+}
+
 function selectNeighbour(dir) {
   const s = editor.sel;
   if (!clip || !clip.vs || !s || s.type !== "phoneme") return;
@@ -820,7 +1323,7 @@ document.addEventListener("keydown", (e) => {
   const tag = (e.target.tagName || "").toLowerCase();
   const typing = tag === "textarea" || tag === "select" ||
     (tag === "input" && !["radio", "checkbox", "button"].includes(e.target.type));
-  if (typing) return;
+  if (typing || $("guide").open) return;
   const ctrl = e.ctrlKey || e.metaKey;
   if (e.key === " ") { e.preventDefault(); player.playing ? player.stop() : playSelection(); }
   else if (e.key === "Escape") { player.stop(); }
@@ -831,7 +1334,10 @@ document.addEventListener("keydown", (e) => {
   }
   else if (e.key === "ArrowRight") { e.preventDefault(); selectNeighbour(1); }
   else if (e.key === "ArrowLeft") { e.preventDefault(); selectNeighbour(-1); }
-  else if (e.key.toLowerCase() === "w") playWordOfSelection();
+  else if (e.key.toLowerCase() === "w" && !ctrl) playWordOfSelection();
+  else if (e.key.toLowerCase() === "e" && !ctrl) spreadSelected();
+  else if (e.key.toLowerCase() === "a" && !ctrl) alignSelectedWord();
+  else if (e.key === "[" || e.key === "]") stepSpeed(e.key === "]" ? 1 : -1);
 });
 
 window.addEventListener("beforeunload", () => {

@@ -1,0 +1,2619 @@
+{
+"group": "abjad",
+"model": "mbfa-abjad",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "The script leaves most vowels out, so the G2P supplies them: listen for them rather than trusting the spelling. Emphatic consonants (tˤ sˤ) are tokens of their own. Sindhi and Urdu aspirated and breathy stops (kʰ, bʰ, dʰ …) are single tokens; the puff after the release belongs to the stop.",
+"lang_names": {
+"ar": "Arabic",
+"ku": "Kurdish (Sorani)",
+"fa": "Persian",
+"sd": "Sindhi",
+"ur": "Urdu"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"ar",
+"على",
+"ʕ a l a"
+],
+[
+"ur",
+"کا",
+"k a"
+],
+[
+"sd",
+"آهي",
+"a h i"
+]
+],
+"langs": [
+[
+"ar",
+27.52
+],
+[
+"ur",
+13.15
+],
+[
+"sd",
+10.6
+],
+[
+"ku",
+10.04
+]
+],
+"also": [],
+"count": 22003
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s. Also used for ş, which this model has no token of its own for",
+"examples": [
+[
+"ku",
+"سەر",
+"s e r"
+],
+[
+"ur",
+"سے",
+"s e"
+],
+[
+"fa",
+"است",
+"o s t"
+]
+],
+"langs": [
+[
+"ku",
+3.7
+],
+[
+"ur",
+3.69
+],
+[
+"fa",
+3.2
+],
+[
+"sd",
+2.98
+],
+[
+"ar",
+1.76
+]
+],
+"also": [
+"ş"
+],
+"count": 5692
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"ar",
+"في",
+"f i"
+],
+[
+"fa",
+"می",
+"m i"
+],
+[
+"sd",
+"آهي",
+"a h i"
+]
+],
+"langs": [
+[
+"ar",
+8.87
+],
+[
+"fa",
+6.61
+],
+[
+"sd",
+5.97
+],
+[
+"ur",
+5.15
+],
+[
+"ku",
+4.56
+]
+],
+"also": [],
+"count": 11603
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"ku",
+"لە",
+"l e"
+],
+[
+"fa",
+"به",
+"b e"
+],
+[
+"ur",
+"کے",
+"k e"
+]
+],
+"langs": [
+[
+"ku",
+15.18
+],
+[
+"fa",
+6.95
+],
+[
+"ur",
+6.84
+],
+[
+"sd",
+4.04
+],
+[
+"ar",
+0.65
+]
+],
+"also": [],
+"count": 12785
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"sd",
+"کان",
+"kʰ a n"
+],
+[
+"ku",
+"یان",
+"y a n"
+],
+[
+"fa",
+"این",
+"i n"
+]
+],
+"langs": [
+[
+"sd",
+7.31
+],
+[
+"ku",
+7.28
+],
+[
+"fa",
+6.18
+],
+[
+"ur",
+4.6
+],
+[
+"ar",
+4.4
+]
+],
+"also": [],
+"count": 11371
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"fa",
+"است",
+"o s t"
+],
+[
+"ku",
+"دەکات",
+"d e k a t"
+],
+[
+"ur",
+"طور",
+"t o r"
+]
+],
+"langs": [
+[
+"fa",
+4.78
+],
+[
+"ku",
+4.1
+],
+[
+"ur",
+3.76
+],
+[
+"ar",
+3.61
+],
+[
+"sd",
+0.45
+]
+],
+"also": [],
+"count": 6078
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"ar",
+"على",
+"ʕ a l a"
+],
+[
+"ur",
+"والے",
+"ʋ a l e"
+],
+[
+"sd",
+"لاءِ",
+"l a"
+]
+],
+"langs": [
+[
+"ar",
+8.75
+],
+[
+"ur",
+3.34
+],
+[
+"sd",
+2.77
+],
+[
+"ku",
+2.34
+],
+[
+"fa",
+2.18
+]
+],
+"also": [],
+"count": 7031
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"ur",
+"کے",
+"k e"
+],
+[
+"ku",
+"کە",
+"k e"
+],
+[
+"sd",
+"ڪري",
+"k ʌ r i"
+]
+],
+"langs": [
+[
+"ur",
+5.63
+],
+[
+"ku",
+5.35
+],
+[
+"sd",
+3.14
+],
+[
+"fa",
+2.57
+],
+[
+"ar",
+1.64
+]
+],
+"also": [],
+"count": 6663
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"sd",
+"جو",
+"ɟ o"
+],
+[
+"fa",
+"و",
+"o"
+],
+[
+"ur",
+"اور",
+"o r"
+]
+],
+"langs": [
+[
+"sd",
+4.53
+],
+[
+"fa",
+3.89
+],
+[
+"ur",
+3.43
+],
+[
+"ku",
+2.26
+]
+],
+"also": [],
+"count": 5342
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"ur",
+"اور",
+"o r"
+],
+[
+"sd",
+"ڪري",
+"k ʌ r i"
+],
+[
+"ku",
+"زۆر",
+"z o r"
+]
+],
+"langs": [
+[
+"ur",
+6.53
+],
+[
+"sd",
+5.66
+],
+[
+"ku",
+5.21
+],
+[
+"ar",
+3.37
+]
+],
+"also": [],
+"count": 7526
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"ar",
+"من",
+"m i n n a"
+],
+[
+"ur",
+"میں",
+"m ẽ"
+],
+[
+"fa",
+"می",
+"m i"
+]
+],
+"langs": [
+[
+"ar",
+4.99
+],
+[
+"ur",
+4.53
+],
+[
+"fa",
+4.43
+],
+[
+"sd",
+3.16
+],
+[
+"ku",
+2.2
+]
+],
+"also": [],
+"count": 7020
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”. Also used for dˤ, which this model has no token of its own for",
+"examples": [
+[
+"fa",
+"در",
+"d æ ɾ"
+],
+[
+"ar",
+"قد",
+"q a d d a"
+],
+[
+"ku",
+"دەدات",
+"d e d a t"
+]
+],
+"langs": [
+[
+"fa",
+6.26
+],
+[
+"ar",
+3.73
+],
+[
+"ku",
+3.69
+],
+[
+"ur",
+1.92
+],
+[
+"sd",
+1.44
+]
+],
+"also": [
+"dˤ"
+],
+"count": 6463
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"ar",
+"أو",
+"ʔ u"
+],
+[
+"fa",
+"شود",
+"ʃ u d"
+],
+[
+"ku",
+"بووە",
+"b u w e"
+]
+],
+"langs": [
+[
+"ar",
+4.39
+],
+[
+"fa",
+2.0
+],
+[
+"ku",
+1.02
+],
+[
+"ur",
+0.38
+],
+[
+"sd",
+0.36
+]
+],
+"also": [],
+"count": 3031
+},
+"ɪ": {
+"name": "near-close front unrounded vowel",
+"class": "vowel",
+"plain": "i as in “sit”",
+"examples": [
+[
+"ur",
+"استعمال",
+"ɪ s t e m a l"
+],
+[
+"sd",
+"استعمال",
+"ɪ s t e m a l"
+],
+[
+"ar",
+"التي",
+"a l a t e ɪ"
+]
+],
+"langs": [
+[
+"ur",
+1.3
+],
+[
+"sd",
+0.77
+],
+[
+"ar",
+0.6
+]
+],
+"also": [],
+"count": 893
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”",
+"examples": [
+[
+"fa",
+"در",
+"d æ ɾ"
+]
+],
+"langs": [
+[
+"fa",
+6.83
+]
+],
+"also": [],
+"count": 2714
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"ar",
+"في",
+"f i"
+],
+[
+"fa",
+"استفاده",
+"e s t e f ɒ d e"
+],
+[
+"ur",
+"مختلف",
+"m ʊ x t a l ɪ f"
+]
+],
+"langs": [
+[
+"ar",
+1.84
+],
+[
+"fa",
+1.11
+],
+[
+"ur",
+0.92
+],
+[
+"sd",
+0.73
+],
+[
+"ku",
+0.41
+]
+],
+"also": [],
+"count": 1828
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"ar",
+"بين",
+"b a j j i n"
+],
+[
+"fa",
+"های",
+"h ɒ j"
+],
+[
+"sd",
+"يا",
+"j a"
+]
+],
+"langs": [
+[
+"ar",
+3.42
+],
+[
+"fa",
+2.72
+],
+[
+"sd",
+1.72
+],
+[
+"ur",
+1.46
+],
+[
+"ku",
+0.39
+]
+],
+"also": [],
+"count": 3590
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"sd",
+"پنهنجي",
+"p ə n ə h ə n ʌ ɟ i"
+],
+[
+"ur",
+"ثقافت",
+"s ə q a f ə t"
+]
+],
+"langs": [
+[
+"sd",
+8.29
+],
+[
+"ur",
+5.75
+]
+],
+"also": [],
+"count": 5107
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"ku",
+"بە",
+"b e"
+],
+[
+"fa",
+"به",
+"b e"
+],
+[
+"ar",
+"عبر",
+"ʕ a b b a r a"
+]
+],
+"langs": [
+[
+"ku",
+3.76
+],
+[
+"fa",
+3.64
+],
+[
+"ar",
+2.88
+],
+[
+"ur",
+2.15
+],
+[
+"sd",
+1.58
+]
+],
+"also": [],
+"count": 5269
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"ur",
+"پر",
+"p ʌ r"
+],
+[
+"sd",
+"پر",
+"p ʌ r"
+],
+[
+"ku",
+"پلەی",
+"p i l e y"
+]
+],
+"langs": [
+[
+"ur",
+1.8
+],
+[
+"sd",
+1.38
+],
+[
+"ku",
+1.14
+],
+[
+"fa",
+0.61
+]
+],
+"also": [],
+"count": 1789
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"ur",
+"بہت",
+"b ɛ h ɛ t"
+],
+[
+"sd",
+"ms",
+"ɛ m ɛ s"
+],
+[
+"ar",
+"super-g",
+"s y p ɛ ʁ ɡ"
+]
+],
+"langs": [
+[
+"ur",
+0.46
+],
+[
+"sd",
+0.08
+]
+],
+"also": [],
+"count": 160
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"ku",
+"و",
+"w i"
+],
+[
+"ar",
+"تكون",
+"t u k a w w i n"
+],
+[
+"sd",
+"nsw",
+"ɛ n ɛ s w e"
+]
+],
+"langs": [
+[
+"ku",
+4.57
+],
+[
+"ar",
+1.73
+],
+[
+"sd",
+0.01
+]
+],
+"also": [],
+"count": 2489
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"v": {
+"name": "voiced labiodental fricative",
+"class": "fricative",
+"plain": "v",
+"examples": [
+[
+"fa",
+"روی",
+"ɾ æ v i"
+],
+[
+"ku",
+"جاڤایی",
+"c a v a y î"
+],
+[
+"sd",
+"xvi",
+"ʃ e v i"
+]
+],
+"langs": [
+[
+"fa",
+1.26
+],
+[
+"ku",
+0.1
+]
+],
+"also": [],
+"count": 546
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”. Also used for ɢ, which this model has no token of its own for",
+"examples": [
+[
+"fa",
+"قرار",
+"ɡ æ ɾ ɒ ɾ"
+],
+[
+"ku",
+"لەگەڵ",
+"l e ɡ e ɫ"
+],
+[
+"sd",
+"سگهي",
+"s ə ɡ ʌ h i"
+]
+],
+"langs": [
+[
+"fa",
+2.4
+],
+[
+"ku",
+1.56
+],
+[
+"sd",
+1.42
+],
+[
+"ur",
+1.19
+]
+],
+"also": [
+"ɢ"
+],
+"count": 2524
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"fa",
+"از",
+"æ z"
+],
+[
+"ur",
+"زیادہ",
+"z j a d a"
+],
+[
+"ku",
+"زۆر",
+"z o r"
+]
+],
+"langs": [
+[
+"fa",
+2.44
+],
+[
+"ur",
+1.2
+],
+[
+"ku",
+1.19
+],
+[
+"sd",
+0.67
+],
+[
+"ar",
+0.49
+]
+],
+"also": [],
+"count": 2242
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"ar",
+"أن",
+"ʔ a n"
+],
+[
+"ku",
+"ئەوەی",
+"ʔ e w e y"
+],
+[
+"fa",
+"بعد",
+"b æ ʔ d"
+]
+],
+"langs": [
+[
+"ar",
+3.21
+],
+[
+"ku",
+1.18
+],
+[
+"fa",
+0.82
+]
+],
+"also": [],
+"count": 1955
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"ur",
+"سُپرجی",
+"s ɔ p ə r ɟ i"
+],
+[
+"sd",
+"شعبا",
+"ʃ ɔ b a"
+]
+],
+"langs": [
+[
+"ur",
+0.07
+]
+],
+"also": [],
+"count": 23
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"ar",
+"ring",
+"ʁ i ŋ"
+]
+],
+"langs": [],
+"also": [],
+"count": 1
+},
+"ʊ": {
+"name": "near-close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “book”",
+"examples": [
+[
+"ur",
+"مختلف",
+"m ʊ x t a l ɪ f"
+],
+[
+"ar",
+"فوق",
+"f a ʊ q"
+],
+[
+"fa",
+"دور",
+"d o ʊ ɾ"
+]
+],
+"langs": [
+[
+"ur",
+0.51
+],
+[
+"ar",
+0.42
+],
+[
+"fa",
+0.08
+],
+[
+"sd",
+0.04
+]
+],
+"also": [],
+"count": 334
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”",
+"examples": [
+[
+"fa",
+"شود",
+"ʃ u d"
+],
+[
+"ur",
+"پیش",
+"p e ʃ"
+],
+[
+"ar",
+"عشر",
+"ʕ a ʃ ʃ a r a"
+]
+],
+"langs": [
+[
+"fa",
+2.17
+],
+[
+"ur",
+0.91
+],
+[
+"ar",
+0.74
+],
+[
+"sd",
+0.7
+]
+],
+"also": [],
+"count": 1674
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"sd",
+"آهي",
+"a h i"
+],
+[
+"ur",
+"ہے",
+"h e"
+],
+[
+"fa",
+"های",
+"h ɒ j"
+]
+],
+"langs": [
+[
+"sd",
+5.47
+],
+[
+"ur",
+3.72
+],
+[
+"fa",
+3.01
+],
+[
+"ku",
+1.37
+],
+[
+"ar",
+1.31
+]
+],
+"also": [],
+"count": 5570
+},
+"ʁ": {
+"name": "voiced uvular fricative",
+"class": "fricative",
+"plain": "the r of French and German",
+"examples": [
+[
+"ar",
+"super-g",
+"s y p ɛ ʁ ɡ"
+]
+],
+"langs": [],
+"also": [],
+"count": 3
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"fa",
+"خود",
+"x o d"
+],
+[
+"ku",
+"نەخۆشخانە",
+"n e x o s x a n e"
+],
+[
+"ar",
+"خلال",
+"x a l a l"
+]
+],
+"langs": [
+[
+"fa",
+0.9
+],
+[
+"ku",
+0.72
+],
+[
+"ar",
+0.5
+],
+[
+"ur",
+0.5
+],
+[
+"sd",
+0.41
+]
+],
+"also": [],
+"count": 1142
+},
+"ð": {
+"name": "voiced dental fricative",
+"class": "fricative",
+"plain": "th as in “this”. Also used for ðˤ, which this model has no token of its own for",
+"examples": [
+[
+"ar",
+"هذه",
+"h a ð ð a h u"
+]
+],
+"langs": [
+[
+"ar",
+0.62
+]
+],
+"also": [
+"ðˤ"
+],
+"count": 222
+},
+"æ": {
+"name": "near-open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in “cat”",
+"examples": [
+[
+"fa",
+"در",
+"d æ ɾ"
+]
+],
+"langs": [
+[
+"fa",
+11.28
+]
+],
+"also": [],
+"count": 4487
+},
+"ɫ": {
+"name": "velarised alveolar lateral",
+"class": "lateral",
+"plain": "the dark l of “full”",
+"examples": [
+[
+"ku",
+"لەگەڵ",
+"l e ɡ e ɫ"
+]
+],
+"langs": [
+[
+"ku",
+0.89
+]
+],
+"also": [],
+"count": 364
+},
+"q": {
+"name": "voiceless uvular stop",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”)",
+"examples": [
+[
+"ar",
+"قبل",
+"q i b a l"
+],
+[
+"ur",
+"وقت",
+"ʋ ʌ q ə t"
+],
+[
+"sd",
+"تحقيق",
+"t̪ ə h q i q"
+]
+],
+"langs": [
+[
+"ar",
+1.63
+],
+[
+"ur",
+1.07
+],
+[
+"sd",
+0.7
+],
+[
+"ku",
+0.17
+]
+],
+"also": [],
+"count": 1239
+},
+"ʒ": {
+"name": "voiced postalveolar fricative",
+"class": "fricative",
+"plain": "s as in “measure”",
+"examples": [
+[
+"ar",
+"يجب",
+"j a d ʒ u b"
+],
+[
+"fa",
+"ژاپن",
+"ʒ ɒ p o n"
+]
+],
+"langs": [
+[
+"ar",
+1.09
+],
+[
+"fa",
+0.08
+]
+],
+"also": [],
+"count": 420
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”)",
+"examples": [
+[
+"ur",
+"خاص",
+"x a ʂ"
+],
+[
+"sd",
+"صرف",
+"ʂ ə r ʌ f"
+]
+],
+"langs": [
+[
+"ur",
+0.48
+],
+[
+"sd",
+0.41
+]
+],
+"also": [],
+"count": 305
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"ar",
+"غالباً",
+"ɣ a l i b a j a"
+],
+[
+"ur",
+"غیر",
+"ɣ e r"
+],
+[
+"sd",
+"غير",
+"ɣ e r"
+]
+],
+"langs": [
+[
+"ar",
+0.42
+],
+[
+"ur",
+0.17
+],
+[
+"sd",
+0.12
+]
+],
+"also": [],
+"count": 244
+},
+"y": {
+"name": "close front rounded vowel",
+"class": "vowel",
+"plain": "ee said with rounded lips (French “tu”, German “über”)",
+"examples": [
+[
+"ku",
+"ئەوەی",
+"ʔ e w e y"
+],
+[
+"ar",
+"super-g",
+"s y p ɛ ʁ ɡ"
+]
+],
+"langs": [
+[
+"ku",
+4.33
+]
+],
+"also": [],
+"count": 1769
+},
+"ʕ": {
+"name": "voiced pharyngeal fricative",
+"class": "fricative",
+"plain": "a voiced throat sound (Arabic ع)",
+"examples": [
+[
+"ar",
+"على",
+"ʕ a l a"
+],
+[
+"ku",
+"عەلی",
+"ʕ e l î"
+]
+],
+"langs": [
+[
+"ar",
+2.35
+],
+[
+"ku",
+0.04
+]
+],
+"also": [],
+"count": 855
+},
+"ħ": {
+"name": "voiceless pharyngeal fricative",
+"class": "fricative",
+"plain": "a strong h squeezed in the throat (Arabic ح)",
+"examples": [
+[
+"ar",
+"حيث",
+"ħ e ɪ θ"
+]
+],
+"langs": [
+[
+"ar",
+1.23
+]
+],
+"also": [],
+"count": 438
+},
+"ɳ": {
+"name": "retroflex nasal",
+"class": "nasal",
+"plain": "n with the tongue tip curled back",
+"examples": [
+[
+"sd",
+"ڪرڻ",
+"k ə r ʌ ɳ"
+]
+],
+"langs": [
+[
+"sd",
+1.09
+]
+],
+"also": [],
+"count": 464
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"sd",
+"وڃي",
+"ʋ ʌ ɲ i"
+]
+],
+"langs": [
+[
+"sd",
+0.08
+]
+],
+"also": [],
+"count": 35
+},
+"œ": {
+"name": "open-mid front rounded vowel",
+"class": "vowel",
+"plain": "e as in “bed” said with rounded lips (French “neuf”, German “können”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"tˤ": {
+"name": "voiceless alveolar stop, pharyngealised (emphatic)",
+"class": "stop",
+"plain": "t as in “ten”; pharyngealised (emphatic): said with the tongue root pulled back: a darker, “heavy” sound (Arabic ط, ص)",
+"examples": [
+[
+"ar",
+"طريق",
+"tˤ a r i q"
+]
+],
+"langs": [
+[
+"ar",
+0.66
+]
+],
+"also": [],
+"count": 234
+},
+"sˤ": {
+"name": "voiceless alveolar fricative, pharyngealised (emphatic)",
+"class": "fricative",
+"plain": "s; pharyngealised (emphatic): said with the tongue root pulled back: a darker, “heavy” sound (Arabic ط, ص)",
+"examples": [
+[
+"ar",
+"الصيد",
+"a l sˤ e ɪ d"
+]
+],
+"langs": [
+[
+"ar",
+0.57
+]
+],
+"also": [],
+"count": 203
+},
+"ɒ": {
+"name": "open back rounded vowel",
+"class": "vowel",
+"plain": "a rounded “ah” (British “lot”, Hungarian “a”)",
+"examples": [
+[
+"fa",
+"را",
+"ɾ ɒ"
+]
+],
+"langs": [
+[
+"fa",
+10.17
+]
+],
+"also": [],
+"count": 4044
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”)",
+"examples": [
+[
+"sd",
+"سيٽلائيٽ",
+"s e ʈ l a i ʈ"
+],
+[
+"ur",
+"رپورٹ",
+"r ə p o r ʈ"
+]
+],
+"langs": [
+[
+"sd",
+1.17
+],
+[
+"ur",
+0.86
+]
+],
+"also": [],
+"count": 737
+},
+"t͡ʃ": {
+"name": "voiceless postalveolar affricate",
+"class": "affricate",
+"plain": "ch as in “church”",
+"examples": [
+[
+"fa",
+"هیچ",
+"h i t͡ʃ"
+],
+[
+"sd",
+"cep",
+"t͡ʃ ɛ p"
+]
+],
+"langs": [
+[
+"fa",
+0.31
+]
+],
+"also": [],
+"count": 127
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"ٿو",
+"tʰ o"
+],
+[
+"ur",
+"تھا",
+"tʰ a"
+]
+],
+"langs": [
+[
+"sd",
+0.87
+],
+[
+"ur",
+0.49
+]
+],
+"also": [],
+"count": 505
+},
+"θ": {
+"name": "voiceless dental fricative",
+"class": "fricative",
+"plain": "th as in “thin”",
+"examples": [
+[
+"ar",
+"حيث",
+"ħ e ɪ θ"
+],
+[
+"fa",
+"تأثیر",
+"t æ ʔ θ i ɾ"
+]
+],
+"langs": [
+[
+"ar",
+0.56
+],
+[
+"fa",
+0.04
+]
+],
+"also": [],
+"count": 215
+},
+"t̪": {
+"name": "voiceless alveolar stop, dental",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"sd",
+"تي",
+"t̪ e"
+],
+[
+"ar",
+"تدريجيًا",
+"t̪ a d r i d ʒ i h a"
+]
+],
+"langs": [
+[
+"sd",
+2.43
+]
+],
+"also": [],
+"count": 1037
+},
+"c": {
+"name": "voiceless palatal stop",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”)",
+"examples": [
+[
+"ku",
+"زۆرجار",
+"z o r c a r"
+],
+[
+"ur",
+"نیچے",
+"n e c e"
+],
+[
+"sd",
+"چيو",
+"c j o"
+]
+],
+"langs": [
+[
+"ku",
+0.62
+],
+[
+"ur",
+0.37
+],
+[
+"sd",
+0.37
+]
+],
+"also": [],
+"count": 514
+},
+"ç": {
+"name": "voiceless palatal fricative",
+"class": "fricative",
+"plain": "the ch of German “ich”; like a strong h before ee",
+"examples": [
+[
+"ku",
+"هیچ",
+"h î ç"
+]
+],
+"langs": [
+[
+"ku",
+0.5
+]
+],
+"also": [],
+"count": 206
+},
+"õ": {
+"name": "close-mid back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"ur",
+"لوگوں",
+"l o ɡ õ"
+]
+],
+"langs": [
+[
+"ur",
+0.67
+]
+],
+"also": [],
+"count": 183
+},
+"ʐ": {
+"name": "voiced retroflex fricative",
+"class": "fricative",
+"plain": "a hard zh (Polish “ż”, “rz”)",
+"examples": [
+[
+"sd",
+"نظر",
+"n a ʐ a r"
+],
+[
+"ur",
+"عظیم",
+"a ʐ i m"
+]
+],
+"langs": [
+[
+"sd",
+0.11
+],
+[
+"ur",
+0.1
+]
+],
+"also": [],
+"count": 75
+},
+"d͡ʒ": {
+"name": "voiced postalveolar affricate",
+"class": "affricate",
+"plain": "j as in “judge”",
+"examples": [
+[
+"fa",
+"وجود",
+"v o d͡ʒ u d"
+],
+[
+"ar",
+"الوَجَباتِ",
+"a l w e d͡ʒ e b a t e"
+]
+],
+"langs": [
+[
+"fa",
+1.06
+]
+],
+"also": [],
+"count": 426
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"کي",
+"kʰ e"
+],
+[
+"ur",
+"دیکھ",
+"d e kʰ"
+]
+],
+"langs": [
+[
+"sd",
+1.14
+],
+[
+"ur",
+0.18
+]
+],
+"also": [],
+"count": 533
+},
+"ă": {
+"name": "open front unrounded vowel, extra-short",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; extra-short: a very short version of the vowel. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɖ": {
+"name": "voiced retroflex stop",
+"class": "stop",
+"plain": "d with the tongue tip curled back (Swedish and Norwegian “rd”)",
+"examples": [
+[
+"sd",
+"جڏهن",
+"ɟ ə ɖ ə h ʌ n"
+],
+[
+"ur",
+"ڈبلو",
+"ɖ ʌ b l o"
+]
+],
+"langs": [
+[
+"sd",
+1.06
+],
+[
+"ur",
+0.26
+]
+],
+"also": [],
+"count": 525
+},
+"ʌ": {
+"name": "open-mid back unrounded vowel",
+"class": "vowel",
+"plain": "u as in “cup”",
+"examples": [
+[
+"sd",
+"ڪري",
+"k ʌ r i"
+],
+[
+"ur",
+"پر",
+"p ʌ r"
+]
+],
+"langs": [
+[
+"sd",
+9.15
+],
+[
+"ur",
+4.97
+]
+],
+"also": [],
+"count": 5260
+},
+"ʋ": {
+"name": "labiodental approximant",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v)",
+"examples": [
+[
+"sd",
+"وڌيڪ",
+"ʋ ə dʰ i k"
+],
+[
+"ur",
+"وہ",
+"ʋ ʌ a"
+]
+],
+"langs": [
+[
+"sd",
+1.34
+],
+[
+"ur",
+1.26
+]
+],
+"also": [],
+"count": 913
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"ڦري",
+"pʰ ʌ r i"
+],
+[
+"ur",
+"پھل",
+"pʰ ʌ l"
+]
+],
+"langs": [
+[
+"sd",
+0.04
+],
+[
+"ur",
+0.03
+]
+],
+"also": [],
+"count": 22
+},
+"ɟ": {
+"name": "voiced palatal stop",
+"class": "stop",
+"plain": "a g made against the hard palate, close to “dy” (Hungarian “gy”, Czech “ď”)",
+"examples": [
+[
+"sd",
+"جي",
+"ɟ e"
+],
+[
+"ur",
+"جو",
+"ɟ o"
+]
+],
+"langs": [
+[
+"sd",
+3.15
+],
+[
+"ur",
+1.53
+]
+],
+"also": [],
+"count": 1760
+},
+"ẽ": {
+"name": "close-mid front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"ur",
+"میں",
+"m ẽ"
+]
+],
+"langs": [
+[
+"ur",
+1.62
+]
+],
+"also": [],
+"count": 443
+},
+"ã": {
+"name": "open front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"ur",
+"وہاں",
+"ʋ ʌ h ã"
+]
+],
+"langs": [
+[
+"ur",
+0.11
+]
+],
+"also": [],
+"count": 31
+},
+"a͡ɪ": {
+"name": "diphthong a to ɪ",
+"class": "diphthong",
+"plain": "eye",
+"examples": [
+[
+"ur",
+"سائنس",
+"s a͡ɪ n s"
+],
+[
+"sd",
+"ai",
+"a͡ɪ"
+],
+[
+"ku",
+"ai",
+"a͡ɪ"
+]
+],
+"langs": [
+[
+"ur",
+0.27
+]
+],
+"also": [],
+"count": 78
+},
+"χ": {
+"name": "voiceless uvular fricative",
+"class": "fricative",
+"plain": "a rougher ch made at the uvula (Welsh “ch”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"î": {
+"name": "long close front vowel (Kurdish î)",
+"class": "vowel",
+"plain": "ee as in “see”, long. The G2P writes Kurdish î as in Kurdish Latin spelling; not a pitch accent",
+"examples": [
+[
+"ku",
+"کاریگەری",
+"k a r î ɡ e r î"
+]
+],
+"langs": [
+[
+"ku",
+5.64
+]
+],
+"also": [],
+"count": 2305
+},
+"ê": {
+"name": "long close-mid front vowel (Kurdish ê)",
+"class": "vowel",
+"plain": "e as in Spanish “de”, long. Kurdish ê as in Kurdish Latin spelling; not a pitch accent",
+"examples": [
+[
+"ku",
+"هەندێک",
+"h e n d ê k"
+]
+],
+"langs": [
+[
+"ku",
+2.74
+]
+],
+"also": [],
+"count": 1117
+},
+"í": {
+"name": "close front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"û": {
+"name": "long close back vowel (Kurdish û)",
+"class": "vowel",
+"plain": "oo as in “food”, long. Kurdish û as in Kurdish Latin spelling; not a pitch accent",
+"examples": [
+[
+"ku",
+"بوو",
+"b û"
+]
+],
+"langs": [
+[
+"ku",
+0.79
+]
+],
+"also": [],
+"count": 324
+},
+"a͡ʊ": {
+"name": "diphthong a to ʊ",
+"class": "diphthong",
+"plain": "ow as in “now”. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"cʰ": {
+"name": "voiceless palatal stop, aspirated",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ur",
+"کچھ",
+"k ʌ cʰ"
+],
+[
+"sd",
+"ڇاڪاڻ",
+"cʰ a k a ɳ"
+]
+],
+"langs": [
+[
+"ur",
+0.22
+],
+[
+"sd",
+0.13
+]
+],
+"also": [],
+"count": 113
+},
+"ŋ̩": {
+"name": "velar nasal, syllabic",
+"class": "nasal",
+"plain": "ng as in “sing”; syllabic: forms a syllable with no vowel, as the n of “button”",
+"examples": [
+[
+"sd",
+"اڱڻ",
+"a ŋ̩ ʌ ɳ"
+]
+],
+"langs": [
+[
+"sd",
+0.02
+]
+],
+"also": [],
+"count": 9
+},
+"ř": {
+"name": "alveolar trill (Kurdish ڕ)",
+"class": "rhotic",
+"plain": "a strongly rolled r, the Kurdish ڕ (written ř in Kurdish Latin spelling)",
+"examples": [
+[
+"ku",
+"ڕێگەی",
+"ř ê ɡ e y"
+]
+],
+"langs": [
+[
+"ku",
+0.93
+]
+],
+"also": [],
+"count": 380
+},
+"ʈʰ": {
+"name": "voiceless retroflex stop, aspirated",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"اٺ",
+"a ʈʰ"
+],
+[
+"ur",
+"جیسےمٹھائیاں",
+"ɟ e s e m ʈʰ a j ã"
+]
+],
+"langs": [
+[
+"sd",
+0.19
+],
+[
+"ur",
+0.04
+]
+],
+"also": [],
+"count": 91
+},
+"bʰ": {
+"name": "voiced bilabial stop, aspirated",
+"class": "stop",
+"plain": "b as in “bed”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ur",
+"بھی",
+"bʰ i"
+],
+[
+"sd",
+"سڀ",
+"s ʌ bʰ"
+]
+],
+"langs": [
+[
+"ur",
+0.27
+],
+[
+"sd",
+0.2
+]
+],
+"also": [],
+"count": 162
+},
+"dʰ": {
+"name": "voiced alveolar stop, aspirated",
+"class": "stop",
+"plain": "d as in “dog”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"وڌيڪ",
+"ʋ ə dʰ i k"
+],
+[
+"ur",
+"بدھ",
+"b ʌ dʰ"
+]
+],
+"langs": [
+[
+"sd",
+0.35
+],
+[
+"ur",
+0.05
+]
+],
+"also": [],
+"count": 161
+},
+"ɡʰ": {
+"name": "voiced velar stop, aspirated",
+"class": "stop",
+"plain": "g as in “go”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ur",
+"گھر",
+"ɡʰ ʌ r"
+],
+[
+"sd",
+"ڊگھي",
+"ɖ ʌ ɡʰ i"
+]
+],
+"langs": [
+[
+"ur",
+0.07
+],
+[
+"sd",
+0.01
+]
+],
+"also": [],
+"count": 24
+},
+"ɟʰ": {
+"name": "voiced palatal stop, aspirated",
+"class": "stop",
+"plain": "a g made against the hard palate, close to “dy” (Hungarian “gy”, Czech “ď”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ur",
+"مجھے",
+"m ʌ ɟʰ e"
+]
+],
+"langs": [
+[
+"ur",
+0.02
+]
+],
+"also": [],
+"count": 5
+},
+"ɖʰ": {
+"name": "voiced retroflex stop, aspirated",
+"class": "stop",
+"plain": "d with the tongue tip curled back (Swedish and Norwegian “rd”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"sd",
+"ڪڍي",
+"k ʌ ɖʰ i"
+],
+[
+"ur",
+"ڈھونڈنے",
+"ɖʰ u n ɖ n e"
+]
+],
+"langs": [
+[
+"sd",
+0.05
+],
+[
+"ur",
+0.01
+]
+],
+"also": [],
+"count": 24
+},
+"ʌ̃": {
+"name": "open-mid back unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "u as in “cup”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"sd",
+"هن",
+"h ʌ̃"
+]
+],
+"langs": [
+[
+"sd",
+0.13
+]
+],
+"also": [],
+"count": 57
+}
+}
+}

@@ -1,7 +1,5 @@
 # Language support
 
-[Main README](../README.md) · [Developer guide](README.md) · [About the models](about-models.md) · [Evaluation](evaluation.md) · **Language support**
-
 This page covers the default `std` phoneme set and its `mbfa-*` models: which languages they align, the code to
 pass for each, and what changes for tonal and unspaced languages. The espeak-ng `ph66` set is
 summarised [at the end](#the-ph66-set).
@@ -220,10 +218,12 @@ expand them.
 
 ### Silence and punctuation
 
-By default no silence is written at punctuation, because the mbfa models were trained on
-sequences without one. `punctuation_sil=True` writes a `SIL` at every pause mark (`, . ; : ! ? …`, dashes
-and the CJK marks `，。！？；：、`). The aligner can skip any `SIL` at no cost, so this only gives the path
-a place to put a pause. An explicit `<SIL>` in the text is always honoured.
+By default a `SIL` is written at every pause mark (`, . ; : ! ? …`, dashes and the CJK marks
+`，。！？；：、`). Without one, a pause has nowhere to go and is swallowed by the phone next to it. The
+aligner can skip any `SIL` at no cost, so this only gives the path a place to put a pause.
+`punctuation_sil=False` (`--no-punctuation-sil`) turns it off: the mbfa models were trained on
+sequences without these silences, and the paper's benchmarks were run that way. An explicit `<SIL>`
+in the text is always honoured.
 
 ### Tone
 

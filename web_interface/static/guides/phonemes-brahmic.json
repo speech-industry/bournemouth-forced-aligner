@@ -1,0 +1,2439 @@
+{
+"group": "brahmic",
+"model": "mbfa-brahmic",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Aspirated (ʰ) and breathy-voiced (ʱ) stops are tokens of their own; the puff or murmur after the release belongs to the stop, not to the vowel. bʰ and bʱ both occur for the same letter; treat them alike. Dental (t̪ d̪ n̪) and retroflex (ʈ ɖ ɳ) consonants are different tokens; plain t and d almost never occur.",
+"lang_names": {
+"hi": "Hindi",
+"or": "Odia",
+"ta": "Tamil"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"or",
+"ଯାହା",
+"d͡ʒ a h a"
+],
+[
+"ta",
+"இந்த",
+"ʔ ɨ n̪ d̪ a"
+]
+],
+"langs": [
+[
+"or",
+9.39
+],
+[
+"ta",
+2.45
+]
+],
+"also": [],
+"count": 5441
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"or",
+"ସହିତ",
+"s ɔ h i t̪ ɔ"
+],
+[
+"ta",
+"சில",
+"s ɨ l̪ a"
+],
+[
+"hi",
+"nsw",
+"ɛ n ɛ s w e"
+]
+],
+"langs": [
+[
+"or",
+4.11
+],
+[
+"ta",
+1.74
+],
+[
+"hi",
+0.03
+]
+],
+"also": [],
+"count": 2698
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"or",
+"ଏହି",
+"e h i"
+],
+[
+"hi",
+"की",
+"k i"
+],
+[
+"ta",
+"நீங்கள்",
+"n̪ i ŋ ɡ ʌ ɭ"
+]
+],
+"langs": [
+[
+"or",
+8.71
+],
+[
+"hi",
+4.75
+],
+[
+"ta",
+0.83
+]
+],
+"also": [],
+"count": 5425
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"hi",
+"के",
+"k e"
+],
+[
+"or",
+"ଏବଂ",
+"e b ɔ ŋ"
+],
+[
+"ta",
+"வெவ்வேறு",
+"ʋ e ʋ e r ɯ"
+]
+],
+"langs": [
+[
+"hi",
+5.84
+],
+[
+"or",
+5.38
+],
+[
+"ta",
+2.13
+]
+],
+"also": [],
+"count": 4735
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"or",
+"ଭିନ୍ନ",
+"bʱ i n n ɔ"
+],
+[
+"ta",
+"ஆனால்",
+"ʔ ɑ n ɑ l̪"
+],
+[
+"hi",
+"nsw",
+"ɛ n ɛ s w e"
+]
+],
+"langs": [
+[
+"or",
+3.45
+],
+[
+"ta",
+3.03
+],
+[
+"hi",
+0.06
+]
+],
+"also": [],
+"count": 2999
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"hi",
+"कितना",
+"k ɪ t n̪ ä"
+]
+],
+"langs": [
+[
+"hi",
+0.06
+]
+],
+"also": [],
+"count": 14
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"or",
+"କରିଥିଲେ",
+"k ɔ r i t̪ʰ i l e"
+],
+[
+"ta",
+"slalom",
+"s l a l o m"
+]
+],
+"langs": [
+[
+"or",
+1.52
+],
+[
+"ta",
+0.01
+]
+],
+"also": [],
+"count": 704
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"hi",
+"के",
+"k e"
+],
+[
+"or",
+"ଏକ",
+"e k ɔ"
+],
+[
+"ta",
+"கொண்ட",
+"k o ɳ ɖ a"
+]
+],
+"langs": [
+[
+"hi",
+6.9
+],
+[
+"or",
+4.59
+],
+[
+"ta",
+4.28
+]
+],
+"also": [],
+"count": 5599
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"hi",
+"को",
+"k o"
+],
+[
+"ta",
+"ஒரு",
+"ʔ o ɾ ɯ"
+],
+[
+"or",
+"ଓ",
+"o"
+]
+],
+"langs": [
+[
+"hi",
+1.97
+],
+[
+"ta",
+1.6
+],
+[
+"or",
+1.37
+]
+],
+"also": [],
+"count": 1798
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"or",
+"ଭାବରେ",
+"bʱ a b ɔ r e"
+],
+[
+"ta",
+"என்று",
+"ʔ e n r ɯ"
+],
+[
+"hi",
+"number",
+"n u m b ɛ r"
+]
+],
+"langs": [
+[
+"or",
+5.16
+],
+[
+"ta",
+1.72
+]
+],
+"also": [],
+"count": 3163
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"ta",
+"மற்றும்",
+"m ʌ ʈ ɾ ɯ m"
+],
+[
+"hi",
+"में",
+"m ẽ"
+],
+[
+"or",
+"କିମ୍ବା",
+"k i m b a"
+]
+],
+"langs": [
+[
+"ta",
+4.27
+],
+[
+"hi",
+3.41
+],
+[
+"or",
+2.63
+]
+],
+"also": [],
+"count": 3924
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"hi",
+"तापवृद्धि",
+"t̪ ä p w ɾ ɪ d d̪ʱ i"
+],
+[
+"or",
+"w",
+"d u b e l"
+],
+[
+"ta",
+"ராஜ்ஜியத்தின்",
+"ɾ ɑ d d͡ʑ ɨ j ʌ t̪ ɨ n"
+]
+],
+"langs": [
+[
+"hi",
+0.04
+]
+],
+"also": [],
+"count": 14
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"or",
+"ଉପରେ",
+"u p ɔ r e"
+],
+[
+"hi",
+"रूप",
+"ɾ u p"
+],
+[
+"ta",
+"மூன்று",
+"m u ɳ ɯ"
+]
+],
+"langs": [
+[
+"or",
+3.93
+],
+[
+"hi",
+0.72
+],
+[
+"ta",
+0.46
+]
+],
+"also": [],
+"count": 2175
+},
+"ɪ": {
+"name": "near-close front unrounded vowel",
+"class": "vowel",
+"plain": "i as in “sit”",
+"examples": [
+[
+"hi",
+"लिए",
+"l̪ ɪ e"
+]
+],
+"langs": [
+[
+"hi",
+3.31
+]
+],
+"also": [],
+"count": 727
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”. Also used for ɾ̪, which this model has no token of its own for",
+"examples": [
+[
+"hi",
+"और",
+"ɔ ɾ"
+],
+[
+"ta",
+"மற்றும்",
+"m ʌ ʈ ɾ ɯ m"
+],
+[
+"or",
+"ପ୍ରଥମ",
+"p ɾ ɔ t̪ʰ ɔ m ɔ"
+]
+],
+"langs": [
+[
+"hi",
+6.35
+],
+[
+"ta",
+4.71
+],
+[
+"or",
+2.52
+]
+],
+"also": [
+"ɾ̪"
+],
+"count": 4725
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"hi",
+"जिराफ़",
+"d͡ʒ ɪ ɾ ä f"
+],
+[
+"or",
+"fic",
+"f i k"
+],
+[
+"ta",
+"fic",
+"f i k"
+]
+],
+"langs": [
+[
+"hi",
+0.05
+]
+],
+"also": [],
+"count": 17
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”. Also used for jᵊ, which this model has no token of its own for",
+"examples": [
+[
+"hi",
+"किया",
+"k i j ä"
+],
+[
+"ta",
+"புதிய",
+"p ɯ d̪ ɨ j a"
+],
+[
+"or",
+"ମଧ୍ୟ",
+"m ɔ d̪ʱ j ɔ"
+]
+],
+"langs": [
+[
+"hi",
+2.42
+],
+[
+"ta",
+2.23
+],
+[
+"or",
+1.64
+]
+],
+"also": [
+"jᵊ"
+],
+"count": 2316
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"hi",
+"पर",
+"p ə ɾ"
+]
+],
+"langs": [
+[
+"hi",
+8.01
+]
+],
+"also": [],
+"count": 1760
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"or",
+"ଏବଂ",
+"e b ɔ ŋ"
+],
+[
+"hi",
+"सबसे",
+"s̪ ə b s̪ e"
+],
+[
+"ta",
+"என்பது",
+"ʔ e m b ʌ d̪ ɯ"
+]
+],
+"langs": [
+[
+"or",
+3.73
+],
+[
+"hi",
+1.51
+],
+[
+"ta",
+0.56
+]
+],
+"also": [],
+"count": 2302
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"ta",
+"பல",
+"p ʌ l̪ a"
+],
+[
+"or",
+"ପାଇଁ",
+"p a ĩ"
+],
+[
+"hi",
+"पर",
+"p ə ɾ"
+]
+],
+"langs": [
+[
+"ta",
+3.5
+],
+[
+"or",
+2.69
+],
+[
+"hi",
+2.56
+]
+],
+"also": [],
+"count": 3411
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"hi",
+"है",
+"ɦ ɛ"
+],
+[
+"ta",
+"nhk",
+"ɛ n h ɛ k a"
+],
+[
+"or",
+"nsw",
+"ɛ n ɛ s w e"
+]
+],
+"langs": [
+[
+"hi",
+1.67
+],
+[
+"ta",
+0.03
+],
+[
+"or",
+0.02
+]
+],
+"also": [],
+"count": 390
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"hi",
+"द्वारा",
+"d̪ w ä ɾ ä"
+],
+[
+"or",
+"nsw",
+"ɛ n ɛ s w e"
+]
+],
+"langs": [
+[
+"hi",
+0.16
+]
+],
+"also": [],
+"count": 38
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”",
+"examples": [
+[
+"ta",
+"ஆனால்",
+"ʔ ɑ n ɑ l̪"
+]
+],
+"langs": [
+[
+"ta",
+4.22
+]
+],
+"also": [],
+"count": 1950
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”",
+"examples": [
+[
+"ta",
+"நீங்கள்",
+"n̪ i ŋ ɡ ʌ ɭ"
+],
+[
+"hi",
+"गया",
+"ɡ ə j ä"
+],
+[
+"or",
+"ଗୋଟିଏ",
+"ɡ o ʈ i e"
+]
+],
+"langs": [
+[
+"ta",
+2.77
+],
+[
+"hi",
+1.58
+],
+[
+"or",
+1.09
+]
+],
+"also": [],
+"count": 2124
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"hi",
+"ज़्यादातर",
+"z j ä d̪ ä t̪ ə ɾ"
+]
+],
+"langs": [
+[
+"hi",
+0.18
+]
+],
+"also": [],
+"count": 40
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"ta",
+"ஒரு",
+"ʔ o ɾ ɯ"
+]
+],
+"langs": [
+[
+"ta",
+3.94
+]
+],
+"also": [],
+"count": 1820
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"or",
+"ଏବଂ",
+"e b ɔ ŋ"
+],
+[
+"hi",
+"और",
+"ɔ ɾ"
+]
+],
+"langs": [
+[
+"or",
+19.33
+],
+[
+"hi",
+1.05
+]
+],
+"also": [],
+"count": 9102
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"or",
+"ଏବଂ",
+"e b ɔ ŋ"
+],
+[
+"ta",
+"நீங்கள்",
+"n̪ i ŋ ɡ ʌ ɭ"
+],
+[
+"hi",
+"चूंकि",
+"t͡ʃ ũ ŋ k i"
+]
+],
+"langs": [
+[
+"or",
+1.14
+],
+[
+"ta",
+0.66
+],
+[
+"hi",
+0.42
+]
+],
+"also": [],
+"count": 919
+},
+"ʊ": {
+"name": "near-close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “book”",
+"examples": [
+[
+"hi",
+"कुछ",
+"k ʊ t͡ʃʰ"
+]
+],
+"langs": [
+[
+"hi",
+1.32
+]
+],
+"also": [],
+"count": 290
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”",
+"examples": [
+[
+"hi",
+"विशेष",
+"ʋ ɪ ʃ e ʃ"
+]
+],
+"langs": [
+[
+"hi",
+1.33
+]
+],
+"also": [],
+"count": 293
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"ta",
+"மற்றும்",
+"m ʌ ʈ ɾ ɯ m"
+]
+],
+"langs": [
+[
+"ta",
+7.92
+]
+],
+"also": [],
+"count": 3656
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"or",
+"ଏହା",
+"e h a"
+],
+[
+"ta",
+"ஹில்",
+"h ɨ l̪"
+]
+],
+"langs": [
+[
+"or",
+2.0
+],
+[
+"ta",
+0.07
+]
+],
+"also": [],
+"count": 953
+},
+"ɐ": {
+"name": "near-open central vowel",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"hi",
+"ख़ास",
+"x ä s̪"
+]
+],
+"langs": [
+[
+"hi",
+0.02
+]
+],
+"also": [],
+"count": 5
+},
+"q": {
+"name": "voiceless uvular stop",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”)",
+"examples": [
+[
+"ta",
+"ஷூட்டர்ஸ்",
+"ʂ u ʈ ʌ ɾ s"
+],
+[
+"hi",
+"कष्ट",
+"k ə ʂ ʈ"
+]
+],
+"langs": [
+[
+"ta",
+0.1
+]
+],
+"also": [],
+"count": 46
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"hi",
+"ग़लत",
+"ɣ ə l̪ ə t̪"
+]
+],
+"langs": [
+[
+"hi",
+0.01
+]
+],
+"also": [],
+"count": 3
+},
+"ɨ": {
+"name": "close central unrounded vowel",
+"class": "vowel",
+"plain": "between ee and oo, lips spread (Polish “y”, Welsh “u”)",
+"examples": [
+[
+"ta",
+"இந்த",
+"ʔ ɨ n̪ d̪ a"
+]
+],
+"langs": [
+[
+"ta",
+7.26
+]
+],
+"also": [],
+"count": 3351
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"ta",
+"ஶ்ரீ",
+"ɕ ɾ i"
+]
+],
+"langs": [],
+"also": [],
+"count": 3
+},
+"ɳ": {
+"name": "retroflex nasal",
+"class": "nasal",
+"plain": "n with the tongue tip curled back",
+"examples": [
+[
+"or",
+"ଆପଣ",
+"a p ɔ ɳ ɔ"
+],
+[
+"ta",
+"கொண்ட",
+"k o ɳ ɖ a"
+],
+[
+"hi",
+"कारण",
+"k ä ɾ ə̃ ɳ"
+]
+],
+"langs": [
+[
+"or",
+1.09
+],
+[
+"ta",
+0.95
+],
+[
+"hi",
+0.56
+]
+],
+"also": [],
+"count": 1063
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"or",
+"ପଞ୍ଚମ",
+"p ɔ ɲ t͡ʃ ɔ m ɔ"
+],
+[
+"ta",
+"விஞ்ஞானிகள்",
+"ʋ ɨ ɲ ɑ n ɨ ɡ ʌ ɭ"
+]
+],
+"langs": [
+[
+"or",
+0.16
+],
+[
+"ta",
+0.05
+]
+],
+"also": [],
+"count": 97
+},
+"ʉ": {
+"name": "close central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between ee and oo (Norwegian and Swedish “du”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”)",
+"examples": [
+[
+"ta",
+"மற்றும்",
+"m ʌ ʈ ɾ ɯ m"
+],
+[
+"or",
+"ଅଟେ",
+"ɔ ʈ e"
+],
+[
+"hi",
+"छुट्टियों",
+"t͡ʃʰ ʊ ʈ ʈ i j õ"
+]
+],
+"langs": [
+[
+"ta",
+1.66
+],
+[
+"or",
+1.12
+],
+[
+"hi",
+1.09
+]
+],
+"also": [],
+"count": 1519
+},
+"t͡ʃ": {
+"name": "voiceless postalveolar affricate",
+"class": "affricate",
+"plain": "ch as in “church”",
+"examples": [
+[
+"hi",
+"बीच",
+"b i t͡ʃ"
+],
+[
+"or",
+"ସୂଚନା",
+"s u t͡ʃ ɔ n a"
+],
+[
+"ta",
+"cep",
+"t͡ʃ ɛ p"
+]
+],
+"langs": [
+[
+"hi",
+0.66
+],
+[
+"or",
+0.6
+]
+],
+"also": [],
+"count": 424
+},
+"t͡ɕ": {
+"name": "voiceless alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t̪": {
+"name": "voiceless alveolar stop, dental",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"hi",
+"जाता",
+"d͡ʒ ä t̪ ä"
+],
+[
+"or",
+"ସହିତ",
+"s ɔ h i t̪ ɔ"
+],
+[
+"ta",
+"மத்திய",
+"m ʌ t̪ ɨ j a"
+]
+],
+"langs": [
+[
+"hi",
+3.14
+],
+[
+"or",
+2.95
+],
+[
+"ta",
+1.97
+]
+],
+"also": [],
+"count": 2954
+},
+"ɭ": {
+"name": "retroflex lateral approximant",
+"class": "lateral",
+"plain": "l with the tongue tip curled back",
+"examples": [
+[
+"ta",
+"உள்ள",
+"ʔ ɯ ɭ a"
+]
+],
+"langs": [
+[
+"ta",
+2.5
+]
+],
+"also": [],
+"count": 1155
+},
+"ɔ̃": {
+"name": "open-mid back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "o as in British “thought”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"यौन",
+"j ɔ̃ n̪"
+],
+[
+"or",
+"ପହଁରିବା",
+"p ɔ h ɔ̃ r i b a"
+]
+],
+"langs": [
+[
+"hi",
+0.03
+],
+[
+"or",
+0.01
+]
+],
+"also": [],
+"count": 12
+},
+"õ": {
+"name": "close-mid back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"लोगों",
+"l̪ o ɡ õ"
+]
+],
+"langs": [
+[
+"hi",
+1.08
+]
+],
+"also": [],
+"count": 237
+},
+"d͡ʒ": {
+"name": "voiced postalveolar affricate",
+"class": "affricate",
+"plain": "j as in “judge”",
+"examples": [
+[
+"or",
+"ଯେ",
+"d͡ʒ e"
+],
+[
+"hi",
+"जाता",
+"d͡ʒ ä t̪ ä"
+]
+],
+"langs": [
+[
+"or",
+1.92
+],
+[
+"hi",
+1.41
+]
+],
+"also": [],
+"count": 1192
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"ଖାଦ୍ୟ",
+"kʰ a d̪ j ɔ"
+],
+[
+"hi",
+"खास",
+"kʰ ä s̪"
+]
+],
+"langs": [
+[
+"or",
+0.61
+],
+[
+"hi",
+0.41
+]
+],
+"also": [],
+"count": 370
+},
+"ɖ": {
+"name": "voiced retroflex stop",
+"class": "stop",
+"plain": "d with the tongue tip curled back (Swedish and Norwegian “rd”)",
+"examples": [
+[
+"ta",
+"அடிப்படையாகக்",
+"ʔ ʌ ɖ ɨ p ʌ ɖ ʌ ɪ̯ j ɑ ɡ ʌ k"
+],
+[
+"or",
+"ଡୋର୍",
+"ɖ o r"
+],
+[
+"hi",
+"मैडल",
+"m ɛ ɖ ə l̪"
+]
+],
+"langs": [
+[
+"ta",
+1.98
+],
+[
+"or",
+0.36
+],
+[
+"hi",
+0.29
+]
+],
+"also": [],
+"count": 1144
+},
+"ʌ": {
+"name": "open-mid back unrounded vowel",
+"class": "vowel",
+"plain": "u as in “cup”",
+"examples": [
+[
+"ta",
+"மற்றும்",
+"m ʌ ʈ ɾ ɯ m"
+]
+],
+"langs": [
+[
+"ta",
+16.25
+]
+],
+"also": [],
+"count": 7500
+},
+"ʋ": {
+"name": "labiodental approximant",
+"class": "glide",
+"plain": "a soft v without friction (Dutch w, Slovenian v)",
+"examples": [
+[
+"ta",
+"மிகவும்",
+"m ɨ ɡ ʌ ʋ ɯ m"
+],
+[
+"hi",
+"वाले",
+"ʋ ä l̪ e"
+]
+],
+"langs": [
+[
+"ta",
+3.13
+],
+[
+"hi",
+1.82
+]
+],
+"also": [],
+"count": 1846
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"hi",
+"फिर",
+"pʰ ɪ ɾ"
+],
+[
+"or",
+"ଫଳାଫଳ",
+"pʰ ɔ l̪ a pʰ ɔ l̪ ɔ"
+]
+],
+"langs": [
+[
+"hi",
+0.29
+],
+[
+"or",
+0.27
+]
+],
+"also": [],
+"count": 190
+},
+"k̚": {
+"name": "voiceless velar stop, unreleased",
+"class": "stop",
+"plain": "k as in “key”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"hi",
+"लक्खा",
+"l̪ ə k̚ kʰ ä"
+]
+],
+"langs": [
+[
+"hi",
+0.03
+]
+],
+"also": [],
+"count": 6
+},
+"d̪": {
+"name": "voiced alveolar stop, dental",
+"class": "stop",
+"plain": "d as in “dog”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"ta",
+"இந்த",
+"ʔ ɨ n̪ d̪ a"
+],
+[
+"hi",
+"देश",
+"d̪ e ʃ"
+],
+[
+"or",
+"ଦ୍ଵାରା",
+"d̪ u a r a"
+]
+],
+"langs": [
+[
+"ta",
+3.19
+],
+[
+"hi",
+1.56
+],
+[
+"or",
+1.32
+]
+],
+"also": [],
+"count": 2419
+},
+"d͡ʑ": {
+"name": "voiced alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft j (Polish “dź”)",
+"examples": [
+[
+"ta",
+"ஜி",
+"d͡ʑ i"
+]
+],
+"langs": [
+[
+"ta",
+0.2
+]
+],
+"also": [],
+"count": 92
+},
+"ẽ": {
+"name": "close-mid front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"में",
+"m ẽ"
+],
+[
+"or",
+"ନୁହେଁ",
+"n u h ẽ"
+]
+],
+"langs": [
+[
+"hi",
+1.3
+],
+[
+"or",
+0.05
+]
+],
+"also": [],
+"count": 307
+},
+"ɦ": {
+"name": "voiced glottal fricative",
+"class": "fricative",
+"plain": "a breathy, voiced h (Dutch and Czech h)",
+"examples": [
+[
+"hi",
+"है",
+"ɦ ɛ"
+]
+],
+"langs": [
+[
+"hi",
+3.51
+]
+],
+"also": [],
+"count": 771
+},
+"ɛ̃": {
+"name": "open-mid front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "e as in “bed”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"हैं",
+"ɦ ɛ̃"
+]
+],
+"langs": [
+[
+"hi",
+0.52
+]
+],
+"also": [],
+"count": 114
+},
+"n̪": {
+"name": "alveolar nasal, dental",
+"class": "nasal",
+"plain": "n; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"hi",
+"नहीं",
+"n̪ ə ɦ ĩ"
+],
+[
+"ta",
+"இந்த",
+"ʔ ɨ n̪ d̪ a"
+]
+],
+"langs": [
+[
+"hi",
+4.34
+],
+[
+"ta",
+1.6
+]
+],
+"also": [],
+"count": 1691
+},
+"t͡ɕʰ": {
+"name": "voiceless alveolo-palatal affricate, aspirated",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t̚": {
+"name": "voiceless alveolar stop, unreleased",
+"class": "stop",
+"plain": "t as in “ten”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"hi",
+"अच्छा",
+"ə t̚ t͡ʃʰ ä"
+]
+],
+"langs": [
+[
+"hi",
+0.11
+]
+],
+"also": [],
+"count": 24
+},
+"ã": {
+"name": "open front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; nasalised: air also flows through the nose (French “an”, Portuguese “não”). Also used for ä̃, which this model has no token of its own for",
+"examples": [
+[
+"hi",
+"स्थान",
+"s̪ t̪ʰ ã n̪"
+],
+[
+"or",
+"ଗାଁରେ",
+"ɡ ã r e"
+]
+],
+"langs": [
+[
+"hi",
+0.89
+]
+],
+"also": [
+"ä̃"
+],
+"count": 198
+},
+"l̪": {
+"name": "alveolar lateral approximant, dental",
+"class": "lateral",
+"plain": "l as in “leaf”; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"hi",
+"लिए",
+"l̪ ɪ e"
+],
+[
+"ta",
+"அல்லது",
+"ʔ ʌ l̪ ʌ d̪ ɯ"
+],
+[
+"or",
+"ଯେତେବେଳେ",
+"d͡ʒ e t̪ e b e l̪ e"
+]
+],
+"langs": [
+[
+"hi",
+2.98
+],
+[
+"ta",
+2.92
+],
+[
+"or",
+0.67
+]
+],
+"also": [],
+"count": 2309
+},
+"ä": {
+"name": "open front unrounded vowel, centralised",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; centralised: said closer to the centre of the mouth than the plain vowel",
+"examples": [
+[
+"hi",
+"का",
+"k ä"
+]
+],
+"langs": [
+[
+"hi",
+8.34
+]
+],
+"also": [],
+"count": 1831
+},
+"p̚": {
+"name": "voiceless bilabial stop, unreleased",
+"class": "stop",
+"plain": "p as in “pen”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"hi",
+"टिप्पणी",
+"ʈ ɪ p̚ p ə ɳ i"
+]
+],
+"langs": [
+[
+"hi",
+0.02
+]
+],
+"also": [],
+"count": 4
+},
+"ɽ": {
+"name": "retroflex flap",
+"class": "rhotic",
+"plain": "a flap with the tongue tip curled back",
+"examples": [
+[
+"or",
+"ଗୁଡ଼ିକ",
+"ɡ u ɽ i k ɔ"
+],
+[
+"hi",
+"बड़े",
+"b ə ɽ e"
+]
+],
+"langs": [
+[
+"or",
+0.27
+],
+[
+"hi",
+0.22
+]
+],
+"also": [],
+"count": 172
+},
+"s̪": {
+"name": "voiceless alveolar fricative, dental",
+"class": "fricative",
+"plain": "s; dental: the tongue tip touches the upper teeth",
+"examples": [
+[
+"hi",
+"से",
+"s̪ e"
+]
+],
+"langs": [
+[
+"hi",
+4.57
+]
+],
+"also": [],
+"count": 1003
+},
+"í": {
+"name": "close front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"r̩": {
+"name": "alveolar trill, syllabic",
+"class": "rhotic",
+"plain": "a rolled r; syllabic: forms a syllable with no vowel, as the n of “button”. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ĩ": {
+"name": "close front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "ee as in “see”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"नहीं",
+"n̪ ə ɦ ĩ"
+],
+[
+"or",
+"ପାଇଁ",
+"p a ĩ"
+]
+],
+"langs": [
+[
+"hi",
+0.34
+],
+[
+"or",
+0.25
+]
+],
+"also": [],
+"count": 190
+},
+"ɐ̃": {
+"name": "near-open central vowel, nasalised",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings); nasalised: air also flows through the nose (French “an”, Portuguese “não”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡ʃʰ": {
+"name": "voiceless postalveolar affricate, aspirated",
+"class": "affricate",
+"plain": "ch as in “church”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"କିଛି",
+"k i t͡ʃʰ i"
+],
+[
+"hi",
+"कुछ",
+"k ʊ t͡ʃʰ"
+]
+],
+"langs": [
+[
+"or",
+0.48
+],
+[
+"hi",
+0.27
+]
+],
+"also": [],
+"count": 281
+},
+"ʊ̃": {
+"name": "near-close back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "oo as in “book”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"उन्हें",
+"ʊ̃ n̪ ɦ ẽ"
+]
+],
+"langs": [
+[
+"hi",
+0.13
+]
+],
+"also": [],
+"count": 29
+},
+"ɪ̯": {
+"name": "near-close front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "i as in “sit”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"ta",
+"அவை",
+"ʔ ʌ ʋ ʌ ɪ̯"
+]
+],
+"langs": [
+[
+"ta",
+2.58
+]
+],
+"also": [],
+"count": 1191
+},
+"ə̃": {
+"name": "mid central vowel (schwa), nasalised",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"धर्म",
+"d̪ʱ ə ɾ ə̃ m"
+]
+],
+"langs": [
+[
+"hi",
+1.46
+]
+],
+"also": [],
+"count": 321
+},
+"t̪ʰ": {
+"name": "voiceless alveolar stop, dental, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; dental: the tongue tip touches the upper teeth; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"ଥିବା",
+"t̪ʰ i b a"
+],
+[
+"hi",
+"था",
+"t̪ʰ ä"
+]
+],
+"langs": [
+[
+"or",
+1.35
+],
+[
+"hi",
+0.66
+]
+],
+"also": [],
+"count": 764
+},
+"ɻ": {
+"name": "retroflex approximant",
+"class": "rhotic",
+"plain": "an English-like r with the tongue tip curled back",
+"examples": [
+[
+"ta",
+"பழைய",
+"p ʌ ɻ ʌ ɪ̯ j a"
+]
+],
+"langs": [
+[
+"ta",
+0.52
+]
+],
+"also": [],
+"count": 238
+},
+"ũ": {
+"name": "close back rounded vowel, nasalised",
+"class": "vowel",
+"plain": "oo as in “food”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"चूंकि",
+"t͡ʃ ũ ŋ k i"
+],
+[
+"or",
+"ମୁଁ",
+"m ũ"
+]
+],
+"langs": [
+[
+"hi",
+0.09
+],
+[
+"or",
+0.08
+]
+],
+"also": [],
+"count": 58
+},
+"d̪ʱ": {
+"name": "voiced alveolar stop, dental, breathy-voiced",
+"class": "stop",
+"plain": "d as in “dog”; dental: the tongue tip touches the upper teeth; breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"or",
+"ମଧ୍ୟ",
+"m ɔ d̪ʱ j ɔ"
+],
+[
+"hi",
+"धर्म",
+"d̪ʱ ə ɾ ə̃ m"
+]
+],
+"langs": [
+[
+"or",
+0.75
+],
+[
+"hi",
+0.65
+]
+],
+"also": [],
+"count": 488
+},
+"bʱ": {
+"name": "voiced bilabial stop, breathy-voiced",
+"class": "stop",
+"plain": "b as in “bed”; breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"hi",
+"भी",
+"bʱ i"
+],
+[
+"or",
+"ଭାବରେ",
+"bʱ a b ɔ r e"
+]
+],
+"langs": [
+[
+"hi",
+0.6
+],
+[
+"or",
+0.59
+]
+],
+"also": [],
+"count": 402
+},
+"ʈʰ": {
+"name": "voiceless retroflex stop, aspirated",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"ସବୁଠାରୁ",
+"s ɔ b u ʈʰ a r u"
+],
+[
+"hi",
+"आठ",
+"ä ʈʰ"
+]
+],
+"langs": [
+[
+"or",
+0.24
+],
+[
+"hi",
+0.1
+]
+],
+"also": [],
+"count": 133
+},
+"bʰ": {
+"name": "voiced bilabial stop, aspirated",
+"class": "stop",
+"plain": "b as in “bed”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"ଆରମ୍ଭ",
+"a ɾ ɔ m bʰ ɔ"
+]
+],
+"langs": [
+[
+"or",
+0.24
+]
+],
+"also": [],
+"count": 111
+},
+"ú": {
+"name": "close back rounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "oo as in “food”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɪ̃": {
+"name": "near-close front unrounded vowel, nasalised",
+"class": "vowel",
+"plain": "i as in “sit”; nasalised: air also flows through the nose (French “an”, Portuguese “não”)",
+"examples": [
+[
+"hi",
+"लेकिन",
+"l̪ e k ɪ̃ n̪"
+]
+],
+"langs": [
+[
+"hi",
+0.45
+]
+],
+"also": [],
+"count": 98
+},
+"ɡʱ": {
+"name": "voiced velar stop, breathy-voiced",
+"class": "stop",
+"plain": "g as in “go”; breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"hi",
+"घर",
+"ɡʱ ə ɾ"
+],
+[
+"or",
+"ଦୁର୍ଘଟଣା",
+"d̪ u r ɡʱ ɔ ʈ ɔ ɳ a"
+]
+],
+"langs": [
+[
+"hi",
+0.14
+],
+[
+"or",
+0.1
+]
+],
+"also": [],
+"count": 79
+},
+"ɡʰ": {
+"name": "voiced velar stop, aspirated",
+"class": "stop",
+"plain": "g as in “go”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"or",
+"ଘୋଡ଼େଇ",
+"ɡʰ o ɽ e i"
+]
+],
+"langs": [
+[
+"or",
+0.03
+]
+],
+"also": [],
+"count": 13
+},
+"d͡ʒʱ": {
+"name": "voiced postalveolar affricate, breathy-voiced",
+"class": "affricate",
+"plain": "j as in “judge”; breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"hi",
+"मुझे",
+"m ʊ d͡ʒʱ e"
+],
+[
+"or",
+"ଝୋଳ",
+"d͡ʒʱ o l̪ ɔ"
+]
+],
+"langs": [
+[
+"hi",
+0.08
+],
+[
+"or",
+0.01
+]
+],
+"also": [],
+"count": 24
+},
+"ɖʱ": {
+"name": "voiced retroflex stop, breathy-voiced",
+"class": "stop",
+"plain": "d with the tongue tip curled back (Swedish and Norwegian “rd”); breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"or",
+"ବଢୁଥିବା",
+"b ɔ ɖʱ u t̪ʰ i b a"
+],
+[
+"hi",
+"ढलती",
+"ɖʱ ə l̪ t̪ i"
+]
+],
+"langs": [
+[
+"or",
+0.02
+],
+[
+"hi",
+0.02
+]
+],
+"also": [],
+"count": 16
+},
+"ɽʱ": {
+"name": "retroflex flap, breathy-voiced",
+"class": "rhotic",
+"plain": "a flap with the tongue tip curled back; breathy-voiced: voiced, then released with a breathy, murmured puff (Hindi “bh”, “gh”)",
+"examples": [
+[
+"hi",
+"चढ़ने",
+"t͡ʃ ə ɽʱ n̪ e"
+],
+[
+"or",
+"ଲଢ଼େଇର",
+"l ɔ ɽʱ e i ɾ ɔ"
+]
+],
+"langs": [
+[
+"hi",
+0.07
+],
+[
+"or",
+0.01
+]
+],
+"also": [],
+"count": 20
+}
+}
+}

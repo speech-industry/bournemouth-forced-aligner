@@ -9,13 +9,14 @@
 
 **Find where every phoneme and word starts and ends in a recording, in 82 languages.**
 
-[Getting started](#getting-started) • [Language support](docs/language-support.md) • [About the models](docs/about-models.md) • [Evaluation](docs/evaluation.md) • [Developer guide](docs/README.md) • [Changelog](CHANGELOG.md)
+[Getting started](#getting-started) • [Documentation](https://tabahi.github.io/bournemouth-forced-aligner/) • [Language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
 
 </div>
 
-You give BFA a recording and the words spoken in it. It gives back a time for every phoneme and
-every word, as a Praat TextGrid or a JSON file. This is called **forced alignment**. You don't need
-a pronunciation dictionary or any training: BFA works out the phonemes from the text itself.
+BFA is a multilingual forced aligner. Given speech audio and its transcript, it returns start and
+end times for every phoneme and word, exported as Praat TextGrids or JSON. Pronunciations come
+from a neural grapheme-to-phoneme model, so no pronunciation dictionary and no training on your
+data are needed.
 
 ![The word "butterfly" aligned: each phoneme's span marked on the spectrogram](examples/samples/images/butterfly_mel.png)
 
@@ -68,7 +69,7 @@ balign butterfly.wav "butterfly" --preset=en-us --textgrid=butterfly.TextGrid
 
 Phonemes are written in IPA. The confidence says how sure the model is of each phoneme. Compare
 it between phonemes of one recording, not as an absolute score: a correctly placed phoneme often
-reads below 0.5 ([why](docs/about-models.md#confidence)).
+reads below 0.5 ([why](https://tabahi.github.io/bournemouth-forced-aligner/about-models/#confidence)).
 
 ### 3. Other languages
 
@@ -88,7 +89,7 @@ balign aufnahme.wav "guten Morgen" --preset=de --textgrid=aufnahme.TextGrid
 | `hi` Hindi | `ur` Urdu | `el` Greek | `sw` Swahili |
 
 That is a sample. All 82 languages, and what to know about each (tone, word segmentation), are
-on the [language support](docs/language-support.md) page, or run `balign --list-presets`.
+on the [language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) page, or run `balign --list-presets`.
 Japanese, Cantonese and Thai need one extra install step, listed [below](#optional-extras).
 
 ### 4. A long recording
@@ -128,7 +129,7 @@ aligner.convert_to_textgrid(result, output_file="butterfly.TextGrid")
 ```
 
 For a transcript file: `aligner.process_srt_file("interview.json", "interview.wav", ts_out_path="interview.vs.json")`.
-More in [examples/](examples/) and the [developer guide](docs/README.md), which also explains
+More in [examples/](examples/) and the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/), which also explains
 every field of the JSON output.
 
 #### Many files at once
@@ -207,7 +208,7 @@ Each language group has its own model, downloaded from [Hugging Face](https://hu
 the first time it's needed: nine for the default phoneme set, three for `ph66`, and two
 alternative Latin-script models. Each is a small neural network (about 15 M parameters) that
 looks at 120 ms of audio at a time and estimates which phoneme is being spoken every 5 ms. How
-they are trained and how a boundary is read off them: [about the models](docs/about-models.md).
+they are trained and how a boundary is read off them: [about the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/).
 
 ### Accuracy
 
@@ -228,7 +229,7 @@ Phoneme-boundary F1 on two hand-labelled English corpora (TIMIT, 6,300 read sent
   ARPAbet dictionary, the same approach MFA uses, and MFA scores higher on this noisy
   conversational corpus than on clean TIMIT.
 
-The full analysis is on the [evaluation](docs/evaluation.md) page.
+The full analysis is on the [evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) page.
 
 ### Speed
 
@@ -249,7 +250,7 @@ with `n_jobs=4`, at its default settings:
 - On a CPU, BFA is faster than MFA on short jobs and slower on long conversational recordings
   at the default padding.
 
-Full timings: [evaluation](docs/evaluation.md#cost).
+Full timings: [evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/#cost).
 
 ### Settings worth knowing
 
@@ -259,10 +260,10 @@ Full timings: [evaluation](docs/evaluation.md#cost).
 | `duration_max=10` | Up to 2.6× faster on short clips, same result. Long segments are never cut. |
 | `n_jobs=4` | Run the alignment search in 4 worker processes when one call aligns many segments (`process_segments`, `process_srt_file`). With a GPU: 2.4× faster on long recordings. Little effect on a CPU. Same output; your script needs `if __name__ == "__main__":`. |
 | `low_confidence_level` | The confidence below which a phoneme counts as doubtful when flagging bad segments. |
-| `punctuation_sil=True` | Let the aligner place a pause at commas and full stops (default phoneme set only). |
+| `punctuation_sil=False` | Stop writing a pause at commas and full stops (on by default; default phoneme set only). Without it, a pause is swallowed by the phone next to it. |
 | `warn_level=0` | Print nothing, downloads included. |
 
-All options: `balign --help`, and the [developer guide](docs/README.md).
+All options: `balign --help`, and the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/).
 
 ## Upgrading from 1.x
 
@@ -280,11 +281,11 @@ models do not load, and the output and constructor arguments have changed: see t
   targets the v1 model.
 
 Open an [issue](https://github.com/tabahi/bournemouth-forced-aligner/issues) to discuss.
-Start with the [developer guide](docs/README.md).
+Start with the [developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/).
 
 
 
-[Getting started](#getting-started) • [Language support](docs/language-support.md) • [About the models](docs/about-models.md) • [Evaluation](docs/evaluation.md) • [Developer guide](docs/README.md) • [Changelog](CHANGELOG.md)
+[Getting started](#getting-started) • [Documentation](https://tabahi.github.io/bournemouth-forced-aligner/) • [Language support](https://tabahi.github.io/bournemouth-forced-aligner/language-support/) • [About the models](https://tabahi.github.io/bournemouth-forced-aligner/about-models/) • [Evaluation](https://tabahi.github.io/bournemouth-forced-aligner/evaluation/) • [Developer guide](https://tabahi.github.io/bournemouth-forced-aligner/developer-guide/) • [Changelog](CHANGELOG.md)
 
 <div align="center">
 

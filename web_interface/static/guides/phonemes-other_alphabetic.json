@@ -1,0 +1,2772 @@
+{
+"group": "other_alphabetic",
+"model": "mbfa-other-alphabetic",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Ejectives (ʼ, Georgian) and aspirated stops (ʰ, Armenian, Georgian, Korean) are tokens of their own; the burst and the puff after it belong to the stop. Korean tense consonants (ㄲ ㄸ ㅃ ㅆ ㅉ) have no token of their own: they are written as the plain one (k t p s t͡ɕ).",
+"lang_names": {
+"am": "Amharic",
+"el": "Greek",
+"hy": "Armenian",
+"ka": "Georgian",
+"ko": "Korean"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"el",
+"να",
+"n a"
+],
+[
+"am",
+"እና",
+"ʔ ɨ n a"
+],
+[
+"ka",
+"manta",
+"m a n t a"
+]
+],
+"langs": [
+[
+"el",
+11.22
+],
+[
+"am",
+10.32
+],
+[
+"ka",
+0.04
+],
+[
+"ko",
+0.03
+],
+[
+"hy",
+0.02
+]
+],
+"also": [],
+"count": 6018
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s. Also used for s͈, which this model has no token of its own for",
+"examples": [
+[
+"el",
+"της",
+"t i s"
+],
+[
+"ka",
+"წლის",
+"t͡sʼ l i s"
+],
+[
+"am",
+"ውስጥ",
+"w ɨ s ɨ ʈ"
+]
+],
+"langs": [
+[
+"el",
+7.04
+],
+[
+"ka",
+6.62
+],
+[
+"am",
+3.16
+],
+[
+"hy",
+2.34
+],
+[
+"ko",
+0.47
+]
+],
+"also": [
+"s͈"
+],
+"count": 7222
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"el",
+"της",
+"t i s"
+],
+[
+"ka",
+"ისინი",
+"i s i n i"
+],
+[
+"ko",
+"있습니다",
+"i t̚ s ɯ m n i d a̠"
+]
+],
+"langs": [
+[
+"el",
+14.1
+],
+[
+"ka",
+11.78
+],
+[
+"ko",
+8.34
+],
+[
+"hy",
+5.32
+],
+[
+"am",
+2.81
+]
+],
+"also": [],
+"count": 14918
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"el",
+"και",
+"c e"
+],
+[
+"am",
+"ዘዴ",
+"z ə d e"
+],
+[
+"ka",
+"one",
+"o n e"
+]
+],
+"langs": [
+[
+"el",
+8.72
+],
+[
+"am",
+0.9
+],
+[
+"ka",
+0.01
+]
+],
+"also": [],
+"count": 2933
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"hy",
+"են",
+"ɛ n"
+],
+[
+"ko",
+"있는",
+"i n n ɯ n"
+],
+[
+"el",
+"να",
+"n a"
+]
+],
+"langs": [
+[
+"hy",
+9.21
+],
+[
+"ko",
+8.74
+],
+[
+"el",
+6.84
+],
+[
+"am",
+4.93
+],
+[
+"ka",
+4.2
+]
+],
+"also": [],
+"count": 11494
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”. Also used for t͈, t͡ʃ`, which this model has no token of its own for",
+"examples": [
+[
+"el",
+"το",
+"t o"
+],
+[
+"am",
+"ዓመታት",
+"ʔ a m ə t a t"
+],
+[
+"hy",
+"շատ",
+"ʃ ɑ t"
+]
+],
+"langs": [
+[
+"el",
+9.32
+],
+[
+"am",
+4.74
+],
+[
+"hy",
+2.79
+],
+[
+"ko",
+1.68
+]
+],
+"also": [
+"t͈",
+"t͡ʃ`"
+],
+"count": 5704
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"ka",
+"წლის",
+"t͡sʼ l i s"
+],
+[
+"am",
+"ላይ",
+"l a j"
+],
+[
+"el",
+"πολύ",
+"p o l i"
+]
+],
+"langs": [
+[
+"ka",
+4.62
+],
+[
+"am",
+4.3
+],
+[
+"el",
+2.39
+],
+[
+"hy",
+1.9
+],
+[
+"ko",
+0.03
+]
+],
+"also": [],
+"count": 4816
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”. Also used for k`, k͈, which this model has no token of its own for",
+"examples": [
+[
+"hy",
+"կարող",
+"k ɑ ɾ ɔ ʁ"
+],
+[
+"am",
+"ምክንያት",
+"m ɨ k ɨ n ɨ j a t"
+],
+[
+"ko",
+"가장",
+"k a̠ d͡ʑ a̠ ŋ"
+]
+],
+"langs": [
+[
+"hy",
+3.66
+],
+[
+"am",
+3.4
+],
+[
+"ko",
+2.88
+],
+[
+"el",
+2.86
+],
+[
+"ka",
+0.02
+]
+],
+"also": [
+"k`",
+"k͈"
+],
+"count": 4053
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"el",
+"το",
+"t o"
+],
+[
+"am",
+"ሲሆን",
+"s i h o n"
+],
+[
+"ko",
+"주요",
+"t͡ɕ u j o"
+]
+],
+"langs": [
+[
+"el",
+9.93
+],
+[
+"am",
+3.13
+],
+[
+"ko",
+0.57
+]
+],
+"also": [],
+"count": 3977
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"ka",
+"რომ",
+"r ɔ m"
+],
+[
+"am",
+"ነበር",
+"n ə β ə r"
+],
+[
+"el",
+"περιβάλλον",
+"p e r i v a l o n"
+]
+],
+"langs": [
+[
+"ka",
+5.99
+],
+[
+"am",
+3.64
+],
+[
+"el",
+1.0
+],
+[
+"hy",
+0.71
+]
+],
+"also": [],
+"count": 4314
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"ka",
+"რომ",
+"r ɔ m"
+],
+[
+"am",
+"በጣም",
+"b ə ʈ a m"
+],
+[
+"hy",
+"համար",
+"h ɑ m ɑ ɾ"
+]
+],
+"langs": [
+[
+"ka",
+5.11
+],
+[
+"am",
+4.19
+],
+[
+"hy",
+3.87
+],
+[
+"ko",
+3.83
+],
+[
+"el",
+3.16
+]
+],
+"also": [],
+"count": 7029
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"ka",
+"და",
+"d ɑ"
+],
+[
+"ko",
+"있습니다",
+"i t̚ s ɯ m n i d a̠"
+],
+[
+"am",
+"ወደ",
+"w ə d ə"
+]
+],
+"langs": [
+[
+"ka",
+3.98
+],
+[
+"ko",
+2.71
+],
+[
+"am",
+2.2
+],
+[
+"hy",
+0.99
+],
+[
+"el",
+0.68
+]
+],
+"also": [],
+"count": 3678
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"hy",
+"ու",
+"u"
+],
+[
+"ko",
+"수",
+"sʰ u"
+],
+[
+"ka",
+"უფრო",
+"u pʰ r ɔ"
+]
+],
+"langs": [
+[
+"hy",
+4.18
+],
+[
+"ko",
+3.12
+],
+[
+"ka",
+2.88
+],
+[
+"el",
+2.54
+],
+[
+"am",
+2.45
+]
+],
+"also": [],
+"count": 5352
+},
+"ɾ": {
+"name": "alveolar tap",
+"class": "rhotic",
+"plain": "one quick flap of the tongue, as in Spanish “pero”",
+"examples": [
+[
+"hy",
+"որ",
+"v ɔ ɾ"
+],
+[
+"el",
+"χώρα",
+"x o ɾ a"
+],
+[
+"ko",
+"그리고",
+"k ɯ ɾ i ɡ o̞"
+]
+],
+"langs": [
+[
+"hy",
+8.09
+],
+[
+"el",
+3.93
+],
+[
+"ko",
+3.55
+]
+],
+"also": [],
+"count": 5723
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"el",
+"αυτή",
+"a f t i"
+],
+[
+"am",
+"በፊት",
+"b ə f i t"
+],
+[
+"hy",
+"նաև",
+"n ɑ f"
+]
+],
+"langs": [
+[
+"el",
+1.17
+],
+[
+"am",
+0.93
+],
+[
+"hy",
+0.33
+],
+[
+"ko",
+0.02
+]
+],
+"also": [],
+"count": 746
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"am",
+"ላይ",
+"l a j"
+],
+[
+"hy",
+"այն",
+"ɑ j n"
+],
+[
+"ko",
+"영향을",
+"j ʌ ŋ ʝ j a̠ ŋ ɯ ɭ"
+]
+],
+"langs": [
+[
+"am",
+4.33
+],
+[
+"hy",
+3.43
+],
+[
+"ko",
+3.08
+],
+[
+"el",
+0.02
+]
+],
+"also": [],
+"count": 3328
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"am",
+"ነው",
+"n ə w"
+],
+[
+"hy",
+"և",
+"h ə"
+]
+],
+"langs": [
+[
+"am",
+13.79
+],
+[
+"hy",
+4.66
+]
+],
+"also": [],
+"count": 5460
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"ka",
+"რომლებიც",
+"r ɔ m l ɛ b i t͡s"
+],
+[
+"am",
+"በጣም",
+"b ə ʈ a m"
+],
+[
+"hy",
+"բայց",
+"b ɑ j t͡sʰ"
+]
+],
+"langs": [
+[
+"ka",
+4.12
+],
+[
+"am",
+2.2
+],
+[
+"hy",
+1.01
+],
+[
+"ko",
+0.94
+],
+[
+"el",
+0.35
+]
+],
+"also": [],
+"count": 3243
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"el",
+"από",
+"a p o"
+],
+[
+"ko",
+"없었습니다",
+"ʌ p s ʌ t̚ s ɯ m n i d a̠"
+],
+[
+"hy",
+"որպես",
+"v ɔ ɾ p ɛ s"
+]
+],
+"langs": [
+[
+"el",
+4.29
+],
+[
+"ko",
+1.09
+],
+[
+"hy",
+1.07
+],
+[
+"am",
+0.36
+],
+[
+"ka",
+0.02
+]
+],
+"also": [],
+"count": 2166
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"ka",
+"ყველაზე",
+"qʼ v ɛ l ɑ z ɛ"
+],
+[
+"hy",
+"է",
+"ɛ"
+],
+[
+"ko",
+"w",
+"d u b ɛ l v e̞"
+]
+],
+"langs": [
+[
+"ka",
+9.05
+],
+[
+"hy",
+7.81
+]
+],
+"also": [],
+"count": 7789
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"am",
+"ነው",
+"n ə w"
+],
+[
+"ko",
+"관광명소이며",
+"k w a̠ n ɡ w a̠ ŋ m j ʌ ŋ sʰ o̞ i m j ʌ"
+],
+[
+"el",
+"one",
+"w <unk> n"
+]
+],
+"langs": [
+[
+"am",
+3.61
+],
+[
+"ko",
+1.11
+],
+[
+"el",
+0.03
+],
+[
+"hy",
+0.01
+]
+],
+"also": [],
+"count": 1149
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”",
+"examples": [
+[
+"hy",
+"համար",
+"h ɑ m ɑ ɾ"
+],
+[
+"ka",
+"და",
+"d ɑ"
+]
+],
+"langs": [
+[
+"hy",
+15.27
+],
+[
+"ka",
+13.98
+]
+],
+"also": [],
+"count": 13486
+},
+"v": {
+"name": "voiced labiodental fricative",
+"class": "fricative",
+"plain": "v",
+"examples": [
+[
+"ka",
+"ყველაზე",
+"qʼ v ɛ l ɑ z ɛ"
+],
+[
+"hy",
+"որ",
+"v ɔ ɾ"
+],
+[
+"el",
+"βρίσκονται",
+"v ɾ i s k o n d e"
+]
+],
+"langs": [
+[
+"ka",
+3.36
+],
+[
+"hy",
+3.16
+],
+[
+"el",
+1.01
+],
+[
+"am",
+0.07
+],
+[
+"ko",
+0.02
+]
+],
+"also": [],
+"count": 3346
+},
+"ɡ": {
+"name": "voiced velar stop",
+"class": "stop",
+"plain": "g as in “go”",
+"examples": [
+[
+"ko",
+"그리고",
+"k ɯ ɾ i ɡ o̞"
+],
+[
+"ka",
+"როგორც",
+"r ɔ ɡ ɔ r t͡s"
+],
+[
+"am",
+"ጋር",
+"ɡ a r"
+]
+],
+"langs": [
+[
+"ko",
+3.2
+],
+[
+"ka",
+2.2
+],
+[
+"am",
+1.6
+],
+[
+"hy",
+1.08
+],
+[
+"el",
+0.23
+]
+],
+"also": [],
+"count": 2718
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"ka",
+"ყველაზე",
+"qʼ v ɛ l ɑ z ɛ"
+],
+[
+"am",
+"ብዙ",
+"b ɨ z u"
+],
+[
+"el",
+"τζορτζ",
+"d z o ɾ d z"
+]
+],
+"langs": [
+[
+"ka",
+1.14
+],
+[
+"am",
+0.81
+],
+[
+"el",
+0.74
+],
+[
+"hy",
+0.61
+]
+],
+"also": [],
+"count": 1237
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"am",
+"እና",
+"ʔ ɨ n a"
+]
+],
+"langs": [
+[
+"am",
+3.09
+]
+],
+"also": [],
+"count": 749
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"ka",
+"რომ",
+"r ɔ m"
+],
+[
+"hy",
+"որ",
+"v ɔ ɾ"
+],
+[
+"ko",
+"siminoff는",
+"s i m i n ɔ f n ɯ n"
+]
+],
+"langs": [
+[
+"ka",
+5.39
+],
+[
+"hy",
+4.02
+],
+[
+"ko",
+0.03
+]
+],
+"also": [],
+"count": 4358
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"ko",
+"가장",
+"k a̠ d͡ʑ a̠ ŋ"
+],
+[
+"hy",
+"որոնք",
+"v ɔ ɾ ɔ ŋ kʰ"
+],
+[
+"el",
+"γιόγκα",
+"ʝ o ŋ ɡ a"
+]
+],
+"langs": [
+[
+"ko",
+3.58
+],
+[
+"hy",
+0.7
+],
+[
+"el",
+0.26
+]
+],
+"also": [],
+"count": 1230
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”. Also used for t͡ʃ`, which this model has no token of its own for",
+"examples": [
+[
+"ka",
+"შორის",
+"ʃ ɔ r i s"
+],
+[
+"hy",
+"շատ",
+"ʃ ɑ t"
+],
+[
+"am",
+"ለማሻሻል",
+"l ə m a ʃ a ʃ a l"
+]
+],
+"langs": [
+[
+"ka",
+1.69
+],
+[
+"hy",
+0.82
+],
+[
+"am",
+0.67
+],
+[
+"ko",
+0.04
+],
+[
+"el",
+0.03
+]
+],
+"also": [
+"t͡ʃ`"
+],
+"count": 1342
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"ko",
+"있습니다",
+"i t̚ s ɯ m n i d a̠"
+]
+],
+"langs": [
+[
+"ko",
+5.96
+]
+],
+"also": [],
+"count": 1375
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"hy",
+"և",
+"h ə"
+],
+[
+"am",
+"ሲሆን",
+"s i h o n"
+],
+[
+"ko",
+"한",
+"h a̠ n"
+]
+],
+"langs": [
+[
+"hy",
+2.25
+],
+[
+"am",
+1.24
+],
+[
+"ko",
+0.42
+],
+[
+"ka",
+0.13
+],
+[
+"el",
+0.02
+]
+],
+"also": [],
+"count": 1487
+},
+"ʁ": {
+"name": "voiced uvular fricative",
+"class": "fricative",
+"plain": "the r of French and German",
+"examples": [
+[
+"hy",
+"կարող",
+"k ɑ ɾ ɔ ʁ"
+],
+[
+"el",
+"ring",
+"ʁ i ŋ"
+]
+],
+"langs": [
+[
+"hy",
+0.99
+]
+],
+"also": [],
+"count": 452
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"ka",
+"სხვადასხვა",
+"s x v ɑ d ɑ s x v ɑ"
+],
+[
+"el",
+"χώρα",
+"x o ɾ a"
+],
+[
+"ko",
+"큰",
+"k x ɯ n"
+]
+],
+"langs": [
+[
+"ka",
+1.44
+],
+[
+"el",
+0.74
+],
+[
+"ko",
+0.19
+],
+[
+"am",
+0.01
+]
+],
+"also": [],
+"count": 951
+},
+"ð": {
+"name": "voiced dental fricative",
+"class": "fricative",
+"plain": "th as in “this”",
+"examples": [
+[
+"el",
+"δεν",
+"ð e n"
+]
+],
+"langs": [
+[
+"el",
+1.68
+]
+],
+"also": [],
+"count": 522
+},
+"β": {
+"name": "voiced bilabial fricative",
+"class": "fricative",
+"plain": "a soft b where the lips do not close (Spanish b between vowels)",
+"examples": [
+[
+"am",
+"ነበር",
+"n ə β ə r"
+],
+[
+"ko",
+"신호를",
+"ɕʰ i n β o̞ ɾ ɯ ɭ"
+]
+],
+"langs": [
+[
+"am",
+1.45
+],
+[
+"ko",
+0.24
+]
+],
+"also": [],
+"count": 406
+},
+"ʒ": {
+"name": "voiced postalveolar fricative",
+"class": "fricative",
+"plain": "s as in “measure”",
+"examples": [
+[
+"hy",
+"ժամանակ",
+"ʒ ɑ m ɑ n ɑ k"
+],
+[
+"am",
+"ገዥ",
+"ɡ ə ʒ"
+],
+[
+"ka",
+"ჟირაფი",
+"ʒ i r ɑ pʰ i"
+]
+],
+"langs": [
+[
+"hy",
+0.19
+],
+[
+"am",
+0.02
+],
+[
+"ka",
+0.02
+]
+],
+"also": [],
+"count": 101
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"el",
+"μεγάλο",
+"m e ɣ a l o"
+],
+[
+"ka",
+"უმაღლესი",
+"u m ɑ ɣ l ɛ s i"
+],
+[
+"ko",
+"바흐만",
+"p a̠ ɣ ɯ m a̠ n"
+]
+],
+"langs": [
+[
+"el",
+0.66
+],
+[
+"ka",
+0.41
+]
+],
+"also": [],
+"count": 401
+},
+"y": {
+"name": "close front rounded vowel",
+"class": "vowel",
+"plain": "ee said with rounded lips (French “tu”, German “über”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɨ": {
+"name": "close central unrounded vowel",
+"class": "vowel",
+"plain": "between ee and oo, lips spread (Polish “y”, Welsh “u”)",
+"examples": [
+[
+"am",
+"ውስጥ",
+"w ɨ s ɨ ʈ"
+]
+],
+"langs": [
+[
+"am",
+11.72
+]
+],
+"also": [],
+"count": 2838
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"ko",
+"주州",
+"t͡ɕ u ɕ ɯ ɯ"
+]
+],
+"langs": [
+[
+"ko",
+0.07
+]
+],
+"also": [],
+"count": 16
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"am",
+"ከፍተኛ",
+"k ə f ɨ t ə ɲ a"
+],
+[
+"ko",
+"공룡의",
+"k o̞ ŋ ɲ j o ŋ ɰ i"
+],
+[
+"el",
+"μια",
+"m ɲ a"
+]
+],
+"langs": [
+[
+"am",
+0.51
+],
+[
+"ko",
+0.19
+],
+[
+"el",
+0.14
+]
+],
+"also": [],
+"count": 212
+},
+"t͡s": {
+"name": "voiceless alveolar affricate",
+"class": "affricate",
+"plain": "ts as in “cats”",
+"examples": [
+[
+"ka",
+"როგორც",
+"r ɔ ɡ ɔ r t͡s"
+],
+[
+"hy",
+"մեծ",
+"m ɛ t͡s"
+],
+[
+"ko",
+"casa",
+"t͡s a s a"
+]
+],
+"langs": [
+[
+"ka",
+1.29
+],
+[
+"hy",
+0.85
+]
+],
+"also": [],
+"count": 992
+},
+"ʏ": {
+"name": "near-close front rounded vowel",
+"class": "vowel",
+"plain": "i as in “sit” said with rounded lips (German “hübsch”)",
+"examples": [
+[
+"ko",
+"uthappa가",
+"ʏ t̚ h a p̚ p a̠ ɡ a̠"
+]
+],
+"langs": [
+[
+"ko",
+0.01
+]
+],
+"also": [],
+"count": 3
+},
+"ʎ": {
+"name": "palatal lateral approximant",
+"class": "lateral",
+"plain": "an l made with the tongue body, close to “ly” (Italian “gli”)",
+"examples": [
+[
+"ko",
+"필리핀",
+"pʰ i ɭ ʎ i pʰ i n"
+],
+[
+"el",
+"κελιά",
+"c e ʎ a"
+]
+],
+"langs": [
+[
+"ko",
+0.16
+],
+[
+"el",
+0.1
+]
+],
+"also": [],
+"count": 68
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”)",
+"examples": [
+[
+"am",
+"ውስጥ",
+"w ɨ s ɨ ʈ"
+]
+],
+"langs": [
+[
+"am",
+1.06
+]
+],
+"also": [],
+"count": 256
+},
+"t͡ʃ": {
+"name": "voiceless postalveolar affricate",
+"class": "affricate",
+"plain": "ch as in “church”",
+"examples": [
+[
+"am",
+"ይችላሉ",
+"j ɨ t͡ʃ ɨ l a l u"
+],
+[
+"ka",
+"ჩვეულებრივ",
+"t͡ʃ v ɛ u l ɛ b r i v"
+],
+[
+"hy",
+"հաճախ",
+"h ɑ t͡ʃ ɑ χ"
+]
+],
+"langs": [
+[
+"am",
+1.8
+],
+[
+"ka",
+0.34
+],
+[
+"hy",
+0.27
+]
+],
+"also": [],
+"count": 716
+},
+"a̠": {
+"name": "open front unrounded vowel, retracted",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; retracted: made a little further back in the mouth",
+"examples": [
+[
+"ko",
+"가장",
+"k a̠ d͡ʑ a̠ ŋ"
+]
+],
+"langs": [
+[
+"ko",
+9.79
+]
+],
+"also": [],
+"count": 2261
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ka",
+"განსაკუთრებით",
+"ɡ ɑ n s ɑ kʼ u tʰ r ɛ b i tʰ"
+],
+[
+"hy",
+"թե",
+"tʰ ɛ"
+],
+[
+"ko",
+"같은",
+"k a̠ tʰ ɯ n"
+]
+],
+"langs": [
+[
+"ka",
+2.36
+],
+[
+"hy",
+1.82
+],
+[
+"ko",
+1.04
+]
+],
+"also": [],
+"count": 2174
+},
+"t͡ɕ": {
+"name": "voiceless alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”). Also used for t͡ɕ͈, which this model has no token of its own for",
+"examples": [
+[
+"ko",
+"지역",
+"t͡ɕ i j ʌ k̚"
+]
+],
+"langs": [
+[
+"ko",
+1.83
+]
+],
+"also": [
+"t͡ɕ͈"
+],
+"count": 422
+},
+"θ": {
+"name": "voiceless dental fricative",
+"class": "fricative",
+"plain": "th as in “thin”",
+"examples": [
+[
+"el",
+"καθώς",
+"k a θ o t"
+]
+],
+"langs": [
+[
+"el",
+1.08
+]
+],
+"also": [],
+"count": 337
+},
+"c": {
+"name": "voiceless palatal stop",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”)",
+"examples": [
+[
+"el",
+"και",
+"c e"
+]
+],
+"langs": [
+[
+"el",
+1.73
+]
+],
+"also": [],
+"count": 537
+},
+"ɭ": {
+"name": "retroflex lateral approximant",
+"class": "lateral",
+"plain": "l with the tongue tip curled back",
+"examples": [
+[
+"ko",
+"폴로",
+"pʰ o̞ ɭ ɭ o̞"
+]
+],
+"langs": [
+[
+"ko",
+2.88
+]
+],
+"also": [],
+"count": 664
+},
+"ç": {
+"name": "voiceless palatal fricative",
+"class": "fricative",
+"plain": "the ch of German “ich”; like a strong h before ee",
+"examples": [
+[
+"el",
+"πιο",
+"p ç o"
+],
+[
+"ko",
+"협회'의",
+"ç j ʌ pʰ ø̞ ɰ i"
+],
+[
+"am",
+"ይህ",
+"j ɨ ç"
+]
+],
+"langs": [
+[
+"el",
+0.74
+],
+[
+"ko",
+0.26
+],
+[
+"am",
+0.14
+]
+],
+"also": [],
+"count": 325
+},
+"d͡ʒ": {
+"name": "voiced postalveolar affricate",
+"class": "affricate",
+"plain": "j as in “judge”",
+"examples": [
+[
+"am",
+"እጅግ",
+"ʔ ɨ d͡ʒ ɨ ɡ"
+],
+[
+"hy",
+"մեջ",
+"m ɛ d͡ʒ"
+],
+[
+"ka",
+"ჯერ",
+"d͡ʒ ɛ r"
+]
+],
+"langs": [
+[
+"am",
+0.43
+],
+[
+"hy",
+0.33
+],
+[
+"ka",
+0.17
+]
+],
+"also": [],
+"count": 333
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"hy",
+"որոնք",
+"v ɔ ɾ ɔ ŋ kʰ"
+],
+[
+"ka",
+"აქვთ",
+"ɑ kʰ v tʰ"
+],
+[
+"ko",
+"기록했다",
+"k i ɾ o̞ kʰ ɛ̝ d a̠"
+]
+],
+"langs": [
+[
+"hy",
+1.72
+],
+[
+"ka",
+0.74
+],
+[
+"ko",
+0.48
+]
+],
+"also": [],
+"count": 1236
+},
+"ʌ": {
+"name": "open-mid back unrounded vowel",
+"class": "vowel",
+"plain": "u as in “cup”. Also used for ʌ̹, which this model has no token of its own for",
+"examples": [
+[
+"ko",
+"없었습니다",
+"ʌ p s ʌ t̚ s ɯ m n i d a̠"
+]
+],
+"langs": [
+[
+"ko",
+5.8
+]
+],
+"also": [
+"ʌ̹"
+],
+"count": 1339
+},
+"sʰ": {
+"name": "voiceless alveolar fricative, aspirated",
+"class": "fricative",
+"plain": "s; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ko",
+"수",
+"sʰ u"
+]
+],
+"langs": [
+[
+"ko",
+3.14
+]
+],
+"also": [],
+"count": 724
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ko",
+"필리핀",
+"pʰ i ɭ ʎ i pʰ i n"
+],
+[
+"ka",
+"უფრო",
+"u pʰ r ɔ"
+],
+[
+"hy",
+"երբ",
+"j ɛ ɾ pʰ"
+]
+],
+"langs": [
+[
+"ko",
+0.9
+],
+[
+"ka",
+0.82
+],
+[
+"hy",
+0.45
+]
+],
+"also": [],
+"count": 794
+},
+"k̚": {
+"name": "voiceless velar stop, unreleased",
+"class": "stop",
+"plain": "k as in “key”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"ko",
+"과학적",
+"k w a̠ ɦ a̠ k̚ t͡ɕ ʌ k̚"
+]
+],
+"langs": [
+[
+"ko",
+0.92
+]
+],
+"also": [],
+"count": 212
+},
+"d͡ʑ": {
+"name": "voiced alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft j (Polish “dź”)",
+"examples": [
+[
+"ko",
+"가장",
+"k a̠ d͡ʑ a̠ ŋ"
+]
+],
+"langs": [
+[
+"ko",
+1.92
+]
+],
+"also": [],
+"count": 444
+},
+"o̞": {
+"name": "close-mid back rounded vowel, lowered",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; lowered: a little more open; a lowered fricative is a smooth approximant with no friction",
+"examples": [
+[
+"ko",
+"그리고",
+"k ɯ ɾ i ɡ o̞"
+]
+],
+"langs": [
+[
+"ko",
+4.19
+]
+],
+"also": [],
+"count": 968
+},
+"ɟ": {
+"name": "voiced palatal stop",
+"class": "stop",
+"plain": "a g made against the hard palate, close to “dy” (Hungarian “gy”, Czech “ď”)",
+"examples": [
+[
+"el",
+"γαγγετική",
+"ɣ a ŋ ɟ e t i c i"
+]
+],
+"langs": [
+[
+"el",
+0.06
+]
+],
+"also": [],
+"count": 20
+},
+"ɸ": {
+"name": "voiceless bilabial fricative",
+"class": "fricative",
+"plain": "blowing through nearly closed lips. Also used for ɸʷ, which this model has no token of its own for",
+"examples": [
+[
+"ko",
+"후",
+"ɸ u"
+]
+],
+"langs": [
+[
+"ko",
+0.19
+]
+],
+"also": [
+"ɸʷ"
+],
+"count": 43
+},
+"d͡z": {
+"name": "voiced alveolar affricate",
+"class": "affricate",
+"plain": "ds as in “beds”",
+"examples": [
+[
+"ka",
+"შეიძლება",
+"ʃ ɛ i d͡z l ɛ b ɑ"
+],
+[
+"hy",
+"ձեր",
+"d͡z ɛ ɾ"
+]
+],
+"langs": [
+[
+"ka",
+0.46
+],
+[
+"hy",
+0.16
+]
+],
+"also": [],
+"count": 290
+},
+"ɦ": {
+"name": "voiced glottal fricative",
+"class": "fricative",
+"plain": "a breathy, voiced h (Dutch and Czech h)",
+"examples": [
+[
+"ko",
+"또한",
+"t o̞ ɦ a̠ n"
+]
+],
+"langs": [
+[
+"ko",
+1.49
+]
+],
+"also": [],
+"count": 345
+},
+"ʝ": {
+"name": "voiced palatal fricative",
+"class": "fricative",
+"plain": "a y with friction",
+"examples": [
+[
+"el",
+"για",
+"ʝ a"
+],
+[
+"ko",
+"영향을",
+"j ʌ ŋ ʝ j a̠ ŋ ɯ ɭ"
+]
+],
+"langs": [
+[
+"el",
+0.99
+],
+[
+"ko",
+0.11
+]
+],
+"also": [],
+"count": 334
+},
+"ɥ": {
+"name": "labial-palatal approximant",
+"class": "glide",
+"plain": "y said with rounded lips (French “huit”)",
+"examples": [
+[
+"ko",
+"위한",
+"ɥ i ɦ a̠ n"
+]
+],
+"langs": [
+[
+"ko",
+0.27
+]
+],
+"also": [],
+"count": 62
+},
+"i̯": {
+"name": "close front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "ee as in “see”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"el",
+"διαθέτει",
+"ð i̯ a θ e t i"
+]
+],
+"langs": [
+[
+"el",
+0.08
+]
+],
+"also": [],
+"count": 26
+},
+"ɕʰ": {
+"name": "voiceless alveolo-palatal fricative, aspirated",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ko",
+"것이다",
+"k ʌ ɕʰ i d a̠"
+]
+],
+"langs": [
+[
+"ko",
+0.69
+]
+],
+"also": [],
+"count": 159
+},
+"ɛ̝": {
+"name": "open-mid front unrounded vowel, raised",
+"class": "vowel",
+"plain": "e as in “bed”; raised: a little closer (tongue higher) than the plain symbol",
+"examples": [
+[
+"ko",
+"때문에",
+"t ɛ̝ m u n e̞"
+]
+],
+"langs": [
+[
+"ko",
+1.95
+]
+],
+"also": [],
+"count": 450
+},
+"t͡ɕʰ": {
+"name": "voiceless alveolo-palatal affricate, aspirated",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"ko",
+"첫",
+"t͡ɕʰ ʌ t̚"
+]
+],
+"langs": [
+[
+"ko",
+0.96
+]
+],
+"also": [],
+"count": 222
+},
+"ǎ": {
+"name": "open front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t̚": {
+"name": "voiceless alveolar stop, unreleased",
+"class": "stop",
+"plain": "t as in “ten”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"ko",
+"있습니다",
+"i t̚ s ɯ m n i d a̠"
+]
+],
+"langs": [
+[
+"ko",
+0.75
+]
+],
+"also": [],
+"count": 173
+},
+"e̞": {
+"name": "close-mid front unrounded vowel, lowered",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; lowered: a little more open; a lowered fricative is a smooth approximant with no friction",
+"examples": [
+[
+"ko",
+"세계",
+"sʰ e̞ ɡ j e̞"
+]
+],
+"langs": [
+[
+"ko",
+2.24
+]
+],
+"also": [],
+"count": 517
+},
+"u̯": {
+"name": "close back rounded vowel, non-syllabic",
+"class": "glide",
+"plain": "oo as in “food”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ǒ": {
+"name": "close-mid back rounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ě": {
+"name": "close-mid front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"r̥": {
+"name": "alveolar trill, voiceless",
+"class": "rhotic",
+"plain": "a rolled r; voiceless: said without vocal-fold vibration, as if whispered. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ǐ": {
+"name": "close front unrounded vowel, accent ˇ (rising)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ˇ (rising): the G2P's dictionary marks a rising pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"χ": {
+"name": "voiceless uvular fricative",
+"class": "fricative",
+"plain": "a rougher ch made at the uvula (Welsh “ch”)",
+"examples": [
+[
+"hy",
+"հաճախ",
+"h ɑ t͡ʃ ɑ χ"
+]
+],
+"langs": [
+[
+"hy",
+0.72
+]
+],
+"also": [],
+"count": 328
+},
+"p̚": {
+"name": "voiceless bilabial stop, unreleased",
+"class": "stop",
+"plain": "p as in “pen”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"ko",
+"없다",
+"ʌ p̚ t a̠"
+]
+],
+"langs": [
+[
+"ko",
+0.28
+]
+],
+"also": [],
+"count": 65
+},
+"ê": {
+"name": "close-mid front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡sʰ": {
+"name": "voiceless alveolar affricate, aspirated",
+"class": "affricate",
+"plain": "ts as in “cats”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"hy",
+"իրենց",
+"i ɾ ɛ n t͡sʰ"
+]
+],
+"langs": [
+[
+"hy",
+2.05
+]
+],
+"also": [],
+"count": 934
+},
+"á": {
+"name": "open front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"é": {
+"name": "close-mid front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ó": {
+"name": "close-mid back rounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"í": {
+"name": "close front unrounded vowel, accent ´ (high)",
+"class": "vowel",
+"plain": "ee as in “see”; accent ´ (high): the G2P's dictionary marks a pitch accent or stress here. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"tʼ": {
+"name": "voiceless alveolar stop, ejective",
+"class": "stop",
+"plain": "t as in “ten”; ejective: a pop made by the throat, with no breath from the lungs",
+"examples": [
+[
+"ka",
+"შტატებს",
+"ʃ tʼ ɑ tʼ ɛ b s"
+]
+],
+"langs": [
+[
+"ka",
+1.68
+]
+],
+"also": [],
+"count": 787
+},
+"ô": {
+"name": "close-mid back rounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"kʼ": {
+"name": "voiceless velar stop, ejective",
+"class": "stop",
+"plain": "k as in “key”; ejective: a pop made by the throat, with no breath from the lungs",
+"examples": [
+[
+"ka",
+"კი",
+"kʼ i"
+]
+],
+"langs": [
+[
+"ka",
+1.46
+]
+],
+"also": [],
+"count": 682
+},
+"t͡ʃʰ": {
+"name": "voiceless postalveolar affricate, aspirated",
+"class": "affricate",
+"plain": "ch as in “church”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"hy",
+"ոչ",
+"v ɔ t͡ʃʰ"
+]
+],
+"langs": [
+[
+"hy",
+1.16
+]
+],
+"also": [],
+"count": 529
+},
+"ø̞": {
+"name": "close-mid front rounded vowel, lowered",
+"class": "vowel",
+"plain": "e said with rounded lips (German “schön”, French “peu”); lowered: a little more open; a lowered fricative is a smooth approximant with no friction",
+"examples": [
+[
+"ko",
+"될",
+"t ø̞ ɭ"
+]
+],
+"langs": [
+[
+"ko",
+0.63
+]
+],
+"also": [],
+"count": 145
+},
+"pʼ": {
+"name": "voiceless bilabial stop, ejective",
+"class": "stop",
+"plain": "p as in “pen”; ejective: a pop made by the throat, with no breath from the lungs",
+"examples": [
+[
+"ka",
+"პოპულარული",
+"pʼ ɔ pʼ u l ɑ r u l i"
+]
+],
+"langs": [
+[
+"ka",
+0.79
+]
+],
+"also": [],
+"count": 369
+},
+"ɰ": {
+"name": "velar approximant",
+"class": "glide",
+"plain": "a g so weak the tongue never closes",
+"examples": [
+[
+"ko",
+"공룡의",
+"k o̞ ŋ ɲ j o ŋ ɰ i"
+]
+],
+"langs": [
+[
+"ko",
+0.97
+]
+],
+"also": [],
+"count": 224
+},
+"ʍ": {
+"name": "voiceless labial-velar approximant",
+"class": "glide",
+"plain": "a breathy w (“wh” in some accents). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"t͡sʼ": {
+"name": "voiceless alveolar affricate, ejective",
+"class": "affricate",
+"plain": "ts as in “cats”; ejective: a pop made by the throat, with no breath from the lungs",
+"examples": [
+[
+"ka",
+"წლის",
+"t͡sʼ l i s"
+]
+],
+"langs": [
+[
+"ka",
+0.78
+]
+],
+"also": [],
+"count": 366
+},
+"ɱ": {
+"name": "labiodental nasal",
+"class": "nasal",
+"plain": "m made with the lower lip against the teeth, before f or v (“comfort”)",
+"examples": [
+[
+"el",
+"σύμφωνα",
+"s i ɱ f o n a"
+]
+],
+"langs": [
+[
+"el",
+0.11
+]
+],
+"also": [],
+"count": 33
+},
+"qʼ": {
+"name": "voiceless uvular stop, ejective",
+"class": "stop",
+"plain": "a k made further back, at the uvula (Uzbek “q”); ejective: a pop made by the throat, with no breath from the lungs",
+"examples": [
+[
+"ka",
+"იყო",
+"i qʼ ɔ"
+]
+],
+"langs": [
+[
+"ka",
+0.75
+]
+],
+"also": [],
+"count": 351
+},
+"t͡ʃʼ": {
+"name": "ejective postalveolar affricate",
+"class": "affricate",
+"plain": "ch said with a pop from the throat, no breath",
+"examples": [
+[
+"ka",
+"აღჭურვილობით",
+"ɑ ɣ t͡ʃʼ u r v i l ɔ b i tʰ"
+]
+],
+"langs": [
+[
+"ka",
+0.12
+]
+],
+"also": [],
+"count": 58
+},
+"ɛ̂": {
+"name": "open-mid front unrounded vowel, accent ˆ (falling)",
+"class": "vowel",
+"plain": "e as in “bed”; accent ˆ (falling): the G2P's dictionary marks a falling pitch accent. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+}
+}
+}

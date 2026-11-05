@@ -1,0 +1,699 @@
+{
+"vocab": [
+"",
+"35",
+"21",
+"33",
+"45",
+"51",
+"32",
+"214",
+"55",
+"24",
+"3",
+"312",
+"5",
+"13",
+"2",
+"212",
+"42",
+"44",
+"53",
+"22",
+"4",
+"114"
+],
+"contours": {
+"35": {
+"shape": "rising, mid to high",
+"letters": "˧˥",
+"explain": "starts at 3, ends at 5 (1 = lowest, 5 = highest)"
+},
+"21": {
+"shape": "low falling",
+"letters": "˨˩",
+"explain": "starts at 2, ends at 1 (1 = lowest, 5 = highest)"
+},
+"33": {
+"shape": "mid level",
+"letters": "˧˧",
+"explain": "starts at 3, ends at 3 (1 = lowest, 5 = highest)"
+},
+"45": {
+"shape": "high rising",
+"letters": "˦˥",
+"explain": "starts at 4, ends at 5 (1 = lowest, 5 = highest)"
+},
+"51": {
+"shape": "falling, high to low",
+"letters": "˥˩",
+"explain": "starts at 5, ends at 1 (1 = lowest, 5 = highest)"
+},
+"32": {
+"shape": "mid falling",
+"letters": "˧˨",
+"explain": "starts at 3, ends at 2 (1 = lowest, 5 = highest)"
+},
+"214": {
+"shape": "dipping: falls low, then rises",
+"letters": "˨˩˦",
+"explain": "starts at 2, turns at 1, ends at 4 (1 = lowest, 5 = highest)"
+},
+"55": {
+"shape": "high level",
+"letters": "˥˥",
+"explain": "starts at 5, ends at 5 (1 = lowest, 5 = highest)"
+},
+"24": {
+"shape": "rising, low-mid to high-mid",
+"letters": "˨˦",
+"explain": "starts at 2, ends at 4 (1 = lowest, 5 = highest)"
+},
+"3": {
+"shape": "mid (one level)",
+"letters": "˧",
+"explain": "one pitch level (1 = lowest, 5 = highest)"
+},
+"312": {
+"shape": "dipping: mid, low, then mid",
+"letters": "˧˩˨",
+"explain": "starts at 3, turns at 1, ends at 2 (1 = lowest, 5 = highest)"
+},
+"5": {
+"shape": "high (one level)",
+"letters": "˥",
+"explain": "one pitch level (1 = lowest, 5 = highest)"
+},
+"13": {
+"shape": "low rising",
+"letters": "˩˧",
+"explain": "starts at 1, ends at 3 (1 = lowest, 5 = highest)"
+},
+"2": {
+"shape": "low (one level)",
+"letters": "˨",
+"explain": "one pitch level (1 = lowest, 5 = highest)"
+},
+"212": {
+"shape": "low dipping",
+"letters": "˨˩˨",
+"explain": "starts at 2, turns at 1, ends at 2 (1 = lowest, 5 = highest)"
+},
+"42": {
+"shape": "falling, high-mid to low",
+"letters": "˦˨",
+"explain": "starts at 4, ends at 2 (1 = lowest, 5 = highest)"
+},
+"44": {
+"shape": "high-mid level",
+"letters": "˦˦",
+"explain": "starts at 4, ends at 4 (1 = lowest, 5 = highest)"
+},
+"53": {
+"shape": "high falling",
+"letters": "˥˧",
+"explain": "starts at 5, ends at 3 (1 = lowest, 5 = highest)"
+},
+"22": {
+"shape": "low level",
+"letters": "˨˨",
+"explain": "starts at 2, ends at 2 (1 = lowest, 5 = highest)"
+},
+"4": {
+"shape": "high-mid (one level)",
+"letters": "˦",
+"explain": "one pitch level (1 = lowest, 5 = highest)"
+},
+"114": {
+"shape": "low, then rising",
+"letters": "˩˩˦",
+"explain": "starts at 1, turns at 1, ends at 4 (1 = lowest, 5 = highest)"
+}
+},
+"langs": {
+"zh": {
+"name": "Mandarin",
+"intro": "Four tones and a neutral tone. The G2P gives each character its dictionary reading, so tone sandhi is not applied (a 3rd tone before another 3rd tone is still 214, though it is said as 35) and particles may carry their full tone.",
+"order": [
+"55",
+"35",
+"214",
+"51",
+"3",
+"5"
+],
+"tones": {
+"55": {
+"name": "Tone 1, high level",
+"desc": "ā; yīnpíng 阴平",
+"share": 19.7,
+"examples": [
+[
+"一",
+"i55"
+],
+[
+"它",
+"tʰ u ɔ55"
+],
+[
+"中",
+"ʈ ʂ ʊ55 ŋ"
+]
+]
+},
+"35": {
+"name": "Tone 2, rising",
+"desc": "á; yángpíng 阳平",
+"share": 26.7,
+"examples": [
+[
+"的",
+"t i35"
+],
+[
+"和",
+"x ɤ35"
+],
+[
+"人",
+"ʐ ə35 n"
+]
+]
+},
+"214": {
+"name": "Tone 3, dipping",
+"desc": "ǎ; shǎngshēng 上声. Before another syllable it is often only low (21).",
+"share": 17.7,
+"examples": [
+[
+"了",
+"l j ɑ ʊ214"
+],
+[
+"可以",
+"kʰ ɤ214 i214"
+],
+[
+"有",
+"j o ʊ214"
+]
+]
+},
+"51": {
+"name": "Tone 4, falling",
+"desc": "à; qùshēng 去声",
+"share": 34.8,
+"examples": [
+[
+"在",
+"t s a ɪ51"
+],
+[
+"是",
+"ʂ ɚ51"
+],
+[
+"不",
+"p u51"
+]
+]
+},
+"3": {
+"name": "Neutral tone",
+"desc": "qīngshēng 轻声: short and unstressed; its pitch follows the tone before it",
+"share": 1.0,
+"examples": [
+[
+"一个",
+"i35 k ɤ3"
+],
+[
+"他们",
+"tʰ a55 m ə3 n"
+],
+[
+"男子",
+"n a35 n t s ɯ3"
+]
+]
+},
+"5": {
+"name": "(rare)",
+"desc": "only in spelled-out letters and foreign words",
+"share": 0.0,
+"examples": [
+[
+"npws",
+"ɛ55 n p j ɑ ʊ55 ɛ5 s"
+]
+]
+}
+}
+},
+"yue": {
+"name": "Cantonese",
+"intro": "Six tones, numbered 1–6 in Jyutping. Level tones are written with one digit. The checked (entering) tones of syllables ending in p, t, k share the number of the level tone at the same height.",
+"order": [
+"5",
+"35",
+"3",
+"21",
+"13",
+"2"
+],
+"tones": {
+"5": {
+"name": "Tone 1, high level",
+"desc": "Jyutping 1 (and the high entering tone, 7)",
+"share": 27.6,
+"examples": [
+[
+"的",
+"t ɪ5 k"
+],
+[
+"都",
+"t o u5"
+],
+[
+"方式",
+"f ɔ5 ŋ s ɪ5 k"
+]
+]
+},
+"35": {
+"name": "Tone 2, high rising",
+"desc": "Jyutping 2",
+"share": 11.2,
+"examples": [
+[
+"影響",
+"j ɪ35 ŋ h œ35 ŋ"
+],
+[
+"許多",
+"h ɵ y35 t ɔ5"
+],
+[
+"使",
+"s i35"
+]
+]
+},
+"3": {
+"name": "Tone 3, mid level",
+"desc": "Jyutping 3 (and the mid entering tone, 8)",
+"share": 13.6,
+"examples": [
+[
+"世界",
+"s ɐ i3 k a i3"
+],
+[
+"個",
+"k ɔ3"
+],
+[
+"國家",
+"k w ɔ3 k k a5"
+]
+]
+},
+"21": {
+"name": "Tone 4, low falling",
+"desc": "Jyutping 4",
+"share": 17.6,
+"examples": [
+[
+"成為",
+"s ɪ21 ŋ w ɐ i21"
+],
+[
+"人",
+"j ɐ21 n"
+],
+[
+"不同",
+"p ɐ5 t tʰ ʊ21 ŋ"
+]
+]
+},
+"13": {
+"name": "Tone 5, low rising",
+"desc": "Jyutping 5",
+"share": 7.3,
+"examples": [
+[
+"有",
+"j ɐ u13"
+],
+[
+"以",
+"j i13"
+],
+[
+"這個",
+"t s ɛ13 k ɔ3"
+]
+]
+},
+"2": {
+"name": "Tone 6, low level",
+"desc": "Jyutping 6 (and the low entering tone, 9)",
+"share": 22.7,
+"examples": [
+[
+"動物",
+"t ʊ2 ŋ m ɐ2 t"
+],
+[
+"在",
+"t s ɔ i2"
+],
+[
+"活動",
+"w u2 t t ʊ2 ŋ"
+]
+]
+}
+}
+},
+"vi": {
+"name": "Vietnamese (Northern)",
+"intro": "Six tones, shown by the accent marks of the spelling. Sắc is split in two: syllables ending in p, t, c, ch take a short high rise (45). Counts are from Northern Vietnamese (vi); vi-c and vi-s may number some tones differently.",
+"order": [
+"33",
+"32",
+"24",
+"45",
+"21",
+"312",
+"35",
+"3"
+],
+"tones": {
+"33": {
+"name": "ngang, level",
+"desc": "no mark: a",
+"share": 29.0,
+"examples": [
+[
+"trong",
+"c ɔ33 ŋ͡m"
+],
+[
+"không",
+"x o33 ŋ͡m"
+],
+[
+"cho",
+"c ɔ33"
+]
+]
+},
+"32": {
+"name": "huyền, low falling",
+"desc": "grave: à",
+"share": 17.2,
+"examples": [
+[
+"và",
+"v a32"
+],
+[
+"là",
+"l a32"
+],
+[
+"người",
+"ŋ ɯ ə32 j"
+]
+]
+},
+"24": {
+"name": "sắc, rising",
+"desc": "acute: á",
+"share": 13.6,
+"examples": [
+[
+"có",
+"k ɔ24"
+],
+[
+"với",
+"v ɤ24 j"
+],
+[
+"số",
+"s o24"
+]
+]
+},
+"45": {
+"name": "sắc, high rising (checked)",
+"desc": "acute on a syllable ending in p, t, c, ch: các, nhất",
+"share": 8.7,
+"examples": [
+[
+"các",
+"k a45 k"
+],
+[
+"nhất",
+"ɲ ɤ̆45 t"
+],
+[
+"nước",
+"n ɯ ə45 k"
+]
+]
+},
+"21": {
+"name": "nặng, low, glottalised",
+"desc": "dot below: ạ",
+"share": 16.8,
+"examples": [
+[
+"một",
+"m o21 t"
+],
+[
+"được",
+"d ɯ ə21 k"
+],
+[
+"động",
+"d o21 ŋ͡m ʔ"
+]
+]
+},
+"312": {
+"name": "hỏi, dipping",
+"desc": "hook above: ả",
+"share": 10.2,
+"examples": [
+[
+"của",
+"k u ə312"
+],
+[
+"ở",
+"ɤ312"
+],
+[
+"thể",
+"tʰ e312"
+]
+]
+},
+"35": {
+"name": "ngã, broken rising",
+"desc": "tilde: ã; often with a glottal break in the middle",
+"share": 4.3,
+"examples": [
+[
+"những",
+"ɲ ɯ35 ŋ"
+],
+[
+"đã",
+"d a35"
+],
+[
+"sẽ",
+"s ɛ35"
+]
+]
+},
+"3": {
+"name": "(rare)",
+"desc": "only in foreign words",
+"share": 0.1,
+"examples": [
+[
+"martelly",
+"m a r t ɛ3 l i33"
+],
+[
+"knp",
+"k a33 n p3"
+],
+[
+"auckland",
+"ă3 w k l a33 n d"
+]
+]
+}
+}
+},
+"th": {
+"name": "Thai",
+"intro": "Five tones. The tone of a syllable follows from its consonant class, vowel length, ending and tone mark; the G2P works it out.",
+"order": [
+"3",
+"21",
+"51",
+"45",
+"114",
+"33",
+"35"
+],
+"tones": {
+"3": {
+"name": "mid tone",
+"desc": "siang saman",
+"share": 34.0,
+"examples": [
+[
+"ใน",
+"n a3 j"
+],
+[
+"มี",
+"m i3"
+],
+[
+"การ",
+"k a3 n"
+]
+]
+},
+"21": {
+"name": "low tone",
+"desc": "siang ek",
+"share": 22.1,
+"examples": [
+[
+"ต่าง",
+"t a21 ŋ"
+],
+[
+"จะ",
+"t͡ɕ a21 ʔ"
+],
+[
+"จาก",
+"t͡ɕ a21 k̚"
+]
+]
+},
+"51": {
+"name": "falling tone",
+"desc": "siang tho",
+"share": 19.3,
+"examples": [
+[
+"ที่",
+"tʰ i51"
+],
+[
+"ได้",
+"d a51 j"
+],
+[
+"ไม่",
+"m a51 j"
+]
+]
+},
+"45": {
+"name": "high tone",
+"desc": "siang tri",
+"share": 15.2,
+"examples": [
+[
+"และ",
+"l ɛ45 ʔ"
+],
+[
+"นี้",
+"n i45"
+],
+[
+"ใช้",
+"t͡ɕʰ a45 j"
+]
+]
+},
+"114": {
+"name": "rising tone",
+"desc": "siang chattawa: starts low, then rises",
+"share": 8.8,
+"examples": [
+[
+"ของ",
+"kʰ ɔ114 ŋ"
+],
+[
+"หรือ",
+"r ɯ114"
+],
+[
+"สามารถ",
+"s a114 m a51 t̚"
+]
+]
+},
+"33": {
+"name": "(rare)",
+"desc": "only in foreign words",
+"share": 0.5,
+"examples": [
+[
+"super-g",
+"<unk> u p ɛ33 r <unk> ɛ33"
+],
+[
+"-",
+"<unk> a33"
+],
+[
+"anna",
+"a33 n a33"
+]
+]
+},
+"35": {
+"name": "(rare)",
+"desc": "only in foreign words",
+"share": 0.1,
+"examples": [
+[
+"jong",
+"j ɔ35 <unk>"
+],
+[
+"robin",
+"<unk> ɔ b i35 n"
+],
+[
+"range",
+"<unk> a35 ŋ"
+]
+]
+}
+}
+}
+}
+}

@@ -1,10 +1,10 @@
-# Evaluation
+# Evaluation methods
 
-Measures how well an aligner places phoneme boundaries on TIMIT and Buckeye, for the BFA
+The harness in [`evaluation/`](../evaluation/) measures how well an aligner places phoneme boundaries on TIMIT and Buckeye, for the BFA
 models and for the Montreal Forced Aligner (MFA), against the corpora's hand labels.
 
-This page explains how the harness works. The current results and their analysis are in
-[docs/evaluation.md](../docs/evaluation.md).
+This page explains how the harness works. The current results and their analysis are on the
+[evaluation](evaluation.md) page.
 
 There are two steps, and one file configures both:
 
@@ -156,7 +156,7 @@ Do not let two shells run MFA at the same time; MFA keeps one shared database pe
 segments, so use `subset` for a quick look. On a CPU with the harness's 30 s padding, BFA runs at
 about 0.1-0.12 × real time on Buckeye; with a GPU, about 0.01 ×. MFA has about a minute of fixed
 start-up and setup per call, then runs fast. With 8 jobs it aligned all of Buckeye in 12-19 min.
-Measured timings for both are in [docs/evaluation.md](../docs/evaluation.md#cost).
+Measured timings for both are on the [evaluation](evaluation.md#cost) page.
 
 ## Step 2: scoring
 
@@ -189,8 +189,8 @@ distances).
 
 ## Step 3: the figures for the docs
 
-[docs/evaluation.md](../docs/evaluation.md) shows the runs in `results/` and the plots in
-`plots/`. To refresh them after a new full-corpus run, copy that run's `tmp/plots/<experiment>.png`
+The [evaluation](evaluation.md) page shows the runs in `evaluation/results/` and the plots in
+`evaluation/plots/`. To refresh them after a new full-corpus run, copy that run's `tmp/plots/<experiment>.png`
 and `.json` into `evaluation/plots/`, then redraw the two comparison figures:
 
 ```bash
@@ -198,7 +198,7 @@ python evaluation/plot_summary.py      # evaluation/plots/summary_f1.png, summar
 ```
 
 It draws one bar group or line per method from the full-corpus rows (`cfg_subset` -1) of each CSV.
-Only the `.png` files in `plots/` are committed. The JSONs are ~3 MB each and stay local.
+Only the `.png` files in `evaluation/plots/` are committed. The JSONs are ~3 MB each and stay local.
 
 ### Reading the CSV
 
@@ -222,9 +222,11 @@ one. Only compare rows with the same `files` count; a 100-clip row
 reads a few points away from a full-corpus one.
 
 How boundaries are matched is described at the top of `compute_metrics.py`. How the corpus
-labels become reference boundaries is in [LABEL_MAPPING.md](LABEL_MAPPING.md).
+labels become reference boundaries is in [LABEL_MAPPING.md](../evaluation/LABEL_MAPPING.md).
 
 ## Files
+
+All in `evaluation/`.
 
 | file | role |
 |---|---|
@@ -232,10 +234,10 @@ labels become reference boundaries is in [LABEL_MAPPING.md](LABEL_MAPPING.md).
 | `process_alignments.py` | step 1 |
 | `align_with_mfa.py` | the MFA part of step 1; not run directly |
 | `compute_metrics.py` | step 2 |
-| `plot_summary.py` | step 3: the comparison figures in docs/evaluation.md |
+| `plot_summary.py` | step 3: the comparison figures on the evaluation page |
 | `config.py` | reads and checks the yaml |
 | `layout.py` | where files go |
 | `dataset/` | the corpus parsers (`timit_parser.py`, `buckeye_parser.py`, `l2arctic_parser.py`), the label tables (`std_labels.py`), and the training probe cache (`probe_cache.py`) |
 | `LABEL_MAPPING.md` | how each corpus's labels become reference boundaries |
 | `results/results_<dataset>.csv` | the scores |
-| `plots/` | the histograms and figures that docs/evaluation.md shows |
+| `plots/` | the histograms and figures that the evaluation page shows |

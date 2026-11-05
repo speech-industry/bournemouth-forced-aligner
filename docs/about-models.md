@@ -1,7 +1,5 @@
 # About the models
 
-[Main README](../README.md) · [Developer guide](README.md) · **About the models** · [Evaluation](evaluation.md) · [Language support](language-support.md)
-
 BFA v2 runs one of thirteen published acoustic models, all built on the same CNN trunk and trained with the
 same objective. This page covers their structure, how they are trained, how BFA decodes them, and
 which training run each published model is.

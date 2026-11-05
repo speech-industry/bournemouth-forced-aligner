@@ -49,7 +49,7 @@ export class Editor {
   constructor(canvas, overview, callbacks) {
     this.cv = canvas;
     this.ov = overview;
-    this.cb = callbacks;          // {onSelect, onEditStart, onEdit, onEditEnd, onSeek}
+    this.cb = callbacks;          // {onSelect, onEditStart, onEdit, onEditEnd, onSeek, onHover}
     this.clip = null;
     this.mode = "mel";
     this.view = [0, 1];           // visible seconds
@@ -67,6 +67,7 @@ export class Editor {
     canvas.addEventListener("pointermove", (e) => this._move(e));
     canvas.addEventListener("pointerup", (e) => this._up(e));
     canvas.addEventListener("pointercancel", (e) => this._up(e));
+    canvas.addEventListener("pointerleave", () => this.cb.onHover && this.cb.onHover(null));
     canvas.addEventListener("wheel", (e) => this._wheel(e), { passive: false });
     canvas.addEventListener("dblclick", (e) => this._dbl(e));
     overview.addEventListener("pointerdown", (e) => this._ovDown(e));
@@ -175,14 +176,24 @@ export class Editor {
     return null;
   }
 
-  /** Nearest draggable boundary to x, within EDGE_GRAB_PX: {si, edge} or null. */
-  edgeAt(x) {
+  /** Phones of a segment are wide enough on screen for boundary lines through the spectrogram. */
+  _linesThroughMain(seg, edges) {
+    return (this.x(seg.end) - this.x(seg.start)) / Math.max(1, edges.length) >= 6;
+  }
+
+  /**
+   * Nearest draggable boundary to x, within EDGE_GRAB_PX: {si, edge} or null. On the
+   * spectrogram row only where its lines are drawn, so a drag there selects a span otherwise.
+   */
+  edgeAt(x, row = null) {
     const vs = this.clip && this.clip.vs;
     if (!vs) return null;
     let best = null, bestD = EDGE_GRAB_PX + 1;
     vs.segments.forEach((seg, si) => {
       if (seg.end < this.view[0] || seg.start > this.view[1]) return;
-      for (const edge of segmentEdges(seg)) {
+      const edges = segmentEdges(seg);
+      if (row === "main" && !this._linesThroughMain(seg, edges)) return;
+      for (const edge of edges) {
         const d = Math.abs(this.x(edge.t / 1000) - x);
         if (d < bestD) { bestD = d; best = { si, edge }; }
       }
@@ -227,7 +238,7 @@ export class Editor {
     const row = this.rowAt(y);
     this.cv.setPointerCapture(e.pointerId);
     if (row !== "ruler" && row !== "seg") {
-      const near = this.edgeAt(x);
+      const near = this.edgeAt(x, row);
       if (near) {
         this.drag = { kind: "edge", ...near, moved: false };
         return;
@@ -260,11 +271,15 @@ export class Editor {
       return;
     }
     const row = this.rowAt(y);
-    const near = (row !== "ruler" && row !== "seg") ? this.edgeAt(x) : null;
+    const near = (row !== "ruler" && row !== "seg") ? this.edgeAt(x, row) : null;
     this.cv.style.cursor = near ? "col-resize" : (row === "main" ? "crosshair" : "default");
     if ((near && near.edge.t) !== (this.hoverEdge && this.hoverEdge.edge.t)) {
       this.hoverEdge = near;
       this.draw();
+    }
+    if (this.cb.onHover) {
+      const h = near ? { row, t: this.t(x), edge: near } : this.hit(x, y);
+      this.cb.onHover(h, e.clientX, e.clientY);
     }
   }
 
@@ -390,7 +405,20 @@ export class Editor {
     const [v0, v1] = this.view;
 
     this._drawRuler(g, R.ruler, W, col);
-    if (this.mode === "mel" && this._ensureTiles()) this._drawMel(g, R.main, W);
+    if (this.mode === "mel")
+    {
+      if( this._ensureTiles()) this._drawMel(g, R.main, W);
+      else 
+      {
+        const cv = document.createElement("canvas");
+        const ctx = cv.getContext("2d");
+        cv.width = W; cv.height = R.main[1];
+        ctx.fillStyle = col.muted; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("No spectrogram yet. Press 'Align' to generate one along with alignments.", W / 2, R.main[0] + R.main[1] / 2);
+        g.drawImage(cv, 0, R.main[0]);
+      }
+    }
     else this._drawWave(g, R.main, W, col);
 
     const vs = this.clip.vs;
@@ -564,7 +592,7 @@ export class Editor {
     const edges = segmentEdges(seg);
     // Zoomed far out, lines through the spectrogram would hide it: draw them only when the
     // phones are at least a few pixels wide on average.
-    const throughMain = (sx1 - sx0) / Math.max(1, edges.length) >= 6;
+    const throughMain = this._linesThroughMain(seg, edges);
     for (const edge of edges) {
       const x = Math.round(this.x(edge.t / 1000)) + 0.5;
       if (x < -2 || x > W + 2) continue;

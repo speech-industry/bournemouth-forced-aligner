@@ -201,18 +201,18 @@ class TestStdInventory:
         assert set(inv.phoneme_id_to_group_id) == set(range(inv.n_classes))
         assert all(0 <= g < inv.n_groups for g in inv.phoneme_id_to_group_id.values())
 
-    def test_no_silence_at_punctuation_by_default(self):
-        p = StdPhonemizer("en")
+    def test_no_silence_at_punctuation_when_off(self):
+        p = StdPhonemizer("en", punctuation_sil=False)
         assert p._split("Hello, world. Now!") == ["hello", "world", "now"]
 
     def test_punctuation_sil(self):
-        p = StdPhonemizer("en", punctuation_sil=True)
+        p = StdPhonemizer("en")                       # on by default
         assert p._split("Hello, world. Now!") == ["hello", None, "world", None, "now"]
         # a mark inside a token is not a pause, and neither is an apostrophe
         assert p._split("it's 3.5 o'clock") == ["it's", "3", "5", "o'clock"]
 
     def test_explicit_sil_is_always_honoured(self):
-        p = StdPhonemizer("en")
+        p = StdPhonemizer("en", punctuation_sil=False)
         assert p._split("hello <SIL> world") == ["hello", None, "world"]
         # none at the edges or doubled: the aligner pads its own optional silence there
         assert p._split("<SIL> hello <SIL> <SIL> world <SIL>") == ["hello", None, "world"]

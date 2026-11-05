@@ -90,7 +90,7 @@ class BFA:
                  chunk_phonemes_per_second=DEFAULT_PHONEMES_PER_SECOND, chunk_vad=True,
                  segment_max_seconds=DEFAULT_SEGMENT_MAX_SECONDS, warn_level=1,
                  phoneme_set=None, ckpt_path=None, g2p_model_dir=None, g2p_device=None,
-                 g2p_cache_size=None, punctuation_sil=False, n_jobs=1):
+                 g2p_cache_size=None, punctuation_sil=True, n_jobs=1):
         """
         Initialize the BFA phoneme timestamp extractor.
 
@@ -129,9 +129,11 @@ class BFA:
             g2p_cache_size (int, optional): Word -> IPA entries the G2P remembers. Default
                 500k (~55 MB); 0 for no limit.
             punctuation_sil (bool): std only. Write a silence where the text has pause
-                punctuation, as ph66 always does. Off by default because the p4mbfa models
-                were trained without one; the aligner may skip any silence at no cost, so
-                turning it on only offers the path somewhere to put a pause.
+                punctuation, as ph66 always does. On by default: without one, a pause has
+                nowhere to go and the phone next to it swallows it. The aligner may skip any
+                silence at no cost, so this only offers the path somewhere to put a pause.
+                The p4mbfa models were trained without these silences, and the paper's
+                benchmarks were run with False.
             duration_max (float): Padding width, in seconds, for the batched short-segment
                 path. Segments longer than this are decoded on their own, unpadded, so this
                 trades memory against how many segments share one forward pass.

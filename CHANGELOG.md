@@ -2,13 +2,29 @@
 
 ## [Unreleased]
 
+### Changed
+- **Documentation site** at <https://tabahi.github.io/bournemouth-forced-aligner/>, built from
+  `docs/` with MkDocs Material. The developer guide is now `docs/developer-guide.md`, and the web
+  interface guide, the evaluation methods and the phoneme guides moved into `docs/` too.
+- **`punctuation_sil` is on by default** (`BFA`, `StdPhonemizer`, `balign --punctuation-sil`): a SIL
+  is written at pause punctuation, so a pause is no longer swallowed by the phone next to it (in
+  one test clip a 0.6 s pause after a full stop had become a 565 ms /p/). The aligner skips a SIL
+  the speaker did not make. `punctuation_sil=False` gives the old behaviour, which the paper's
+  benchmarks used.
+
 ### Added
 - Results now record the audio they came from: an `audio_file` key (base name only) in the
   output header, set by `process_srt_file`, by the CLI, and by `process_sentence(...,
   audio_file=...)`. Results from `process_segments` and `process_sentences_batch` do not have it.
 - **`balign --web`**: a local web interface to align, transcribe (Whisper, through
   transformers) and hand-correct phoneme timestamps in the browser. Needs
-  `pip install "bournemouth-forced-aligner[web]"`. See [web_interface/README.md](web_interface/README.md).
+  `pip install "bournemouth-forced-aligner[web]"`. See [docs/web-interface.md](docs/web-interface.md).
+  It has a **Uniform seed** mode for building reference data that favours no aligner (word
+  boundaries moved a random 20–40 ms, phonemes spread evenly in each word, seed saved in the
+  `.vs.json`), tooltips on every control, and a phoneme and tone guide
+  ([docs/phoneme-guides/](docs/phoneme-guides/), built by `tools/build_annotation_guides.py`).
+  Also: **Align word** (BFA on one word alone, its labels kept), slowed playback with the pitch
+  kept (WSOLA), and **SIL at pauses** (`punctuation_sil` on for the web interface's alignments).
 - `BFA.frame_posteriors(audio_wav, start_sec, end_sec)`: the model's per-frame phoneme (and
   tone) probabilities over a span, without aligning. The peak over a phone's frames is its
   `confidence`.
@@ -52,7 +68,7 @@
 
 **Not compatible with 1.x.** New acoustic models and a different alignment method. v1
 checkpoints do not load, and the output format and constructor arguments have changed. Details are in
-[docs/](docs/README.md).
+[docs/](docs/developer-guide.md).
 
 ### Added
 - **`std` phoneme set, now the default.** It phonemizes with a ByT5 G2P (vendored standard_g2p) and aligns with

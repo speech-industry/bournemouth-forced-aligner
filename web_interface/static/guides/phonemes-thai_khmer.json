@@ -1,0 +1,718 @@
+{
+"group": "thai_khmer",
+"model": "mbfa-thai",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Tone is a separate layer, not part of these tokens: see the tone guide. Final stops are unreleased (p̚ t̚ k̚): the token ends with the silent closure. A short vowel at the end of a syllable is closed by ʔ (และ = l ɛ ʔ).",
+"lang_names": {
+"th": "Thai"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"th",
+"ใน",
+"n a j"
+]
+],
+"langs": [
+[
+"th",
+17.43
+]
+],
+"also": [],
+"count": 8358
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"th",
+"ซึ่ง",
+"s ɯ ŋ"
+]
+],
+"langs": [
+[
+"th",
+2.96
+]
+],
+"also": [],
+"count": 1419
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"th",
+"ที่",
+"tʰ i"
+]
+],
+"langs": [
+[
+"th",
+5.24
+]
+],
+"also": [],
+"count": 2510
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"th",
+"เป็น",
+"p e n"
+]
+],
+"langs": [
+[
+"th",
+1.63
+]
+],
+"also": [],
+"count": 780
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"th",
+"ใน",
+"n a j"
+]
+],
+"langs": [
+[
+"th",
+8.21
+]
+],
+"also": [],
+"count": 3935
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"th",
+"ต่าง",
+"t a ŋ"
+]
+],
+"langs": [
+[
+"th",
+1.69
+]
+],
+"also": [],
+"count": 811
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"th",
+"และ",
+"l ɛ ʔ"
+]
+],
+"langs": [
+[
+"th",
+2.58
+]
+],
+"also": [],
+"count": 1237
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"th",
+"การ",
+"k a n"
+]
+],
+"langs": [
+[
+"th",
+2.96
+]
+],
+"also": [],
+"count": 1417
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"th",
+"โดย",
+"d o j"
+]
+],
+"langs": [
+[
+"th",
+2.43
+]
+],
+"also": [],
+"count": 1165
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"th",
+"หรือ",
+"r ɯ"
+]
+],
+"langs": [
+[
+"th",
+3.52
+]
+],
+"also": [],
+"count": 1687
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"th",
+"มี",
+"m i"
+]
+],
+"langs": [
+[
+"th",
+4.62
+]
+],
+"also": [],
+"count": 2213
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"th",
+"ได้",
+"d a j"
+]
+],
+"langs": [
+[
+"th",
+1.47
+]
+],
+"also": [],
+"count": 705
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"th",
+"อยู่",
+"j u"
+]
+],
+"langs": [
+[
+"th",
+2.68
+]
+],
+"also": [],
+"count": 1287
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"th",
+"ฟิลิปปินส์",
+"f i l i p̚ p i n"
+]
+],
+"langs": [
+[
+"th",
+0.19
+]
+],
+"also": [],
+"count": 91
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"th",
+"ใน",
+"n a j"
+]
+],
+"langs": [
+[
+"th",
+5.16
+]
+],
+"also": [],
+"count": 2476
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"th",
+"แบบ",
+"b ɛ p̚"
+]
+],
+"langs": [
+[
+"th",
+0.93
+]
+],
+"also": [],
+"count": 448
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"th",
+"เป็น",
+"p e n"
+]
+],
+"langs": [
+[
+"th",
+1.78
+]
+],
+"also": [],
+"count": 852
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"th",
+"และ",
+"l ɛ ʔ"
+]
+],
+"langs": [
+[
+"th",
+1.98
+]
+],
+"also": [],
+"count": 951
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"th",
+"ว่า",
+"w a"
+]
+],
+"langs": [
+[
+"th",
+2.56
+]
+],
+"also": [],
+"count": 1227
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"th",
+"และ",
+"l ɛ ʔ"
+]
+],
+"langs": [
+[
+"th",
+2.3
+]
+],
+"also": [],
+"count": 1103
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"th",
+"ของ",
+"kʰ ɔ ŋ"
+]
+],
+"langs": [
+[
+"th",
+2.44
+]
+],
+"also": [],
+"count": 1171
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"th",
+"ของ",
+"kʰ ɔ ŋ"
+]
+],
+"langs": [
+[
+"th",
+4.26
+]
+],
+"also": [],
+"count": 2041
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"th",
+"ซึ่ง",
+"s ɯ ŋ"
+]
+],
+"langs": [
+[
+"th",
+1.64
+]
+],
+"also": [],
+"count": 787
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"th",
+"ให้",
+"h a j"
+]
+],
+"langs": [
+[
+"th",
+0.9
+]
+],
+"also": [],
+"count": 431
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"th",
+"ที่",
+"tʰ i"
+]
+],
+"langs": [
+[
+"th",
+3.07
+]
+],
+"also": [],
+"count": 1470
+},
+"t͡ɕ": {
+"name": "voiceless alveolo-palatal affricate",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”)",
+"examples": [
+[
+"th",
+"จะ",
+"t͡ɕ a ʔ"
+]
+],
+"langs": [
+[
+"th",
+1.05
+]
+],
+"also": [],
+"count": 505
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"th",
+"ของ",
+"kʰ ɔ ŋ"
+]
+],
+"langs": [
+[
+"th",
+3.03
+]
+],
+"also": [],
+"count": 1453
+},
+"ɤ": {
+"name": "close-mid back unrounded vowel",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”)",
+"examples": [
+[
+"th",
+"เธอ",
+"tʰ ɤ"
+]
+],
+"langs": [
+[
+"th",
+0.53
+]
+],
+"also": [],
+"count": 253
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"th",
+"ผู้",
+"pʰ u"
+]
+],
+"langs": [
+[
+"th",
+1.6
+]
+],
+"also": [],
+"count": 766
+},
+"k̚": {
+"name": "voiceless velar stop, unreleased",
+"class": "stop",
+"plain": "k as in “key”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"th",
+"จาก",
+"t͡ɕ a k̚"
+]
+],
+"langs": [
+[
+"th",
+1.97
+]
+],
+"also": [],
+"count": 944
+},
+"t͡ɕʰ": {
+"name": "voiceless alveolo-palatal affricate, aspirated",
+"class": "affricate",
+"plain": "a soft ch (Polish “ć”, Bosnian “ć”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"th",
+"ชาว",
+"t͡ɕʰ a w"
+]
+],
+"langs": [
+[
+"th",
+1.17
+]
+],
+"also": [],
+"count": 559
+},
+"t̚": {
+"name": "voiceless alveolar stop, unreleased",
+"class": "stop",
+"plain": "t as in “ten”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"th",
+"สามารถ",
+"s a m a t̚"
+]
+],
+"langs": [
+[
+"th",
+2.55
+]
+],
+"also": [],
+"count": 1224
+},
+"p̚": {
+"name": "voiceless bilabial stop, unreleased",
+"class": "stop",
+"plain": "p as in “pen”; unreleased: a final stop with no audible burst: the closure is held and the sound ends silently",
+"examples": [
+[
+"th",
+"กับ",
+"k a p̚"
+]
+],
+"langs": [
+[
+"th",
+1.43
+]
+],
+"also": [],
+"count": 685
+},
+"a̯": {
+"name": "open front unrounded vowel, non-syllabic",
+"class": "glide",
+"plain": "a as in Spanish “casa”; non-syllabic: the weak, glide-like half of a diphthong; it is not a syllable on its own",
+"examples": [
+[
+"th",
+"เมื่อ",
+"m ɯ a̯"
+]
+],
+"langs": [
+[
+"th",
+2.05
+]
+],
+"also": [],
+"count": 982
+}
+}
+}

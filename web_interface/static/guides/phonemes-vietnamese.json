@@ -1,0 +1,825 @@
+{
+"group": "vietnamese",
+"model": "mbfa-vietnamese",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Tone is a separate layer, not part of these tokens: see the tone guide. k͡p and ŋ͡m are the finals -c and -ng after rounded vowels: the lips close as well. A ʔ at the end of a syllable (bị = b i ʔ) is the glottal closure of the nặng tone.",
+"lang_names": {
+"vi": "Vietnamese"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"vi",
+"và",
+"v a"
+]
+],
+"langs": [
+[
+"vi",
+7.43
+]
+],
+"also": [],
+"count": 2345
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"vi",
+"số",
+"s o"
+]
+],
+"langs": [
+[
+"vi",
+2.0
+]
+],
+"also": [],
+"count": 632
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"vi",
+"khi",
+"x i"
+]
+],
+"langs": [
+[
+"vi",
+5.36
+]
+],
+"also": [],
+"count": 1693
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"vi",
+"thể",
+"tʰ e"
+]
+],
+"langs": [
+[
+"vi",
+1.99
+]
+],
+"also": [],
+"count": 629
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"vi",
+"trên",
+"c e n"
+]
+],
+"langs": [
+[
+"vi",
+5.4
+]
+],
+"also": [],
+"count": 1705
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"vi",
+"một",
+"m o t"
+]
+],
+"langs": [
+[
+"vi",
+4.05
+]
+],
+"also": [],
+"count": 1277
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"vi",
+"là",
+"l a"
+]
+],
+"langs": [
+[
+"vi",
+1.81
+]
+],
+"also": [],
+"count": 571
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"vi",
+"các",
+"k a k"
+]
+],
+"langs": [
+[
+"vi",
+6.74
+]
+],
+"also": [],
+"count": 2127
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"vi",
+"một",
+"m o t"
+]
+],
+"langs": [
+[
+"vi",
+3.23
+]
+],
+"also": [],
+"count": 1019
+},
+"r": {
+"name": "alveolar trill",
+"class": "rhotic",
+"plain": "a rolled r",
+"examples": [
+[
+"vi",
+"super-g",
+"s u p ɛ r ɣ"
+]
+],
+"langs": [
+[
+"vi",
+0.28
+]
+],
+"also": [],
+"count": 87
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"vi",
+"một",
+"m o t"
+]
+],
+"langs": [
+[
+"vi",
+2.69
+]
+],
+"also": [],
+"count": 850
+},
+"d": {
+"name": "voiced alveolar stop",
+"class": "stop",
+"plain": "d as in “dog”",
+"examples": [
+[
+"vi",
+"được",
+"d ɯ ə k"
+]
+],
+"langs": [
+[
+"vi",
+3.08
+]
+],
+"also": [],
+"count": 972
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"vi",
+"của",
+"k u ə"
+]
+],
+"langs": [
+[
+"vi",
+2.4
+]
+],
+"also": [],
+"count": 759
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"vi",
+"phía",
+"f i ə"
+]
+],
+"langs": [
+[
+"vi",
+0.83
+]
+],
+"also": [],
+"count": 263
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"vi",
+"người",
+"ŋ ɯ ə j"
+]
+],
+"langs": [
+[
+"vi",
+3.61
+]
+],
+"also": [],
+"count": 1141
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"vi",
+"của",
+"k u ə"
+]
+],
+"langs": [
+[
+"vi",
+4.94
+]
+],
+"also": [],
+"count": 1560
+},
+"b": {
+"name": "voiced bilabial stop",
+"class": "stop",
+"plain": "b as in “bed”",
+"examples": [
+[
+"vi",
+"bị",
+"b i ʔ"
+]
+],
+"langs": [
+[
+"vi",
+1.83
+]
+],
+"also": [],
+"count": 579
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"vi",
+"tiếp",
+"t i ə p"
+]
+],
+"langs": [
+[
+"vi",
+0.67
+]
+],
+"also": [],
+"count": 212
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"vi",
+"thành",
+"tʰ ɛ ŋ"
+]
+],
+"langs": [
+[
+"vi",
+1.8
+]
+],
+"also": [],
+"count": 569
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"vi",
+"vào",
+"v a w"
+]
+],
+"langs": [
+[
+"vi",
+3.71
+]
+],
+"also": [],
+"count": 1170
+},
+"v": {
+"name": "voiced labiodental fricative",
+"class": "fricative",
+"plain": "v",
+"examples": [
+[
+"vi",
+"và",
+"v a"
+]
+],
+"langs": [
+[
+"vi",
+2.11
+]
+],
+"also": [],
+"count": 665
+},
+"z": {
+"name": "voiced alveolar fricative",
+"class": "fricative",
+"plain": "z",
+"examples": [
+[
+"vi",
+"rằng",
+"z ă ŋ"
+]
+],
+"langs": [
+[
+"vi",
+2.34
+]
+],
+"also": [],
+"count": 738
+},
+"ʔ": {
+"name": "glottal stop",
+"class": "stop",
+"plain": "the catch in the throat in “uh-oh”",
+"examples": [
+[
+"vi",
+"động",
+"d o ŋ͡m ʔ"
+]
+],
+"langs": [
+[
+"vi",
+3.24
+]
+],
+"also": [],
+"count": 1024
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"vi",
+"có",
+"k ɔ"
+]
+],
+"langs": [
+[
+"vi",
+2.58
+]
+],
+"also": [],
+"count": 813
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"vi",
+"những",
+"ɲ ɯ ŋ"
+]
+],
+"langs": [
+[
+"vi",
+4.5
+]
+],
+"also": [],
+"count": 1421
+},
+"ʃ": {
+"name": "voiceless postalveolar fricative",
+"class": "fricative",
+"plain": "sh as in “ship”",
+"examples": [
+[
+"vi",
+"bush",
+"b u ʃ"
+]
+],
+"langs": [
+[
+"vi",
+0.06
+]
+],
+"also": [],
+"count": 19
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"vi",
+"được",
+"d ɯ ə k"
+]
+],
+"langs": [
+[
+"vi",
+3.54
+]
+],
+"also": [],
+"count": 1117
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"vi",
+"hơn",
+"h ɤ n"
+]
+],
+"langs": [
+[
+"vi",
+1.69
+]
+],
+"also": [],
+"count": 535
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"vi",
+"không",
+"x o ŋ͡m"
+]
+],
+"langs": [
+[
+"vi",
+1.1
+]
+],
+"also": [],
+"count": 346
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ɣ": {
+"name": "voiced velar fricative",
+"class": "fricative",
+"plain": "a g where the tongue does not close (Dutch g, Spanish g between vowels)",
+"examples": [
+[
+"vi",
+"gần",
+"ɣ ɤ̆ n"
+]
+],
+"langs": [
+[
+"vi",
+0.39
+]
+],
+"also": [],
+"count": 123
+},
+"ɲ": {
+"name": "palatal nasal",
+"class": "nasal",
+"plain": "ny, as Spanish “ñ”",
+"examples": [
+[
+"vi",
+"những",
+"ɲ ɯ ŋ"
+]
+],
+"langs": [
+[
+"vi",
+1.24
+]
+],
+"also": [],
+"count": 393
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"vi",
+"thể",
+"tʰ e"
+]
+],
+"langs": [
+[
+"vi",
+1.99
+]
+],
+"also": [],
+"count": 629
+},
+"c": {
+"name": "voiceless palatal stop",
+"class": "stop",
+"plain": "a k made against the hard palate, close to “ty” (Hungarian “ty”, Czech “ť”)",
+"examples": [
+[
+"vi",
+"trong",
+"c ɔ ŋ͡m"
+]
+],
+"langs": [
+[
+"vi",
+2.79
+]
+],
+"also": [],
+"count": 881
+},
+"ɤ̆": {
+"name": "close-mid back unrounded vowel, extra-short",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”); extra-short: a very short version of the vowel",
+"examples": [
+[
+"vi",
+"nhất",
+"ɲ ɤ̆ t"
+]
+],
+"langs": [
+[
+"vi",
+2.41
+]
+],
+"also": [],
+"count": 761
+},
+"ʐ": {
+"name": "voiced retroflex fricative",
+"class": "fricative",
+"plain": "a hard zh (Polish “ż”, “rz”). Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"ă": {
+"name": "open front unrounded vowel, extra-short",
+"class": "vowel",
+"plain": "a as in Spanish “casa”; extra-short: a very short version of the vowel",
+"examples": [
+[
+"vi",
+"này",
+"n ă j"
+]
+],
+"langs": [
+[
+"vi",
+2.04
+]
+],
+"also": [],
+"count": 643
+},
+"ɤ": {
+"name": "close-mid back unrounded vowel",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”)",
+"examples": [
+[
+"vi",
+"ở",
+"ɤ"
+]
+],
+"langs": [
+[
+"vi",
+1.45
+]
+],
+"also": [],
+"count": 459
+},
+"ŋ͡m": {
+"name": "labial-velar nasal",
+"class": "nasal",
+"plain": "ng and m at once, lips closed (Vietnamese final -ng after o, u)",
+"examples": [
+[
+"vi",
+"trong",
+"c ɔ ŋ͡m"
+]
+],
+"langs": [
+[
+"vi",
+2.28
+]
+],
+"also": [],
+"count": 721
+},
+"k͡p": {
+"name": "labial-velar stop",
+"class": "stop",
+"plain": "k and p at once, lips closed (Vietnamese final -c after o, u)",
+"examples": [
+[
+"vi",
+"học",
+"h ɔ k͡p"
+]
+],
+"langs": [
+[
+"vi",
+0.38
+]
+],
+"also": [],
+"count": 121
+}
+}
+}

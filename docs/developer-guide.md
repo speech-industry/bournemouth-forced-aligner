@@ -1,30 +1,14 @@
 # BFA developer guide
 
-[Main README](../README.md) · **Developer guide** · [About the models](about-models.md) · [Evaluation](evaluation.md) · [Language support](language-support.md)
-
 This guide is for working on BFA's code. It covers how a call flows through the
 package, the rules the code depends on, the full API and CLI reference, the output format, and
-how to test and extend the library. For using BFA, the [main README](../README.md) is enough.
+how to test and extend the library. For using BFA, [getting started](getting-started.md) is enough.
 
 > **v2 breaks compatibility with v1.** The acoustic models (p3cupe / p4mbfa instead of
 > CUPE-2i / model3a), the decoder (a segmental Viterbi instead of a CTC lattice), the default phoneme
 > set (`std`), the output format and many constructor arguments have all changed. v1 checkpoints do not
 > load. The last 1.x release is 1.1.5 (`pip install "bournemouth-forced-aligner<2"`). The
 > [CHANGELOG](../CHANGELOG.md) lists every removed and renamed name.
-
-## Contents
-
-- [Repository layout](#repository-layout)
-- [How an alignment runs](#how-an-alignment-runs)
-- [Rules the code depends on](#rules-the-code-depends-on)
-- [API reference](#api-reference)
-- [Output format](#output-format)
-- [Command line](#command-line)
-- [Long audio and chunking](#long-audio-and-chunking)
-- [Models on disk and downloads](#models-on-disk-and-downloads)
-- [Testing](#testing)
-- [Extending BFA](#extending-bfa)
-- [Not ported to v2](#not-ported-to-v2)
 
 ## Repository layout
 
@@ -51,11 +35,11 @@ bournemouth_aligner/
   standard_g2p/        VENDORED runtime of tabahi/CharsiuG2P's standard_g2p. Never edit by hand
   helpers/mel_spec.py  vocoder-compatible mel spectrogram
   cpp_onnx/            v1 ONNX/C++ port, not updated for v2 (see the end of this page)
-evaluation/            the TIMIT/Buckeye benchmark harness (see evaluation/README.md)
+evaluation/            the TIMIT/Buckeye benchmark harness (see docs/evaluation-methods.md)
 tests/                 pytest suite + tests/test_buckeye.py (a quick experiment script)
 tools/sync_standard_g2p.py   the only writer of bournemouth_aligner/standard_g2p/
 examples/              runnable scripts, one per entry point
-docs/                  this documentation
+docs/                  this documentation: the site at tabahi.github.io/bournemouth-forced-aligner (mkdocs.yml)
 ```
 
 ## How an alignment runs
@@ -140,7 +124,7 @@ BFA(
     g2p_model_dir=None,           # std: existing copy of the G2P model (default $BFA_G2P_DIR / HF cache)
     g2p_device=None,              # std: device for the G2P (default: `device`)
     g2p_cache_size=None,          # std: word -> IPA entries remembered (default 500k; 0 = unbounded)
-    punctuation_sil=False,        # std: write a SIL at pause punctuation
+    punctuation_sil=True,         # std: write a SIL at pause punctuation
     duration_max=30,              # padding width (s) of the batched path; longer segments run alone
     device="auto",                # "auto" | "cpu" | "cuda" | "mps"
     boundary_bonus_weight=None,   # onset bonus; None = 15; 0 = off
@@ -278,7 +262,7 @@ balign AUDIO TEXT_OR_SRT [OUTPUT] [options]
 | `--ckpt-path PATH` | — | release directory or training checkpoint |
 | `--device auto\|cpu\|cuda` | `auto` | |
 | `--g2p-device DEVICE` | `--device` | std only |
-| `--punctuation-sil / --no-punctuation-sil` | off | std only |
+| `--punctuation-sil / --no-punctuation-sil` | on | std only |
 | `--duration-max FLOAT` | **60** | padding width of the batched path (the Python default is 30) |
 | `--boundary-bonus-weight FLOAT` | 15 | `0` = off |
 | `--boundary-contrast-frames INT` | 33 | onset bonus contrast window, 5 ms frames |
@@ -297,7 +281,7 @@ balign AUDIO TEXT_OR_SRT [OUTPUT] [options]
 
 `balign` aligns one file per call, so it has no `--n-jobs` option. To align many files, call
 `process_segments` once from Python with all of them and `n_jobs=4` (see the
-[main README](../README.md#many-files-at-once)).
+[getting started](getting-started.md#many-files-at-once)).
 
 ## Long audio and chunking
 
@@ -370,7 +354,7 @@ Pitfalls:
   changes on the same files with the same `batch_size`.
 - `python bournemouth_aligner/p4mbfa/model.py` (and `p3cupe/model.py`) runs the geometry self-test.
 
-For accuracy, use the full harness in [`evaluation/`](../evaluation/README.md). The current numbers
+For accuracy, use the full harness in [`evaluation/`](evaluation-methods.md). The current numbers
 are in [evaluation.md](evaluation.md).
 
 ## Extending BFA

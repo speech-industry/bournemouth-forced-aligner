@@ -175,6 +175,16 @@ export function rebuildSegment(clip, si) {
   seg.edited = true;
 }
 
+/** Recompute every confidence from the posteriors (just loaded), leaving edit marks alone. */
+export function refreshConfidence(clip) {
+  if (!clip.vs || !clip.analysis || !clip.inventory) return;
+  clip.vs.segments.forEach((seg, si) => {
+    const was = seg.edited;
+    rebuildSegment(clip, si);
+    seg.edited = was;
+  });
+}
+
 // ---------------------------------------------------------------------------------------------
 // Edits. Each returns nothing and leaves the segment rebuilt. Undo snapshots are the caller's.
 // ---------------------------------------------------------------------------------------------
@@ -244,6 +254,79 @@ export function split(clip, si, j) {
   return j + 1;
 }
 
+/** Spread the phonemes of word w evenly between its first start and last end. */
+export function spreadWord(clip, si, w) {
+  const seg = clip.vs.segments[si];
+  const ph = wordPhones(seg, w);
+  if (!ph.length) return false;
+  const s = ph[0].start_ms, e = ph[ph.length - 1].end_ms;
+  if (e - s < ph.length * MIN_PHONE_MS) return false;
+  const d = (e - s) / ph.length;
+  if (ph.every((p, k) => Math.abs(p.start_ms - (s + k * d)) < 0.01)) return false;   // already even
+  ph.forEach((p, k) => {
+    p.start_ms = s + k * d;
+    p.end_ms = k === ph.length - 1 ? e : s + (k + 1) * d;
+    mark(p);
+  });
+  rebuildSegment(clip, si);
+  return true;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Aligning one word again, on its own
+// ---------------------------------------------------------------------------------------------
+
+/** Indices (into phoneme_ts) of word w's first and last phone, or null. */
+function wordRange(seg, w) {
+  const ph = seg.phoneme_ts;
+  let a = -1, b = -1;
+  ph.forEach((p, j) => { if (p._w === w) { if (a < 0) a = j; b = j; } });
+  return a < 0 ? null : [a, b];
+}
+
+/**
+ * The window [lo, hi] (ms) to align word w in: its span widened by padMs, or `want` when given.
+ * It never reaches past the far edge of a neighbouring phone, so at most the phone just before
+ * and the phone just after the word are trimmed.
+ */
+export function wordAlignWindow(seg, w, padMs, want = null) {
+  const r = wordRange(seg, w);
+  if (!r) return null;
+  const ph = seg.phoneme_ts, prev = ph[r[0] - 1], next = ph[r[1] + 1];
+  let lo = want ? want[0] : ph[r[0]].start_ms - padMs;
+  let hi = want ? want[1] : ph[r[1]].end_ms + padMs;
+  lo = Math.max(lo, seg.start * 1000, prev ? prev.start_ms + MIN_PHONE_MS : -Infinity);
+  hi = Math.min(hi, seg.end * 1000, next ? next.end_ms - MIN_PHONE_MS : Infinity);
+  return hi - lo >= (r[1] - r[0] + 1) * MIN_PHONE_MS ? [lo, hi] : null;
+}
+
+/**
+ * Put the result of an `align_word` job in place: the word's phones take the new times, and
+ * the neighbouring phones are trimmed where they would overlap. Labels are untouched. Returns
+ * an error message, or "" when done.
+ */
+export function applyWordAlignment(clip, si, w, labels, result) {
+  const seg = clip.vs.segments[si];
+  const ph = wordPhones(seg, w);
+  if (ph.length !== labels.length || ph.some((p, k) => p.phoneme_label !== labels[k])) {
+    return "The word's phonemes changed while it was being aligned. Try again.";
+  }
+  const byTarget = new Map(result.phonemes.map((r) => [r.target, r]));
+  if (ph.some((_, k) => !byTarget.has(k))) return "The aligner did not place every phoneme of the word.";
+  ph.forEach((p, k) => {
+    const r = byTarget.get(k);
+    p.start_ms = r.start_ms; p.end_ms = r.end_ms;
+    p.realigned = true; mark(p);
+  });
+  const all = seg.phoneme_ts;
+  const prev = all[all.indexOf(ph[0]) - 1], next = all[all.indexOf(ph[ph.length - 1]) + 1];
+  const s = ph[0].start_ms, e = ph[ph.length - 1].end_ms;
+  if (prev && prev.end_ms > s) { prev.end_ms = Math.max(prev.start_ms + MIN_PHONE_MS, s); mark(prev); }
+  if (next && next.start_ms < e) { next.start_ms = Math.min(next.end_ms - MIN_PHONE_MS, e); mark(next); }
+  rebuildSegment(clip, si);
+  return "";
+}
+
 export function deletePhone(clip, si, j) {
   clip.vs.segments[si].phoneme_ts.splice(j, 1);
   rebuildSegment(clip, si);
@@ -269,6 +352,128 @@ export function fillGap(clip, si, gap) {
   ph.splice(gap.after + 1, 0, p);
   rebuildSegment(clip, si);
   return gap.after + 1;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Uniform seed: a starting point that no aligner's phoneme boundaries survive in
+// ---------------------------------------------------------------------------------------------
+//
+// Hand correction anchors on whatever it starts from (on L2-ARCTIC 89% of the "manual" onsets
+// are exactly the MFA alignment the annotators began with). A uniform seed keeps the word
+// boundaries of the alignment, each moved a random 20-40 ms earlier or later, and spreads every
+// word's phonemes evenly across it. The seed is recorded in the file (`vs.seed`, and per segment
+// `seed_words_ts` / `seed_phoneme_ts`), so how far annotators moved each boundary can be
+// measured later. The offsets themselves are not stored: the file does not reveal the
+// alignment it was seeded from.
+
+export const UNIFORM_JITTER_MS = [20, 40];
+
+/** mulberry32: small, fast, and the same on every browser for a given seed. */
+function rng(seed) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export function randomSeed() {
+  const a = new Uint32Array(1);
+  crypto.getRandomValues(a);
+  return a[0];
+}
+
+export function isUniformSeeded(vs) {
+  return !!(vs && vs.seed && vs.seed.method === "uniform");
+}
+
+/** The words of a segment in time order: {w, s, e, phones}. */
+function wordUnits(seg) {
+  const byWord = new Map();
+  for (const p of seg.phoneme_ts) {
+    if (!byWord.has(p._w)) byWord.set(p._w, []);
+    byWord.get(p._w).push(p);
+  }
+  return [...byWord.entries()].map(([w, phones]) => ({
+    w, phones, s: Math.min(...phones.map((p) => p.start_ms)), e: Math.max(...phones.map((p) => p.end_ms)),
+  })).sort((a, b) => a.s - b.s);
+}
+
+/** Seed one segment. Returns how many word boundaries could not take a full 20-40 ms offset. */
+function seedSegment(clip, si, rand) {
+  const seg = clip.vs.segments[si];
+  const segStart = seg.start * 1000, segEnd = seg.end * 1000;
+  const [jMin, jMax] = UNIFORM_JITTER_MS;
+  const units = wordUnits(seg);
+  if (!units.length) return 0;
+
+  // Boundary points in time order. Adjacent words share one point, so they stay adjacent.
+  const pts = [];                        // {t, span}: span = phones of the word ending here, or 0
+  units.forEach((u, k) => {
+    const prev = units[k - 1];
+    if (!(prev && Math.abs(prev.e - u.s) < SHARED_EPS_MS)) pts.push({ t: u.s, span: 0 });
+    u.p0 = pts.length - 1;
+    pts.push({ t: u.e, span: u.phones.length });
+    u.p1 = pts.length - 1;
+  });
+
+  let clamped = 0;
+  let prevNew = segStart;
+  pts.forEach((pt, i) => {
+    const lo = Math.max(segStart, prevNew + pt.span * MIN_PHONE_MS);
+    const next = pts[i + 1];
+    const hi = Math.min(segEnd, next ? next.t - next.span * MIN_PHONE_MS : segEnd);
+    const mag = jMin + (jMax - jMin) * rand();
+    const sign = rand() < 0.5 ? -1 : 1;
+    let t = pt.t + sign * mag;
+    if (t < lo || t > hi) t = pt.t - sign * mag;           // the other direction
+    if (t < lo || t > hi) { t = Math.min(Math.max(pt.t + sign * mag, lo), Math.max(lo, hi)); clamped++; }
+    pt.t = t;
+    prevNew = t;
+  });
+
+  for (const u of units) {
+    const s = pts[u.p0].t, e = pts[u.p1].t, n = u.phones.length;
+    const d = (e - s) / n;
+    u.phones.sort((a, b) => a.start_ms - b.start_ms);
+    u.phones.forEach((p, k) => {
+      p.start_ms = s + k * d;
+      p.end_ms = k === n - 1 ? e : s + (k + 1) * d;
+      p.confidence = 0;            // recomputed below when the posteriors are loaded
+      delete p.edited;
+      delete p.realigned;
+    });
+  }
+  rebuildSegment(clip, si);
+  seg.edited = false;
+  seg.seed_words_ts = seg.words_ts.map((w) => ({ word: w.word, start_ms: w.start_ms, end_ms: w.end_ms }));
+  seg.seed_phoneme_ts = seg.phoneme_ts.map((p) => ({
+    phoneme_label: p.phoneme_label, start_ms: p.start_ms, end_ms: p.end_ms,
+  }));
+  return clamped;
+}
+
+/**
+ * Replace every phoneme time of the clip with a uniform seed. Labels, words and tone are kept.
+ * Returns {seed, clamped}: clamped = boundaries that had no room for a full offset.
+ */
+export function applyUniformSeed(clip, seed = randomSeed()) {
+  const rand = rng(seed);
+  let clamped = 0;
+  clip.vs.segments.forEach((_, si) => { clamped += seedSegment(clip, si, rand); });
+  clip.vs.seed = {
+    method: "uniform",
+    word_jitter_ms: [...UNIFORM_JITTER_MS],
+    rng: "mulberry32",
+    rng_seed: seed,
+    created: new Date().toISOString(),
+    note: "Word boundaries of the aligner moved a random 20-40 ms earlier or later; each word's " +
+      "phonemes spread evenly. Seeded times per segment: seed_words_ts, seed_phoneme_ts.",
+  };
+  return { seed, clamped };
 }
 
 // ---------------------------------------------------------------------------------------------

@@ -182,6 +182,9 @@ def run_align(models, audio, params, report):
     duration = wav.shape[1] / SAMPLE_RATE
     segments = _clean_segments(params.get("segments"), duration)
     bfa = models.aligner(params.get("lang") or "en-us", report)
+    # A SIL at each pause punctuation mark gives a pause somewhere to go; without one it is
+    # absorbed into the phone before or after it. The decoder skips a SIL there is no pause for.
+    bfa.phonemizer.punctuation_sil = bool(params.get("punctuation_sil", True))
     report(f"Aligning {len(segments)} segment(s)")
     result = bfa.process_segments([{"segments": segments}], [wav])[0]
     bfa._set_audio_file(result, params.get("audio_name") or "audio.wav")
@@ -235,7 +238,41 @@ def run_transcribe(models, audio, params, report):
     return {"segments": segments, "duration": duration, "model": model_id}
 
 
-RUNNERS = {"align": run_align, "analyze": run_analyze, "transcribe": run_transcribe}
+def run_align_word(models, audio, params, report):
+    """
+    Align one word's phonemes, as they now stand (labels the annotator fixed included), inside
+    a short window of the audio. The G2P is not used: the labels go in as `gold_ph`, which every
+    std token is. Returns the phones' times; the browser puts them in place.
+    """
+    from bournemouth_aligner.standard_g2p import phoneme_inventory_gold as PI
+    wav = read_audio_bytes(audio)
+    duration = wav.shape[1] / SAMPLE_RATE
+    labels = list(params.get("labels") or [])
+    if not labels:
+        raise ValueError("The word has no phonemes")
+    unknown = [l for l in labels if l not in PI.TOKEN_INDEX]
+    if unknown:
+        raise ValueError(f"Not phoneme tokens: {unknown}")
+    start = max(0.0, float(params["start"]))
+    end = min(duration, float(params["end"]))
+    if end - start < 0.005 * len(labels):
+        raise ValueError("The window is too short for this word")
+    word = params.get("word") or "word"
+    tone = list(params.get("tone") or [0] * len(labels))
+    seg = {"start": start, "end": end, "text": word, "words": [word],
+           "gold_ph": [PI.TOKEN_INDEX[l] for l in labels], "word_num": [0] * len(labels),
+           "tone": tone if len(tone) == len(labels) else [0] * len(labels)}
+    bfa = models.aligner(params.get("lang") or "en-us", report)
+    report(f"Aligning “{word}”")
+    out = bfa.process_segments([{"segments": [seg]}], [wav])[0]["segments"][0]
+    phones = [{"target": int(p["target_seq_idx"]), "label": p["phoneme_label"],
+               "start_ms": float(p["start_ms"]), "end_ms": float(p["end_ms"])}
+              for p in out["phoneme_ts"]]
+    return {"phonemes": phones, "n_targets": len(labels), "start": start, "end": end}
+
+
+RUNNERS = {"align": run_align, "analyze": run_analyze, "transcribe": run_transcribe,
+           "align_word": run_align_word}
 
 
 class JobQueue:

@@ -1,0 +1,101 @@
+# Documentation site, published to https://tabahi.github.io/bournemouth-forced-aligner/ by
+# .github/workflows/docs.yml. The pages are the Markdown files in docs/.
+# Preview locally:  pip install "mkdocs-material==9.8.*"  then  mkdocs serve
+site_name: Bournemouth Forced Aligner
+site_url: https://tabahi.github.io/bournemouth-forced-aligner/
+site_description: >-
+  Phoneme and word timestamps for speech in 82 languages, with no pronunciation dictionary.
+repo_url: https://github.com/tabahi/bournemouth-forced-aligner
+repo_name: tabahi/bournemouth-forced-aligner
+copyright: BFA is free software under the GPLv3.
+
+theme:
+  name: material
+  icon:
+    logo: material/waveform
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Follow the system setting
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+extra_css:
+  - assets/extra.css
+
+# Links from docs/ to the rest of the repository: images are copied in, other files link to GitHub.
+hooks:
+  - tools/mkdocs_hooks.py
+
+validation:
+  omitted_files: warn
+  absolute_links: info
+  unrecognized_links: warn
+  anchors: warn
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - User guide:
+      - Getting started: getting-started.md
+      - Language support: language-support.md
+      - Web interface: web-interface.md
+  - Phoneme guides:
+      - phoneme-guides/index.md
+      - Latin: phoneme-guides/latin.md
+      - Cyrillic: phoneme-guides/cyrillic.md
+      - Chinese (CJK): phoneme-guides/cjk.md
+      - Japanese: phoneme-guides/japanese.md
+      - Vietnamese: phoneme-guides/vietnamese.md
+      - Thai: phoneme-guides/thai_khmer.md
+      - Abjad: phoneme-guides/abjad.md
+      - Brahmic: phoneme-guides/brahmic.md
+      - Other alphabets: phoneme-guides/other_alphabetic.md
+      - Tones: phoneme-guides/tones.md
+  - Models and evaluation:
+      - About the models: about-models.md
+      - Evaluation: evaluation.md
+      - Evaluation methods: evaluation-methods.md
+  - Developer guide: developer-guide.md
+  - Changelog: https://github.com/tabahi/bournemouth-forced-aligner/blob/main/CHANGELOG.md

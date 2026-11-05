@@ -1,0 +1,1161 @@
+{
+"group": "cjk",
+"model": "mbfa-cjk",
+"source": "FLEURS dev transcripts, through bournemouth_aligner's std G2P",
+"note": "Tone is a separate layer, not part of these tokens: see the tone guide. Affricates and diphthongs are split into tokens: 在 = t s a ɪ, 这 = ʈ ʂ ɤ; an aspirated affricate puts the aspiration on its second half (其 = t ɕʰ i, 此 = t sʰ i). Give each part its own span. The aspirated stops pʰ tʰ kʰ are the sounds written p t k in pinyin and Jyutping; the plain p t k are the ones written b d g.",
+"lang_names": {
+"zh": "Mandarin",
+"yue": "Cantonese"
+},
+"tokens": {
+"SIL": {
+"name": "silence",
+"class": "special",
+"plain": "A pause: no speech. Use it for a pause the speaker makes inside a segment.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"noise": {
+"name": "noise",
+"class": "special",
+"plain": "A non-speech sound: a breath, cough, laugh or click.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"<unk>": {
+"name": "unknown",
+"class": "special",
+"plain": "The G2P wrote a sound this model has no token for. Keep its time span; the label cannot say what it is.",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+},
+"a": {
+"name": "open front unrounded vowel",
+"class": "vowel",
+"plain": "a as in Spanish “casa”",
+"examples": [
+[
+"zh",
+"在",
+"t s a ɪ"
+],
+[
+"yue",
+"國家",
+"k w ɔ k k a"
+]
+],
+"langs": [
+[
+"zh",
+5.07
+],
+[
+"yue",
+3.79
+]
+],
+"also": [],
+"count": 3263
+},
+"s": {
+"name": "voiceless alveolar fricative",
+"class": "fricative",
+"plain": "s",
+"examples": [
+[
+"yue",
+"在",
+"t s ɔ i"
+],
+[
+"zh",
+"在",
+"t s a ɪ"
+]
+],
+"langs": [
+[
+"yue",
+7.66
+],
+[
+"zh",
+1.83
+]
+],
+"also": [],
+"count": 3342
+},
+"i": {
+"name": "close front unrounded vowel",
+"class": "vowel",
+"plain": "ee as in “see”",
+"examples": [
+[
+"yue",
+"世界",
+"s ɐ i k a i"
+],
+[
+"zh",
+"的",
+"t i"
+]
+],
+"langs": [
+[
+"yue",
+9.5
+],
+[
+"zh",
+4.89
+]
+],
+"also": [],
+"count": 5156
+},
+"e": {
+"name": "close-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in Spanish or Italian “de”; the start of English “say”",
+"examples": [
+[
+"zh",
+"为",
+"w e ɪ"
+],
+[
+"yue",
+"非常",
+"f e i s œ ŋ"
+]
+],
+"langs": [
+[
+"zh",
+1.97
+],
+[
+"yue",
+1.45
+]
+],
+"also": [],
+"count": 1260
+},
+"n": {
+"name": "alveolar nasal",
+"class": "nasal",
+"plain": "n",
+"examples": [
+[
+"zh",
+"年",
+"n j ɛ n"
+],
+[
+"yue",
+"人",
+"j ɐ n"
+]
+],
+"langs": [
+[
+"zh",
+6.29
+],
+[
+"yue",
+4.92
+]
+],
+"also": [],
+"count": 4123
+},
+"t": {
+"name": "voiceless alveolar stop",
+"class": "stop",
+"plain": "t as in “ten”",
+"examples": [
+[
+"yue",
+"的",
+"t ɪ k"
+],
+[
+"zh",
+"的",
+"t i"
+]
+],
+"langs": [
+[
+"yue",
+11.28
+],
+[
+"zh",
+8.84
+]
+],
+"also": [],
+"count": 7296
+},
+"l": {
+"name": "alveolar lateral approximant",
+"class": "lateral",
+"plain": "l as in “leaf”",
+"examples": [
+[
+"yue",
+"能力",
+"l ɐ ŋ l ɪ k"
+],
+[
+"zh",
+"了",
+"l j ɑ ʊ"
+]
+],
+"langs": [
+[
+"yue",
+2.11
+],
+[
+"zh",
+1.81
+]
+],
+"also": [],
+"count": 1425
+},
+"k": {
+"name": "voiceless velar stop",
+"class": "stop",
+"plain": "k as in “key”",
+"examples": [
+[
+"yue",
+"的",
+"t ɪ k"
+],
+[
+"zh",
+"个",
+"k ɤ"
+]
+],
+"langs": [
+[
+"yue",
+7.0
+],
+[
+"zh",
+1.71
+]
+],
+"also": [],
+"count": 3068
+},
+"o": {
+"name": "close-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in Spanish or Italian “no”",
+"examples": [
+[
+"yue",
+"都",
+"t o u"
+],
+[
+"zh",
+"有",
+"j o ʊ"
+]
+],
+"langs": [
+[
+"yue",
+1.42
+],
+[
+"zh",
+1.39
+]
+],
+"also": [],
+"count": 1025
+},
+"m": {
+"name": "bilabial nasal",
+"class": "nasal",
+"plain": "m",
+"examples": [
+[
+"yue",
+"動物",
+"t ʊ ŋ m ɐ t"
+],
+[
+"zh",
+"名",
+"m ɪ ŋ"
+]
+],
+"langs": [
+[
+"yue",
+2.14
+],
+[
+"zh",
+1.25
+]
+],
+"also": [],
+"count": 1220
+},
+"u": {
+"name": "close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “food”",
+"examples": [
+[
+"yue",
+"有",
+"j ɐ u"
+],
+[
+"zh",
+"不",
+"p u"
+]
+],
+"langs": [
+[
+"yue",
+4.78
+],
+[
+"zh",
+3.86
+]
+],
+"also": [],
+"count": 3136
+},
+"ɪ": {
+"name": "near-close front unrounded vowel",
+"class": "vowel",
+"plain": "i as in “sit”",
+"examples": [
+[
+"zh",
+"在",
+"t s a ɪ"
+],
+[
+"yue",
+"的",
+"t ɪ k"
+]
+],
+"langs": [
+[
+"zh",
+5.41
+],
+[
+"yue",
+3.77
+]
+],
+"also": [],
+"count": 3385
+},
+"f": {
+"name": "voiceless labiodental fricative",
+"class": "fricative",
+"plain": "f",
+"examples": [
+[
+"yue",
+"非常",
+"f e i s œ ŋ"
+],
+[
+"zh",
+"方法",
+"f ɑ ŋ f a"
+]
+],
+"langs": [
+[
+"yue",
+1.23
+],
+[
+"zh",
+0.96
+]
+],
+"also": [],
+"count": 794
+},
+"j": {
+"name": "palatal approximant",
+"class": "glide",
+"plain": "y as in “yes”",
+"examples": [
+[
+"zh",
+"了",
+"l j ɑ ʊ"
+],
+[
+"yue",
+"有",
+"j ɐ u"
+]
+],
+"langs": [
+[
+"zh",
+4.36
+],
+[
+"yue",
+4.26
+]
+],
+"also": [],
+"count": 3150
+},
+"ə": {
+"name": "mid central vowel (schwa)",
+"class": "vowel",
+"plain": "the weak vowel of “about”, “sofa”",
+"examples": [
+[
+"zh",
+"人",
+"ʐ ə n"
+],
+[
+"yue",
+"ehrenstrahl",
+"ɛ <unk> ə n s tʰ ɑ l"
+]
+],
+"langs": [
+[
+"zh",
+1.4
+]
+],
+"also": [],
+"count": 545
+},
+"p": {
+"name": "voiceless bilabial stop",
+"class": "stop",
+"plain": "p as in “pen”",
+"examples": [
+[
+"yue",
+"不同",
+"p ɐ t tʰ ʊ ŋ"
+],
+[
+"zh",
+"不",
+"p u"
+]
+],
+"langs": [
+[
+"yue",
+2.26
+],
+[
+"zh",
+1.76
+]
+],
+"also": [],
+"count": 1458
+},
+"ɛ": {
+"name": "open-mid front unrounded vowel",
+"class": "vowel",
+"plain": "e as in “bed”",
+"examples": [
+[
+"zh",
+"年",
+"n j ɛ n"
+],
+[
+"yue",
+"這個",
+"t s ɛ k ɔ"
+]
+],
+"langs": [
+[
+"zh",
+1.82
+],
+[
+"yue",
+0.82
+]
+],
+"also": [],
+"count": 985
+},
+"w": {
+"name": "labial-velar approximant",
+"class": "glide",
+"plain": "w as in “we”",
+"examples": [
+[
+"zh",
+"为",
+"w e ɪ"
+],
+[
+"yue",
+"國家",
+"k w ɔ k k a"
+]
+],
+"langs": [
+[
+"zh",
+2.51
+],
+[
+"yue",
+2.27
+]
+],
+"also": [],
+"count": 1750
+},
+"ɑ": {
+"name": "open back unrounded vowel",
+"class": "vowel",
+"plain": "a as in “father”",
+"examples": [
+[
+"zh",
+"了",
+"l j ɑ ʊ"
+],
+[
+"yue",
+"ehrenstrahl",
+"ɛ <unk> ə n s tʰ ɑ l"
+]
+],
+"langs": [
+[
+"zh",
+3.83
+]
+],
+"also": [],
+"count": 1482
+},
+"ɔ": {
+"name": "open-mid back rounded vowel",
+"class": "vowel",
+"plain": "o as in British “thought”",
+"examples": [
+[
+"yue",
+"個",
+"k ɔ"
+],
+[
+"zh",
+"它",
+"tʰ u ɔ"
+]
+],
+"langs": [
+[
+"yue",
+4.14
+],
+[
+"zh",
+1.68
+]
+],
+"also": [],
+"count": 2074
+},
+"ŋ": {
+"name": "velar nasal",
+"class": "nasal",
+"plain": "ng as in “sing”",
+"examples": [
+[
+"yue",
+"影響",
+"j ɪ ŋ h œ ŋ"
+],
+[
+"zh",
+"上",
+"ʂ ɑ ŋ"
+]
+],
+"langs": [
+[
+"yue",
+6.06
+],
+[
+"zh",
+5.65
+]
+],
+"also": [],
+"count": 4266
+},
+"ʊ": {
+"name": "near-close back rounded vowel",
+"class": "vowel",
+"plain": "oo as in “book”",
+"examples": [
+[
+"zh",
+"了",
+"l j ɑ ʊ"
+],
+[
+"yue",
+"不同",
+"p ɐ t tʰ ʊ ŋ"
+]
+],
+"langs": [
+[
+"zh",
+4.83
+],
+[
+"yue",
+1.79
+]
+],
+"also": [],
+"count": 2480
+},
+"ɯ": {
+"name": "close back unrounded vowel",
+"class": "vowel",
+"plain": "oo said with spread lips (Turkish “ı”)",
+"examples": [
+[
+"zh",
+"斯",
+"s ɯ"
+]
+],
+"langs": [
+[
+"zh",
+0.45
+]
+],
+"also": [],
+"count": 175
+},
+"h": {
+"name": "voiceless glottal fricative",
+"class": "fricative",
+"plain": "h as in “hat”",
+"examples": [
+[
+"yue",
+"許多",
+"h ɵ y t ɔ"
+],
+[
+"zh",
+"rockhampton",
+"<unk> ɑ k h <unk> m p t ə n"
+]
+],
+"langs": [
+[
+"yue",
+1.76
+],
+[
+"zh",
+0.02
+]
+],
+"also": [],
+"count": 613
+},
+"ɐ": {
+"name": "near-open central vowel",
+"class": "vowel",
+"plain": "a short, relaxed “uh” (Portuguese “cama”, German “-er” endings)",
+"examples": [
+[
+"yue",
+"有",
+"j ɐ u"
+]
+],
+"langs": [
+[
+"yue",
+6.72
+]
+],
+"also": [],
+"count": 2312
+},
+"x": {
+"name": "voiceless velar fricative",
+"class": "fricative",
+"plain": "ch as in Scottish “loch”, German “Bach”",
+"examples": [
+[
+"zh",
+"和",
+"x ɤ"
+]
+],
+"langs": [
+[
+"zh",
+1.65
+]
+],
+"also": [],
+"count": 637
+},
+"ʂ": {
+"name": "voiceless retroflex fricative",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”)",
+"examples": [
+[
+"zh",
+"是",
+"ʂ ɚ"
+]
+],
+"langs": [
+[
+"zh",
+4.55
+]
+],
+"also": [],
+"count": 1757
+},
+"y": {
+"name": "close front rounded vowel",
+"class": "vowel",
+"plain": "ee said with rounded lips (French “tu”, German “über”)",
+"examples": [
+[
+"yue",
+"最",
+"t s ɵ y"
+],
+[
+"zh",
+"与",
+"y"
+]
+],
+"langs": [
+[
+"yue",
+2.43
+],
+[
+"zh",
+1.03
+]
+],
+"also": [],
+"count": 1232
+},
+"ɕ": {
+"name": "voiceless alveolo-palatal fricative",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”)",
+"examples": [
+[
+"zh",
+"进行",
+"t ɕ ɪ n ɕ ɪ ŋ"
+]
+],
+"langs": [
+[
+"zh",
+3.78
+]
+],
+"also": [],
+"count": 1461
+},
+"ɵ": {
+"name": "close-mid central rounded vowel",
+"class": "vowel",
+"plain": "a rounded vowel between e and o (Swedish short u)",
+"examples": [
+[
+"yue",
+"最",
+"t s ɵ y"
+]
+],
+"langs": [
+[
+"yue",
+1.36
+]
+],
+"also": [],
+"count": 466
+},
+"œ": {
+"name": "open-mid front rounded vowel",
+"class": "vowel",
+"plain": "e as in “bed” said with rounded lips (French “neuf”, German “können”)",
+"examples": [
+[
+"yue",
+"非常",
+"f e i s œ ŋ"
+],
+[
+"zh",
+"滑雪",
+"x w a ɕ ɥ œ"
+]
+],
+"langs": [
+[
+"yue",
+1.2
+],
+[
+"zh",
+0.78
+]
+],
+"also": [],
+"count": 716
+},
+"ʈ": {
+"name": "voiceless retroflex stop",
+"class": "stop",
+"plain": "t with the tongue tip curled back (Swedish and Norwegian “rt”)",
+"examples": [
+[
+"zh",
+"这",
+"ʈ ʂ ɤ"
+]
+],
+"langs": [
+[
+"zh",
+3.13
+]
+],
+"also": [],
+"count": 1211
+},
+"tʰ": {
+"name": "voiceless alveolar stop, aspirated",
+"class": "stop",
+"plain": "t as in “ten”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"zh",
+"它",
+"tʰ u ɔ"
+],
+[
+"yue",
+"不同",
+"p ɐ t tʰ ʊ ŋ"
+]
+],
+"langs": [
+[
+"zh",
+1.23
+],
+[
+"yue",
+1.11
+]
+],
+"also": [],
+"count": 857
+},
+"ʐ": {
+"name": "voiced retroflex fricative",
+"class": "fricative",
+"plain": "a hard zh (Polish “ż”, “rz”)",
+"examples": [
+[
+"zh",
+"人",
+"ʐ ə n"
+]
+],
+"langs": [
+[
+"zh",
+0.79
+]
+],
+"also": [],
+"count": 304
+},
+"kʰ": {
+"name": "voiceless velar stop, aspirated",
+"class": "stop",
+"plain": "k as in “key”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"zh",
+"克",
+"kʰ ɤ"
+],
+[
+"yue",
+"以及",
+"j i kʰ ɐ p"
+]
+],
+"langs": [
+[
+"zh",
+0.9
+],
+[
+"yue",
+0.8
+]
+],
+"also": [],
+"count": 621
+},
+"ɤ": {
+"name": "close-mid back unrounded vowel",
+"class": "vowel",
+"plain": "o said with spread lips (Estonian “õ”)",
+"examples": [
+[
+"zh",
+"和",
+"x ɤ"
+]
+],
+"langs": [
+[
+"zh",
+3.19
+]
+],
+"also": [],
+"count": 1234
+},
+"sʰ": {
+"name": "voiceless alveolar fricative, aspirated",
+"class": "fricative",
+"plain": "s; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"yue",
+"因此",
+"j ɐ n t sʰ i"
+],
+[
+"zh",
+"曾",
+"t sʰ ɤ ŋ"
+]
+],
+"langs": [
+[
+"yue",
+1.61
+],
+[
+"zh",
+0.38
+]
+],
+"also": [],
+"count": 697
+},
+"pʰ": {
+"name": "voiceless bilabial stop, aspirated",
+"class": "stop",
+"plain": "p as in “pen”; aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"zh",
+"普",
+"pʰ u"
+],
+[
+"yue",
+"普遍",
+"pʰ o u pʰ i n"
+]
+],
+"langs": [
+[
+"zh",
+0.38
+],
+[
+"yue",
+0.34
+]
+],
+"also": [],
+"count": 262
+},
+"ɥ": {
+"name": "labial-palatal approximant",
+"class": "glide",
+"plain": "y said with rounded lips (French “huit”)",
+"examples": [
+[
+"zh",
+"滑雪",
+"x w a ɕ ɥ œ"
+]
+],
+"langs": [
+[
+"zh",
+0.78
+]
+],
+"also": [],
+"count": 303
+},
+"ɕʰ": {
+"name": "voiceless alveolo-palatal fricative, aspirated",
+"class": "fricative",
+"plain": "a soft sh, with the tongue body raised (Polish “ś”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"zh",
+"其",
+"t ɕʰ i"
+]
+],
+"langs": [
+[
+"zh",
+1.0
+]
+],
+"also": [],
+"count": 385
+},
+"ʂʰ": {
+"name": "voiceless retroflex fricative, aspirated",
+"class": "fricative",
+"plain": "a hard sh with the tongue tip back (Polish “sz”); aspirated: followed by a puff of breath before the vowel starts (English “top” has one, “stop” does not)",
+"examples": [
+[
+"zh",
+"车",
+"ʈ ʂʰ ɤ"
+]
+],
+"langs": [
+[
+"zh",
+0.91
+]
+],
+"also": [],
+"count": 353
+},
+"ɚ": {
+"name": "r-coloured schwa",
+"class": "vowel",
+"plain": "a weak vowel with an r colour (American “butter”, Mandarin “er”)",
+"examples": [
+[
+"zh",
+"是",
+"ʂ ɚ"
+]
+],
+"langs": [
+[
+"zh",
+1.8
+]
+],
+"also": [],
+"count": 697
+},
+"ɻ": {
+"name": "retroflex approximant",
+"class": "rhotic",
+"plain": "an English-like r with the tongue tip curled back",
+"examples": [
+[
+"zh",
+"尔",
+"a ɻ"
+]
+],
+"langs": [
+[
+"zh",
+0.14
+]
+],
+"also": [],
+"count": 55
+},
+"m̩": {
+"name": "bilabial nasal, syllabic",
+"class": "nasal",
+"plain": "m; syllabic: forms a syllable with no vowel, as the n of “button”. Rare: not in the test sentences of any trained language",
+"examples": [],
+"langs": [],
+"also": [],
+"count": 0
+}
+}
+}
